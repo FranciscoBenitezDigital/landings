@@ -11,45 +11,16 @@
     
 
 <!-- SEO Meta Tags -->
-<title>Escáner de Facturas Inteligente | Panel Interno Corporativo</title>
-<meta name="description" content="Aplicación interna para empleados que utiliza Inteligencia Artificial para extraer datos de facturas y guardarlos automáticamente en Google Sheets." />
-<meta property="og:title" content="Escáner de Facturas Inteligente | Panel Interno Corporativo" />
-<meta property="og:description" content="Aplicación interna para empleados que utiliza Inteligencia Artificial para extraer datos de facturas y guardarlos automáticamente en Google Sheets." />
+<title>Escáner de Facturas Inteligente | Panel Interno</title>
+<meta name="description" content="Herramienta corporativa para la extracción automatizada de datos de facturas mediante IA y Claude Vision." />
+<meta property="og:title" content="Escáner de Facturas Inteligente | Panel Interno" />
+<meta property="og:description" content="Herramienta corporativa para la extracción automatizada de datos de facturas mediante IA y Claude Vision." />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Escáner de Facturas Inteligente | Panel Interno Corporativo" />
-<meta name="twitter:description" content="Aplicación interna para empleados que utiliza Inteligencia Artificial para extraer datos de facturas y guardarlos automáticamente en Google Sheets." />
+<meta name="twitter:title" content="Escáner de Facturas Inteligente | Panel Interno" />
+<meta name="twitter:description" content="Herramienta corporativa para la extracción automatizada de datos de facturas mediante IA y Claude Vision." />
 <!-- End SEO Meta Tags -->
 
-<script data-gate>
-(function(){
-  var slug='HyzLve';var apiBase='https://paymegpt.com';var currency='USD';var presets=[2500,5000,10000,25000];var minAmt=100;var maxAmt=1000000;var thankYouMsg='Thank you for your generous donation!';
-  function fmtD(c){return new Intl.NumberFormat('en-US',{style:'currency',currency:currency}).format(c/100);}
-  window.__processDonation=function(amountCents,email,donorName,donorMessage){
-    if(!amountCents||amountCents<minAmt){alert('Minimum donation is '+fmtD(minAmt));return Promise.reject('below_min');}
-    if(amountCents>maxAmt){alert('Maximum donation is '+fmtD(maxAmt));return Promise.reject('above_max');}
-    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
-    var successBase=window.location.href.split('?')[0];
-    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/donation/checkout',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({email:email,name:donorName||'',amountCents:amountCents,message:donorMessage||'',successUrl:successBase+'?donation=success&email='+encodeURIComponent(email)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?donation=cancelled'})
-    }).then(function(r){return r.json();}).then(function(d){
-      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
-      else{alert(d.error||'Failed to process donation');throw new Error(d.error);}
-    });
-  };
-  window.__donationConfig={currency:currency,presets:presets,minAmount:minAmt,maxAmount:maxAmt,formatAmount:fmtD};
-  document.addEventListener('DOMContentLoaded',function(){
-    var urlParams=new URLSearchParams(window.location.search);
-    if(urlParams.get('donation')==='success'){
-      var overlay=document.createElement('div');overlay.id='donation-success-overlay';
-      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
-      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">'+thankYouMsg+'</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Your donation has been processed successfully.</p><button onclick="this.closest(\'#donation-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
-      document.body.appendChild(overlay);
-    }
-  });
-})();
-</script>
 <script data-field-replace>
 (function(){
   var params=new URLSearchParams(window.location.search);
@@ -149,7 +120,7 @@
   function run(){
     if(contactId){
       var xhr=new XMLHttpRequest();
-      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=2751');
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=2753');
       xhr.onload=function(){
         if(xhr.status===200){
           try{
@@ -176,7 +147,7 @@
 </script>
 <script data-payment>
 (function(){
-  var slug='HyzLve';
+  var slug='WR9eyWp';
   var apiBase='https://paymegpt.com';
   function findEmail(){
     var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
@@ -232,161 +203,195 @@
 <body class="min-h-screen flex flex-col">
 
     <!-- ============================================================================ -->
-    <!-- HEADER SECTION: Application Identity                                        -->
-    <!-- Features: Minimalist logo and title, navigation context                     -->
+    <!-- HEADER SECTION: Title and subtitle of the application                       -->
+    <!-- Features: Semantic header, brand logo icon, minimalist typography           -->
     <!-- ============================================================================ -->
-    <nav data-section="navbar" class="bg-white border-b border-gray-200 px-4 py-4 md:px-8 lg:px-12">
-        <div class="max-w-7xl mx-auto flex items-center gap-3">
-            <div class="p-2 bg-corporate-blue rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-            </div>
-            <div>
-                <h1 class="text-xl font-bold text-corporate-blue leading-none">Escáner de Facturas</h1>
-                <p class="text-xs text-corporate-gray mt-1">Sube una imagen de factura para extraer sus datos automáticamente</p>
+    <header data-section="header" class="bg-white border-b border-gray-200">
+        <div class="container-safe py-6 md:py-8">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-brand-dark rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-brand-dark leading-tight">Escáner de Facturas</h1>
+                    <p class="text-sm text-gray-500 mt-1">Sube una imagen de factura para extraer sus datos automáticamente</p>
+                </div>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- ============================================================================ -->
-    <!-- MAIN CONTENT AREA: Upload and Analysis                                      -->
-    <!-- Features: Drag & Drop, Preview, Analysis Action                              -->
-    <!-- ============================================================================ -->
-    <main class="flex-grow w-full max-w-7xl mx-auto px-4 py-6 md:px-8 lg:px-12 space-y-6">
+    <main class="flex-grow container-safe">
         
-        <!-- Upload & Preview Section -->
-        <section data-section="upload-area" class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-            <div id="drop-zone" class="relative border-2 border-dashed border-gray-300 rounded-xl p-10 flex flex-col items-center justify-center transition-all cursor-pointer hover:bg-gray-50">
-                <input type="file" id="file-input" class="hidden" accept="image/jpeg,image/png,application/pdf">
+        <!-- ============================================================================ -->
+        <!-- CONFIG SECTION: API Key Input                                               -->
+        <!-- Features: Discreet input, password masking, help text                       -->
+        <!-- ============================================================================ -->
+        <section data-section="config" class="mb-8">
+            <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm max-w-md">
+                <label for="apiKey" class="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">Anthropic API Key</label>
+                <input type="password" id="apiKey" placeholder="sk-ant-api03-..." class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-sm transition-all">
+                <p class="text-[10px] text-gray-400 mt-1.5 italic">Requerida para el análisis con IA. Se procesa localmente en el navegador.</p>
+            </div>
+        </section>
+
+        <!-- ============================================================================ -->
+        <!-- UPLOAD SECTION: Drag-and-drop file interface                                -->
+        <!-- Features: Visual feedback, image preview, delete button                     -->
+        <!-- ============================================================================ -->
+        <section data-section="upload" class="mb-8">
+            <div id="dropZone" class="relative border-2 border-dashed border-gray-300 rounded-2xl bg-white p-8 md:p-12 text-center transition-all cursor-pointer hover:border-brand-dark">
+                <input type="file" id="fileInput" accept="image/*" class="hidden">
                 
-                <div id="upload-prompt" class="text-center">
-                    <div class="mx-auto w-16 h-16 bg-blue-50 text-corporate-blue rounded-full flex items-center justify-center mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                <div id="uploadPrompt" class="space-y-4">
+                    <div class="mx-auto w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                         </svg>
                     </div>
-                    <p class="text-sm font-medium text-gray-700">Arrastra tu factura aquí o haz clic para seleccionar</p>
-                    <p class="text-xs text-corporate-gray mt-1">JPG, PNG o PDF (Máx. 10MB)</p>
+                    <div class="text-gray-600">
+                        <p class="font-medium text-lg">Arrastra tu factura aquí</p>
+                        <p class="text-sm">o haz clic para seleccionar un archivo</p>
+                    </div>
                 </div>
 
-                <!-- Preview State -->
-                <div id="preview-container" class="hidden w-full max-w-md relative fade-in">
-                    <img id="image-preview" src="#" alt="Vista previa" class="w-full h-48 object-contain rounded-lg border border-gray-200">
-                    <button id="remove-file" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 shadow-lg hover:bg-red-600 focus:outline-none">
+                <div id="previewContainer" class="hidden-section relative max-w-sm mx-auto">
+                    <img id="imagePreview" src="" alt="Preview" class="rounded-lg shadow-md max-h-64 mx-auto">
+                    <button id="removeImage" class="absolute -top-3 -right-3 bg-red-500 text-white rounded-full p-1.5 hover:bg-red-600 transition-colors shadow-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
                     </button>
-                    <p id="file-name" class="text-xs text-center mt-2 text-corporate-gray font-medium truncate"></p>
+                    <p id="fileNameDisplay" class="text-xs text-gray-500 mt-2 truncate font-medium"></p>
                 </div>
             </div>
 
             <div class="mt-6 flex justify-center">
-                <button id="btn-analyze" disabled class="bg-corporate-blue text-white px-8 py-3 rounded-lg font-semibold shadow-md flex items-center gap-3 transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:bg-opacity-90 active:scale-95">
-                    <span id="btn-text">Analizar Factura</span>
-                    <div id="btn-loader" class="hidden spinner"></div>
+                <button id="analyzeBtn" disabled class="bg-brand-dark text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:bg-opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-3">
+                    <span id="btnText">Analizar Factura</span>
+                    <span id="btnLoader" class="loader hidden-section"></span>
                 </button>
             </div>
         </section>
 
         <!-- ============================================================================ -->
-        <!-- RESULTS SECTION: Extracted Data Display                                     -->
-        <!-- Features: Header cards, Itemized table, Totals                              -->
+        <!-- RESULTS SECTION: Extracted data visualization                               -->
+        <!-- Features: Responsive grid cards, tabular item list, totals summary          -->
         <!-- ============================================================================ -->
-        <section id="results-section" data-section="results" class="hidden space-y-6 fade-in">
-            <!-- Summary Header Cards -->
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
-                    <p class="text-[10px] uppercase tracking-wider text-corporate-gray font-bold">Proveedor</p>
-                    <p id="res-vendor" class="text-sm font-semibold text-corporate-blue truncate mt-1">-</p>
+        <section id="resultsSection" data-section="results" class="hidden-section mb-12 animate-in fade-in duration-500">
+            <div class="flex items-center gap-2 mb-6">
+                <div class="h-1 w-8 bg-brand-dark rounded-full"></div>
+                <h2 class="text-xl font-bold text-brand-dark">Datos Extraídos</h2>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                    <span class="block text-[10px] font-bold text-gray-400 uppercase">Proveedor</span>
+                    <span id="resProvider" class="text-sm font-semibold text-gray-800">-</span>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
-                    <p class="text-[10px] uppercase tracking-wider text-corporate-gray font-bold">Cliente</p>
-                    <p id="res-client" class="text-sm font-semibold text-corporate-blue truncate mt-1">-</p>
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                    <span class="block text-[10px] font-bold text-gray-400 uppercase">Cliente</span>
+                    <span id="resClient" class="text-sm font-semibold text-gray-800">-</span>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
-                    <p class="text-[10px] uppercase tracking-wider text-corporate-gray font-bold">N° Factura</p>
-                    <p id="res-invoice" class="text-sm font-semibold text-corporate-blue truncate mt-1">-</p>
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                    <span class="block text-[10px] font-bold text-gray-400 uppercase">N° Factura</span>
+                    <span id="resInvoiceNum" class="text-sm font-semibold text-gray-800">-</span>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
-                    <p class="text-[10px] uppercase tracking-wider text-corporate-gray font-bold">Fecha</p>
-                    <p id="res-date" class="text-sm font-semibold text-corporate-blue mt-1">-</p>
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                    <span class="block text-[10px] font-bold text-gray-400 uppercase">Fecha</span>
+                    <span id="resDate" class="text-sm font-semibold text-gray-800">-</span>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
-                    <p class="text-[10px] uppercase tracking-wider text-corporate-gray font-bold">Moneda</p>
-                    <p id="res-currency" class="text-sm font-semibold text-corporate-blue mt-1">-</p>
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                    <span class="block text-[10px] font-bold text-gray-400 uppercase">Moneda</span>
+                    <span id="resCurrency" class="text-sm font-semibold text-brand-dark">-</span>
                 </div>
             </div>
 
-            <!-- Concepts Table -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+            <!-- Items Table -->
+            <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden mb-8">
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-gray-50 text-corporate-gray text-xs uppercase font-bold">
-                                <th class="px-6 py-4 border-b">#</th>
-                                <th class="px-6 py-4 border-b">Descripción</th>
-                                <th class="px-6 py-4 border-b text-center">Cant.</th>
-                                <th class="px-6 py-4 border-b text-right">P. Unitario</th>
-                                <th class="px-6 py-4 border-b text-right">Total</th>
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-gray-50 text-gray-500 font-medium border-b border-gray-200">
+                            <tr>
+                                <th class="px-6 py-4">#</th>
+                                <th class="px-6 py-4">Descripción</th>
+                                <th class="px-6 py-4 text-center">Cant.</th>
+                                <th class="px-6 py-4 text-right">Precio Unit.</th>
+                                <th class="px-6 py-4 text-right">Total</th>
                             </tr>
                         </thead>
-                        <tbody id="items-body" class="text-sm text-gray-700 divide-y divide-gray-100">
+                        <tbody id="itemsBody" class="divide-y divide-gray-100">
                             <!-- Rows injected by JS -->
                         </tbody>
                     </table>
                 </div>
+            </div>
 
-                <!-- Totals Section -->
-                <div class="bg-gray-50 px-6 py-6 flex flex-col items-end border-t border-gray-100">
-                    <div class="w-full md:w-64 space-y-2">
-                        <div class="flex justify-between text-sm">
-                            <span class="text-corporate-gray">Subtotal:</span>
-                            <span id="res-subtotal" class="font-medium text-corporate-blue">$0.00</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-corporate-gray">IVA:</span>
-                            <span id="res-iva" class="font-medium text-corporate-blue">$0.00</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-corporate-gray">Descuento:</span>
-                            <span id="res-discount" class="font-medium text-corporate-blue">$0.00</span>
-                        </div>
-                        <div class="flex justify-between pt-2 border-t border-gray-200 mt-2">
-                            <span class="text-base font-bold text-corporate-blue">TOTAL FINAL:</span>
-                            <span id="res-total" class="text-lg font-bold text-corporate-blue">$0.00</span>
-                        </div>
+            <!-- Totals Grid -->
+            <div class="flex flex-col md:flex-row justify-between gap-8">
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 flex-grow max-w-md">
+                    <h3 class="text-xs font-bold text-gray-400 uppercase mb-4 tracking-wider">Notas del Extractor</h3>
+                    <p id="resNotes" class="text-sm text-gray-600 italic">No hay notas adicionales.</p>
+                </div>
+                
+                <div class="w-full md:w-80 space-y-3">
+                    <div class="flex justify-between text-sm px-2">
+                        <span class="text-gray-500">Subtotal</span>
+                        <span id="resSubtotal" class="font-medium">-</span>
+                    </div>
+                    <div class="flex justify-between text-sm px-2">
+                        <span class="text-gray-500">IVA</span>
+                        <span id="resIva" class="font-medium">-</span>
+                    </div>
+                    <div class="flex justify-between text-sm px-2">
+                        <span class="text-gray-500">Descuento</span>
+                        <span id="resDiscount" class="font-medium">-</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-brand-dark text-white p-4 rounded-xl mt-4 shadow-md">
+                        <span class="text-xs font-bold uppercase">Total Final</span>
+                        <span id="resTotal" class="text-xl font-bold">-</span>
                     </div>
                 </div>
             </div>
 
             <!-- Actions -->
-            <div class="flex flex-col md:flex-row justify-center items-center gap-4 py-4">
-                <button id="btn-sheets" class="w-full md:w-auto bg-corporate-green text-white px-8 py-3 rounded-lg font-semibold shadow-md flex items-center justify-center gap-3 transition-all hover:bg-opacity-90 active:scale-95">
-                    <span id="sheets-text">Guardar en Google Sheets</span>
-                    <div id="sheets-loader" class="hidden spinner"></div>
-                    <svg id="sheets-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+            <div data-section="actions" class="mt-12 flex justify-center pb-12">
+                <button id="saveSheetsBtn" class="bg-brand-success text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:opacity-90 transition-all flex items-center gap-3">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.5,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V7.5L14.5,2M10,19V17H14V19H10M10,15V13H14V15H10M10,11V9H14V11H10M13,3.5L18.5,9H13V3.5Z" />
                     </svg>
+                    <span>Guardar en Google Sheets</span>
                 </button>
             </div>
         </section>
-
     </main>
 
-    <!-- Toast Notification System -->
-    <div id="toast" class="fixed bottom-6 right-6 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none z-50">
-        <div id="toast-content" class="bg-corporate-blue text-white px-6 py-3 rounded-lg shadow-2xl flex items-center gap-3">
-            <span id="toast-icon"></span>
-            <p id="toast-message" class="text-sm font-medium"></p>
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 translate-y-24 opacity-0 transition-all duration-300 pointer-events-none z-50">
+        <div id="toastContent" class="bg-gray-800 text-white px-6 py-3 rounded-lg shadow-2xl flex items-center gap-3">
+            <span id="toastIcon"></span>
+            <span id="toastMessage" class="text-sm font-medium"></span>
         </div>
     </div>
 
     <!-- ============================================================================ -->
-    <!-- JAVASCRIPT LOGIC: Image processing and API Integrations                     -->
+    <!-- JAVASCRIPT LOGIC                                                            -->
+    <!-- Purpose: Handle file uploads, API communication, and UI rendering           -->
     <!-- ============================================================================ -->
     
+
+    <!-- ============================================================================ -->
+    <!-- FOOTER SECTION: Standard footer for internal tools                          -->
+    <!-- Features: Copyright, minimal text                                           -->
+    <!-- ============================================================================ -->
+    <footer data-section="footer" class="bg-white border-t border-gray-100 py-6">
+        <div class="container-safe text-center">
+            <p class="text-xs text-gray-400">&copy; 2025 Panel de Gestión Interna | Herramienta de Extracción con IA</p>
+        </div>
+    </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
