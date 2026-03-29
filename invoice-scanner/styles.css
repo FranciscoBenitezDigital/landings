@@ -1,0 +1,45 @@
+/* ===== CUSTOM APP STYLES ===== */
+        /* Interfont family application */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+            color: #1E3A5F;
+        }
+
+        /* Primary Corporate Colors */
+        .bg-corporate-blue { background-color: #1E3A5F; }
+        .text-corporate-blue { color: #1E3A5F; }
+        .bg-corporate-green { background-color: #28A745; }
+        .text-corporate-gray { color: #6C757D; }
+        .border-corporate-gray { border-color: #6C757D; }
+
+        /* Drag and Drop Zone Animation */
+        .drag-over {
+            border-color: #1E3A5F !important;
+            background-color: rgba(30, 58, 95, 0.05);
+        }
+
+        /* Spinner Animation */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid #fff;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Utility: Hide scrollbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+
+        /* Transitions */
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
