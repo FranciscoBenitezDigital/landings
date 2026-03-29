@@ -1,27 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <meta name="description" content="Herramienta interna para empleados que agiliza el escaneo, validación y envío de facturas en segundos." />
+  <script src="https://cdn.tailwindcss.com"></script>
 
 <!-- SEO Meta Tags -->
-<title>Escáner de Facturas con IA - Panel Administrativo</title>
-<meta name="description" content="Herramienta interna para la extracción automática de datos de facturas utilizando Claude 3.5 Sonnet y sincronización con Google Sheets." />
-<meta property="og:title" content="Escáner de Facturas con IA - Panel Administrativo" />
-<meta property="og:description" content="Herramienta interna para la extracción automática de datos de facturas utilizando Claude 3.5 Sonnet y sincronización con Google Sheets." />
+<title>AI Generated Page</title>
+<meta property="og:title" content="AI Generated Page" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Escáner de Facturas con IA - Panel Administrativo" />
-<meta name="twitter:description" content="Herramienta interna para la extracción automática de datos de facturas utilizando Claude 3.5 Sonnet y sincronización con Google Sheets." />
+<meta name="twitter:title" content="AI Generated Page" />
 <!-- End SEO Meta Tags -->
 
 <script data-field-replace>
@@ -123,7 +114,7 @@
   function run(){
     if(contactId){
       var xhr=new XMLHttpRequest();
-      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=2754');
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=2755');
       xhr.onload=function(){
         if(xhr.status===200){
           try{
@@ -150,7 +141,7 @@
 </script>
 <script data-payment>
 (function(){
-  var slug='7TwEY7y';
+  var slug='7CVxZC2fe';
   var apiBase='https://paymegpt.com';
   function findEmail(){
     var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
@@ -201,200 +192,92 @@
     }
   });
 })();
-</script>  <link rel="stylesheet" href="styles.css">
-</head>
-<body class="bg-background font-sans text-slate-800 min-h-screen">
+</script></head>
+<body class="bg-slate-950 text-slate-100 antialiased">
+  <!-- ============================================================================ -->
+  <!-- NAVBAR: Simple internal header with brand and status                         -->
+  <!-- ============================================================================ -->
+  <nav data-section="navbar" class="px-4 py-6 md:px-8 lg:px-12 flex items-center justify-between">
+    <div class="font-semibold tracking-tight">Escáner de Facturas</div>
+    <span class="text-xs rounded-full bg-emerald-500/15 text-emerald-300 px-3 py-1">Acceso interno</span>
+  </nav>
 
-<!-- ============================================================================ -->
-<!-- NAVIGATION: Simple internal header                                           -->
-<!-- ============================================================================ -->
-<nav data-section="navbar" class="bg-white border-b border-slate-200 sticky top-0 z-50 px-4 md:px-8 lg:px-12 py-4">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-        <div class="flex items-center gap-3">
-            <div class="bg-primary p-2 rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-            </div>
-            <h1 class="text-xl font-bold text-primary tracking-tight">Escáner de Facturas</h1>
+  <!-- ============================================================================ -->
+  <!-- HERO SECTION: Main landing area with headline, subtext, and CTA             -->
+  <!-- ============================================================================ -->
+  <section data-section="hero" class="px-4 py-6 md:px-8 lg:px-12">
+    <div class="max-w-5xl mx-auto grid gap-8 lg:grid-cols-2 items-center">
+      <div class="space-y-5">
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight">Escanea facturas sin fricción y envíalas al flujo correcto.</h1>
+        <p class="text-slate-300 text-lg">Una herramienta interna para empleados que reduce errores, acelera aprobaciones y mantiene el control documental en un solo lugar.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="#carga" class="bg-cyan-400 text-slate-950 font-semibold px-5 py-3 rounded-lg">Subir factura</a>
+          <a href="#beneficios" class="border border-slate-700 px-5 py-3 rounded-lg">Ver beneficios</a>
         </div>
-        <div class="hidden md:block text-xs font-medium text-slate-400 uppercase tracking-widest">
-            Uso Interno Administrativo
+      </div>
+      <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-5 shadow-xl">
+        <div class="grid gap-3 text-sm">
+          <div class="flex justify-between bg-slate-950/70 rounded-lg p-3"><span class="text-slate-400">Estado</span><span class="text-emerald-300">Listo para procesar</span></div>
+          <div class="flex justify-between bg-slate-950/70 rounded-lg p-3"><span class="text-slate-400">OCR</span><span>Activado</span></div>
+          <div class="flex justify-between bg-slate-950/70 rounded-lg p-3"><span class="text-slate-400">Aprobación</span><span>Automática por reglas</span></div>
         </div>
+      </div>
     </div>
-</nav>
+  </section>
 
-<main class="max-w-5xl mx-auto px-4 py-6 md:px-8 lg:px-12">
+  <!-- ============================================================================ -->
+  <!-- FEATURES SECTION: Key capabilities and upload form                          -->
+  <!-- ============================================================================ -->
+  <section data-section="features" id="beneficios" class="px-4 py-6 md:px-8 lg:px-12">
+    <div class="max-w-5xl mx-auto grid gap-6 lg:grid-cols-2">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <h2 class="text-2xl font-semibold">Qué resuelve</h2>
+        <ul class="mt-4 space-y-3 text-slate-300">
+          <li>• Lectura rápida de importe, fecha y proveedor.</li>
+          <li>• Validación antes de enviar a finanzas.</li>
+          <li>• Menos retrabajo y menos tickets de soporte.</li>
+        </ul>
+      </div>
 
-    <!-- ============================================================================ -->
-    <!-- CONFIG SECTION: API Key Input                                               -->
-    <!-- ============================================================================ -->
-    <section data-section="config" class="mb-8 bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
-        <div class="flex flex-col md:flex-row md:items-center gap-4">
-            <div class="flex-1">
-                <label for="apiKey" class="block text-sm font-semibold text-slate-700 mb-1">Anthropic API Key</label>
-                <div class="relative">
-                    <input type="password" id="apiKey" 
-                           class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-sm" 
-                           placeholder="sk-ant-api03-...">
-                    <div class="absolute left-3 top-2.5 text-slate-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            <div class="md:pt-6">
-                <span class="text-[10px] text-slate-400 leading-tight block md:max-w-[200px]">La clave se utiliza únicamente para el procesamiento actual y no se almacena permanentemente.</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================================ -->
-    <!-- UPLOAD SECTION: Drag & Drop Zone                                            -->
-    <!-- ============================================================================ -->
-    <section data-section="upload" class="mb-8">
-        <div id="dropZone" class="relative border-2 border-dashed border-slate-300 rounded-2xl bg-white p-8 text-center transition-all cursor-pointer hover:border-primary group">
-            <input type="file" id="fileInput" class="hidden" accept="image/*">
-            
-            <div id="uploadPlaceholder" class="flex flex-col items-center py-6">
-                <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-50 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-400 group-hover:text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                </div>
-                <h3 class="text-lg font-semibold text-slate-700">Subir Factura</h3>
-                <p class="text-sm text-slate-500 mt-1">Arrastra una imagen o haz clic para seleccionar</p>
-                <p class="text-[11px] text-slate-400 mt-4 uppercase font-medium">PNG, JPG hasta 10MB (se comprimirá automáticamente)</p>
-            </div>
-
-            <div id="previewContainer" class="hidden flex flex-col items-center">
-                <div class="relative inline-block group">
-                    <img id="imagePreview" src="" alt="Vista previa" class="max-h-64 rounded-lg shadow-md border border-slate-200">
-                    <button id="removeImage" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1.5 shadow-lg hover:bg-red-600 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-                <div id="imageName" class="mt-4 text-sm font-medium text-slate-600"></div>
-            </div>
-        </div>
-
-        <button id="analyzeBtn" class="w-full mt-6 bg-primary text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-900/10 hover:bg-slate-800 disabled:bg-slate-300 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-3">
-            <span id="btnText">Analizar Factura</span>
-            <div id="btnLoader" class="hidden loader w-5 h-5 border-2 border-white rounded-full"></div>
-        </button>
-        <p id="statusMsg" class="text-center text-xs text-slate-500 mt-3 h-4 italic"></p>
-    </section>
-
-    <!-- ============================================================================ -->
-    <!-- RESULTS SECTION: Meta Data & Items Table                                    -->
-    <!-- ============================================================================ -->
-    <section data-section="results" id="resultsSection" class="hidden space-y-6 mb-12">
-        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
-            <h2 class="text-lg font-bold text-primary flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                </svg>
-                Resultados del Análisis
-            </h2>
-            <span class="px-2 py-1 bg-blue-50 text-blue-600 text-[10px] font-bold uppercase rounded tracking-wider">Extraído por Claude 3.5 Sonnet</span>
-        </div>
-
-        <!-- Meta Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Proveedor</span>
-                <div id="res-proveedor" class="font-semibold text-slate-800 break-words">-</div>
-            </div>
-            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">N° Factura</span>
-                <div id="res-numero" class="font-semibold text-slate-800">-</div>
-            </div>
-            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Fecha</span>
-                <div id="res-fecha" class="font-semibold text-slate-800">-</div>
-            </div>
-            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Moneda</span>
-                <div id="res-moneda" class="font-semibold text-slate-800">-</div>
-            </div>
-        </div>
-
-        <!-- Items Table -->
-        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-            <div class="overflow-x-auto custom-scrollbar">
-                <table class="w-full text-left text-sm border-collapse">
-                    <thead>
-                        <tr class="bg-slate-50 border-b border-slate-200">
-                            <th class="px-4 py-3 font-semibold text-slate-600">Descripción</th>
-                            <th class="px-4 py-3 font-semibold text-slate-600 w-20">Cant.</th>
-                            <th class="px-4 py-3 font-semibold text-slate-600 w-32">P. Unitario</th>
-                            <th class="px-4 py-3 font-semibold text-slate-600 w-32">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody id="res-items-body">
-                        <!-- Items injected here -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Totals Row -->
-        <div class="flex flex-col md:flex-row justify-between gap-6">
-            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex-1">
-                <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Notas / Observaciones</span>
-                <p id="res-notas" class="text-xs text-slate-600 italic">No hay notas adicionales.</p>
-            </div>
-            <div class="bg-primary text-white p-6 rounded-xl shadow-lg min-w-[280px] space-y-2">
-                <div class="flex justify-between items-center text-sm opacity-80">
-                    <span>Subtotal</span>
-                    <span id="res-subtotal" class="font-medium">$0.00</span>
-                </div>
-                <div class="flex justify-between items-center text-sm opacity-80">
-                    <span>IVA</span>
-                    <span id="res-iva" class="font-medium">$0.00</span>
-                </div>
-                <div id="row-descuento" class="flex justify-between items-center text-sm opacity-80 hidden">
-                    <span>Descuento</span>
-                    <span id="res-descuento" class="font-medium">-$0.00</span>
-                </div>
-                <div class="pt-2 mt-2 border-t border-white/20 flex justify-between items-center">
-                    <span class="font-bold text-lg uppercase tracking-tight">Total</span>
-                    <span id="res-total" class="text-2xl font-black">$0.00</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Action Button -->
-        <button id="saveSheetsBtn" class="w-full bg-success text-white font-bold py-4 rounded-xl shadow-lg shadow-green-900/10 hover:bg-[#218838] transition-all flex items-center justify-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2zM14 8V3.5L18.5 8H14zM16 11h-2v2h2v2h-2v2h-2v-2h-2v-2h2v-2h-2V9h2v2h2v-2h2v2z"/>
-            </svg>
-            <span id="saveBtnText">Guardar en Google Sheets</span>
-            <div id="saveBtnLoader" class="hidden loader w-5 h-5 border-2 border-white rounded-full"></div>
-        </button>
-    </section>
-
-</main>
-
-<!-- ============================================================================ -->
-<!-- FOOTER: Credits & Metadata                                                  -->
-<!-- ============================================================================ -->
-<footer data-section="footer" class="py-8 border-t border-slate-200 mt-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-        <p class="text-slate-400 text-xs tracking-wide uppercase">Propiedad Interna &copy; 2025 - Auditoría y Finanzas</p>
+      <form id="carga" data-section="contact" class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+        <h2 class="text-2xl font-semibold">Carga rápida</h2>
+        <label class="block">
+          <span class="text-sm text-slate-300">Factura PDF o imagen</span>
+          <input type="file" class="mt-2 w-full text-sm file:mr-4 file:rounded-lg file:border-0 file:bg-cyan-400 file:px-4 file:py-2 file:font-semibold file:text-slate-950 bg-slate-950 rounded-lg" />
+        </label>
+        <label class="block">
+          <span class="text-sm text-slate-300">Observaciones</span>
+          <textarea class="mt-2 w-full rounded-lg bg-slate-950 border border-slate-700 p-3" rows="3" placeholder="Ej: centro de costo, urgencia, nota breve"></textarea>
+        </label>
+        <button type="submit" class="w-full bg-emerald-400 text-slate-950 font-semibold px-5 py-3 rounded-lg">Procesar factura</button>
+      </form>
     </div>
-</footer>
+  </section>
 
-<!-- Toast Container -->
-<div id="toastContainer" class="fixed bottom-6 right-6 z-[100] space-y-3 pointer-events-none"></div>
+  <!-- ============================================================================ -->
+  <!-- CTA SECTION: Final prompt for employees                                      -->
+  <!-- ============================================================================ -->
+  <section data-section="cta" class="px-4 py-6 md:px-8 lg:px-12">
+    <div class="max-w-5xl mx-auto bg-cyan-500/10 border border-cyan-400/20 rounded-2xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <h2 class="text-2xl font-semibold">¿Listo para digitalizar tus facturas?</h2>
+        <p class="text-slate-300 mt-1">Usa el escáner interno y acelera cada envío con menos errores.</p>
+      </div>
+      <a href="#carga" class="inline-flex justify-center bg-cyan-400 text-slate-950 font-semibold px-5 py-3 rounded-lg">Comenzar ahora</a>
+    </div>
+  </section>
 
-<!-- ============================================================================ -->
-<!-- JAVASCRIPT LOGIC                                                            -->
-<!-- ============================================================================ -->
+  <!-- ============================================================================ -->
+  <!-- FOOTER: Minimal internal footer                                              -->
+  <!-- ============================================================================ -->
+  <footer data-section="footer" class="px-4 py-6 md:px-8 lg:px-12 text-sm text-slate-400">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
+      <span>Herramienta interna para empleados</span>
+      <span>© 2025</span>
+    </div>
+  </footer>
 
+  
   <script src="script.js"></script>
 </body>
 </html>
