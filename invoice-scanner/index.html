@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <meta name="description" content="Invoice Scanner: sube facturas, extrae conceptos y totales con IA y envía los datos a Google Sheets." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+<!-- SEO Meta Tags -->
+<title>AI Generated Page</title>
+<meta property="og:title" content="AI Generated Page" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI Generated Page" />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=2750');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='xSMagNNr';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script></head>
+<body class="bg-[#0a0a0f] text-white antialiased" style="font-family:'Syne',sans-serif;">
+  <!-- ============================================================================ -->
+  <!-- NAVBAR SECTION: Simple brand header with dark-mode identity                  -->
+  <!-- ============================================================================ -->
+  <nav data-section="navbar" class="px-4 py-6 md:px-8 lg:px-12 flex items-center justify-between border-b border-white/10">
+    <div class="text-xl md:text-2xl font-extrabold tracking-tight">Invoice Scanner</div>
+    <a href="#scan" class="text-sm px-4 py-2 rounded-full bg-[#7c6fff] text-white hover:opacity-90">Empezar</a>
+  </nav>
+
+  <!-- ============================================================================ -->
+  <!-- HERO SECTION: Main landing area with headline, value prop, and upload form  -->
+  <!-- ============================================================================ -->
+  <header data-section="hero" class="px-4 py-6 md:px-8 lg:px-12">
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 items-center">
+      <div class="space-y-5">
+        <p class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-[#4fffb0] font-mono">AI • OCR • Sheets</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">Invoice Scanner</h1>
+        <p class="text-white/75 text-lg max-w-xl">Sube una factura, analiza conceptos y cargos con Claude Vision API, y envía el resultado a Google Sheets en segundos.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="#scan" class="px-5 py-3 rounded-full bg-[#7c6fff] font-semibold">Subir factura</a>
+          <a href="#how" class="px-5 py-3 rounded-full border border-white/15 text-white/85">Ver flujo</a>
+        </div>
+      </div>
+
+      <form id="scan" data-section="contact" class="bg-white/5 border border-white/10 rounded-3xl p-5 md:p-6 space-y-4">
+        <div>
+          <label class="block text-sm mb-2 text-white/80">Foto de factura</label>
+          <input id="fileInput" name="invoice" type="file" accept="image/*" class="block w-full text-sm file:mr-4 file:rounded-full file:border-0 file:bg-[#4fffb0] file:px-4 file:py-2 file:font-semibold file:text-black text-white/70" required>
+        </div>
+        <div class="grid grid-cols-2 gap-3 text-sm font-mono">
+          <div class="rounded-2xl bg-black/30 p-3 border border-white/10">
+            <div class="text-white/50">Estado</div>
+            <div id="status" class="text-[#4fffb0]">Listo para analizar</div>
+          </div>
+          <div class="rounded-2xl bg-black/30 p-3 border border-white/10">
+            <div class="text-white/50">Vista previa</div>
+            <div id="filename" class="truncate">Sin archivo</div>
+          </div>
+        </div>
+        <button type="submit" class="w-full px-5 py-3 rounded-full bg-[#4fffb0] text-black font-bold">Analizar con IA</button>
+      </form>
+    </div>
+  </header>
+
+  <!-- ============================================================================ -->
+  <!-- FEATURES SECTION: Core product benefits and workflow overview                -->
+  <!-- ============================================================================ -->
+  <section data-section="features" id="how" class="px-4 py-6 md:px-8 lg:px-12">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-4">
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+        <h2 class="text-2xl font-bold mb-2">Extrae datos</h2>
+        <p class="text-white/70">Conceptos, cargos, impuestos y total neto con lectura visual asistida por IA.</p>
+      </div>
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+        <h2 class="text-2xl font-bold mb-2">Valida rápido</h2>
+        <p class="text-white/70">Revisa resultados en pantalla con tipografía DM Mono para cifras claras y precisas.</p>
+      </div>
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+        <h2 class="text-2xl font-bold mb-2">Sincroniza Sheets</h2>
+        <p class="text-white/70">Exporta la información estructurada para seguimiento contable y reporting.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- CTA SECTION: Final conversion block with integration call-to-action         -->
+  <!-- ============================================================================ -->
+  <section data-section="cta" class="px-4 py-6 md:px-8 lg:px-12">
+    <div class="max-w-6xl mx-auto rounded-3xl border border-[#7c6fff]/30 bg-gradient-to-r from-[#7c6fff]/20 to-[#4fffb0]/10 p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold">Automatiza tu captura de facturas</h2>
+        <p class="text-white/75 mt-2 max-w-2xl">Conecta tu flujo de revisión, extracción y registro en una sola pantalla dark mode.</p>
+      </div>
+      <a href="#scan" class="px-5 py-3 rounded-full bg-white text-black font-bold">Probar ahora</a>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- FOOTER SECTION: Minimal product footer with brand and support note          -->
+  <!-- ============================================================================ -->
+  <footer data-section="footer" class="px-4 py-6 md:px-8 lg:px-12 border-t border-white/10 text-sm text-white/55">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
+      <p>Invoice Scanner • Claude Vision API + Google Sheets</p>
+      <p style="font-family:'DM Mono',monospace;">Dark UI • #0a0a0f • #7c6fff • #4fffb0</p>
+    </div>
+  </footer>
+
+  
+  <script src="script.js"></script>
+</body>
+</html>
