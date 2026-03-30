@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <meta name="description" content="Herramienta interna para empleados que agiliza el escaneo, validación y envío de facturas en segundos." />
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 
 <!-- SEO Meta Tags -->
-<title>AI Generated Page</title>
-<meta property="og:title" content="AI Generated Page" />
+<title>Escáner de Facturas</title>
+<meta property="og:title" content="Escáner de Facturas" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="AI Generated Page" />
+<meta name="twitter:title" content="Escáner de Facturas" />
 <!-- End SEO Meta Tags -->
 
 <script data-field-replace>
@@ -192,92 +192,59 @@
     }
   });
 })();
-</script></head>
-<body class="bg-slate-950 text-slate-100 antialiased">
-  <!-- ============================================================================ -->
-  <!-- NAVBAR: Simple internal header with brand and status                         -->
-  <!-- ============================================================================ -->
-  <nav data-section="navbar" class="px-4 py-6 md:px-8 lg:px-12 flex items-center justify-between">
-    <div class="font-semibold tracking-tight">Escáner de Facturas</div>
-    <span class="text-xs rounded-full bg-emerald-500/15 text-emerald-300 px-3 py-1">Acceso interno</span>
-  </nav>
-
-  <!-- ============================================================================ -->
-  <!-- HERO SECTION: Main landing area with headline, subtext, and CTA             -->
-  <!-- ============================================================================ -->
-  <section data-section="hero" class="px-4 py-6 md:px-8 lg:px-12">
-    <div class="max-w-5xl mx-auto grid gap-8 lg:grid-cols-2 items-center">
-      <div class="space-y-5">
-        <h1 class="text-4xl md:text-5xl font-bold leading-tight">Escanea facturas sin fricción y envíalas al flujo correcto.</h1>
-        <p class="text-slate-300 text-lg">Una herramienta interna para empleados que reduce errores, acelera aprobaciones y mantiene el control documental en un solo lugar.</p>
-        <div class="flex flex-wrap gap-3">
-          <a href="#carga" class="bg-cyan-400 text-slate-950 font-semibold px-5 py-3 rounded-lg">Subir factura</a>
-          <a href="#beneficios" class="border border-slate-700 px-5 py-3 rounded-lg">Ver beneficios</a>
-        </div>
-      </div>
-      <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-5 shadow-xl">
-        <div class="grid gap-3 text-sm">
-          <div class="flex justify-between bg-slate-950/70 rounded-lg p-3"><span class="text-slate-400">Estado</span><span class="text-emerald-300">Listo para procesar</span></div>
-          <div class="flex justify-between bg-slate-950/70 rounded-lg p-3"><span class="text-slate-400">OCR</span><span>Activado</span></div>
-          <div class="flex justify-between bg-slate-950/70 rounded-lg p-3"><span class="text-slate-400">Aprobación</span><span>Automática por reglas</span></div>
-        </div>
-      </div>
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-icon">🧾</div>
+  <div><h1>Escáner de Facturas <span>v5</span></h1></div>
+</div>
+<div class="main">
+  <div class="card">
+    <div class="card-label">Anthropic API Key</div>
+    <div class="apikey-wrap"><input type="password" id="apiKey" placeholder="sk-ant-api03-..." autocomplete="off" /></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Imagen de Factura</div>
+    <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
+      <div class="icon">📄</div>
+      <p>Arrastra tu factura aquí o toca para seleccionar</p>
+      <small>JPG, PNG, WebP — se comprime automáticamente</small>
     </div>
-  </section>
-
-  <!-- ============================================================================ -->
-  <!-- FEATURES SECTION: Key capabilities and upload form                          -->
-  <!-- ============================================================================ -->
-  <section data-section="features" id="beneficios" class="px-4 py-6 md:px-8 lg:px-12">
-    <div class="max-w-5xl mx-auto grid gap-6 lg:grid-cols-2">
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <h2 class="text-2xl font-semibold">Qué resuelve</h2>
-        <ul class="mt-4 space-y-3 text-slate-300">
-          <li>• Lectura rápida de importe, fecha y proveedor.</li>
-          <li>• Validación antes de enviar a finanzas.</li>
-          <li>• Menos retrabajo y menos tickets de soporte.</li>
-        </ul>
+    <div class="preview-wrap" id="preview-wrap">
+      <div class="preview-bar">
+        <strong id="file-name">—</strong>
+        <button class="btn-remove" onclick="removeFile()">✕ Quitar</button>
       </div>
-
-      <form id="carga" data-section="contact" class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
-        <h2 class="text-2xl font-semibold">Carga rápida</h2>
-        <label class="block">
-          <span class="text-sm text-slate-300">Factura PDF o imagen</span>
-          <input type="file" class="mt-2 w-full text-sm file:mr-4 file:rounded-lg file:border-0 file:bg-cyan-400 file:px-4 file:py-2 file:font-semibold file:text-slate-950 bg-slate-950 rounded-lg" />
-        </label>
-        <label class="block">
-          <span class="text-sm text-slate-300">Observaciones</span>
-          <textarea class="mt-2 w-full rounded-lg bg-slate-950 border border-slate-700 p-3" rows="3" placeholder="Ej: centro de costo, urgencia, nota breve"></textarea>
-        </label>
-        <button type="submit" class="w-full bg-emerald-400 text-slate-950 font-semibold px-5 py-3 rounded-lg">Procesar factura</button>
-      </form>
+      <img id="preview-img" src="" alt="Preview" />
     </div>
-  </section>
-
-  <!-- ============================================================================ -->
-  <!-- CTA SECTION: Final prompt for employees                                      -->
-  <!-- ============================================================================ -->
-  <section data-section="cta" class="px-4 py-6 md:px-8 lg:px-12">
-    <div class="max-w-5xl mx-auto bg-cyan-500/10 border border-cyan-400/20 rounded-2xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-      <div>
-        <h2 class="text-2xl font-semibold">¿Listo para digitalizar tus facturas?</h2>
-        <p class="text-slate-300 mt-1">Usa el escáner interno y acelera cada envío con menos errores.</p>
-      </div>
-      <a href="#carga" class="inline-flex justify-center bg-cyan-400 text-slate-950 font-semibold px-5 py-3 rounded-lg">Comenzar ahora</a>
+    <input type="file" id="file-input" accept="image/*" />
+  </div>
+  <div class="status-bar" id="status-bar">
+    <div class="spinner"></div>
+    <span id="status-msg">Procesando...</span>
+  </div>
+  <button class="btn-primary" id="btn-analyze" onclick="analyzeInvoice()" disabled>Analizar Factura</button>
+  <div class="card results-card" id="results-card">
+    <div class="card-label">Datos Extraídos</div>
+    <div class="meta-grid" id="meta-grid"></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Descripción</th><th>Cantidad</th><th>Precio Unit.</th><th>Total</th></tr></thead>
+        <tbody id="items-body"></tbody>
+      </table>
     </div>
-  </section>
+    <div class="totals" id="totals"></div>
+  </div>
+  <button class="btn-sheets" id="btn-sheets" onclick="sendToSheets()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+    Guardar en Google Sheets
+  </button>
+</div>
+<div class="toast" id="toast">
+  <div class="toast-text"><strong id="toast-title"></strong><span id="toast-msg"></span></div>
+</div>
 
-  <!-- ============================================================================ -->
-  <!-- FOOTER: Minimal internal footer                                              -->
-  <!-- ============================================================================ -->
-  <footer data-section="footer" class="px-4 py-6 md:px-8 lg:px-12 text-sm text-slate-400">
-    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
-      <span>Herramienta interna para empleados</span>
-      <span>© 2025</span>
-    </div>
-  </footer>
-
-  
   <script src="script.js"></script>
 </body>
 </html>
