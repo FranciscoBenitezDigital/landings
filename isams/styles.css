@@ -425,7 +425,7 @@
 
   /* ======= WA FLOAT ======= */
   .wa-float {
-    position: fixed; bottom: 86px; right: 20px; z-index: 999;
+    position: fixed; bottom: 86px; left: 20px; z-index: 999;
     width: 54px; height: 54px; border-radius: 50%; background: #25D366;
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 4px 18px rgba(37,211,102,0.5); text-decoration: none;
@@ -447,17 +447,178 @@
   }
   @media (max-width: 768px) {
     .topbar { display: none; }
+    nav { padding: 12px 20px; gap: 12px; }
+    .nav-logo img { height: 42px; }
     .nav-flags { display: none; }
     .nav-links { display: none; }
+    .nav-cta { display: none; }
     .hamburger { display: flex; }
+
+    #hero {
+      min-height: auto;
+      padding-bottom: 0;
+    }
     .hero-img-panel { display: none; }
-    .hero-content { max-width: 100%; padding: 80px 5% 100px; }
-    .about-grid { grid-template-columns: 1fr; }
-    .programs-grid { grid-template-columns: 1fr; }
-    .videos-grid { grid-template-columns: 1fr; }
-    .payments-grid { grid-template-columns: 1fr; }
-    .contact-inner { grid-template-columns: 1fr; }
-    .footer-top { grid-template-columns: 1fr; gap: 26px; }
-    .hero-statsbar .stat { padding: 14px 18px; }
+    .hero-content {
+      max-width: 100%;
+      padding: 44px 20px 130px;
+    }
+    .hero-badge {
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      gap: 8px;
+    }
+    .hero-badge img { height: 24px; }
+    .hero-badge span { font-size: 11px; }
+    .hero-title {
+      font-size: clamp(32px, 10vw, 44px);
+      margin-bottom: 14px;
+    }
+    .hero-sub {
+      font-size: 15px;
+      line-height: 1.55;
+      margin-bottom: 26px;
+    }
+    .hero-btns {
+      flex-direction: column;
+      gap: 12px;
+    }
+    .btn-white,
+    .btn-outline-hero {
+      width: 100%;
+      justify-content: center;
+      padding: 14px 20px;
+    }
+    .hero-dots {
+      right: 20px;
+      bottom: 132px;
+    }
+    .hero-statsbar {
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .hero-statsbar .stat {
+      width: 50%;
+      padding: 16px 12px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-statsbar .stat:nth-child(2n) { border-right: none; }
+    .hero-statsbar .stat:nth-last-child(-n+2) { border-bottom: none; }
     .hero-statsbar .num { font-size: 26px; }
+    .hero-statsbar .lbl { font-size: 10px; letter-spacing: 0.8px; }
+
+    #countries,
+    #about,
+    #stats-band,
+    #programs,
+    #testimonials,
+    #payments,
+    #contact,
+    footer {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    #countries { padding-top: 14px; padding-bottom: 14px; gap: 8px; }
+    .band-label {
+      width: 100%;
+      text-align: center;
+      margin-right: 0;
+      margin-bottom: 4px;
+    }
+
+    #about,
+    #programs,
+    #testimonials,
+    #payments,
+    #contact { padding-top: 72px; padding-bottom: 72px; }
+    #stats-band { padding-top: 52px; padding-bottom: 52px; }
+
+    .about-grid,
+    .contact-inner { grid-template-columns: 1fr; gap: 34px; }
+    .about-img { aspect-ratio: 4 / 4.6; }
+    .about-img-overlay { padding: 14px; gap: 8px; }
+    .about-badge { padding: 10px 6px; }
+    .about-badge .num { font-size: 22px; }
+    .about-badge .txt { font-size: 9px; }
+
+    .section-title { font-size: clamp(28px, 8vw, 36px); }
+    .section-sub { font-size: 15px; line-height: 1.65; }
+
+    .programs-header,
+    .testimonials-header,
+    .payments-header { margin-bottom: 38px; }
+    .programs-grid,
+    .videos-grid,
+    .payments-grid,
+    .stats-grid { grid-template-columns: 1fr; }
+    .prog-header,
+    .prog-body,
+    .payment-card,
+    .contact-form-wrap { padding-left: 20px; padding-right: 20px; }
+    .prog-header { padding-top: 22px; padding-bottom: 18px; }
+    .prog-body { padding-top: 20px; padding-bottom: 22px; }
+    .video-info { padding: 14px 16px; }
+    .payments-note {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.5;
+      padding: 12px 14px;
+      margin-bottom: 26px;
+    }
+    .payment-price { font-size: 42px; }
+
+    .contact-form-wrap {
+      padding-top: 28px;
+      padding-bottom: 28px;
+      border-radius: 18px;
+    }
+    .contact-info p { font-size: 15px; margin-bottom: 24px; }
+    .channel-item { padding: 13px 14px; }
+
+    .footer-top { grid-template-columns: 1fr; gap: 26px; }
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      padding-top: 18px;
+    }
+
+    .wa-float {
+      left: 16px;
+      bottom: 18px;
+      width: 52px;
+      height: 52px;
+    }
+    .wa-float svg { width: 26px; height: 26px; }
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 10px 16px; }
+    .hero-content { padding: 38px 16px 118px; }
+    .hero-title { font-size: 30px; }
+    .hero-sub { font-size: 14px; }
+    .hero-statsbar .stat { width: 100%; border-right: none; }
+    .hero-statsbar .stat:not(:last-child) { border-bottom: 1px solid var(--border); }
+    .hero-statsbar .stat:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+    .hero-statsbar .stat:last-child { border-bottom: none; }
+    #countries,
+    #about,
+    #stats-band,
+    #programs,
+    #testimonials,
+    #payments,
+    #contact,
+    footer { padding-left: 16px; padding-right: 16px; }
+    #about,
+    #programs,
+    #testimonials,
+    #payments,
+    #contact { padding-top: 64px; padding-bottom: 64px; }
+    .country-chip { font-size: 11px; padding: 5px 10px; }
+    .about-img-overlay { flex-direction: column; }
+    .about-badge { width: 100%; }
+    .form-title { font-size: 24px; }
+    .payment-price { font-size: 38px; }
   }
