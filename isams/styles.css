@@ -458,7 +458,22 @@
       min-height: auto;
       padding-bottom: 0;
     }
-    .hero-img-panel { display: none; }
+    .hero-img-panel {
+      display: block;
+      width: 100%;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      opacity: 0.42;
+      pointer-events: none;
+    }
+    .hero-slide {
+      background-position: center center;
+    }
+    .hero-slide::after {
+      background: linear-gradient(180deg, rgba(21,101,192,0.78) 0%, rgba(21,101,192,0.62) 38%, rgba(0,151,167,0.58) 100%);
+    }
     .hero-content {
       max-width: 100%;
       padding: 44px 20px 130px;
@@ -490,7 +505,8 @@
       padding: 14px 20px;
     }
     .hero-dots {
-      right: 20px;
+      right: auto;
+      left: 20px;
       bottom: 132px;
     }
     .hero-statsbar {
@@ -597,6 +613,7 @@
   @media (max-width: 480px) {
     nav { padding: 10px 16px; }
     .hero-content { padding: 38px 16px 118px; }
+    .hero-img-panel { opacity: 0.36; }
     .hero-title { font-size: 30px; }
     .hero-sub { font-size: 14px; }
     .hero-statsbar .stat { width: 100%; border-right: none; }
