@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+<!-- SEO Meta Tags -->
+<title>ISAMS International | Escuela Internacional de Medicina y Cirugía Estética</title>
+<meta name="description" content="Más de 19 años formando los mejores profesionales en Medicina y Cirugía Estética. Más de 2,500 médicos certificados en Latinoamérica." />
+<meta property="og:title" content="ISAMS International | Escuela Internacional de Medicina y Cirugía Estética" />
+<meta property="og:description" content="Más de 19 años formando los mejores profesionales en Medicina y Cirugía Estética. Más de 2,500 médicos certificados en Latinoamérica." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ISAMS International | Escuela Internacional de Medicina y Cirugía Estética" />
+<meta name="twitter:description" content="Más de 19 años formando los mejores profesionales en Medicina y Cirugía Estética. Más de 2,500 médicos certificados en Latinoamérica." />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=3124');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='sbWejG2R';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <img src="https://isamsinternational.com/wp-content/uploads/2022/05/LOGO.svg" alt="ISAMS International">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">Nosotros</a></li>
+    <li><a href="#programs">Programas</a></li>
+    <li><a href="#testimonials">Testimonios</a></li>
+    <li><a href="#payments">Pagos</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+  <a href="https://api.whatsapp.com/send?phone=573185820553&text=Quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20la%20educaci%C3%B3n%20continuada" class="nav-cta" target="_blank">Inscríbete Ahora →</a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="particles" id="particles"></div>
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero-slide active" style="background-image:url('https://isamsinternational.com/wp-content/uploads/2024/04/0011.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://isamsinternational.com/wp-content/uploads/2024/04/2.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://isamsinternational.com/wp-content/uploads/2024/04/003.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://isamsinternational.com/wp-content/uploads/2024/04/005.jpg')"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <img src="https://isamsinternational.com/wp-content/uploads/2024/04/19-anos-logo-asociacion-e1712162521320.png" alt="19 años">
+      <span>19 Años Formando Excelencia Médica</span>
+    </div>
+    <h1 class="hero-title">
+      Formamos los<br>
+      <span class="gold">Mejores Médicos</span><br>
+      en Estética
+    </h1>
+    <p class="hero-subtitle">La escuela de medicina y cirugía estética más reconocida de Latinoamérica. Más de 2,500 profesionales certificados en 10 países.</p>
+    <div class="hero-buttons">
+      <a href="#programs" class="btn-primary">Ver Programas → </a>
+      <a href="#testimonials" class="btn-secondary">▶ Ver Testimonios</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">2,500<span style="font-size:28px">+</span></div>
+      <div class="stat-label">Médicos Formados</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10</div>
+      <div class="stat-label">Países</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">19</div>
+      <div class="stat-label">Años de Experiencia</div>
+    </div>
+  </div>
+  <div class="hero-dots" id="heroDots">
+    <button class="hero-dot active"></button>
+    <button class="hero-dot"></button>
+    <button class="hero-dot"></button>
+    <button class="hero-dot"></button>
+  </div>
+</section>
+
+<!-- COUNTRIES BAND -->
+<section id="countries">
+  <div class="countries-inner">
+    <p class="countries-title">Presencia Internacional en Latinoamérica</p>
+    <div class="countries-flags">
+      <div class="country-item"><div class="country-flag">🇨🇱</div><div class="country-name">Chile</div></div>
+      <div class="country-item"><div class="country-flag">🇨🇴</div><div class="country-name">Colombia</div></div>
+      <div class="country-item"><div class="country-flag">🇨🇷</div><div class="country-name">Costa Rica</div></div>
+      <div class="country-item"><div class="country-flag">🇪🇨</div><div class="country-name">Ecuador</div></div>
+      <div class="country-item"><div class="country-flag">🇬🇹</div><div class="country-name">Guatemala</div></div>
+      <div class="country-item"><div class="country-flag">🇭🇳</div><div class="country-name">Honduras</div></div>
+      <div class="country-item"><div class="country-flag">🇲🇽</div><div class="country-name">México</div></div>
+      <div class="country-item"><div class="country-flag">🇳🇮</div><div class="country-name">Nicaragua</div></div>
+      <div class="country-item"><div class="country-flag">🇵🇾</div><div class="country-name">Paraguay</div></div>
+      <div class="country-item"><div class="country-flag">🇵🇪</div><div class="country-name">Perú</div></div>
+      <div class="country-item"><div class="country-flag">🇩🇴</div><div class="country-name">Rep. Dominicana</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img reveal-left">
+      <img src="https://isamsinternational.com/wp-content/uploads/2024/04/operando.jpg" alt="Formación quirúrgica ISAMS">
+      <div class="about-img-overlay">
+        <div class="about-badge"><div class="num">90%</div><div class="txt">Hands On</div></div>
+        <div class="about-badge"><div class="num">100%</div><div class="txt">Certificado</div></div>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <span class="section-tag">Quiénes Somos</span>
+      <h2 class="section-title">La Institución de <span class="gold">Referencia</span> en Medicina Estética</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Somos una institución académica con sede en Cali, Colombia, con 19 años formando a los mejores profesionales en Medicina y Cirugía Estética de toda Latinoamérica.</p>
+      <p class="section-sub" style="margin-top:12px">Cumplimos con la legislación establecida, teniendo como estándar los más altos niveles de competencias en el mundo.</p>
+      <div class="about-features">
+        <div class="feature-item">
+          <div class="feature-icon">🎓</div>
+          <div class="feature-text">
+            <h4>Formación Práctica Certificada</h4>
+            <p>90% del tiempo en práctica real con pacientes y procedimientos. Nada de teoría sin aplicación.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🌎</div>
+          <div class="feature-text">
+            <h4>Reconocimiento Internacional</h4>
+            <p>Médicos de 11 países de Latinoamérica avalan y recomiendan nuestros programas.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">⚕️</div>
+          <div class="feature-text">
+            <h4>Profesores de Alto Nivel</h4>
+            <p>Nuestros instructores son referentes en medicina estética, reconocidos a nivel nacional e internacional.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<section id="stats-band">
+  <div class="stats-grid">
+    <div class="stats-item reveal">
+      <div class="big counter" data-target="2500">0</div><span style="font-size:40px;color:var(--gold)">+</span>
+      <div class="lbl">Médicos Formados</div>
+      <div class="sep"></div>
+    </div>
+    <div class="stats-item reveal" style="transition-delay:0.15s">
+      <div class="big counter" data-target="19">0</div>
+      <div class="lbl">Años de Trayectoria</div>
+      <div class="sep"></div>
+    </div>
+    <div class="stats-item reveal" style="transition-delay:0.3s">
+      <div class="big counter" data-target="11">0</div>
+      <div class="lbl">Países con Presencia</div>
+      <div class="sep"></div>
+    </div>
+    <div class="stats-item reveal" style="transition-delay:0.45s">
+      <div class="big counter" data-target="100">0</div><span style="font-size:40px;color:var(--gold)">%</span>
+      <div class="lbl">Cursos Certificados</div>
+      <div class="sep"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="programs-inner">
+    <div class="programs-header reveal">
+      <span class="section-tag">Educación Continuada</span>
+      <h2 class="section-title">Nuestros <span class="gold">Programas</span></h2>
+      <div class="divider center"></div>
+      <p class="section-sub" style="margin: 0 auto;">Formación de excelencia diseñada para médicos que buscan dominar las técnicas más avanzadas en medicina y cirugía estética.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card reveal" style="transition-delay:0.1s">
+        <div class="program-badge">Más Inscrito</div>
+        <div class="program-icon">💉</div>
+        <div class="program-name">Diplomado en Armonización Orofacial</div>
+        <div class="program-desc">El programa más completo de armonización facial en Latinoamérica. Técnicas avanzadas con práctica real garantizada.</div>
+        <ul class="program-perks">
+          <li>Técnicas de rellenos y neuromoduladores</li>
+          <li>Práctica 90% Hands On</li>
+          <li>Insumos incluidos en cada módulo</li>
+          <li>Certificación internacional</li>
+          <li>Cupos limitados</li>
+        </ul>
+        <a href="https://api.whatsapp.com/send?phone=573185820553&text=Quiero%20informaci%C3%B3n%20del%20Diplomado%20Orofacial" class="program-cta" target="_blank">Solicitar Información →</a>
+      </div>
+      <div class="program-card featured reveal" style="transition-delay:0.2s">
+        <div class="program-badge">⭐ Programa Estrella</div>
+        <div class="program-icon">🏆</div>
+        <div class="program-name">Especialización Orofacial</div>
+        <div class="program-desc">El nivel más avanzado en armonización orofacial. Para médicos que quieren convertirse en referentes del sector.</div>
+        <ul class="program-perks">
+          <li>Nivel avanzado y especializado</li>
+          <li>Casos complejos y tratamientos premium</li>
+          <li>Mentoría con expertos internacionales</li>
+          <li>Red profesional exclusiva Latinoamérica</li>
+          <li>Cupos muy limitados</li>
+        </ul>
+        <a href="https://api.whatsapp.com/send?phone=573185820553&text=Quiero%20informaci%C3%B3n%20de%20la%20Especializaci%C3%B3n%20Orofacial" class="program-cta" target="_blank">Solicitar Información →</a>
+      </div>
+      <div class="program-card reveal" style="transition-delay:0.3s">
+        <div class="program-badge">Formación Integral</div>
+        <div class="program-icon">🌟</div>
+        <div class="program-name">Diplomado de Medicina Estética</div>
+        <div class="program-desc">La formación más completa en medicina estética. Desde fundamentos hasta técnicas de vanguardia.</div>
+        <ul class="program-perks">
+          <li>Fundamentos de medicina estética</li>
+          <li>Tecnologías de vanguardia</li>
+          <li>Protocolos de última generación</li>
+          <li>Certificación con validez internacional</li>
+          <li>Prácticas garantizadas</li>
+        </ul>
+        <a href="https://api.whatsapp.com/send?phone=573185820553&text=Quiero%20informaci%C3%B3n%20del%20Diplomado%20de%20Medicina%20Est%C3%A9tica" class="program-cta" target="_blank">Solicitar Información →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-inner">
+    <div class="testimonials-header reveal">
+      <span class="section-tag">Testimonios Reales</span>
+      <h2 class="section-title">Médicos que <span class="gold">Confían</span> en ISAMS</h2>
+      <div class="divider center"></div>
+      <p class="section-sub" style="margin: 0 auto;">Escucha de voz de nuestros propios graduados cómo ISAMS transformó su práctica médica y su carrera.</p>
+    </div>
+    <div class="videos-grid">
+      <div class="video-card reveal" style="transition-delay:0.1s">
+        <div class="video-wrapper shorts">
+          <iframe src="https://www.youtube.com/embed/HJjG7-zaP00" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-country">🇨🇷 Costa Rica</div>
+          <div class="video-name">Dra. María Fernanda Vargas</div>
+          <div class="video-title">Graduada Diplomado Orofacial</div>
+        </div>
+      </div>
+      <div class="video-card reveal" style="transition-delay:0.2s">
+        <div class="video-wrapper shorts">
+          <iframe src="https://www.youtube.com/embed/YAcbwXizacQ" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-country">🇨🇱 Chile</div>
+          <div class="video-name">Dr. Alex Gallegos</div>
+          <div class="video-title">Especialización Orofacial</div>
+        </div>
+      </div>
+      <div class="video-card reveal" style="transition-delay:0.3s">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/qaCcGHqQy-M" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-country">🇳🇮 Nicaragua</div>
+          <div class="video-name">Dra. Alma</div>
+          <div class="video-title">Diplomado de Medicina Estética</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENTS -->
+<section id="payments">
+  <div class="payments-inner">
+    <div class="payments-header reveal">
+      <span class="section-tag">Pagos en Línea</span>
+      <h2 class="section-title">Inicia tu <span class="gold">Proceso de Inscripción</span></h2>
+      <div class="divider center"></div>
+      <p class="section-sub" style="margin: 0 auto;">Realiza tu pago de forma segura y rápida. Previa autorización del departamento de servicios financieros de ISAMS.</p>
+    </div>
+    <div class="payments-grid">
+      <div class="payment-card reveal" style="transition-delay:0.1s">
+        <img src="https://isamsinternational.com/wp-content/uploads/elementor/thumbs/BOTON-1-02-pp41xg6yit6g2tafm9rnhulrwkb5lsstflrjyvvx8w.jpg" alt="Plan básico" class="payment-img">
+        <div class="payment-price"><span>US $</span>100</div>
+        <div class="payment-label">Pago Inicial / Reserva de Cupo</div>
+        <a href="https://biz.payulatam.com/B0ed3f82F1CB391" class="payment-btn" target="_blank">Pagar con PayU →</a>
+      </div>
+      <div class="payment-card popular reveal" style="transition-delay:0.2s">
+        <div class="popular-badge">MÁS POPULAR</div>
+        <img src="https://isamsinternational.com/wp-content/uploads/elementor/thumbs/BOTON-2-02-pp421s861b41m2zsb57pzr8aiiy33k09d225mtgkk0.jpg" alt="Plan intermedio" class="payment-img">
+        <div class="payment-price"><span>US $</span>500</div>
+        <div class="payment-label">Pago Parcial del Diplomado</div>
+        <a href="https://biz.payulatam.com/L0ed3f82488FBC0" class="payment-btn" target="_blank">Pagar con PayU →</a>
+      </div>
+      <div class="payment-card reveal" style="transition-delay:0.3s">
+        <img src="https://isamsinternational.com/wp-content/uploads/elementor/thumbs/BOTON-3-02-pp425in36m81qbkji9bdebb7gmjko9tvjjcl9dx9u8.jpg" alt="Plan completo" class="payment-img">
+        <div class="payment-price"><span>US $</span>1,000</div>
+        <div class="payment-label">Pago Completo del Programa</div>
+        <a href="https://biz.payulatam.com/L0ed3f8CBC5B016" class="payment-btn" target="_blank">Pagar con PayU →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="reveal-left">
+      <span class="section-tag">Contáctanos</span>
+      <h2 class="contact-info" style="font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,48px);font-weight:900;line-height:1.1;margin:16px 0 20px">¿Listo para <span style="color:var(--gold)">transformar tu carrera</span> médica?</h2>
+      <div class="divider"></div>
+      <p style="color:rgba(255,255,255,0.65);font-size:16px;line-height:1.7;margin:16px 0 40px">Nuestro equipo de asesores está listo para resolver todas tus dudas y ayudarte a elegir el programa ideal. Los cupos son limitados — no esperes más.</p>
+      <div class="contact-channels">
+        <a href="https://api.whatsapp.com/send?phone=573185820553&text=Quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20la%20educaci%C3%B3n%20continuada" class="channel-item" target="_blank">
+          <div class="channel-icon">📱</div>
+          <div class="channel-text">
+            <strong>WhatsApp (Preferido)</strong>
+            <span>+57 318 582 0553 — Respuesta inmediata</span>
+          </div>
+        </a>
+        <a href="mailto:informacion@isamsinternational.com" class="channel-item">
+          <div class="channel-icon">📧</div>
+          <div class="channel-text">
+            <strong>Email</strong>
+            <span>informacion@isamsinternational.com</span>
+          </div>
+        </a>
+        <div class="channel-item" style="cursor:default">
+          <div class="channel-icon">🕐</div>
+          <div class="channel-text">
+            <strong>Horario de Atención</strong>
+            <span>Lunes a Viernes — 8:00 am a 6:00 pm (Colombia)</span>
+          </div>
+        </div>
+        <div class="channel-item" style="cursor:default">
+          <div class="channel-icon">📍</div>
+          <div class="channel-text">
+            <strong>Sede Principal</strong>
+            <span>Cali, Colombia — Con alcance en toda Latinoamérica</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form-wrap reveal-right">
+      <h3 class="form-title">Solicita Información</h3>
+      <p class="form-sub">Completa el formulario y te contactamos en menos de 24 horas.</p>
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label>Nombre Completo *</label>
+          <input type="text" placeholder="Dr. Juan Pérez" required>
+        </div>
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" placeholder="correo@ejemplo.com" required>
+        </div>
+        <div class="form-group">
+          <label>País</label>
+          <select>
+            <option value="">Selecciona tu país</option>
+            <option>Chile</option><option>Colombia</option><option>Costa Rica</option>
+            <option>Ecuador</option><option>Guatemala</option><option>Honduras</option>
+            <option>México</option><option>Nicaragua</option><option>Paraguay</option>
+            <option>Perú</option><option>República Dominicana</option><option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Programa de Interés *</label>
+          <select required>
+            <option value="">Elige el programa</option>
+            <option>Diplomado Orofacial</option>
+            <option>Especialización Orofacial</option>
+            <option>Diplomado de Medicina Estética</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Teléfono / WhatsApp</label>
+          <input type="tel" placeholder="+57 000 000 0000">
+        </div>
+        <div class="form-group">
+          <label>Mensaje (Opcional)</label>
+          <textarea placeholder="Cuéntanos tus dudas o requerimientos especiales..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Enviar Solicitud →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="https://isamsinternational.com/wp-content/uploads/2022/05/LOGO.svg" alt="ISAMS International">
+        <p>Institución académica líder en formación práctica certificada de Medicina y Cirugía Estética en Latinoamérica, con 19 años de trayectoria y más de 2,500 profesionales formados.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Programas</h5>
+        <ul>
+          <li><a href="#programs">Diplomado Orofacial</a></li>
+          <li><a href="#programs">Especialización Orofacial</a></li>
+          <li><a href="#programs">Diplomado Medicina Estética</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="mailto:informacion@isamsinternational.com">informacion@isamsinternational.com</a></li>
+          <li><a href="tel:+573185820553">+57 318 582 0553</a></li>
+          <li><a href="#">Cali, Colombia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 ISAMS International. Todos los derechos reservados.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/isamsinternational/" class="social-link" target="_blank">📸</a>
+        <a href="https://api.whatsapp.com/send?phone=573185820553" class="social-link" target="_blank">💬</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://api.whatsapp.com/send?phone=573185820553&text=Quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20la%20educaci%C3%B3n%20continuada" class="wa-float" target="_blank" title="Chatea por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ISAMS Assistant Widget -->
+<script src="https://paymegpt.com/widget.js" data-widget="84170833" async></script>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
