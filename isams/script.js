@@ -7,7 +7,8 @@ function goTo(i) {
   cur = i; slides[cur].classList.add('active'); dots[cur].classList.add('active');
 }
 dots.forEach((d,i) => d.addEventListener('click', () => goTo(i)));
-setInterval(() => goTo((cur + 1) % slides.length), 5500);
+const heroAutoMs = window.innerWidth <= 768 ? 3200 : 5500;
+setInterval(() => goTo((cur + 1) % slides.length), heroAutoMs);
 
 // REVEAL ON SCROLL
 const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), { threshold: 0.1 });
