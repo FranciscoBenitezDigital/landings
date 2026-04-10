@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  
+  
+
+<!-- SEO Meta Tags -->
+<title>Francisco Benítez Digital | Planes de implementación</title>
+<meta name="description" content="Planes de implementación para presencia digital y automatización con inteligencia artificial." />
+<meta property="og:title" content="Francisco Benítez Digital | Planes de implementación" />
+<meta property="og:description" content="Planes de implementación para presencia digital y automatización con inteligencia artificial." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Francisco Benítez Digital | Planes de implementación" />
+<meta name="twitter:description" content="Planes de implementación para presencia digital y automatización con inteligencia artificial." />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=3144');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='rwbgcAK';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section data-section="hero" class="hero wrap">
+      <img class="hero-logo" src="https://fbdigitalplaza.com/wp-content/uploads/2025/12/LOGO-FINALFINAL-OKOK-1.png" alt="Francisco Benítez Digital logo" />
+      <span class="badge">Francisco Benítez Digital</span>
+      <h1>Planes de implementación</h1>
+      <p class="lead">
+        Presencia digital y automatización con inteligencia artificial. Esta página presenta de forma clara dos opciones de implementación: una solución con página web de alta conversión más agente de IA, y una segunda opción enfocada únicamente en el agente de IA.
+      </p>
+      <p class="lead">
+        En ambos casos, el agente funciona como un apoyo de atención automatizada y puede actuar como un vendedor virtual disponible 24 horas, especialmente en los horarios en los que no es posible responder manualmente.
+      </p>
+    </section>
+
+    <section data-section="plans" class="section wrap">
+      <div class="grid-2">
+        <article class="card">
+          <span class="eyebrow">Solución integral</span>
+          <h2 style="margin-top:16px; font-size:1.85rem;">Opción 1: Página web + agente de IA</h2>
+
+          <div class="pricebox">
+            <h3>Inversión</h3>
+            <ul>
+              <li><strong>Setup fee:</strong> 350 USD</li>
+              <li><strong>Mantenimiento y hosting:</strong> 50 USD mensuales</li>
+            </ul>
+          </div>
+
+          <div class="block">
+            <h3>¿Qué incluye?</h3>
+            <p>Esta opción incluye el desarrollo de una página web de alta conversión junto con un agente de inteligencia artificial entrenado con la información del negocio.</p>
+            <p>La página está pensada para presentar la información de manera clara, profesional y orientada a facilitar que el visitante entienda la oferta del negocio y pueda avanzar en su proceso de contacto o consulta.</p>
+          </div>
+
+          <div class="block">
+            <h3>Características de la página web</h3>
+            <ul class="list">
+              <li>• Diseño de página web de alta conversión</li>
+              <li>• Estructura enfocada en claridad, confianza y presentación profesional</li>
+              <li>• Integración de imágenes generadas o mejoradas con inteligencia artificial</li>
+              <li>• Hosting incluido</li>
+              <li>• Mantenimiento mensual</li>
+              <li>• Hasta 3 modificaciones al mes sin costo adicional</li>
+              <li>• Cada modificación adicional: 10 USD</li>
+            </ul>
+          </div>
+
+          <div class="block">
+            <h3>Sobre el mantenimiento mensual</h3>
+            <p>El cargo mensual de 50 USD corresponde al hosting y al mantenimiento continuo de la solución. Este mantenimiento es permanente porque la página necesita mantenerse activa y funcional, y el agente de IA requiere seguimiento para conservar su utilidad con el paso del tiempo.</p>
+            <p>En este plan se contemplan también tres modificaciones al mes sin costo, para realizar ajustes menores en la página o en la información cuando sea necesario. Si durante el mismo mes se requieren cambios adicionales, cada modificación extra tiene un costo de 10 USD.</p>
+          </div>
+
+          <div class="block">
+            <h3>Sobre el agente de IA</h3>
+            <p>El agente se entrena con la información proporcionada por el cliente y puede actuar como un vendedor virtual disponible 24/7, atendiendo consultas en todo momento, inclusive fuera del horario laboral. Esto ayuda a dar seguimiento inicial a interesados, resolver dudas frecuentes y evitar la pérdida de oportunidades por falta de respuesta inmediata.</p>
+            <ul class="list">
+              <li>• Responder consultas frecuentes</li>
+              <li>• Orientar al usuario según su necesidad</li>
+              <li>• Funcionar como primer filtro de atención</li>
+              <li>• Actuar como apoyo comercial inicial</li>
+              <li>• Tomar datos del prospecto o cliente</li>
+              <li>• Enviar esos datos a una hoja de Google para llevar un registro</li>
+            </ul>
+          </div>
+
+          <div class="includes">
+            <h3>Incluye</h3>
+            <ul class="includes-grid">
+              <li>• Página web de alta conversión</li>
+              <li>• Imágenes con inteligencia artificial</li>
+              <li>• Agente de IA</li>
+              <li>• Hosting</li>
+              <li>• Mantenimiento continuo</li>
+              <li>• Hasta 3 modificaciones al mes sin costo</li>
+              <li>• Modificaciones adicionales a 10 USD cada una</li>
+              <li>• Posibilidad de captura de datos a Google Sheets</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card alt">
+          <span class="eyebrow" style="background: rgba(34,211,238,0.1); border-color: rgba(34,211,238,0.2);">Implementación puntual</span>
+          <h2 style="margin-top:16px; font-size:1.85rem;">Opción 2: Solo agente de IA</h2>
+
+          <div class="pricebox">
+            <h3>Inversión</h3>
+            <ul>
+              <li><strong>Setup fee único:</strong> 350 USD</li>
+              <li><strong>Actualizaciones:</strong> 30 USD por cada actualización requerida</li>
+            </ul>
+          </div>
+
+          <div class="block">
+            <h3>¿Qué incluye?</h3>
+            <p>Esta opción contempla únicamente la implementación inicial del agente de inteligencia artificial, sin desarrollo de página web.</p>
+            <p>El agente se entrena con la información proporcionada por el cliente, para que pueda responder con base en los servicios, procesos, información comercial y preguntas frecuentes del negocio.</p>
+          </div>
+
+          <div class="block">
+            <h3>Funcionamiento del agente</h3>
+            <ul class="list">
+              <li>• Responder preguntas frecuentes</li>
+              <li>• Guiar conversaciones básicas</li>
+              <li>• Brindar información inicial a clientes potenciales</li>
+              <li>• Actuar como apoyo de atención fuera de horario</li>
+              <li>• Capturar datos del usuario</li>
+              <li>• Registrar información en una hoja de Google</li>
+            </ul>
+          </div>
+
+          <div class="block">
+            <h3>Actualizaciones</h3>
+            <p>Este plan no incluye mensualidad fija. La implementación inicial se realiza con la información disponible al inicio del proyecto.</p>
+            <p>Si posteriormente se requiere agregar nueva información, modificar respuestas, ajustar el comportamiento del agente, actualizar procesos o ampliar los datos que registra, cada actualización tendrá un costo de 30 USD.</p>
+          </div>
+
+          <div class="includes" style="background: linear-gradient(180deg, rgba(34, 211, 238, 0.12), rgba(15, 23, 42, 0.5)); border-color: rgba(34,211,238,0.18);">
+            <h3>Incluye</h3>
+            <ul class="list">
+              <li>• Implementación inicial del agente de IA</li>
+              <li>• Entrenamiento base con información del cliente</li>
+              <li>• Configuración de respuestas iniciales</li>
+              <li>• Función de atención automatizada 24/7</li>
+              <li>• Posibilidad de captura de datos</li>
+              <li>• Posibilidad de registro en Google Sheets</li>
+              <li>• Actualizaciones bajo solicitud a 30 USD cada una</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <div class="section" style="margin-top: 38px;">
+        <h3 style="margin-bottom: 20px; color: var(--white); font-size: 1.65rem;">Comparación de planes</h3>
+        <div style="overflow-x:auto;">
+          <table style="min-width: 720px; border-collapse: collapse; width: 100%;">
+            <thead>
+              <tr>
+                <th style="background: rgba(2,6,23,0.72); color: var(--white); padding: 16px;">Característica</th>
+                <th style="background: rgba(2,6,23,0.72); color: var(--white); padding: 16px;">Página web + agente de IA</th>
+                <th style="background: rgba(2,6,23,0.72); color: var(--white); padding: 16px;">Solo agente de IA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">Setup fee</td>
+                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">350 USD</td>
+                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">350 USD</td>
+              </tr>
+              <tr>
+                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">Mantenimiento mensual</td>
+                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">50 USD</td>
+                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">No incluido</td>
+              </tr>
+              <tr>
+                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">Modificaciones o actualizaciones</td>
+                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">3 modificaciones gratuitas al mes; luego 10 USD cada una</td>
+                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">30 USD por cada actualización solicitada</td>
+              </tr>
+              <tr>
+                <td style="padding: 16px;">Función de agente IA</td>
+                <td style="padding: 16px;">Agente entrenado con información del negocio, integrado en la página web, incluye captura de datos y registro en Google Sheets.</td>
+                <td style="padding: 16px;">Implementación inicial del agente, con configuración básica y registro de datos. Atención automatizada 24/7.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section data-section="comparison" class="section wrap">
+  <div class="table-card">
+    <h2 style="font-size:1.75rem;">Diferencias principales entre ambas opciones</h2>
+    <div style="overflow-x:auto; -webkit-overflow-scrolling: touch;">
+      <table>
+        <thead>
+          <tr>
+            <th>Aspecto</th>
+            <th>Página web + agente de IA</th>
+            <th>Solo agente de IA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Incluye página web</td><td>Sí</td><td>No</td></tr>
+          <tr><td>Incluye agente de IA</td><td>Sí</td><td>Sí</td></tr>
+          <tr><td>Pago inicial</td><td>350 USD</td><td>350 USD</td></tr>
+          <tr><td>Mensualidad fija</td><td>50 USD mensuales</td><td>No</td></tr>
+          <tr><td>Hosting</td><td>Sí</td><td>No aplica</td></tr>
+          <tr><td>Mantenimiento continuo</td><td>Sí</td><td>No incluido</td></tr>
+          <tr><td>Cambios incluidos</td><td>3 modificaciones al mes</td><td>No</td></tr>
+          <tr><td>Cambios adicionales</td><td>10 USD cada uno</td><td>30 USD por actualización</td></tr>
+          <tr><td>Captura de datos a Google Sheets</td><td>Posible</td><td>Posible</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+    <section data-section="info" class="section wrap">
+      <div class="info-grid" style="overflow-x:auto; -webkit-overflow-scrolling: touch;">
+        <article class="info-card" style="min-width:320px;">
+          <h2 style="font-size:1.55rem;">Aclaración sobre el entrenamiento del agente</h2>
+          <p style="margin-top:16px;">El agente no funciona de manera aislada ni adivina la información del negocio. Su entrenamiento se basa en el material que proporciona el cliente.</p>
+          <p>La calidad de sus respuestas depende directamente de la precisión de la información entregada durante la implementación. Se requiere actualizar el agente cada vez que el negocio modifique servicios, precios, procesos, horarios o condiciones para mantener su efectividad.</p>
+        </article>
+
+        <article class="info-card" style="min-width:320px;">
+          <h2 style="font-size:1.55rem;">Aclaración sobre captura de datos y registro</h2>
+          <p style="margin-top:16px;">El agente puede incluir una función para solicitar datos al usuario durante la conversación, que se utilizan para seguimiento comercial, contacto posterior o control interno.</p>
+          <p>Cuando se requiera, esta información puede enviarse automáticamente a una hoja de Google, permitiendo un registro organizado de leads, consultas o solicitudes recibidas.</p>
+        </article>
+      </div>
+    </section>
+
+    <section data-section="summary" class="section wrap">
+      <div class="summary">
+        <h2 style="font-size:1.75rem;">Resumen</h2>
+        <p style="margin-top:16px;">La opción <strong>Página web + agente de IA</strong> ofrece una solución integral con presencia digital, hosting, mantenimiento continuo y ajustes periódicos dentro del servicio mensual, además de integrar un agente virtual disponible 24 horas que automatiza la atención inicial.</p>
+        <p>La opción <strong>Solo agente de IA</strong> está diseñada para quienes requieren únicamente la automatización a través del agente virtual y prefieren solicitar las actualizaciones puntuales, ahora con un costo de 30 USD por cada actualización, según la demanda del negocio.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer data-section="footer" class="wrap footer">
+    Francisco Benítez Digital · Página informativa de planes de implementación
+    <small style="display:block; margin-top:12px; color: var(--muted); font-size:0.85rem;">
+      Precios en USD, más impuestos aplicables según el país.
+    </small>
+  </footer>
+</body>
+</html>
