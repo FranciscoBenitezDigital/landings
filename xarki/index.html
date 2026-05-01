@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<!-- BASE:START (managed by Coding Agent — do not edit) -->
+<base href="/landings/">
+<!-- BASE:END -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    
+
+<!-- SEO Meta Tags -->
+<title>Xarki Services | Logística y Empaque de Frutas en Málaga</title>
+<meta name="description" content="Soluciones integrales de cadena de suministro para frutas y verduras. Expertos en almacenamiento frigorífico, maduración y distribución europea desde la Axarquía." />
+<meta property="og:title" content="Xarki Services | Logística y Empaque de Frutas en Málaga" />
+<meta property="og:description" content="Soluciones integrales de cadena de suministro para frutas y verduras. Expertos en almacenamiento frigorífico, maduración y distribución europea desde la Axarquía." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Xarki Services | Logística y Empaque de Frutas en Málaga" />
+<meta name="twitter:description" content="Soluciones integrales de cadena de suministro para frutas y verduras. Expertos en almacenamiento frigorífico, maduración y distribución europea desde la Axarquía." />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=1999');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='Jr2bRpfj';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 text-gray-900 overflow-x-hidden selection:bg-xarkiLight selection:text-white">
+
+    <!-- ============================================================================ -->
+    <!-- NAVIGATION SECTION: Fixed header with logo and primary links                 -->
+    <!-- Features: Transparent to solid background on scroll, mobile hamburger menu   -->
+    <!-- Mobile Padding: px-4 to prevent touching viewport edges                      -->
+    <!-- ============================================================================ -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4" data-section="navigation">
+        <div class="container mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center">
+            
+            <!-- Logo -->
+            <a href="#inicio" class="flex items-center group" aria-label="Inicio Xarki Services">
+                <span class="text-2xl md:text-3xl font-extrabold text-white tracking-widest drop-shadow-md group-hover:text-xarkiLight transition-colors duration-300">XARKI</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 text-white font-medium items-center">
+                <a href="#inicio" class="relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-xarkiLight after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left hover:text-xarkiLight transition-colors">Inicio</a>
+                <a href="#nosotros" class="relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-xarkiLight after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left hover:text-xarkiLight transition-colors">Nosotros</a>
+                <a href="#servicios" class="relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-xarkiLight after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left hover:text-xarkiLight transition-colors">Servicios</a>
+                <a href="#formatos" class="relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-xarkiLight after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left hover:text-xarkiLight transition-colors">Formatos</a>
+                <a href="#contacto" class="btn-shine bg-xarkiLight px-6 py-2.5 rounded-full hover:bg-white hover:text-xarkiDark transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(74,158,92,0.5)]">Contacto</a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none hover:rotate-90 transition-transform duration-300" aria-label="Abrir menú">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-xarkiDark/95 backdrop-blur-md absolute w-full left-0 top-full shadow-2xl border-t border-white/10 origin-top transform transition-all duration-300">
+            <div class="flex flex-col px-4 py-8 space-y-6 text-white text-center font-medium">
+                <a href="#inicio" class="mobile-link text-lg hover:text-xarkiLight hover:translate-x-2 transition-all">Inicio</a>
+                <a href="#nosotros" class="mobile-link text-lg hover:text-xarkiLight hover:translate-x-2 transition-all">Nosotros</a>
+                <a href="#servicios" class="mobile-link text-lg hover:text-xarkiLight hover:translate-x-2 transition-all">Servicios</a>
+                <a href="#formatos" class="mobile-link text-lg hover:text-xarkiLight hover:translate-x-2 transition-all">Formatos</a>
+                <a href="#contacto" class="mobile-link bg-xarkiLight mx-8 py-4 rounded-full hover:bg-white hover:text-xarkiDark transition-all shadow-lg active:scale-95 text-lg">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================================ -->
+    <!-- HERO SECTION: Main landing area with headline, subtext, and primary CTA      -->
+    <!-- Features: Parallax background, mouse movement interaction, floating shapes   -->
+    <!-- Mobile Padding: Ensures text never touches viewport edges                    -->
+    <!-- ============================================================================ -->
+    <section id="inicio" class="hero-gradient min-h-screen flex items-center pt-24 pb-12 relative overflow-hidden" data-section="hero">
+        <!-- Floating decorative blobs -->
+        <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-xarkiLight/20 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob"></div>
+        <div class="absolute top-1/3 right-1/4 w-72 h-72 bg-white/10 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-1/4 left-1/2 w-72 h-72 bg-xarkiDark/30 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-4000"></div>
+
+        <div class="container mx-auto px-4 md:px-8 lg:px-12 grid md:grid-cols-12 gap-12 items-center relative z-10" id="hero-content">
+            <div class="md:col-span-10 lg:col-span-8 reveal-left">
+                <div class="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-semibold mb-6 animate-float">
+                    🚀 Potenciando la exportación hortofrutícola
+                </div>
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6 tracking-tight drop-shadow-lg">
+                    CONTROLA TU FRUTA.<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-xarkiLight to-green-300 inline-block hover:scale-105 transition-transform duration-300">AUMENTA TU MARGEN.</span>
+                </h1>
+                <p class="text-lg sm:text-xl md:text-2xl text-gray-200 mb-10 max-w-2xl drop-shadow-md">
+                    Tu aliado estratégico en servicios de empaque y logística integral en el sur de Europa. Especialistas en el eje Málaga-Axarquía.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <a href="#contacto" class="btn-shine animate-pulse-shadow bg-xarkiLight text-white px-8 py-4 rounded-xl font-bold text-center hover:bg-white hover:text-xarkiDark transition-all duration-300 shadow-xl text-lg flex items-center justify-center group">
+                        Solicitar Videollamada
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                    <a href="#servicios" class="backdrop-blur-sm bg-white/10 border-2 border-white/50 text-white px-8 py-4 rounded-xl font-bold text-center hover:bg-white hover:text-xarkiDark hover:border-white transition-all duration-300 text-lg">
+                        Explorar Servicios
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce cursor-pointer opacity-70 hover:opacity-100 transition-opacity" onclick="document.getElementById('nosotros').scrollIntoView({behavior: 'smooth'})">
+            <span class="text-white text-xs tracking-widest uppercase mb-2">Descubre Más</span>
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- ABOUT SECTION: Company introduction and history                              -->
+    <!-- Features: Image hover zoom, text stagger reveal                              -->
+    <!-- Mobile Padding: Responsive safe spacing                                      -->
+    <!-- ============================================================================ -->
+    <section id="nosotros" class="py-20 md:py-32 bg-white relative" data-section="about">
+        <!-- Decorative bg elements -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gray-50 rounded-bl-full -z-10"></div>
+        
+        <div class="container mx-auto px-4 md:px-8 lg:px-12">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="reveal-left">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="h-px w-12 bg-xarkiLight"></div>
+                        <span class="text-xarkiLight font-bold tracking-widest uppercase text-sm md:text-base">Quiénes Somos</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-bold text-xarkiDark mb-6 leading-tight">Líderes en soluciones integrales para el sector hortofrutícola</h2>
+                    <p class="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
+                        Xarki Services es la empresa referente en soluciones de cadena de suministro para frutas y verduras en el sur de Europa. Operamos desde el corazón de la producción agrícola en Málaga.
+                    </p>
+                    <div class="bg-gray-50 p-6 rounded-2xl border-l-4 border-xarkiLight mb-6 hover:shadow-md transition-shadow">
+                        <p class="text-base md:text-lg text-gray-700 italic">
+                            "Como empresa familiar con <strong class="text-xarkiDark">más de 60 años de trayectoria</strong>, combinamos tecnología de vanguardia con una gran capacidad de almacenamiento para ofrecer un envasado de alta calidad."
+                        </p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 reveal-right">
+                    <div class="overflow-hidden rounded-2xl shadow-xl mt-8 md:mt-12 group tilt-wrapper">
+                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&q=80&w=600" alt="Instalaciones logísticas" class="w-full object-cover h-56 md:h-80 transform group-hover:scale-110 group-hover:rotate-1 transition-all duration-700 ease-out">
+                    </div>
+                    <div class="overflow-hidden rounded-2xl shadow-xl group tilt-wrapper">
+                        <img src="https://images.unsplash.com/photo-1628352081506-83c43123ed6d?auto=format&fit=crop&q=80&w=600" alt="Control de Calidad" class="w-full object-cover h-56 md:h-80 transform group-hover:scale-110 group-hover:-rotate-1 transition-all duration-700 ease-out">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- BUSINESS MODELS SECTION: Outlines two main ways of collaborating             -->
+    <!-- Features: 3D hover lift, glowing borders, animated icons                     -->
+    <!-- Mobile Padding: Safe margins applied via container classes                   -->
+    <!-- ============================================================================ -->
+    <section class="py-20 md:py-32 bg-gray-50 relative overflow-hidden" data-section="business-models">
+        <!-- Abstract background shape -->
+        <svg class="absolute top-0 left-0 w-full h-full text-gray-100/50 pointer-events-none -z-10" preserveAspectRatio="none" viewBox="0 0 100 100">
+            <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none"></path>
+            <path d="M0,50 Q25,25 50,50 T100,50 L100,100 L0,100 Z" fill="currentColor"></path>
+        </svg>
+
+        <div class="container mx-auto px-4 md:px-8 lg:px-12">
+            <div class="text-center mb-16 md:mb-24 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold text-xarkiDark mb-6">Trabajamos Contigo de Dos Formas</h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-xarkiDark to-xarkiLight mx-auto rounded-full"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                <!-- Strategic Buying Model -->
+                <div class="bg-white p-8 md:p-12 rounded-3xl shadow-lg border-t-4 border-xarkiDark reveal group hover:-translate-y-4 hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-xarkiDark/5 rounded-bl-full -z-10 group-hover:scale-150 transition-transform duration-700"></div>
+                    
+                    <div class="w-20 h-20 bg-xarkiDark/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-xarkiDark group-hover:text-white transition-colors duration-500 transform group-hover:rotate-12">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-xarkiDark group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-xarkiDark mb-6">Compra Estratégica</h3>
+                    <p class="text-gray-600 mb-8 text-base md:text-lg leading-relaxed">Modelos flexibles (tradicional, puente o híbrido) diseñados para maximizar el retorno y construir relaciones de largo plazo. Buscamos volumen y continuidad.</p>
+                    <ul class="space-y-4 text-gray-700 text-base md:text-lg font-medium">
+                        <li class="flex items-center group/item hover:translate-x-2 transition-transform">
+                            <span class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-4 group-hover/item:bg-xarkiLight group-hover/item:text-white transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                            </span> 
+                            Modelos de compra flexibles
+                        </li>
+                        <li class="flex items-center group/item hover:translate-x-2 transition-transform">
+                            <span class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-4 group-hover/item:bg-xarkiLight group-hover/item:text-white transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                            </span> 
+                            Garantía de continuidad
+                        </li>
+                        <li class="flex items-center group/item hover:translate-x-2 transition-transform">
+                            <span class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-4 group-hover/item:bg-xarkiLight group-hover/item:text-white transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                            </span> 
+                            Crecimiento compartido
+                        </li>
+                    </ul>
+                </div>
+                <!-- Platform Model -->
+                <div class="bg-white p-8 md:p-12 rounded-3xl shadow-lg border-t-4 border-xarkiLight reveal group hover:-translate-y-4 hover:shadow-2xl transition-all duration-500 relative overflow-hidden" style="transition-delay: 100ms;">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-xarkiLight/5 rounded-bl-full -z-10 group-hover:scale-150 transition-transform duration-700"></div>
+                    
+                    <div class="w-20 h-20 bg-xarkiLight/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-xarkiLight group-hover:text-white transition-colors duration-500 transform group-hover:-rotate-12">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-xarkiLight group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-xarkiDark mb-6">Xarki – Tu Plataforma</h3>
+                    <p class="text-gray-600 mb-8 text-base md:text-lg leading-relaxed">Para exportadores que desean mantener la propiedad de su fruta y vender directo. Operamos como tu partner logístico en toda Europa.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-base md:text-lg text-gray-700 font-medium">
+                        <div class="flex items-center p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-default">
+                            <svg class="w-6 h-6 text-xarkiLight mr-3 shrink-0 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Frío y Maduración
+                        </div>
+                        <div class="flex items-center p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-default">
+                            <svg class="w-6 h-6 text-xarkiLight mr-3 shrink-0 animate-pulse" style="animation-delay: 200ms" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Maquila y Etiquetado
+                        </div>
+                        <div class="flex items-center p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-default">
+                            <svg class="w-6 h-6 text-xarkiLight mr-3 shrink-0 animate-pulse" style="animation-delay: 400ms" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Control de Calidad
+                        </div>
+                        <div class="flex items-center p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-default">
+                            <svg class="w-6 h-6 text-xarkiLight mr-3 shrink-0 animate-pulse" style="animation-delay: 600ms" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Distribución Ágil
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- STATS SECTION: Operational capacity highlights                               -->
+    <!-- Features: Animated JavaScript Number Counters, dark textured background      -->
+    <!-- Mobile Padding: 4-column desktop, 2-column mobile                            -->
+    <!-- ============================================================================ -->
+    <section class="py-20 md:py-24 bg-xarkiDark relative overflow-hidden" data-section="statistics">
+        <!-- Overlay texture -->
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        
+        <div class="container mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 text-center divide-x divide-white/10">
+                <div class="reveal group">
+                    <div class="text-5xl md:text-7xl font-extrabold mb-3 text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 group-hover:scale-110 transition-transform duration-300">
+                        <span class="counter" data-target="9">0</span>
+                    </div>
+                    <div class="text-xarkiLight font-bold uppercase text-xs md:text-sm tracking-widest mb-2 group-hover:text-white transition-colors">Cámaras Frigoríficas</div>
+                    <p class="text-sm text-gray-300 bg-white/5 inline-block px-3 py-1 rounded-full">484 Palets / 456 Tons</p>
+                </div>
+                <div class="reveal group" style="transition-delay: 150ms">
+                    <div class="text-5xl md:text-7xl font-extrabold mb-3 text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 group-hover:scale-110 transition-transform duration-300">
+                        <span class="counter" data-target="4">0</span>
+                    </div>
+                    <div class="text-xarkiLight font-bold uppercase text-xs md:text-sm tracking-widest mb-2 group-hover:text-white transition-colors">Cámaras de Maduración</div>
+                    <p class="text-sm text-gray-300 bg-white/5 inline-block px-3 py-1 rounded-full">180 Palets / 216 Tons</p>
+                </div>
+                <div class="reveal group" style="transition-delay: 300ms">
+                    <div class="text-5xl md:text-7xl font-extrabold mb-3 text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 group-hover:scale-110 transition-transform duration-300">
+                        <span class="counter" data-target="11">0</span>
+                    </div>
+                    <div class="text-xarkiLight font-bold uppercase text-xs md:text-sm tracking-widest mb-2 group-hover:text-white transition-colors">Líneas de Manipulación</div>
+                    <p class="text-sm text-gray-300 bg-white/5 inline-block px-3 py-1 rounded-full">Versatilidad total</p>
+                </div>
+                <div class="reveal group" style="transition-delay: 450ms">
+                    <div class="text-5xl md:text-7xl font-extrabold mb-3 text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 group-hover:scale-110 transition-transform duration-300">
+                        <span class="counter" data-target="7" data-suffix="t">0</span>
+                    </div>
+                    <div class="text-xarkiLight font-bold uppercase text-xs md:text-sm tracking-widest mb-2 group-hover:text-white transition-colors">Capacidad Calibrado</div>
+                    <p class="text-sm text-gray-300 bg-white/5 inline-block px-3 py-1 rounded-full">Por hora (2 calibradores)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- SERVICES SECTION: Grid displaying the core services provided                 -->
+    <!-- Features: Animated borders, icon spin, deeper shadow on hover                -->
+    <!-- Mobile Padding: Responsive columns and safe text padding                     -->
+    <!-- ============================================================================ -->
+    <section id="servicios" class="py-20 md:py-32 bg-white" data-section="services">
+        <div class="container mx-auto px-4 md:px-8 lg:px-12">
+            <div class="text-center mb-16 md:mb-24 reveal">
+                <span class="text-xarkiLight font-bold tracking-widest uppercase text-sm mb-2 block">Nuestras Capacidades</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-xarkiDark">Servicios Integrales</h2>
+                <p class="text-base md:text-xl text-gray-600 mt-6 max-w-3xl mx-auto">Cubrimos cada eslabón de la cadena de valor para asegurar que tu producto llegue al mercado en condiciones óptimas.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
+                <!-- Service 1 -->
+                <div class="p-8 border border-gray-100 rounded-2xl hover:shadow-2xl hover:border-xarkiLight/50 bg-white transition-all duration-500 group reveal transform hover:-translate-y-2 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-xarkiLight/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-16 h-16 bg-gray-50 text-xarkiDark rounded-2xl flex items-center justify-center mb-8 group-hover:bg-xarkiLight group-hover:text-white transition-all duration-500 shadow-sm group-hover:shadow-md transform group-hover:rotate-6">
+                        <svg class="w-8 h-8 transform group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.183.394l-1.154.908a2 2 0 00-.51 2.639l.164.246a2 2 0 002.329.728l1.796-.598a2 2 0 011.289.068l1.231.466a2 2 0 001.58 0l1.231-.466a2 2 0 011.289-.068l1.796.598a2 2 0 002.329-.728l.164-.246a2 2 0 00-.51-2.639l-1.154-.908z"/></svg>
+                    </div>
+                    <h4 class="text-xl md:text-2xl font-bold mb-4 text-xarkiDark relative z-10">Almacenamiento</h4>
+                    <p class="text-base text-gray-600 relative z-10">Cámaras frigoríficas de última generación con control de atmósfera para prolongar la vida útil.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="p-8 border border-gray-100 rounded-2xl hover:shadow-2xl hover:border-xarkiLight/50 bg-white transition-all duration-500 group reveal transform hover:-translate-y-2 relative overflow-hidden" style="transition-delay: 100ms;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-xarkiLight/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-16 h-16 bg-gray-50 text-xarkiDark rounded-2xl flex items-center justify-center mb-8 group-hover:bg-xarkiLight group-hover:text-white transition-all duration-500 shadow-sm group-hover:shadow-md transform group-hover:rotate-6">
+                        <svg class="w-8 h-8 transform group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    </div>
+                    <h4 class="text-xl md:text-2xl font-bold mb-4 text-xarkiDark relative z-10">Maduración</h4>
+                    <p class="text-base text-gray-600 relative z-10">Garantizamos el punto óptimo de consumo según el producto y los requerimientos del mercado final.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="p-8 border border-gray-100 rounded-2xl hover:shadow-2xl hover:border-xarkiLight/50 bg-white transition-all duration-500 group reveal transform hover:-translate-y-2 relative overflow-hidden" style="transition-delay: 200ms;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-xarkiLight/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-16 h-16 bg-gray-50 text-xarkiDark rounded-2xl flex items-center justify-center mb-8 group-hover:bg-xarkiLight group-hover:text-white transition-all duration-500 shadow-sm group-hover:shadow-md transform group-hover:rotate-6">
+                        <svg class="w-8 h-8 transform group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                    </div>
+                    <h4 class="text-xl md:text-2xl font-bold mb-4 text-xarkiDark relative z-10">Envasado</h4>
+                    <p class="text-base text-gray-600 relative z-10">Desde granel hasta mallas biodegradables y flowpack, adaptados a la normativa del país destino.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="p-8 border border-gray-100 rounded-2xl hover:shadow-2xl hover:border-xarkiLight/50 bg-white transition-all duration-500 group reveal transform hover:-translate-y-2 relative overflow-hidden" style="transition-delay: 300ms;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-xarkiLight/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-16 h-16 bg-gray-50 text-xarkiDark rounded-2xl flex items-center justify-center mb-8 group-hover:bg-xarkiLight group-hover:text-white transition-all duration-500 shadow-sm group-hover:shadow-md transform group-hover:rotate-6">
+                        <svg class="w-8 h-8 transform group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 011-1h2m5 1a1 1 0 01-1-1h-2"/></svg>
+                    </div>
+                    <h4 class="text-xl md:text-2xl font-bold mb-4 text-xarkiDark relative z-10">Distribución</h4>
+                    <p class="text-base text-gray-600 relative z-10">Red logística eficiente para entregas "just-in-time" en toda Europa (España, Italia, DACH, etc).</p>
+                </div>
+                <!-- Service 5 -->
+                <div class="p-8 border border-gray-100 rounded-2xl hover:shadow-2xl hover:border-xarkiLight/50 bg-white transition-all duration-500 group reveal transform hover:-translate-y-2 relative overflow-hidden" style="transition-delay: 400ms;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-xarkiLight/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-16 h-16 bg-gray-50 text-xarkiDark rounded-2xl flex items-center justify-center mb-8 group-hover:bg-xarkiLight group-hover:text-white transition-all duration-500 shadow-sm group-hover:shadow-md transform group-hover:rotate-6">
+                        <svg class="w-8 h-8 transform group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h4 class="text-xl md:text-2xl font-bold mb-4 text-xarkiDark relative z-10">Control de Calidad</h4>
+                    <p class="text-base text-gray-600 relative z-10">Inspecciones rigurosas en recepción y previo a la expedición para garantizar estricto cumplimiento.</p>
+                </div>
+                <!-- Service 6 -->
+                <div class="p-8 border border-gray-100 rounded-2xl hover:shadow-2xl hover:border-xarkiLight/50 bg-white transition-all duration-500 group reveal transform hover:-translate-y-2 relative overflow-hidden" style="transition-delay: 500ms;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-xarkiLight/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-16 h-16 bg-gray-50 text-xarkiDark rounded-2xl flex items-center justify-center mb-8 group-hover:bg-xarkiLight group-hover:text-white transition-all duration-500 shadow-sm group-hover:shadow-md transform group-hover:rotate-6">
+                        <svg class="w-8 h-8 transform group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h4 class="text-xl md:text-2xl font-bold mb-4 text-xarkiDark relative z-10">Comercialización</h4>
+                    <p class="text-base text-gray-600 relative z-10">Acceso a los principales mercados europeos y canales de venta especializados de gran volumen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- FORMATS SECTION: Emphasizes versatile packaging options                      -->
+    <!-- Features: Animated Emojis on hover, transparent glassmorphism cards          -->
+    <!-- Mobile Padding: Grid adjusts naturally to viewport                           -->
+    <!-- ============================================================================ -->
+    <section id="formatos" class="py-20 md:py-32 bg-gradient-to-b from-xarkiDark to-[#113d1c] text-white overflow-hidden relative" data-section="packaging-formats">
+        <!-- Floating abstract shapes -->
+        <div class="absolute -top-20 -right-20 w-96 h-96 bg-white/5 rounded-full filter blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-20 w-96 h-96 bg-xarkiLight/10 rounded-full filter blur-3xl"></div>
+
+        <div class="container mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+            <div class="text-center mb-16 md:mb-24 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Nuestros Formatos de Empaque</h2>
+                <div class="w-20 h-1 bg-xarkiLight mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <div class="group text-center reveal p-6 rounded-3xl hover:bg-white/5 transition-colors duration-300 border border-transparent hover:border-white/10 cursor-pointer">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl md:text-4xl group-hover:bg-xarkiLight group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500 shadow-lg relative">
+                        <span class="absolute inset-0 bg-white/20 rounded-full animate-ping opacity-0 group-hover:opacity-100"></span>
+                        📦
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-semibold mb-2 group-hover:text-xarkiLight transition-colors">Granel</h3>
+                    <p class="text-gray-400 text-sm md:text-base group-hover:text-gray-300 transition-colors">Cajas de cartón o madera</p>
+                </div>
+                
+                <div class="group text-center reveal p-6 rounded-3xl hover:bg-white/5 transition-colors duration-300 border border-transparent hover:border-white/10 cursor-pointer" style="transition-delay: 100ms">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl md:text-4xl group-hover:bg-xarkiLight group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500 shadow-lg relative">
+                        <span class="absolute inset-0 bg-white/20 rounded-full animate-ping opacity-0 group-hover:opacity-100" style="animation-delay: 100ms"></span>
+                        🏷️
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-semibold mb-2 group-hover:text-xarkiLight transition-colors">Flowpack</h3>
+                    <p class="text-gray-400 text-sm md:text-base group-hover:text-gray-300 transition-colors">Protección y visibilidad</p>
+                </div>
+                
+                <div class="group text-center reveal p-6 rounded-3xl hover:bg-white/5 transition-colors duration-300 border border-transparent hover:border-white/10 cursor-pointer" style="transition-delay: 200ms">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl md:text-4xl group-hover:bg-xarkiLight group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500 shadow-lg relative">
+                        <span class="absolute inset-0 bg-white/20 rounded-full animate-ping opacity-0 group-hover:opacity-100" style="animation-delay: 200ms"></span>
+                        🍇
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-semibold mb-2 group-hover:text-xarkiLight transition-colors">Bandejas</h3>
+                    <p class="text-gray-400 text-sm md:text-base group-hover:text-gray-300 transition-colors">Cartón o compostables</p>
+                </div>
+                
+                <div class="group text-center reveal p-6 rounded-3xl hover:bg-white/5 transition-colors duration-300 border border-transparent hover:border-white/10 cursor-pointer" style="transition-delay: 300ms">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl md:text-4xl group-hover:bg-xarkiLight group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500 shadow-lg relative">
+                        <span class="absolute inset-0 bg-white/20 rounded-full animate-ping opacity-0 group-hover:opacity-100" style="animation-delay: 300ms"></span>
+                        🕸️
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-semibold mb-2 group-hover:text-xarkiLight transition-colors">Mallas</h3>
+                    <p class="text-gray-400 text-sm md:text-base group-hover:text-gray-300 transition-colors">Formatos biodegradables</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- CONTACT SECTION: Lead generation form and company details                    -->
+    <!-- Features: Interactive form inputs, dynamic hover states                      -->
+    <!-- Mobile Padding: Inner div handles specific padding requirements              -->
+    <!-- ============================================================================ -->
+    <section id="contacto" class="py-20 md:py-32 bg-gray-50 relative" data-section="contact">
+        <!-- Abstract wave background -->
+        <svg class="absolute bottom-0 left-0 w-full h-auto text-white pointer-events-none" viewBox="0 0 1440 320" fill="currentColor"><path d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,229.3C960,213,1056,171,1152,160C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+
+        <div class="container mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+            <div class="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden reveal">
+                <div class="grid md:grid-cols-5">
+                    <!-- Contact Info Column -->
+                    <div class="md:col-span-2 p-10 md:p-14 bg-gradient-to-br from-xarkiDark to-[#0f3618] text-white relative overflow-hidden">
+                        <!-- BG Rings -->
+                        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full border-[30px] border-white/5 pointer-events-none"></div>
+                        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full border-[40px] border-xarkiLight/10 pointer-events-none"></div>
+                        
+                        <div class="relative z-10">
+                            <h2 class="text-3xl md:text-4xl font-bold mb-6">Agenda tu Videollamada</h2>
+                            <p class="mb-12 text-gray-300 text-base md:text-lg">Descubre cómo podemos optimizar tu cadena de suministro en Europa. Respondedores en menos de 24h.</p>
+                            
+                            <div class="space-y-8 text-base">
+                                <div class="flex items-start group">
+                                    <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mr-5 shrink-0 group-hover:bg-xarkiLight group-hover:-translate-y-1 transition-all duration-300 text-xl">📍</div>
+                                    <div class="pt-1 group-hover:text-gray-200 transition-colors">Barriada El Trapiche,<br>Cortijo Armario S/N,<br>29719 Vélez-Málaga, Málaga</div>
+                                </div>
+                                <div class="flex items-center group">
+                                    <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mr-5 shrink-0 group-hover:bg-xarkiLight group-hover:-translate-y-1 transition-all duration-300 text-xl">📞</div>
+                                    <div class="font-semibold text-lg group-hover:text-gray-200 transition-colors">952 50 08 27</div>
+                                </div>
+                                <div class="flex items-center group">
+                                    <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mr-5 shrink-0 group-hover:bg-xarkiLight group-hover:-translate-y-1 transition-all duration-300 text-xl">✉️</div>
+                                    <div class="group-hover:text-gray-200 transition-colors">servicios@xarki.es</div>
+                                </div>
+                                <div class="flex items-center group">
+                                    <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mr-5 shrink-0 group-hover:bg-xarkiLight group-hover:-translate-y-1 transition-all duration-300 text-xl">👤</div>
+                                    <div class="group-hover:text-gray-200 transition-colors">Sergio Henao</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Contact Form Column -->
+                    <div class="md:col-span-3 p-10 md:p-14 bg-white">
+                        <form class="space-y-8">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div class="group">
+                                    <label class="block text-sm font-bold mb-2 text-gray-700 group-focus-within:text-xarkiLight transition-colors">Nombre Completo</label>
+                                    <input type="text" name="full_name" required class="w-full p-4 bg-gray-50 rounded-xl border-2 border-transparent focus:bg-white focus:border-xarkiLight focus:ring-0 outline-none transition-all duration-300 focus:-translate-y-1 focus:shadow-lg">
+                                </div>
+                                <div class="group">
+                                    <label class="block text-sm font-bold mb-2 text-gray-700 group-focus-within:text-xarkiLight transition-colors">Empresa</label>
+                                    <input type="text" name="company" required class="w-full p-4 bg-gray-50 rounded-xl border-2 border-transparent focus:bg-white focus:border-xarkiLight focus:ring-0 outline-none transition-all duration-300 focus:-translate-y-1 focus:shadow-lg">
+                                </div>
+                            </div>
+                            <div class="group">
+                                <label class="block text-sm font-bold mb-2 text-gray-700 group-focus-within:text-xarkiLight transition-colors">Correo Electrónico</label>
+                                <input type="email" name="email" required class="w-full p-4 bg-gray-50 rounded-xl border-2 border-transparent focus:bg-white focus:border-xarkiLight focus:ring-0 outline-none transition-all duration-300 focus:-translate-y-1 focus:shadow-lg">
+                            </div>
+                            <div class="group">
+                                <label class="block text-sm font-bold mb-2 text-gray-700 group-focus-within:text-xarkiLight transition-colors">¿En qué podemos ayudarte?</label>
+                                <textarea rows="4" name="message" class="w-full p-4 bg-gray-50 rounded-xl border-2 border-transparent focus:bg-white focus:border-xarkiLight focus:ring-0 outline-none transition-all duration-300 focus:-translate-y-1 focus:shadow-lg resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="btn-shine w-full bg-xarkiDark text-white font-bold py-5 rounded-xl hover:bg-xarkiLight transition-all duration-500 shadow-xl hover:shadow-2xl text-lg flex justify-center items-center group">
+                                Enviar Mensaje
+                                <svg class="w-6 h-6 ml-3 transform group-hover:translate-x-2 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- FOOTER SECTION: Copyright, legal links, and secondary branding               -->
+    <!-- Features: Logo integration, strict 2025 copyright date enforcement           -->
+    <!-- Mobile Padding: Content centered on mobile, aligned on desktop               -->
+    <!-- ============================================================================ -->
+    <footer class="py-14 bg-white border-t border-gray-200" data-section="footer">
+        <div class="container mx-auto px-4 md:px-8 lg:px-12 text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-10">
+                <div class="flex items-center mb-8 md:mb-0">
+                    <!-- Footer Logo -->
+                    <a href="#inicio" aria-label="Volver a Inicio" class="group">
+                        <span class="text-2xl md:text-3xl font-extrabold text-gray-800 tracking-widest opacity-70 group-hover:opacity-100 group-hover:text-xarkiLight transition-all duration-500">XARKI</span>
+                    </a>
+                </div>
+                <div class="flex flex-wrap justify-center space-x-6 md:space-x-10 text-sm md:text-base font-medium text-gray-500">
+                    <a href="#" class="hover:text-xarkiLight hover:-translate-y-1 transition-all duration-300">Política de Privacidad</a>
+                    <a href="#" class="hover:text-xarkiLight hover:-translate-y-1 transition-all duration-300">Aviso Legal</a>
+                    <a href="#" class="hover:text-xarkiLight hover:-translate-y-1 transition-all duration-300">Cookies</a>
+                </div>
+            </div>
+            <div class="text-sm md:text-base text-gray-400 border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <span>Xarki Services © 2025 | Todos los derechos reservados.</span>
+                <span class="mt-4 md:mt-0 font-medium text-gray-500">Expertos en logística agroalimentaria</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================================ -->
+    <!-- JAVASCRIPT: Interactivity and UI behaviors                                   -->
+    <!-- Features: Advanced scroll reveal, counter animation, sticky navbar, parallax -->
+    <!-- ============================================================================ -->
+    
+<script src="https://paymegpt.com/widget.js" data-widget="51546375" async></script>
+  <script src="script.js"></script>
+</body>
+</html>
