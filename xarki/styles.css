@@ -1,0 +1,101 @@
+/* ===== HERO SECTION STYLES ===== */
+        /* Background gradient overlay on top of the hero image with zoom effect */
+        /* Breakpoints: mobile-first approach */
+        .hero-gradient {
+            background: linear-gradient(rgba(26, 92, 42, 0.85), rgba(26, 92, 42, 0.95)), url('https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+            animation: bgZoom 20s infinite alternate linear;
+        }
+
+        @keyframes bgZoom {
+            from { background-size: 100% auto; }
+            to { background-size: 110% auto; }
+        }
+
+        /* ===== SCROLL REVEAL ANIMATIONS ===== */
+        /* Hides elements initially and smoothly translates them with scale */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ===== NAVBAR SCROLLED STATE ===== */
+        /* Applied via JavaScript when user scrolls down */
+        .nav-scrolled {
+            background-color: rgba(26, 92, 42, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===== CUSTOM KEYFRAMES & EFFECTS ===== */
+        /* Subtle bouncing animation for interactive elements */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+        .animate-float-delayed { animation: float 4s ease-in-out 2s infinite; }
+
+        /* Button Shine Effect */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(45deg) translateX(-100%);
+            transition: all 0.3s ease;
+        }
+        .btn-shine:hover::after {
+            animation: shine 1.5s ease-out infinite;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); opacity: 1; }
+            100% { transform: translateX(100%) rotate(45deg); opacity: 0; }
+        }
+
+        /* Pulse shadow for primary CTAs */
+        @keyframes pulse-shadow {
+            0% { box-shadow: 0 0 0 0 rgba(74, 158, 92, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(74, 158, 92, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(74, 158, 92, 0); }
+        }
+        .animate-pulse-shadow { animation: pulse-shadow 2s infinite; }
+
+        /* Card 3D tilt perspective wrapper */
+        .tilt-wrapper {
+            perspective: 1000px;
+        }
