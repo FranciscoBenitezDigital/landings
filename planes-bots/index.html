@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+<!-- BASE:START (managed by Coding Agent — do not edit) -->
+<base href="/landings/">
+<!-- BASE:END -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  
+  
+
+<!-- SEO Meta Tags -->
+<title>Argem planes de bots</title>
+<meta property="og:title" content="Argem planes de bots" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Argem planes de bots" />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=3810');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='fN67Ab';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="h-full antialiased bg-gradient-dark text-slate-100 dark:text-slate-100">
+  <div class="min-h-screen flex flex-col relative">
+    <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+    
+    <!-- ================================================================================ -->
+    <!-- HEADER (sin cambios)                                                             -->
+    <!-- ================================================================================ -->
+    <header class="header-sticky glass-effect py-4 sm:py-5 border-b border-electric/20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between mb-4 sm:mb-0">
+          <div class="flex items-center gap-3">
+            <img src="https://fbdigitalplaza.com/wp-content/uploads/2025/12/LOGO-FINALFINAL-OKOK-1.png" 
+                 alt="Francisco Benítez Digital" 
+                 class="h-10 sm:h-12 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300">
+            <span class="text-white font-bold text-sm sm:text-base hidden sm:inline">Francisco Benítez Digital</span>
+          </div>
+          <nav class="hidden md:flex items-center gap-8">
+            <a href="#inicio" class="text-slate-300 hover:text-electric transition text-sm font-medium">Inicio</a>
+            <a href="#acerca" class="text-slate-300 hover:text-electric transition text-sm font-medium">Acerca de</a>
+            <a href="#servicios" class="text-slate-300 hover:text-electric transition text-sm font-medium">Servicios</a>
+            <a href="#cursos" class="text-slate-300 hover:text-electric transition text-sm font-medium">Cursos</a>
+          </nav>
+          <div class="hidden md:flex items-center gap-4">
+            <a href="#" class="text-slate-400 hover:text-electric transition" title="Facebook">
+              <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" class="text-slate-400 hover:text-electric transition" title="Instagram">
+              <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0m5.521 17.948c-3.832.645-7.218.645-10.996 0-3.284-.533-3.666-1.504-3.666-5.603 0-4.257.278-5.066 3.666-5.599 3.778-.645 7.164-.645 10.996 0 3.284.533 3.666 1.504 3.666 5.599 0 4.257-.278 5.066-3.666 5.603zm-4.329-9.614c-1.269-.033-2.542.114-3.691.438-.968.267-1.611 1.025-1.76 1.953-.166 1.016.454 1.926 1.555 2.129 1.907.35 3.848.35 5.754 0 1.101-.203 1.721-1.113 1.555-2.129-.149-.928-.792-1.686-1.76-1.953-1.149-.324-2.422-.471-3.691-.438z"/></svg>
+            </a>
+            <a href="#" class="text-slate-400 hover:text-electric transition" title="TikTok">
+              <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.1 1.82 2.89 2.89 0 0 1 2.31-4.64 2.86 2.86 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-.54-.05z"/></svg>
+            </a>
+            <a href="#" class="text-slate-400 hover:text-electric transition" title="YouTube">
+              <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+        <nav class="md:hidden flex flex-wrap gap-4 text-xs sm:text-sm">
+          <a href="#inicio" class="text-slate-300 hover:text-electric transition font-medium">Inicio</a>
+          <a href="#acerca" class="text-slate-300 hover:text-electric transition font-medium">Acerca de</a>
+          <a href="#servicios" class="text-slate-300 hover:text-electric transition font-medium">Servicios</a>
+          <a href="#cursos" class="text-slate-300 hover:text-electric transition font-medium">Cursos</a>
+        </nav>
+        <div class="md:hidden flex items-center gap-3 mt-4 pt-4 border-t border-electric/20">
+          <a href="#" class="text-slate-400 hover:text-electric transition" title="Facebook">
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="text-slate-400 hover:text-electric transition" title="Instagram">
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0m5.521 17.948c-3.832.645-7.218.645-10.996 0-3.284-.533-3.666-1.504-3.666-5.603 0-4.257.278-5.066 3.666-5.599 3.778-.645 7.164-.645 10.996 0 3.284.533 3.666 1.504 3.666 5.599 0 4.257-.278 5.066-3.666 5.603zm-4.329-9.614c-1.269-.033-2.542.114-3.691.438-.968.267-1.611 1.025-1.76 1.953-.166 1.016.454 1.926 1.555 2.129 1.907.35 3.848.35 5.754 0 1.101-.203 1.721-1.113 1.555-2.129-.149-.928-.792-1.686-1.76-1.953-1.149-.324-2.422-.471-3.691-.438z"/></svg>
+          </a>
+          <a href="#" class="text-slate-400 hover:text-electric transition" title="TikTok">
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.1 1.82 2.89 2.89 0 0 1 2.31-4.64 2.86 2.86 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-.54-.05z"/></svg>
+          </a>
+          <a href="#" class="text-slate-400 hover:text-electric transition" title="YouTube">
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================================================================================ -->
+    <!-- HERO SECTION (sin cambios)                                                       -->
+    <!-- ================================================================================ -->
+    <section id="inicio" class="relative overflow-hidden pt-16 pb-20 sm:pt-24 sm:pb-32 lg:pt-32 lg:pb-40">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-electric/5 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand/5 rounded-full blur-3xl"></div>
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="fade-in-up">
+            <div class="inline-flex items-center gap-2 rounded-full border border-electric/50 bg-electric/10 px-4 py-2 text-xs font-semibold mb-6">
+              <span class="h-2 w-2 rounded-full bg-electric animate-pulse"></span>
+              Solución de chatbots con IA
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6">
+              Chatbots con IA que responden <span class="gradient-accent">24/7</span> y no dejan ningún mensaje sin atender
+            </h1>
+            <p class="text-base sm:text-lg text-slate-300 mb-8 max-w-xl leading-relaxed">
+              Conectamos tus redes sociales y WhatsApp con un sistema inteligente que atiende al instante, clasifica tus mensajes y convierte más consultas en clientes sin que tengas que estar pegado al celular.
+            </p>
+            <div class="space-y-3 mb-10">
+              <div class="flex items-start gap-3"><svg width="24" height="24" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-1"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-slate-200 text-sm sm:text-base">Respuestas inmediatas 24/7 en web y WhatsApp.</span></div>
+              <div class="flex items-start gap-3"><svg width="24" height="24" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-1"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-slate-200 text-sm sm:text-base">Captura automática de datos y clasificación de prospectos.</span></div>
+              <div class="flex items-start gap-3"><svg width="24" height="24" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-1"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-slate-200 text-sm sm:text-base">Seguimiento organizado para no dejar conversaciones a medias.</span></div>
+              <div class="flex items-start gap-3"><svg width="24" height="24" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-1"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-slate-200 text-sm sm:text-base">Tú solo entras a cerrar ventas, no a contestar preguntas repetidas.</span></div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 mb-8">
+              <a href="https://wa.link/xerimp" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg px-6 sm:px-8 py-3 sm:py-4 font-semibold btn-primary text-center">Quiero ver un demo de chatbot</a>
+              <a href="#planes" class="inline-flex items-center justify-center rounded-lg btn-secondary px-6 sm:px-8 py-3 sm:py-4 font-semibold text-center">Conocer planes y precios</a>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed max-w-sm">Al hacer clic aceptas que te contacte por WhatsApp o email solo para darte más información sobre este servicio. No hacemos spam.</p>
+          </div>
+          <div class="relative hidden lg:block">
+            <div class="absolute -inset-4 bg-gradient-to-r from-electric/10 to-brand/10 blur-3xl rounded-3xl"></div>
+            <div class="relative rounded-2xl border border-electric/30 glass-effect p-8 shadow-neon">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="rounded-xl bg-gradient-to-br from-electric/10 to-brand/10 border border-electric/20 p-4 card-hover"><div class="h-10 w-10 rounded-lg bg-electric/20 flex items-center justify-center mb-3"><svg width="20" height="20" viewBox="0 0 24 24" class="text-electric"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg></div><div class="text-sm font-semibold text-white">Responde al instante</div><p class="mt-1 text-xs text-slate-400">Mensajes automáticos en WhatsApp, Instagram y web.</p></div>
+                <div class="rounded-xl bg-gradient-to-br from-electric/10 to-brand/10 border border-electric/20 p-4 card-hover"><div class="h-10 w-10 rounded-lg bg-electric/20 flex items-center justify-center mb-3"><svg width="20" height="20" viewBox="0 0 24 24" class="text-electric"><path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div><div class="text-sm font-semibold text-white">Nutre y califica</div><p class="mt-1 text-xs text-slate-400">Flujos que hacen preguntas clave y registran respuestas.</p></div>
+                <div class="rounded-xl bg-gradient-to-br from-electric/10 to-brand/10 border border-electric/20 p-4 card-hover"><div class="h-10 w-10 rounded-lg bg-electric/20 flex items-center justify-center mb-3"><svg width="20" height="20" viewBox="0 0 24 24" class="text-electric"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg></div><div class="text-sm font-semibold text-white">Mayor control</div><p class="mt-1 text-xs text-slate-400">Resumen de conversaciones, etiquetas e intereses.</p></div>
+                <div class="rounded-xl bg-gradient-to-br from-electric/10 to-brand/10 border border-electric/20 p-4 card-hover"><div class="h-10 w-10 rounded-lg bg-electric/20 flex items-center justify-center mb-3"><svg width="20" height="20" viewBox="0 0 24 24" class="text-electric"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div><div class="text-sm font-semibold text-white">Integrado a campañas</div><p class="mt-1 text-xs text-slate-400">Conexión con anuncios y formularios para no perder leads.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-16 sm:mt-20 pt-12 border-t border-electric/20">
+          <p class="text-center text-xs sm:text-sm text-slate-400 mb-6 sm:mb-8">Funciona con:</p>
+          <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-10 mb-6">
+            <div class="flex items-center gap-2 text-slate-300"><span class="text-sm sm:text-base font-bold text-slate-400">Make</span></div>
+            <div class="flex items-center gap-2 text-slate-300"><span class="text-sm sm:text-base font-bold text-slate-400">n8n</span></div>
+            <div class="flex items-center gap-2 text-slate-300"><span class="text-sm sm:text-base font-bold text-electric">Whapify</span></div>
+            <div class="flex items-center gap-2 text-slate-300"><span class="text-sm sm:text-base font-bold text-slate-400">Google</span></div>
+            <div class="flex items-center gap-2 text-slate-300"><span class="text-sm sm:text-base font-bold text-slate-400">OpenAI</span></div>
+            <div class="flex items-center gap-2 text-slate-300"><span class="text-sm sm:text-base font-bold text-slate-400">Meta Ads</span></div>
+          </div>
+          <p class="text-center text-xs sm:text-sm text-slate-400">Powered by Whapify — Partner autorizado de Meta</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================================ -->
+    <!-- PROBLEM / SOLUTION SECTION (sin cambios)                                          -->
+    <!-- ================================================================================ -->
+    <section id="problema-solucion" class="py-16 sm:py-24 lg:py-32 border-t border-electric/20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
+          <div>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black mb-4 sm:mb-6 text-white">Lo que hoy estás perdiendo por no tener un chatbot con IA</h2>
+            <p class="text-sm sm:text-base text-slate-300 mb-8 leading-relaxed">Muchos negocios dejan oportunidades en el camino sin saberlo. Aquí están los problemas más comunes:</p>
+            <div class="space-y-4 sm:space-y-6">
+              <div class="flex gap-3 sm:gap-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-red-500/20 text-red-400 text-lg font-bold">✕</div></div><div><h3 class="font-semibold text-white text-sm sm:text-base mb-1">Mensajes sin responder en horarios fuera de oficina.</h3><p class="text-xs sm:text-sm text-slate-400">Las personas escriben fuera de tu horario y nunca vuelven a intentarlo.</p></div></div>
+              <div class="flex gap-3 sm:gap-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-red-500/20 text-red-400 text-lg font-bold">✕</div></div><div><h3 class="font-semibold text-white text-sm sm:text-base mb-1">Personas que preguntan una vez y nunca vuelven porque nadie contestó.</h3><p class="text-xs sm:text-sm text-slate-400">Pierdes clientes potenciales por simple falta de respuesta rápida.</p></div></div>
+              <div class="flex gap-3 sm:gap-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-red-500/20 text-red-400 text-lg font-bold">✕</div></div><div><h3 class="font-semibold text-white text-sm sm:text-base mb-1">Tiempo del equipo ocupado contestando preguntas repetidas.</h3><p class="text-xs sm:text-sm text-slate-400">Tu equipo gasta energía en "¿Cuál es tu horario?" en lugar de cerrar ventas.</p></div></div>
+              <div class="flex gap-3 sm:gap-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-red-500/20 text-red-400 text-lg font-bold">✕</div></div><div><h3 class="font-semibold text-white text-sm sm:text-base mb-1">Datos de clientes dispersos en chats sin registro.</h3><p class="text-xs sm:text-sm text-slate-400">No sabes cuántas consultas vinieron, de dónde o qué dijeron exactamente.</p></div></div>
+              <div class="flex gap-3 sm:gap-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-red-500/20 text-red-400 text-lg font-bold">✕</div></div><div><h3 class="font-semibold text-white text-sm sm:text-base mb-1">Oportunidades perdidas al no dar seguimiento automático.</h3><p class="text-xs sm:text-sm text-slate-400">Sin automatización, los leads se enfrían y se van a la competencia.</p></div></div>
+              <div class="flex gap-3 sm:gap-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-red-500/20 text-red-400 text-lg font-bold">✕</div></div><div><h3 class="font-semibold text-white text-sm sm:text-base mb-1">Dificultad para medir cuántas consultas llegan por cada canal.</h3><p class="text-xs sm:text-sm text-slate-400">Sin datos claros, no sabes dónde invertir tu presupuesto de marketing.</p></div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="absolute -inset-4 bg-gradient-to-r from-electric/10 to-brand/10 blur-3xl rounded-3xl"></div>
+            <div class="relative rounded-2xl border border-electric/30 glass-effect p-6 sm:p-8 lg:p-10 shadow-neon">
+              <h3 class="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-electric">Cómo el chatbot resuelve esto:</h3>
+              <div class="space-y-4 sm:space-y-6">
+                <div class="pb-4 sm:pb-6 border-b border-electric/20 last:border-0"><div class="flex items-start gap-3 mb-2"><svg width="20" height="20" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-1"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="font-semibold text-white text-sm sm:text-base">Responde de inmediato aunque sea de madrugada.</span></div><p class="text-xs sm:text-sm text-slate-400 ml-8">El bot está siempre disponible, sin descansos ni fines de semana.</p></div>
+                <div class="pb-4 sm:pb-6 border-b border-electric/20 last:border-0"><div class="flex items-start gap-3 mb-2"><svg width="20" height="20" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-1"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="font-semibold text-white text-sm sm:text-base">Guarda nombre, teléfono e interés de cada persona.</span></div><p class="text-xs sm:text-sm text-slate-400 ml-8">Todos los datos se registran automáticamente en tu CRM.</p></div>
+                <div class="pb-4 sm:pb-6 border-b border-electric/20 last:border-0"><div class="flex items-start gap-3 mb-2"><svg width="20" height="20" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-1"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="font-semibold text-white text-sm sm:text-base">Envía recordatorios, PDFs, links o calendarios automáticamente.</span></div><p class="text-xs sm:text-sm text-slate-400 ml-8">El seguimiento ocurre sin que tengas que hacer nada manualmente.</p></div>
+                <div class="pb-4 sm:pb-6 border-b border-electric/20 last:border-0"><div class="flex items-start gap-3 mb-2"><svg width="20" height="20" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-1"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="font-semibold text-white text-sm sm:text-base">Clasifica contactos según tipo de servicio o producto.</span></div><p class="text-xs sm:text-sm text-slate-400 ml-8">Sabes exactamente quién busca qué y por dónde llegó.</p></div>
+                <div class="pb-4 sm:pb-6 border-b border-electric/20 last:border-0"><div class="flex items-start gap-3 mb-2"><svg width="20" height="20" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-1"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="font-semibold text-white text-sm sm:text-base">Envía reportes con números claros de consultas y conversaciones.</span></div><p class="text-xs sm:text-sm text-slate-400 ml-8">Mide el ROI de cada canal y toma decisiones basadas en datos.</p></div>
+                <div class="pb-4 sm:pb-6 border-b border-electric/20 last:border-0"><div class="flex items-start gap-3 mb-2"><svg width="20" height="20" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-1"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="font-semibold text-white text-sm sm:text-base">Permite que tu equipo se enfoque en cerrar, no en contestar.</span></div><p class="text-xs sm:text-sm text-slate-400 ml-8">Tu equipo solo ve los leads calificados y listos para vender.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================================ -->
+    <!-- PRICING SECTION (MODIFICADA según requerimientos)                                -->
+    <!-- ================================================================================ -->
+    <section id="planes" class="py-16 sm:py-24 lg:py-32 border-t border-electric/20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black mb-4 text-white">Planes pensados para diferentes niveles de crecimiento</h2>
+          <p class="text-sm sm:text-base text-slate-300 mb-3">Precios en pesos mexicanos (MXN). Setup inicial único + mantenimiento mensual.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 sm:gap-8 mb-12">
+          <!-- PLAN 1 – Presencia IA -->
+          <div class="rounded-2xl border border-electric/30 glass-effect p-6 sm:p-8 card-hover flex flex-col">
+            <div class="mb-6">
+              <h3 class="text-xl sm:text-2xl font-bold mb-2 text-white">Presencia IA</h3>
+              <p class="text-slate-400 text-xs sm:text-sm">Para negocios que quieren empezar con IA en web y redes sin complicarse.</p>
+            </div>
+            <div class="mb-4 pb-4 border-b border-electric/20">
+              <div class="mb-2"><span class="text-3xl sm:text-4xl font-black text-electric">MX$2,000</span><span class="text-slate-400 text-xs sm:text-sm"> + IVA</span></div>
+              <div class="text-xs sm:text-sm text-slate-300">Setup inicial único</div>
+            </div>
+            <div class="mb-8 pb-4 border-b border-electric/20">
+              <div class="mb-2"><span class="text-2xl sm:text-3xl font-black text-electric">MX$3,000</span><span class="text-slate-400 text-xs sm:text-sm"> + IVA</span></div>
+              <div class="text-xs sm:text-sm text-slate-300">Mantenimiento mensual</div>
+              <div class="text-xs text-slate-400 mt-2 italic">*Considerar $50 USD adicionales por Whapify + variable por tokens de OpenAI</div>
+            </div>
+            <div class="space-y-3 mb-8 flex-grow">
+              <div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Chatbot en sitio web (widget de chat integrado).</span></div>
+              <div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Atención automática en mensajes de Facebook e Instagram.</span></div>
+              <div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">App móvil para ver y gestionar conversaciones.</span></div>
+              <div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Contactos y conversaciones ilimitadas en los canales conectados.</span></div>
+              <div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Burbuja de chat personalizada con colores y mensaje de bienvenida.</span></div>
+              <div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Sesión de capacitación inicial para usar el sistema.</span></div>
+              <!-- Nueva característica común a los 3 planes -->
+              <div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Contesta en automático y de manera humana todos los comentarios en Facebook e Instagram.</span></div>
+            </div>
+            <a href="#contacto" class="w-full inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold btn-primary text-center text-sm sm:text-base">Elegir plan</a>
+          </div>
+
+          <!-- PLAN 2 – Omnicanal IA (Más popular) -->
+          <div class="rounded-2xl border-2 border-electric glass-effect p-6 sm:p-8 card-hover relative flex flex-col">
+            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2"><span class="bg-gradient-to-r from-electric to-brand text-darkBg text-xs font-bold px-3 py-1 rounded-full">MÁS POPULAR</span></div>
+            <div class="mb-6">
+              <h3 class="text-xl sm:text-2xl font-bold mb-2 text-white">Omnicanal IA</h3>
+              <p class="text-slate-400 text-xs sm:text-sm">Para negocios que quieren conectar web, redes sociales, WhatsApp y necesitan orden, CRM y campañas.</p>
+            </div>
+            <div class="mb-4 pb-4 border-b border-electric/20">
+              <div class="mb-2"><span class="text-3xl sm:text-4xl font-black text-electric">MX$4,000</span><span class="text-slate-400 text-xs sm:text-sm"> + IVA</span></div>
+              <div class="text-xs sm:text-sm text-slate-300">Setup inicial único</div>
+            </div>
+            <div class="mb-8 pb-4 border-b border-electric/20">
+              <div class="mb-2"><span class="text-2xl sm:text-3xl font-black text-electric">MX$5,000</span><span class="text-slate-400 text-xs sm:text-sm"> + IVA</span></div>
+              <div class="text-xs sm:text-sm text-slate-300">Mantenimiento mensual</div>
+              <div class="text-xs text-slate-400 mt-2 italic">*Considerar $50 USD adicionales por Whapify + variable por tokens de OpenAI</div>
+            </div>
+            <div class="space-y-3 mb-8 flex-grow">
+              <p class="text-xs text-slate-400 font-semibold">TODO lo del Plan Presencia IA, más:</p>
+              <div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">WhatsApp API integrado para atención automatizada 24/7.</span></div>
+              <div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Respuestas en inbox de TikTok (si aplica).</span></div>
+              <div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">CRM interno con contactos y pipelines definidos.</span></div>
+              <div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Envío masivo a listas de contactos segmentadas.</span></div>
+              <div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Integración con Pixel de Meta (eventos estándar y personalizados).</span></div>
+              <!-- Se eliminó la línea "1 sesión mensual de revisión" -->
+            </div>
+            <a href="#contacto" class="w-full inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold btn-primary text-center text-sm sm:text-base">Elegir plan</a>
+          </div>
+
+          <!-- PLAN 3 – Automatización 360 -->
+          <div class="rounded-2xl border border-electric/30 glass-effect p-6 sm:p-8 card-hover flex flex-col">
+            <div class="mb-6">
+              <h3 class="text-xl sm:text-2xl font-bold mb-2 text-white">Automatización 360</h3>
+              <p class="text-slate-400 text-xs sm:text-sm">Para negocios que quieren conectar e-commerce, campañas y automatizaciones externas avanzadas.</p>
+            </div>
+            <div class="mb-4 pb-4 border-b border-electric/20">
+              <div class="mb-2"><span class="text-3xl sm:text-4xl font-black text-electric">MX$6,000</span><span class="text-slate-400 text-xs sm:text-sm"> + IVA</span></div>
+              <div class="text-xs sm:text-sm text-slate-300">Setup inicial único</div>
+            </div>
+            <div class="mb-8 pb-4 border-b border-electric/20">
+              <div class="mb-2"><span class="text-2xl sm:text-3xl font-black text-electric">MX$7,500</span><span class="text-slate-400 text-xs sm:text-sm"> + IVA</span></div>
+              <div class="text-xs sm:text-sm text-slate-300">Mantenimiento mensual</div>
+              <div class="text-xs text-slate-400 mt-2 italic">*Considerar $50 USD adicionales por Whapify + variable por tokens de OpenAI</div>
+            </div>
+            <div class="space-y-3 mb-8 flex-grow">
+              <p class="text-xs text-slate-400 font-semibold">TODO lo del Plan Omnicanal IA, más:</p>
+              <div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Integración con e-commerce (productos ilimitados y pagos).</span></div>
+              <div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Automatización de campañas conectadas a Meta Ads.</span></div>
+              <!-- Reemplazo: en lugar de catálogos y webhooks, ahora: -->
+              <div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Envío de eventos personalizados a Meta para optimización de campañas.</span></div>
+              <!-- Se eliminaron las 2 sesiones mensuales -->
+            </div>
+            <a href="#contacto" class="w-full inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold btn-primary text-center text-sm sm:text-base">Elegir plan</a>
+          </div>
+        </div>
+
+        <!-- Important Notice Card (sin cambios) -->
+        <div class="rounded-2xl border border-electric/30 glass-effect p-6 sm:p-8 bg-electric/5">
+          <h3 class="text-lg sm:text-xl font-bold text-electric mb-3 uppercase">Importante</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3">
+            Los precios de Setup y Mantenimiento no incluyen la suscripción a la plataforma del chatbot (Whapify ~$50 USD/mes) ni el consumo de la API de OpenAI (costo variable según uso). Estos conceptos se pagan directamente a los proveedores por parte del cliente. 
+          </p>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <span class="font-semibold text-electric">Adicional por Whapify:</span> $50 USD/mes (pago directo) + <span class="font-semibold text-electric">OpenAI:</span> costo variable (~$20–$60 USD/mes de ejemplo). Ver detalles en la sección "Herramientas que usa tu sistema" abajo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================================ -->
+    <!-- TOOLS & PLATFORMS SECTION (sin cambios)                                           -->
+    <!-- ================================================================================ -->
+    <section id="herramientas" class="py-16 sm:py-24 lg:py-32 border-t border-electric/20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black mb-4 text-white">Herramientas que usa tu sistema (pagadas a tu nombre)</h2>
+          <p class="text-sm sm:text-base text-slate-300">Transparencia total: tú pagas directamente a los proveedores. Sin recargos ni comisiones ocultas.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 sm:gap-8 mb-12">
+          <div class="rounded-2xl border border-electric/30 glass-effect p-6 sm:p-8 card-hover">
+            <div class="flex items-start gap-4 mb-6"><div class="h-12 w-12 sm:h-14 sm:w-14 rounded-xl bg-gradient-to-br from-electric to-brand flex items-center justify-center flex-shrink-0"><svg width="28" height="28" viewBox="0 0 24 24" class="text-white"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg></div><div><h3 class="text-xl sm:text-2xl font-bold mb-1 text-white">Whapify</h3><p class="text-slate-400 text-xs sm:text-sm">Plataforma de chatbot omnicanal</p></div></div>
+            <div class="mb-6 p-4 rounded-lg bg-electric/10 border border-electric/20"><div class="text-2xl sm:text-3xl font-black text-electric mb-1">≈ $50 USD/mes</div><p class="text-xs sm:text-sm text-slate-300">Plan recomendado para este tipo de flujo</p></div>
+            <div class="space-y-3"><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Consolida tus contactos y chats de web, WhatsApp y redes.</span></div><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Incluye app móvil para monitorear conversaciones.</span></div><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">CRM, etiquetas y reportes básicos incluidos.</span></div></div>
+          </div>
+          <div class="rounded-2xl border border-electric/30 glass-effect p-6 sm:p-8 card-hover">
+            <div class="flex items-start gap-4 mb-6"><div class="h-12 w-12 sm:h-14 sm:w-14 rounded-xl bg-gradient-to-br from-electric to-brand flex items-center justify-center flex-shrink-0"><svg width="28" height="28" viewBox="0 0 24 24" class="text-white"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg></div><div><h3 class="text-xl sm:text-2xl font-bold mb-1 text-white">OpenAI</h3><p class="text-slate-400 text-xs sm:text-sm">Modelo de IA que responde dentro de tu chatbot</p></div></div>
+            <div class="mb-6 p-4 rounded-lg bg-electric/10 border border-electric/20"><div class="text-2xl sm:text-3xl font-black text-electric mb-1">Variable</div><p class="text-xs sm:text-sm text-slate-300">Consumo según uso (ejemplo: $20–$60 USD/mes)</p></div>
+            <div class="space-y-3"><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Pago por uso, según la cantidad de mensajes procesados.</span></div><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Permite respuestas más humanas y contextuales.</span></div><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">No se almacena información sensible más allá de lo necesario.</span></div></div>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-electric/30 glass-effect p-6 sm:p-8">
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-6">Ejemplo de costo total mensual (recurrente)</h3>
+          <div class="overflow-x-auto mb-6">
+            <table class="w-full text-xs sm:text-sm">
+              <thead><tr class="border-b border-electric/20"><th class="text-left py-3 px-3 font-semibold text-electric">Concepto</th><th class="text-right py-3 px-3 font-semibold text-electric">Monto (ejemplo)</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-electric/10 hover:bg-electric/5 transition"><td class="py-3 px-3 text-slate-200">Mantenimiento mensual (Plan Omnicanal IA)</td><td class="text-right py-3 px-3 text-electric font-semibold">MX$5,000 + IVA</td></tr>
+                <tr class="border-b border-electric/10 hover:bg-electric/5 transition"><td class="py-3 px-3 text-slate-200">Suscripción Whapify (pago directo)</td><td class="text-right py-3 px-3 text-electric font-semibold">$50 USD ≈ MX$1,000*</td></tr>
+                <tr class="border-b border-electric/10 hover:bg-electric/5 transition"><td class="py-3 px-3 text-slate-200">Consumo de OpenAI (ejemplo)</td><td class="text-right py-3 px-3 text-electric font-semibold">$30 USD ≈ MX$600*</td></tr>
+                <tr class="bg-electric/10 border-t-2 border-electric/30"><td class="py-3 px-3 text-white font-bold">Total aproximado mensual</td><td class="text-right py-3 px-3 text-electric font-black text-base sm:text-lg">MX$6,600 + IVA*</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-slate-400"><span class="font-semibold">Notas:</span> Los valores en USD se convierten a MXN solo como referencia (tipo de cambio aproximado 1 USD = 20 MXN). El costo de OpenAI varía según el volumen de mensajes. El setup inicial es único y no está incluido en esta tabla mensual. Todos los precios están sujetos a cambios por parte de los proveedores.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================================ -->
+    <!-- OWNERSHIP SECTION (sin cambios)                                                   -->
+    <!-- ================================================================================ -->
+    <section id="propiedad" class="py-16 sm:py-24 lg:py-32 border-t border-electric/20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black mb-4 text-white">Tus cuentas, tus datos, tus automatizaciones</h2>
+          <p class="text-sm sm:text-base text-slate-300">Eres dueño de todos tus activos digitales. Nada queda secuestrado en la cuenta de la agencia.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+          <div class="rounded-2xl border border-electric/30 glass-effect p-6 sm:p-8 card-hover"><h3 class="text-lg sm:text-xl font-bold text-electric mb-4">Cuentas a tu nombre</h3><div class="space-y-3"><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Todas las cuentas (WhatsApp, OpenAI, Meta, etc.) se crean a tu nombre o al de tu empresa.</span></div><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Tú tienes las contraseñas y accesos principales.</span></div><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Si cambias de agencia, no pierdes nada.</span></div></div></div>
+          <div class="rounded-2xl border border-electric/30 glass-effect p-6 sm:p-8 card-hover"><h3 class="text-lg sm:text-xl font-bold text-electric mb-4">Activos digitales propios</h3><div class="space-y-3"><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">El chatbot, sus flujos y plantillas se construyen para tu negocio.</span></div><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Puedes seguir usándolos aunque ya no trabajemos juntos.</span></div><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Queda documentado qué hace cada automatización.</span></div></div></div>
+          <div class="rounded-2xl border border-electric/30 glass-effect p-6 sm:p-8 card-hover"><h3 class="text-lg sm:text-xl font-bold text-electric mb-4">Transparencia total de costos</h3><div class="space-y-3"><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Sabes cuánto pagas a cada herramienta y cuánto a la agencia.</span></div><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">No hay recargos ocultos ni paquetes cerrados sin detalle.</span></div><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Puedes ajustar tu inversión según los resultados.</span></div></div></div>
+          <div class="rounded-2xl border border-electric/30 glass-effect p-6 sm:p-8 card-hover"><h3 class="text-lg sm:text-xl font-bold text-electric mb-4">Libertad de cambiar de agencia</h3><div class="space-y-3"><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Si algún día decides trabajar con otra persona, no pierdes tu sistema.</span></div><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Podemos entregarte acceso, documentación y credenciales.</span></div><div class="flex items-start gap-3"><svg width="18" height="18" viewBox="0 0 24 24" class="text-electric flex-shrink-0 mt-0.5"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg><span class="text-xs sm:text-sm text-slate-200">Busco relaciones a largo plazo, no clientes atados por obligación.</span></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================================ -->
+    <!-- ADVANTAGES SECTION (sin cambios)                                                  -->
+    <!-- ================================================================================ -->
+    <section id="ventajas" class="py-16 sm:py-24 lg:py-32 border-t border-electric/20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-2xl border border-electric/30 glass-effect p-8 sm:p-12">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-center mb-12 sm:mb-16 text-white">Ventajas de ser dueño de tus activos</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <div class="text-center"><div class="h-16 w-16 sm:h-20 sm:w-20 rounded-full bg-gradient-to-br from-electric to-brand flex items-center justify-center mx-auto mb-4"><svg width="32" height="32" viewBox="0 0 24 24" class="text-white"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div><h3 class="text-base sm:text-lg font-bold text-white mb-2">Control total</h3><p class="text-xs sm:text-sm text-slate-400">Decides qué se automatiza y cómo.</p></div>
+            <div class="text-center"><div class="h-16 w-16 sm:h-20 sm:w-20 rounded-full bg-gradient-to-br from-electric to-brand flex items-center justify-center mx-auto mb-4"><svg width="32" height="32" viewBox="0 0 24 24" class="text-white"><path fill="currentColor" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/></svg></div><h3 class="text-base sm:text-lg font-bold text-white mb-2">Patrimonio digital</h3><p class="text-xs sm:text-sm text-slate-400">Tu sistema de IA se convierte en un activo de tu negocio.</p></div>
+            <div class="text-center"><div class="h-16 w-16 sm:h-20 sm:w-20 rounded-full bg-gradient-to-br from-electric to-brand flex items-center justify-center mx-auto mb-4"><svg width="32" height="32" viewBox="0 0 24 24" class="text-white"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg></div><h3 class="text-base sm:text-lg font-bold text-white mb-2">Transparencia</h3><p class="text-xs sm:text-sm text-slate-400">Sabes qué se está haciendo y cuánto cuesta.</p></div>
+            <div class="text-center"><div class="h-16 w-16 sm:h-20 sm:w-20 rounded-full bg-gradient-to-br from-electric to-brand flex items-center justify-center mx-auto mb-4"><svg width="32" height="32" viewBox="0 0 24 24" class="text-white"><path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div><h3 class="text-base sm:text-lg font-bold text-white mb-2">Facilidad para escalar</h3><p class="text-xs sm:text-sm text-slate-400">Es más sencillo añadir nuevos canales, productos o campañas.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================================ -->
+    <!-- FINAL CTA SECTION (sin cambios)                                                   -->
+    <!-- ================================================================================ -->
+    <section id="contacto" class="py-16 sm:py-24 lg:py-32 bg-electric/5 border-t border-electric/20 relative overflow-hidden">
+      <div class="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center relative">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black mb-4 sm:mb-6 text-white">¿Listo para automatizar tu negocio?</h2>
+        <p class="text-sm sm:text-lg text-slate-300 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">Agenda una demostración sin compromiso. Te mostraremos exactamente cómo funcionaría el chatbot en tu caso específico.</p>
+        <div class="mx-auto max-w-2xl">
+          <div class="rounded-2xl border border-electric/30 glass-effect p-6 sm:p-10 shadow-neon">
+            <h3 class="text-lg sm:text-2xl font-bold mb-3 text-white">Contacto directo para tu demo</h3>
+            <p class="text-slate-300 text-sm sm:text-base mb-6 sm:mb-8">Escríbenos y coordinamos la demostración. Si ya viste un plan, menciona cuál te interesa para ir al grano.</p>
+            <div class="grid sm:grid-cols-2 gap-4 mb-8">
+              <a href="https://wa.link/xerimp" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg px-6 sm:px-8 py-3 sm:py-4 font-semibold btn-primary text-center text-sm sm:text-base">Contactar por WhatsApp</a>
+              <a href="mailto:contact@example.com" class="inline-flex items-center justify-center rounded-lg btn-secondary px-6 sm:px-8 py-3 sm:py-4 font-semibold text-center text-sm sm:text-base">Enviar Email</a>
+            </div>
+            <div class="mt-6 sm:mt-8 grid gap-3 text-left">
+              <div class="flex items-start gap-3 rounded-xl border border-electric/20 bg-electric/5 p-4"><div class="h-10 w-10 rounded-lg bg-electric/20 text-electric flex items-center justify-center flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div><p class="font-semibold text-white text-sm">Demo guiada</p><p class="text-xs text-slate-400">Te mostramos un flujo real de conversación y cómo se registra el lead en el CRM.</p></div></div>
+              <div class="flex items-start gap-3 rounded-xl border border-electric/20 bg-electric/5 p-4"><div class="h-10 w-10 rounded-lg bg-electric/20 text-electric flex items-center justify-center flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 6l-6.5 4.06c-.32.2-.72.2-1.04 0L4 9V7l7 4.38L18 7v2z"/></svg></div><div><p class="font-semibold text-white text-sm">Respuesta rápida</p><p class="text-xs text-slate-400">Normalmente respondemos el mismo día hábil (según disponibilidad).</p></div></div>
+            </div>
+            <div class="mt-6 sm:mt-8 text-xs sm:text-sm text-slate-400 bg-electric/10 border border-electric/20 rounded-lg p-4"><span class="font-semibold text-slate-200">Tip:</span> si tu negocio maneja <span class="text-slate-200 font-semibold">WhatsApp</span> + <span class="text-slate-200 font-semibold">Instagram</span>, el plan <span class="text-slate-200 font-semibold">Omnicanal IA</span> suele ser el punto ideal para empezar.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================================ -->
+    <!-- FOOTER (sin cambios)                                                             -->
+    <!-- ================================================================================ -->
+    <footer class="py-8 sm:py-12 border-t border-electric/20 bg-darkBg text-center">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <p class="text-slate-500 text-xs sm:text-sm mb-4">&copy; 2025 Francisco Benítez Digital. Todos los derechos reservados.</p>
+        <div class="flex justify-center gap-6 text-xs sm:text-sm"><a href="#" class="text-slate-400 hover:text-electric transition">Privacidad</a><a href="#" class="text-slate-400 hover:text-electric transition">Términos</a><a href="#contacto" class="text-slate-400 hover:text-electric transition">Contacto</a></div>
+        <p class="text-slate-500 text-xs mt-4">Hecho con inteligencia artificial y pasión por el marketing digital.</p>
+      </div>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
