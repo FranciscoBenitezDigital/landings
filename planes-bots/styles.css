@@ -1,0 +1,83 @@
+/* ===== GRID PATTERN BACKGROUND ===== */
+    .bg-grid {
+      background-image: 
+        linear-gradient(rgba(0, 217, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 217, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+
+    /* ===== GRADIENT ACCENTS ===== */
+    .gradient-accent {
+      background: linear-gradient(135deg, #00D9FF 0%, #36D6B5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ===== BUTTON HOVER EFFECTS ===== */
+    .btn-primary {
+      background: linear-gradient(135deg, #00D9FF 0%, #00D9FF 100%);
+      border: none;
+      transition: all 0.3s ease;
+      color: #0F1B3C;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      border: 2px solid #00D9FF;
+      background: transparent;
+      color: #00D9FF;
+      transition: all 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background: rgba(0, 217, 255, 0.1);
+      box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+    }
+
+    /* ===== CARD HOVER ANIMATION ===== */
+    .card-hover {
+      transition: all 0.3s ease;
+      border-color: rgba(0, 217, 255, 0.3);
+    }
+    .card-hover:hover {
+      border-color: rgba(0, 217, 255, 0.6);
+      box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+      transform: translateY(-4px);
+    }
+
+    /* ===== FADE IN ANIMATION ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .fade-in-up {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* ===== GLASS EFFECT ===== */
+    .glass-effect {
+      background: rgba(26, 40, 71, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 217, 255, 0.2);
+    }
+
+    /* ===== STICKY HEADER ===== */
+    .header-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    /* ===== GRADIENT BACKGROUND ===== */
+    .bg-gradient-dark {
+      background: linear-gradient(135deg, #0F1B3C 0%, #050816 100%);
+    }
