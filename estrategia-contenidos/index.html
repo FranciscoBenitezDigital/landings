@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- BASE:START (managed by Coding Agent — do not edit) -->
+<base href="/landings/">
+<!-- BASE:END -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <meta name="description" content="Servicio mensual de estrategia y creación de contenidos digitales para marcas, negocios, emprendimientos y empresas que buscan una presencia profesional, constante y confiable." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  
+
+<!-- SEO Meta Tags -->
+<title>contenidos mx mayo 26</title>
+<meta property="og:title" content="contenidos mx mayo 26" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="contenidos mx mayo 26" />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=3769');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='EeDcct';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ============================================================================ -->
+  <!-- HEADER SECTION: Sticky glassmorphism navigation with premium brand identity   -->
+  <!-- Features: Brand name, service label, monthly badge, responsive anchor menu    -->
+  <!-- Mobile Padding: px-4 keeps header text safely away from viewport edges        -->
+  <!-- ============================================================================ -->
+  <nav data-section="navbar" class="site-header fixed left-0 right-0 top-0 z-50 px-4 py-3 md:px-8 lg:px-12" aria-label="Navegación principal">
+    <div class="tech-container flex items-center justify-between gap-4">
+      <a href="#inicio" class="group flex min-w-0 items-center gap-3 text-left" aria-label="Ir al inicio">
+        <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-cyan-300/25 bg-cyan-300/10 text-sm font-black text-cyan-100 shadow-[0_0_28px_rgba(72,217,255,0.12)] transition duration-300 group-hover:scale-105 group-hover:border-cyan-300/45">
+          FB
+        </span>
+        <span class="min-w-0">
+          <span class="font-display block truncate text-sm font-extrabold tracking-tight text-white sm:text-base">Francisco Benítez Digital</span>
+          <span class="block truncate text-xs font-semibold text-cyan-100/70">Estrategia de Contenidos</span>
+        </span>
+      </a>
+
+      <div class="hidden items-center gap-3 md:flex">
+        <a href="#contenido" class="rounded-full px-4 py-2 text-sm font-semibold text-blue-100/75 transition hover:bg-cyan-300/10 hover:text-white">Enfoque</a>
+        <a href="#inteligencia" class="rounded-full px-4 py-2 text-sm font-semibold text-blue-100/75 transition hover:bg-cyan-300/10 hover:text-white">Inteligencia</a>
+        <a href="#planes" class="rounded-full px-4 py-2 text-sm font-semibold text-blue-100/75 transition hover:bg-cyan-300/10 hover:text-white">Planes</a>
+        <span class="tech-badge accent-badge rounded-full px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em]">Servicio mensual</span>
+      </div>
+
+      <button id="navMenuToggle" class="nav-menu-toggle grid h-11 w-11 place-items-center rounded-2xl border border-cyan-300/20 bg-white/5 text-cyan-100 transition hover:border-cyan-300/45 hover:bg-cyan-300/10 md:hidden" type="button" aria-expanded="false" aria-controls="mobileNavMenu" aria-label="Abrir menú">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobileNavMenu" class="nav-menu tech-container md:hidden">
+      <div class="mt-3 grid gap-2 rounded-3xl border border-cyan-300/15 bg-slate-950/70 p-3 shadow-2xl backdrop-blur-2xl">
+        <a href="#contenido" class="mobile-nav-link rounded-2xl px-4 py-3 text-sm font-semibold text-blue-100/80 transition hover:bg-cyan-300/10 hover:text-white">Enfoque del servicio</a>
+        <a href="#inteligencia" class="mobile-nav-link rounded-2xl px-4 py-3 text-sm font-semibold text-blue-100/80 transition hover:bg-cyan-300/10 hover:text-white">Contenidos con inteligencia</a>
+        <a href="#planes" class="mobile-nav-link rounded-2xl px-4 py-3 text-sm font-semibold text-blue-100/80 transition hover:bg-cyan-300/10 hover:text-white">Planes mensuales</a>
+        <span class="tech-badge accent-badge rounded-2xl px-4 py-3 text-xs font-extrabold uppercase tracking-[0.16em]">Servicio mensual</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================================ -->
+  <!-- HERO SECTION: Impactful TechBlue introduction with deep grid and CTA          -->
+  <!-- Features: Visible futuristic grid, glow, floating cards, premium typography   -->
+  <!-- Mobile Padding: px-4 py-6 plus top padding prevents clipped headlines         -->
+  <!-- ============================================================================ -->
+  <header id="inicio" data-section="hero" class="hero-section px-4 pb-16 pt-32 md:px-8 md:pb-24 md:pt-36 lg:px-12 lg:pb-28">
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+    <div class="orb orb-three"></div>
+
+    <div class="tech-container relative z-10 grid min-h-[calc(100svh-9rem)] items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+      <div class="max-w-3xl">
+        <div class="reveal-on-scroll tech-badge mb-6 rounded-full px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em]">
+          Contenido estratégico + IA + supervisión humana
+        </div>
+
+        <p class="reveal-on-scroll stagger-1 section-eyebrow mb-4">Francisco Benítez Digital</p>
+
+        <h1 class="reveal-on-scroll stagger-2 font-display text-5xl font-black leading-[0.98] tracking-[-0.055em] text-white sm:text-6xl md:text-7xl lg:text-8xl">
+          Estrategia de <span class="gradient-text">Contenidos Digitales</span>
+        </h1>
+
+        <p class="reveal-on-scroll stagger-3 mt-7 max-w-2xl text-xl font-semibold leading-relaxed text-cyan-50/90 md:text-2xl">
+          Contenido profesional, constante y estratégico para que tu marca se vea activa, confiable y lista para crecer.
+        </p>
+
+        <div class="reveal-on-scroll stagger-4 mt-7 max-w-3xl space-y-5 text-base leading-8 text-blue-100/72 md:text-lg">
+          <p>
+            Hoy, una marca que no publica de forma constante pierde visibilidad, confianza y oportunidades. Este servicio está diseñado para ayudarte a mantener una presencia digital profesional, coherente y activa en redes sociales, sin que tengas que improvisar qué publicar cada semana.
+          </p>
+          <p>
+            Creamos contenido estratégico con apoyo de inteligencia artificial, redacción profesional y supervisión humana, para que tu marca comunique mejor, conecte con su audiencia y proyecte una imagen sólida.
+          </p>
+        </div>
+
+        <div class="reveal-on-scroll stagger-4 mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <a href="#planes" class="cta-primary inline-flex items-center justify-center rounded-2xl px-7 py-4 text-base font-extrabold text-white">
+            Ver planes mensuales
+            <svg class="ml-2 h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a href="#contenido" class="cta-secondary inline-flex items-center justify-center rounded-2xl border border-cyan-300/20 bg-white/[0.035] px-7 py-4 text-base font-bold text-blue-100/80">
+            Ver enfoque estratégico
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal-on-scroll stagger-3 relative">
+        <div class="hero-visual-card glass-panel rounded-[2rem] p-5 md:p-7">
+          <div class="mb-6 flex items-center justify-between gap-4">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.2em] text-cyan-200/70">Panel mensual</p>
+              <p class="mt-1 font-display text-2xl font-extrabold text-white">Contenido listo para publicar</p>
+            </div>
+            <div class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-cyan-300/25 bg-cyan-300/10 text-cyan-100">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3v18M3 12h18M5.8 5.8l12.4 12.4M18.2 5.8 5.8 18.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="scan-bar rounded-2xl border border-cyan-300/15 bg-white/[0.045] p-4">
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-sm font-bold text-cyan-50">Planificación estratégica</span>
+                <span class="rounded-full bg-cyan-300/10 px-3 py-1 text-xs font-bold text-cyan-100">Activo</span>
+              </div>
+              <div class="mt-4 h-2 overflow-hidden rounded-full bg-blue-950/80">
+                <div class="h-full w-[82%] rounded-full bg-gradient-to-r from-blue-500 to-cyan-300 shadow-[0_0_20px_rgba(72,217,255,0.35)]"></div>
+              </div>
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="rounded-2xl border border-cyan-300/14 bg-white/[0.04] p-4">
+                <p class="text-xs font-bold uppercase tracking-[0.16em] text-blue-200/55">Piezas</p>
+                <p class="mt-2 font-display text-3xl font-black text-white">Mensuales</p>
+                <p class="mt-2 text-sm leading-6 text-blue-100/65">Publicaciones, carruseles y videos cortos con dirección clara.</p>
+              </div>
+              <div class="rounded-2xl border border-cyan-300/14 bg-white/[0.04] p-4">
+                <p class="text-xs font-bold uppercase tracking-[0.16em] text-blue-200/55">Proceso</p>
+                <p class="mt-2 font-display text-3xl font-black text-white">IA + Humano</p>
+                <p class="mt-2 text-sm leading-6 text-blue-100/65">Producción ágil con criterio profesional y revisión final.</p>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-cyan-300/15 bg-gradient-to-r from-cyan-300/10 to-blue-500/10 p-4">
+              <div class="flex items-start gap-3">
+                <div class="mt-1 h-2.5 w-2.5 rounded-full bg-orange-300 shadow-[0_0_18px_rgba(255,154,61,0.7)]"></div>
+                <p class="text-sm leading-6 text-blue-50/78">
+                  Comunicación constante para construir confianza antes del primer contacto comercial.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="floating-chip absolute -left-2 top-8 hidden rounded-2xl border border-cyan-300/20 bg-slate-950/70 px-4 py-3 text-sm font-bold text-cyan-100 shadow-[0_0_30px_rgba(72,217,255,0.13)] backdrop-blur-xl sm:block">
+          Presencia activa
+        </div>
+        <div class="floating-chip absolute -right-2 bottom-20 hidden rounded-2xl border border-cyan-300/20 bg-slate-950/70 px-4 py-3 text-sm font-bold text-cyan-100 shadow-[0_0_30px_rgba(72,217,255,0.13)] backdrop-blur-xl sm:block">
+          Imagen profesional
+        </div>
+        <div class="floating-chip absolute bottom-2 left-10 hidden rounded-2xl border border-orange-300/25 bg-orange-300/10 px-4 py-3 text-sm font-bold text-orange-100 shadow-[0_0_30px_rgba(255,154,61,0.1)] backdrop-blur-xl md:block">
+          Valor constante
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================================ -->
+  <!-- CONTENT MAGNET SECTION: Explains value content as client attraction engine    -->
+  <!-- Features: Large glassmorphism card, subtle cyan border, elegant glow          -->
+  <!-- Mobile Padding: px-4 py-16 keeps all text readable on small screens           -->
+  <!-- ============================================================================ -->
+  <section id="contenido" data-section="content-magnet" class="px-4 py-16 md:px-8 md:py-20 lg:px-12 lg:py-24">
+    <div class="tech-container">
+      <article class="reveal-on-scroll glass-panel rounded-[2rem] p-6 transition duration-300 hover:-translate-y-1 md:p-10 lg:p-12">
+        <div class="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+          <div>
+            <p class="section-eyebrow">Contenido como imán</p>
+            <h2 class="font-display mt-4 text-3xl font-black leading-tight tracking-[-0.04em] text-white md:text-5xl">
+              El contenido de valor es hoy uno de los mejores imanes de clientes
+            </h2>
+          </div>
+
+          <div class="space-y-5 text-base leading-8 text-blue-100/72 md:text-lg">
+            <p>
+              Las personas ya no responden igual a los mensajes de venta directa. Antes de comprar, reservar o pedir información, primero observan, comparan y evalúan si una marca les transmite confianza.
+            </p>
+            <p>
+              El contenido bien diseñado permite que tu negocio aparezca de forma constante frente a las personas correctas, comunique lo que ofrece y construya una relación antes del primer contacto comercial.
+            </p>
+            <p>
+              Cada publicación, carrusel o video puede convertirse en un punto de atracción que trabaja todos los días para fortalecer la presencia digital de tu marca.
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- FUNNEL SECTION: Connected journey showing how content attracts qualified leads -->
+  <!-- Features: Glowing numbered steps, technological connector line, hover cards   -->
+  <!-- Mobile Padding: px-4 py-16 protects cards and headings on all viewports       -->
+  <!-- ============================================================================ -->
+  <section data-section="funnel" class="px-4 py-16 md:px-8 md:py-20 lg:px-12 lg:py-24">
+    <div class="tech-container">
+      <div class="reveal-on-scroll mx-auto max-w-3xl text-center">
+        <p class="section-eyebrow">Atracción calificada</p>
+        <h2 class="font-display mt-4 text-3xl font-black leading-tight tracking-[-0.04em] text-white md:text-5xl">
+          Cómo el contenido atrae clientes calificados
+        </h2>
+      </div>
+
+      <div class="funnel-grid mt-12 grid gap-5 lg:grid-cols-4">
+        <article class="reveal-on-scroll stagger-1 glass-card rounded-[1.6rem] p-6">
+          <div class="funnel-number grid h-14 w-14 place-items-center rounded-full border border-cyan-300/35 bg-cyan-300/10 font-display text-xl font-black text-cyan-100">1</div>
+          <h3 class="mt-6 font-display text-2xl font-extrabold text-white">Descubrimiento</h3>
+          <p class="mt-4 text-sm leading-7 text-blue-100/68">
+            Una persona encuentra tu marca a través de una publicación, video, carrusel o historia.
+          </p>
+        </article>
+
+        <article class="reveal-on-scroll stagger-2 glass-card rounded-[1.6rem] p-6">
+          <div class="funnel-number grid h-14 w-14 place-items-center rounded-full border border-cyan-300/35 bg-cyan-300/10 font-display text-xl font-black text-cyan-100">2</div>
+          <h3 class="mt-6 font-display text-2xl font-extrabold text-white">Conexión</h3>
+          <p class="mt-4 text-sm leading-7 text-blue-100/68">
+            El contenido conecta con una necesidad, deseo o problema que esa persona ya tiene.
+          </p>
+        </article>
+
+        <article class="reveal-on-scroll stagger-3 glass-card rounded-[1.6rem] p-6">
+          <div class="funnel-number grid h-14 w-14 place-items-center rounded-full border border-cyan-300/35 bg-cyan-300/10 font-display text-xl font-black text-cyan-100">3</div>
+          <h3 class="mt-6 font-display text-2xl font-extrabold text-white">Confianza</h3>
+          <p class="mt-4 text-sm leading-7 text-blue-100/68">
+            La constancia y la calidad visual hacen que tu marca se perciba más profesional y confiable.
+          </p>
+        </article>
+
+        <article class="reveal-on-scroll stagger-4 glass-card rounded-[1.6rem] p-6">
+          <div class="funnel-number grid h-14 w-14 place-items-center rounded-full border border-cyan-300/35 bg-cyan-300/10 font-display text-xl font-black text-cyan-100">4</div>
+          <h3 class="mt-6 font-display text-2xl font-extrabold text-white">Decisión</h3>
+          <p class="mt-4 text-sm leading-7 text-blue-100/68">
+            Cuando la persona está lista para comprar o pedir información, tu marca ya está posicionada en su mente.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- STRATEGY KEY SECTION: Three interactive reasons for strategic content         -->
+  <!-- Features: Glass cards, linear icons, cyan glow, subtle orange accents         -->
+  <!-- Mobile Padding: px-4 py-16 ensures headline and cards never touch edges       -->
+  <!-- ============================================================================ -->
+  <section data-section="strategy-key" class="px-4 py-16 md:px-8 md:py-20 lg:px-12 lg:py-24">
+    <div class="tech-container">
+      <div class="reveal-on-scroll max-w-3xl">
+        <p class="section-eyebrow">Clave para tu marca</p>
+        <h2 class="font-display mt-4 text-3xl font-black leading-tight tracking-[-0.04em] text-white md:text-5xl">
+          Por qué una estrategia de contenidos es clave para tu marca
+        </h2>
+      </div>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-3">
+        <article class="reveal-on-scroll stagger-1 glass-card rounded-[1.7rem] p-6 md:p-7">
+          <div class="tech-icon">
+            <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 7.5h14M5 12h10M5 16.5h7M18 15l2 2 3-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 class="font-display mt-6 text-2xl font-extrabold text-white">Evita la inactividad visible</h3>
+          <p class="mt-4 text-sm leading-7 text-blue-100/68">
+            Una marca sin publicaciones constantes puede transmitir abandono o falta de movimiento. El contenido mantiene tu presencia activa frente a tu audiencia.
+          </p>
+        </article>
+
+        <article class="reveal-on-scroll stagger-2 glass-card rounded-[1.7rem] p-6 md:p-7">
+          <div class="tech-icon">
+            <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3 4.5 7v6.5c0 4.1 3.1 6.6 7.5 7.5 4.4-.9 7.5-3.4 7.5-7.5V7L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+              <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 class="font-display mt-6 text-2xl font-extrabold text-white">Construye percepción profesional</h3>
+          <p class="mt-4 text-sm leading-7 text-blue-100/68">
+            Una comunicación visual consistente hace que tu negocio se vea más serio, confiable y preparado para atender nuevos clientes.
+          </p>
+        </article>
+
+        <article class="reveal-on-scroll stagger-3 glass-card rounded-[1.7rem] p-6 md:p-7">
+          <div class="tech-icon">
+            <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 19V5m0 14h16M8 16v-5m4 5V8m4 8v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              <path d="M7 7.5h2.5L12 5l2.5 2.5H17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 class="font-display mt-6 text-2xl font-extrabold text-white">Prepara el terreno comercial</h3>
+          <p class="mt-4 text-sm leading-7 text-blue-100/68">
+            El contenido ayuda a educar, inspirar y acercar a las personas antes de que tomen una decisión de compra. Cada publicación se sube también a Instagram y Facebook Stories, por lo tanto, en cada red social son 14 stories en la estrategia CORE y 26 stories en la estrategia PRO.
+          </p>
+        </article>
+      </div>
+      <p class="mt-8 max-w-3xl text-sm leading-7 text-blue-100/68">
+        Las publicaciones estáticas en carruseles son para Facebook e Instagram en ambos planes, y los vídeos están destinados para Reels de Facebook, Reels de Instagram, TikTok y YouTube Shorts.
+      </p>
+      <p class="mt-6 max-w-3xl text-xs leading-6 text-blue-100/50 italic">
+        Este servicio está enfocado en estrategia y producción de contenido. No incluye gestión de comunidad, atención de mensajes, automatización de comentarios, chatbots, pauta publicitaria ni herramientas externas. Estos servicios pueden cotizarse por separado.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- SERVICE SOLUTIONS SECTION: Details what the monthly service solves            -->
+  <!-- Features: Two-column layout, premium checklist card, subtle tech linework     -->
+  <!-- Mobile Padding: px-4 py-16 supports comfortable reading on mobile             -->
+  <!-- ============================================================================ -->
+  <section data-section="service-solutions" class="relative overflow-hidden px-4 py-16 md:px-8 md:py-20 lg:px-12 lg:py-24">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_30%,rgba(72,217,255,0.09),transparent_28rem),linear-gradient(90deg,transparent,rgba(35,120,255,0.06),transparent)]"></div>
+
+    <div class="tech-container grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
+      <div class="reveal-on-scroll">
+        <p class="section-eyebrow">Orden, claridad y producción</p>
+        <h2 class="font-display mt-4 text-3xl font-black leading-tight tracking-[-0.04em] text-white md:text-5xl">
+          Qué resolvemos con este servicio
+        </h2>
+        <p class="mt-6 max-w-xl text-base leading-8 text-blue-100/72 md:text-lg">
+          Este servicio ayuda a ordenar, planificar y producir contenido mensual para que tu marca tenga una comunicación más clara, constante y profesional.
+        </p>
+      </div>
+
+      <div class="reveal-on-scroll stagger-2 glass-panel rounded-[2rem] p-5 md:p-8">
+        <ul class="space-y-4">
+          <li class="flex gap-3 text-sm leading-7 text-blue-50/78 md:text-base">
+            <span class="mt-1.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-cyan-300/10 text-cyan-200 shadow-[0_0_16px_rgba(72,217,255,0.16)]">✓</span>
+            <span>Planificación mensual del contenido.</span>
+          </li>
+          <li class="flex gap-3 text-sm leading-7 text-blue-50/78 md:text-base">
+            <span class="mt-1.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-cyan-300/10 text-cyan-200 shadow-[0_0_16px_rgba(72,217,255,0.16)]">✓</span>
+            <span>Definición de qué comunicar, cómo comunicarlo y con qué frecuencia.</span>
+          </li>
+          <li class="flex gap-3 text-sm leading-7 text-blue-50/78 md:text-base">
+            <span class="mt-1.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-cyan-300/10 text-cyan-200 shadow-[0_0_16px_rgba(72,217,255,0.16)]">✓</span>
+            <span>Diseño de publicaciones alineadas con la imagen de tu marca.</span>
+          </li>
+          <li class="flex gap-3 text-sm leading-7 text-blue-50/78 md:text-base">
+            <span class="mt-1.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-cyan-300/10 text-cyan-200 shadow-[0_0_16px_rgba(72,217,255,0.16)]">✓</span>
+            <span>Creación de carruseles para explicar ideas, servicios, beneficios o procesos.</span>
+          </li>
+          <li class="flex gap-3 text-sm leading-7 text-blue-50/78 md:text-base">
+            <span class="mt-1.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-cyan-300/10 text-cyan-200 shadow-[0_0_16px_rgba(72,217,255,0.16)]">✓</span>
+            <span>Videos cortos con apoyo de inteligencia artificial para Reels, TikTok y YouTube Shorts.</span>
+          </li>
+          <li class="flex gap-3 text-sm leading-7 text-blue-50/78 md:text-base">
+            <span class="mt-1.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-cyan-300/10 text-cyan-200 shadow-[0_0_16px_rgba(72,217,255,0.16)]">✓</span>
+            <span>Contenido pensado para aumentar visibilidad, confianza y presencia digital.</span>
+          </li>
+          <li class="flex gap-3 text-sm leading-7 text-blue-50/78 md:text-base">
+            <span class="mt-1.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-cyan-300/10 text-cyan-200 shadow-[0_0_16px_rgba(72,217,255,0.16)]">✓</span>
+            <span>Supervisión humana para cuidar el mensaje, la calidad y la coherencia.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- INTELLIGENCE SECTION: Presents content production pillars with AI and humans  -->
+  <!-- Features: Three premium pillars, technology icons, glow and floating motion   -->
+  <!-- Mobile Padding: px-4 py-16 provides safe spacing around headings and cards    -->
+  <!-- ============================================================================ -->
+  <section id="inteligencia" data-section="intelligence" class="px-4 py-16 md:px-8 md:py-20 lg:px-12 lg:py-24">
+    <div class="tech-container">
+      <div class="reveal-on-scroll mx-auto max-w-4xl text-center">
+        <p class="section-eyebrow">Proceso inteligente</p>
+        <h2 class="font-display mt-4 text-3xl font-black leading-tight tracking-[-0.04em] text-white md:text-5xl">
+          Contenidos creados con inteligencia
+        </h2>
+        <p class="mt-6 text-base leading-8 text-blue-100/72 md:text-lg">
+          Cada pieza combina estrategia de marketing, redacción profesional, herramientas avanzadas de inteligencia artificial y revisión humana. La IA permite acelerar la producción y elevar el nivel visual, mientras que la supervisión humana asegura que cada contenido tenga intención, claridad y coherencia.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-5 md:grid-cols-3">
+        <article class="reveal-on-scroll stagger-1 glass-card rounded-[1.8rem] p-6 md:p-8">
+          <div class="tech-icon">
+            <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6h16M4 12h10M4 18h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              <path d="m16 17 2 2 4-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 class="font-display mt-6 text-2xl font-extrabold text-white">Estrategia</h3>
+          <p class="mt-4 text-sm leading-7 text-blue-100/68">
+            Cada contenido responde a un objetivo dentro de la comunicación de la marca.
+          </p>
+        </article>
+
+        <article class="reveal-on-scroll stagger-2 glass-card rounded-[1.8rem] p-6 md:p-8">
+          <div class="tech-icon">
+            <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21s7-4.3 7-11a7 7 0 1 0-14 0c0 6.7 7 11 7 11Z" stroke="currentColor" stroke-width="1.8" />
+              <path d="M9 10h.01M15 10h.01M9.5 14c1.4 1.2 3.6 1.2 5 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3 class="font-display mt-6 text-2xl font-extrabold text-white">Creatividad humana</h3>
+          <p class="mt-4 text-sm leading-7 text-blue-100/68">
+            Revisión, ajustes y criterio profesional para mantener calidad y coherencia.
+          </p>
+        </article>
+
+        <article class="reveal-on-scroll stagger-3 glass-card rounded-[1.8rem] p-6 md:p-8">
+          <div class="tech-icon">
+            <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+              <circle cx="12" cy="12" r="3.8" stroke="currentColor" stroke-width="1.7" />
+            </svg>
+          </div>
+          <h3 class="font-display mt-6 text-2xl font-extrabold text-white">IA avanzada</h3>
+          <p class="mt-4 text-sm leading-7 text-blue-100/68">
+            Herramientas de inteligencia artificial integradas al proceso para mejorar velocidad, diseño y producción.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- PRICING SECTION: Monthly plans with Core and Pro comparative cards            -->
+  <!-- Features: Premium glass pricing, emphasized Pro card, MXN prices, IVA notes   -->
+  <!-- Mobile Padding: px-4 py-16 ensures pricing cards stack cleanly on mobile      -->
+  <!-- ============================================================================ -->
+  <section id="planes" data-section="pricing" class="relative overflow-hidden px-4 py-16 md:px-8 md:py-20 lg:px-12 lg:py-24">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_20%,rgba(72,217,255,0.14),transparent_28rem),radial-gradient(circle_at_18%_75%,rgba(35,120,255,0.13),transparent_30rem)]"></div>
+
+    <div class="tech-container">
+      <div class="reveal-on-scroll mx-auto max-w-4xl text-center">
+        <p class="section-eyebrow">Planes mensuales</p>
+        <h2 class="font-display mt-4 text-3xl font-black leading-tight tracking-[-0.04em] text-white md:text-5xl">
+          Dos niveles de acompañamiento estratégico
+        </h2>
+        <p class="mt-6 text-base leading-8 text-blue-100/72 md:text-lg">
+          Ambos planes trabajan con contenido inteligente y de alta calidad; la diferencia está en el volumen, la frecuencia y el ritmo de crecimiento.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-2 lg:items-stretch">
+        <article class="reveal-on-scroll stagger-1 glass-card rounded-[2rem] p-6 md:p-8">
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <span class="tech-badge rounded-full px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em]">Plan Base</span>
+              <h3 class="font-display mt-6 text-3xl font-black tracking-[-0.035em] text-white md:text-4xl">Estrategia Core</h3>
+              <p class="mt-3 text-lg font-semibold text-cyan-100/82">Presencia constante con base sólida</p>
+            </div>
+          </div>
+
+          <div class="my-8 h-px bg-gradient-to-r from-transparent via-cyan-300/30 to-transparent"></div>
+
+          <ul class="space-y-4">
+            <li class="flex gap-3 text-sm leading-7 text-blue-50/78 md:text-base"><span class="text-cyan-200">✓</span><span>8 publicaciones estáticas al mes</span></li>
+            <li class="flex gap-3 text-sm leading-7 text-blue-50/78 md:text-base"><span class="text-cyan-200">✓</span><span>4 carruseles</span></li>
+            <li class="flex gap-3 text-sm leading-7 text-blue-50/78 md:text-base"><span class="text-cyan-200">✓</span><span>2 videos con IA para Reels, TikTok y YouTube Shorts</span></li>
+            <li class="flex gap-3 text-sm leading-7 text-blue-50/78 md:text-base"><span class="text-cyan-200">✓</span><span>Contenido creado con herramientas avanzadas de IA</span></li>
+            <li class="flex gap-3 text-sm leading-7 text-blue-50/78 md:text-base"><span class="text-cyan-200">✓</span><span>Contenido desarrollado con inteligencia artificial de última generación</span></li>
+            <li class="flex gap-3 text-sm leading-7 text-blue-50/78 md:text-base"><span class="text-cyan-200">✓</span><span>Curaduría y ajuste manual para mantener alta calidad visual y de mensaje</span></li>
+            <li class="flex gap-3 text-sm leading-7 text-blue-50/78 md:text-base"><span class="text-cyan-200">✓</span><span>Cada publicación se sube también a Instagram y Facebook Stories, sumando un total de 14 stories en cada red social</span></li>
+          </ul>
+
+          <div class="mt-9 rounded-3xl border border-cyan-300/16 bg-white/[0.035] p-5">
+            <p class="price-text font-display text-4xl font-black tracking-[-0.045em] text-white md:text-5xl">$5,000 MXN</p>
+            <p class="mt-2 text-sm font-bold text-cyan-100/72">/ mes</p>
+            <p class="mt-4 text-sm leading-6 text-blue-100/62">Precio mensual. Si se requiere factura, se cobrará IVA.</p>
+          </div>
+          <p class="mt-4 text-xs leading-5 text-blue-100/62">Este servicio está enfocado en estrategia y producción de contenido. No incluye gestión de comunidad, atención de mensajes, automatización de comentarios, chatbots, pauta publicitaria ni herramientas externas. Estos servicios pueden cotizarse por separado.</p>
+        </article>
+
+        <article class="reveal-on-scroll stagger-2 glass-card pricing-card-pro rounded-[2rem] p-6 md:p-8">
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <span class="tech-badge accent-badge rounded-full px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em]">Plan Avanzado</span>
+              <h3 class="font-display mt-6 text-3xl font-black tracking-[-0.035em] text-white md:text-4xl">Estrategia Pro</h3>
+              <p class="mt-3 text-lg font-semibold text-cyan-100/82">Mayor frecuencia para acelerar el crecimiento</p>
+            </div>
+          </div>
+
+          <div class="mt-6 rounded-2xl border border-cyan-300/24 bg-cyan-300/10 p-4 text-sm font-bold leading-6 text-cyan-50 shadow-[0_0_26px_rgba(72,217,255,0.1)]">
+            Recomendado para marcas que quieren crecer con mayor consistencia
+          </div>
+
+          <div class="my-8 h-px bg-gradient-to-r from-transparent via-cyan-300/42 to-transparent"></div>
+
+          <ul class="space-y-4">
+            <li class="flex gap-3 text-sm leading-7 text-blue-50/82 md:text-base"><span class="text-cyan-200">✓</span><span>16 publicaciones estáticas al mes</span></li>
+            <li class="flex gap-3 text-sm leading-7 text-blue-50/82 md:text-base"><span class="text-cyan-200">✓</span><span>6 carruseles</span></li>
+            <li class="flex gap-3 text-sm leading-7 text-blue-50/82 md:text-base"><span class="text-cyan-200">✓</span><span>4 videos con IA para Reels, TikTok y YouTube Shorts</span></li>
+            <li class="flex gap-3 text-sm leading-7 text-blue-50/82 md:text-base"><span class="text-cyan-200">✓</span><span>Contenido desarrollado con inteligencia artificial de última generación</span></li>
+            <li class="flex gap-3 text-sm leading-7 text-blue-50/82 md:text-base"><span class="text-cyan-200">✓</span><span>Curaduría y ajuste manual para mantener alta calidad visual y de mensaje</span></li>
+            <li class="flex gap-3 text-sm leading-7 text-blue-50/82 md:text-base"><span class="text-cyan-200">✓</span><span>Mayor volumen de contenido para aumentar presencia y frecuencia</span></li>
+            <li class="flex gap-3 text-sm leading-7 text-blue-50/82 md:text-base"><span class="text-cyan-200">✓</span><span>Cada contenido se sube también a Instagram y Facebook Stories, sumando un total de 26 stories en cada red social</span></li>
+          </ul>
+
+          <div class="mt-9 rounded-3xl border border-cyan-300/28 bg-cyan-300/[0.055] p-5">
+            <p class="price-text font-display text-4xl font-black tracking-[-0.045em] text-white md:text-5xl">$7,500 MXN</p>
+            <p class="mt-2 text-sm font-bold text-cyan-100/78">/ mes</p>
+            <p class="mt-4 text-sm leading-6 text-blue-100/66">Precio mensual. Si se requiere factura, se cobrará IVA.</p>
+          </div>
+          <p class="mt-4 text-xs leading-5 text-blue-100/66">Este servicio está enfocado en estrategia y producción de contenido. No incluye gestión de comunidad, atención de mensajes, automatización de comentarios, chatbots, pauta publicitaria ni herramientas externas. Estos servicios pueden cotizarse por separado.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- COMPARISON SECTION: Explains the key difference between Core and Pro          -->
+  <!-- Features: Large premium card, internal separators, emphasized plan names      -->
+  <!-- Mobile Padding: px-4 py-16 maintains clean reading rhythm on small screens    -->
+  <!-- ============================================================================ -->
+  <section data-section="comparison" class="px-4 py-16 md:px-8 md:py-20 lg:px-12 lg:py-24">
+    <div class="tech-container">
+      <article class="reveal-on-scroll glass-panel rounded-[2rem] p-6 md:p-10 lg:p-12">
+        <p class="section-eyebrow">Diferencia clave</p>
+        <h2 class="font-display mt-4 text-3xl font-black leading-tight tracking-[-0.04em] text-white md:text-5xl">
+          La diferencia clave entre Core y Pro
+        </h2>
+
+        <div class="mt-8 grid gap-0 overflow-hidden rounded-3xl border border-cyan-300/14 md:grid-cols-3">
+          <div class="bg-white/[0.035] p-6 md:col-span-1">
+            <p class="font-display text-xl font-extrabold text-cyan-100">Mismo objetivo</p>
+            <p class="mt-3 text-sm leading-7 text-blue-100/66">
+              Ambos planes están diseñados para mantener una presencia digital profesional y constante. La diferencia principal está en la intensidad del contenido.
+            </p>
+          </div>
+          <div class="border-t border-cyan-300/14 bg-white/[0.02] p-6 md:border-l md:border-t-0">
+            <p class="font-display text-xl font-extrabold text-white">Estrategia Core</p>
+            <p class="mt-3 text-sm leading-7 text-blue-100/66">
+              Ofrece una base sólida para negocios que quieren mantenerse activos, comunicar mejor y construir presencia de forma constante.
+            </p>
+          </div>
+          <div class="border-t border-cyan-300/14 bg-cyan-300/[0.04] p-6 md:border-l md:border-t-0">
+            <p class="font-display text-xl font-extrabold text-cyan-100">Estrategia Pro</p>
+            <p class="mt-3 text-sm leading-7 text-blue-100/70">
+              Aumenta la frecuencia y variedad de publicaciones, lo que permite aparecer más veces frente a la audiencia, reforzar la confianza con mayor rapidez y acelerar el posicionamiento de la marca.
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- RECOMMENDATION SECTION: Clear plan recommendation in premium highlighted box  -->
+  <!-- Features: Cyan border accent, glow, concise guidance, balanced emphasis       -->
+  <!-- Mobile Padding: px-4 py-16 keeps recommendation readable and elegant          -->
+  <!-- ============================================================================ -->
+  <section data-section="recommendation" class="px-4 py-16 md:px-8 md:py-20 lg:px-12 lg:py-24">
+    <div class="tech-container">
+      <article class="reveal-on-scroll glass-panel rounded-[2rem] border-l-4 border-l-cyan-300 p-6 md:p-10">
+        <div class="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
+          <div>
+            <p class="section-eyebrow">Recomendación general</p>
+            <h2 class="font-display mt-4 text-3xl font-black leading-tight tracking-[-0.04em] text-white md:text-5xl">
+              Recomendación general
+            </h2>
+          </div>
+
+          <div class="space-y-5 text-base leading-8 text-blue-100/72 md:text-lg">
+            <p>
+              Si tu marca está comenzando a ordenar su comunicación digital, <strong class="font-bold text-cyan-100">Estrategia Core</strong> es una excelente opción para construir una base constante y profesional.
+            </p>
+            <p>
+              Si tu objetivo es crecer con mayor velocidad, publicar con más frecuencia y tener una presencia más fuerte en redes sociales, <strong class="font-bold text-cyan-100">Estrategia Pro</strong> ofrece mejores condiciones para avanzar con mayor intensidad.
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- FINAL CTA SECTION: Strong closing message with TechBlue grid and CTA          -->
+  <!-- Features: Powerful closing visual, subtle grid, glow, interactive button      -->
+  <!-- Mobile Padding: px-4 py-20 keeps final headline readable on mobile            -->
+  <!-- ============================================================================ -->
+  <section data-section="final-cta" class="relative overflow-hidden px-4 py-20 md:px-8 md:py-24 lg:px-12 lg:py-28">
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(72,217,255,0.18),transparent_32rem),linear-gradient(180deg,rgba(3,14,35,0.25),rgba(2,7,22,0.85))]"></div>
+      <div class="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(72,217,255,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(72,217,255,0.12)_1px,transparent_1px)] [background-size:48px_48px]"></div>
+    </div>
+
+    <div class="tech-container">
+      <div class="reveal-on-scroll mx-auto max-w-4xl text-center">
+        <p class="section-eyebrow">Cierre estratégico</p>
+        <h2 class="font-display mt-4 text-4xl font-black leading-tight tracking-[-0.05em] text-white md:text-6xl">
+          Tu marca necesita verse activa, profesional y confiable
+        </h2>
+        <div class="mx-auto mt-7 max-w-3xl space-y-5 text-base leading-8 text-blue-100/72 md:text-lg">
+          <p>
+            El contenido no es solo decoración para redes sociales. Es una herramienta estratégica para construir presencia, generar confianza y mantener tu marca en la mente de las personas correctas.
+          </p>
+          <p>
+            Con una estrategia mensual clara, tu comunicación deja de depender de la improvisación y empieza a trabajar con intención.
+          </p>
+        </div>
+
+        <div class="mt-10">
+          <a href="#planes" class="cta-primary inline-flex items-center justify-center rounded-2xl px-8 py-4 text-base font-extrabold text-white">
+            Solicitar información
+            <svg class="ml-2 h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- FOOTER SECTION: Simple elegant footer with brand and required 2025 copyright  -->
+  <!-- Features: Clean premium ending, no invented contact links or external links   -->
+  <!-- Mobile Padding: px-4 py-8 protects footer content on all screen sizes         -->
+  <!-- ============================================================================ -->
+  <footer data-section="footer" class="border-t border-cyan-300/12 px-4 py-8 md:px-8 lg:px-12">
+    <div class="tech-container flex flex-col gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
+      <div>
+        <p class="font-display text-base font-extrabold text-white">Francisco Benítez Digital</p>
+        <p class="mt-1 text-sm font-medium text-blue-100/58">Estrategia de Contenidos Digitales</p>
+      </div>
+      <p class="text-sm font-medium text-blue-100/50">© 2025 · Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  
+  <script src="script.js"></script>
+</body>
+</html>
