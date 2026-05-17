@@ -1,23 +1,78 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="es"><head>
+<!-- BASE:START (managed by Coding Agent — do not edit) -->
+<base href="/landings/">
+<!-- BASE:END -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
+
+  <!-- ===== TAILWIND CSS CDN ===== -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ===== GOOGLE FONTS: Playfair Display + Inter ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
   
 
 <!-- SEO Meta Tags -->
-<title>Francisco Benítez Digital | Planes de implementación</title>
-<meta name="description" content="Planes de implementación para presencia digital y automatización con inteligencia artificial." />
-<meta property="og:title" content="Francisco Benítez Digital | Planes de implementación" />
-<meta property="og:description" content="Planes de implementación para presencia digital y automatización con inteligencia artificial." />
+<title>Secret Stop Speakeasy — Estrategia de Pricing y Posicionamiento 2026</title>
+<meta name="description" content="Documento ejecutivo interno de estrategia de pricing y posicionamiento para Secret Stop Speakeasy en Killeen, Texas. Análisis de precios, KPIs y plan de implementación 2026." />
+<meta property="og:title" content="Secret Stop Speakeasy — Estrategia de Pricing y Posicionamiento 2026" />
+<meta property="og:description" content="Documento ejecutivo interno de estrategia de pricing y posicionamiento para Secret Stop Speakeasy en Killeen, Texas. Análisis de precios, KPIs y plan de implementación 2026." />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Francisco Benítez Digital | Planes de implementación" />
-<meta name="twitter:description" content="Planes de implementación para presencia digital y automatización con inteligencia artificial." />
+<meta name="twitter:title" content="Secret Stop Speakeasy — Estrategia de Pricing y Posicionamiento 2026" />
+<meta name="twitter:description" content="Documento ejecutivo interno de estrategia de pricing y posicionamiento para Secret Stop Speakeasy en Killeen, Texas. Análisis de precios, KPIs y plan de implementación 2026." />
 <!-- End SEO Meta Tags -->
 
+<script data-gate>
+(function(){
+  var slug='pwPyVfTHj';var apiBase='https://paymegpt.com';var currency='USD';var presets=[2500,5000,10000,25000];var minAmt=100;var maxAmt=1000000;var thankYouMsg='Thank you for your generous donation!';
+  function fmtD(c){return new Intl.NumberFormat('en-US',{style:'currency',currency:currency}).format(c/100);}
+  function findDonEmail(){var ids=['email','emailAddress','buyer-email','buyerEmail','donor-email','donorEmail','user-email','userEmail','contact-email'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.indexOf('@')>-1)return el.value.trim();}var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.indexOf('@')>-1)return inputs[j].value.trim();}return '';}
+  function findDonName(){var ids=['name','fullName','full-name','donor-name','donorName','customer-name','user-name'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"])');for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}return '';}
+  window.__processDonation=function(a,b,c,d){
+    var amountCents,email='',donorName='',donorMessage='';
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents||(a.amount?Math.round(Number(a.amount)*100):0);
+      email=a.email||'';donorName=a.name||a.donorName||a.productName||a.label||'';donorMessage=a.message||a.donorMessage||'';
+    }else{
+      amountCents=typeof a==='number'?a:(parseInt(a,10)||0);
+      var rest=[b,c,d];var nonEmail=[];
+      for(var i=0;i<rest.length;i++){var v=rest[i];if(typeof v==='string'&&v){if(!email&&v.indexOf('@')>-1&&/^[^s@]+@[^s@]+.[^s@]+$/.test(v.trim())){email=v.trim();}else{nonEmail.push(v);}}}
+      donorName=nonEmail[0]||'';donorMessage=nonEmail[1]||'';
+    }
+    if(!email)email=findDonEmail();
+    if(!donorName)donorName=findDonName();
+    if(!amountCents||amountCents<minAmt){alert('Minimum donation is '+fmtD(minAmt));return Promise.reject('below_min');}
+    if(amountCents>maxAmt){alert('Maximum donation is '+fmtD(maxAmt));return Promise.reject('above_max');}
+    if(!email){var p=window.prompt('Enter your email for the receipt:','');if(p&&p.indexOf('@')>-1){email=p.trim();}else{alert('An email address is required to complete checkout.');return Promise.reject('no_email');}}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/donation/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:donorName||'',amountCents:amountCents,message:donorMessage||'',successUrl:successBase+'?donation=success&email='+encodeURIComponent(email)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?donation=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process donation');throw new Error(d.error);}
+    });
+  };
+  window.__donationConfig={currency:currency,presets:presets,minAmount:minAmt,maxAmount:maxAmt,formatAmount:fmtD};
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('donation')==='success'){
+      var overlay=document.createElement('div');overlay.id='donation-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">'+thankYouMsg+'</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Your donation has been processed successfully.</p><button onclick="this.closest(\'#donation-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>
 <script data-field-replace>
 (function(){
   var params=new URLSearchParams(window.location.search);
@@ -117,7 +172,7 @@
   function run(){
     if(contactId){
       var xhr=new XMLHttpRequest();
-      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=3144');
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=4080');
       xhr.onload=function(){
         if(xhr.status===200){
           try{
@@ -144,7 +199,7 @@
 </script>
 <script data-payment>
 (function(){
-  var slug='rwbgcAK';
+  var slug='pwPyVfTHj';
   var apiBase='https://paymegpt.com';
   function findEmail(){
     var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
@@ -197,234 +252,800 @@
 })();
 </script>  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <main>
-    <section data-section="hero" class="hero wrap">
-      <img class="hero-logo" src="https://fbdigitalplaza.com/wp-content/uploads/2025/12/LOGO-FINALFINAL-OKOK-1.png" alt="Francisco Benítez Digital logo" />
-      <span class="badge">Francisco Benítez Digital</span>
-      <h1>Planes de implementación</h1>
-      <p class="lead">
-        Presencia digital y automatización con inteligencia artificial. Esta página presenta de forma clara dos opciones de implementación: una solución con página web de alta conversión más agente de IA, y una segunda opción enfocada únicamente en el agente de IA.
-      </p>
-      <p class="lead">
-        En ambos casos, el agente funciona como un apoyo de atención automatizada y puede actuar como un vendedor virtual disponible 24 horas, especialmente en los horarios en los que no es posible responder manualmente.
-      </p>
-    </section>
 
-    <section data-section="plans" class="section wrap">
-      <div class="grid-2">
-        <article class="card">
-          <span class="eyebrow">Solución integral</span>
-          <h2 style="margin-top:16px; font-size:1.85rem;">Opción 1: Página web + agente de IA</h2>
+<body class="hero-bg">
 
-          <div class="pricebox">
-            <h3>Inversión</h3>
-            <ul>
-              <li><strong>Setup fee:</strong> 350 USD</li>
-              <li><strong>Mantenimiento y hosting:</strong> 50 USD mensuales</li>
-            </ul>
-          </div>
+<!-- ============================================================================ -->
+<!-- HERO SECTION: Main landing area — badge, title, subtitle, stats              -->
+<!-- Features: Radial gradient, centered content, 4 stat cards, gold divider      -->
+<!-- Mobile Padding: px-4 ensures text never touches viewport edges               -->
+<!-- ============================================================================ -->
+<section data-section="hero" class="section-pad text-center" id="hero">
+  <div class="max-w-4xl mx-auto px-4 md:px-8 lg:px-12">
 
-          <div class="block">
-            <h3>¿Qué incluye?</h3>
-            <p>Esta opción incluye el desarrollo de una página web de alta conversión junto con un agente de inteligencia artificial entrenado con la información del negocio.</p>
-            <p>La página está pensada para presentar la información de manera clara, profesional y orientada a facilitar que el visitante entienda la oferta del negocio y pueda avanzar en su proceso de contacto o consulta.</p>
-          </div>
+    <!-- Top Badge -->
+    <div class="mb-6 fade-in">
+      <span class="badge">Secret Stop · Speakeasy · Killeen, TX</span>
+    </div>
 
-          <div class="block">
-            <h3>Características de la página web</h3>
-            <ul class="list">
-              <li>• Diseño de página web de alta conversión</li>
-              <li>• Estructura enfocada en claridad, confianza y presentación profesional</li>
-              <li>• Integración de imágenes generadas o mejoradas con inteligencia artificial</li>
-              <li>• Hosting incluido</li>
-              <li>• Mantenimiento mensual</li>
-              <li>• Hasta 3 modificaciones al mes sin costo adicional</li>
-              <li>• Cada modificación adicional: 10 USD</li>
-            </ul>
-          </div>
+    <!-- Main Title -->
+    <h1 class="fade-in text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4" style="font-family:'Playfair Display',serif; letter-spacing:-0.01em;">
+      Estrategia de Pricing<br>
+      <span class="text-gold" contenteditable="true">y Posicionamiento</span>
+    </h1>
 
-          <div class="block">
-            <h3>Sobre el mantenimiento mensual</h3>
-            <p>El cargo mensual de 50 USD corresponde al hosting y al mantenimiento continuo de la solución. Este mantenimiento es permanente porque la página necesita mantenerse activa y funcional, y el agente de IA requiere seguimiento para conservar su utilidad con el paso del tiempo.</p>
-            <p>En este plan se contemplan también tres modificaciones al mes sin costo, para realizar ajustes menores en la página o en la información cuando sea necesario. Si durante el mismo mes se requieren cambios adicionales, cada modificación extra tiene un costo de 10 USD.</p>
-          </div>
+    <!-- Subtitle -->
+    <p class="fade-in text-base md:text-lg font-light tracking-widest uppercase mb-3" style="color:#9A9A8A; letter-spacing:0.22em;">
+      Análisis Ejecutivo · 2025
+    </p>
 
-          <div class="block">
-            <h3>Sobre el agente de IA</h3>
-            <p>El agente se entrena con la información proporcionada por el cliente y puede actuar como un vendedor virtual disponible 24/7, atendiendo consultas en todo momento, inclusive fuera del horario laboral. Esto ayuda a dar seguimiento inicial a interesados, resolver dudas frecuentes y evitar la pérdida de oportunidades por falta de respuesta inmediata.</p>
-            <ul class="list">
-              <li>• Responder consultas frecuentes</li>
-              <li>• Orientar al usuario según su necesidad</li>
-              <li>• Funcionar como primer filtro de atención</li>
-              <li>• Actuar como apoyo comercial inicial</li>
-              <li>• Tomar datos del prospecto o cliente</li>
-              <li>• Enviar esos datos a una hoja de Google para llevar un registro</li>
-            </ul>
-          </div>
+    <!-- Tagline -->
+    <p class="fade-in text-sm md:text-base tracking-widest uppercase mb-8" style="color:#C9A84C; letter-spacing:0.3em; font-family:'Playfair Display',serif; font-style:italic;"><br></p>
 
-          <div class="includes">
-            <h3>Incluye</h3>
-            <ul class="includes-grid">
-              <li>• Página web de alta conversión</li>
-              <li>• Imágenes con inteligencia artificial</li>
-              <li>• Agente de IA</li>
-              <li>• Hosting</li>
-              <li>• Mantenimiento continuo</li>
-              <li>• Hasta 3 modificaciones al mes sin costo</li>
-              <li>• Modificaciones adicionales a 10 USD cada una</li>
-              <li>• Posibilidad de captura de datos a Google Sheets</li>
-            </ul>
-          </div>
-        </article>
+    <!-- Gold Ornamental Divider -->
+    <div class="gold-divider mb-10"><br></div>
 
-        <article class="card alt">
-          <span class="eyebrow" style="background: rgba(34,211,238,0.1); border-color: rgba(34,211,238,0.2);">Implementación puntual</span>
-          <h2 style="margin-top:16px; font-size:1.85rem;">Opción 2: Solo agente de IA</h2>
+    <!-- 4 Stat Cards Grid -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
 
-          <div class="pricebox">
-            <h3>Inversión</h3>
-            <ul>
-              <li><strong>Setup fee único:</strong> 350 USD</li>
-              <li><strong>Actualizaciones:</strong> 30 USD por cada actualización requerida</li>
-            </ul>
-          </div>
-
-          <div class="block">
-            <h3>¿Qué incluye?</h3>
-            <p>Esta opción contempla únicamente la implementación inicial del agente de inteligencia artificial, sin desarrollo de página web.</p>
-            <p>El agente se entrena con la información proporcionada por el cliente, para que pueda responder con base en los servicios, procesos, información comercial y preguntas frecuentes del negocio.</p>
-          </div>
-
-          <div class="block">
-            <h3>Funcionamiento del agente</h3>
-            <ul class="list">
-              <li>• Responder preguntas frecuentes</li>
-              <li>• Guiar conversaciones básicas</li>
-              <li>• Brindar información inicial a clientes potenciales</li>
-              <li>• Actuar como apoyo de atención fuera de horario</li>
-              <li>• Capturar datos del usuario</li>
-              <li>• Registrar información en una hoja de Google</li>
-            </ul>
-          </div>
-
-          <div class="block">
-            <h3>Actualizaciones</h3>
-            <p>Este plan no incluye mensualidad fija. La implementación inicial se realiza con la información disponible al inicio del proyecto.</p>
-            <p>Si posteriormente se requiere agregar nueva información, modificar respuestas, ajustar el comportamiento del agente, actualizar procesos o ampliar los datos que registra, cada actualización tendrá un costo de 30 USD.</p>
-          </div>
-
-          <div class="includes" style="background: linear-gradient(180deg, rgba(34, 211, 238, 0.12), rgba(15, 23, 42, 0.5)); border-color: rgba(34,211,238,0.18);">
-            <h3>Incluye</h3>
-            <ul class="list">
-              <li>• Implementación inicial del agente de IA</li>
-              <li>• Entrenamiento base con información del cliente</li>
-              <li>• Configuración de respuestas iniciales</li>
-              <li>• Función de atención automatizada 24/7</li>
-              <li>• Posibilidad de captura de datos</li>
-              <li>• Posibilidad de registro en Google Sheets</li>
-              <li>• Actualizaciones bajo solicitud a 30 USD cada una</li>
-            </ul>
-          </div>
-        </article>
+      <!-- Stat 1 -->
+      <div class="stat-card">
+        <div class="text-3xl font-bold text-gold mb-1" style="font-family:'Playfair Display',serif;">15</div>
+        <div class="text-xs uppercase tracking-widest" style="color:#9A9A8A;">Platillos revisados&nbsp;</div>
       </div>
 
-      <div class="section" style="margin-top: 38px;">
-        <h3 style="margin-bottom: 20px; color: var(--white); font-size: 1.65rem;">Comparación de planes</h3>
-        <div style="overflow-x:auto;">
-          <table style="min-width: 720px; border-collapse: collapse; width: 100%;">
-            <thead>
-              <tr>
-                <th style="background: rgba(2,6,23,0.72); color: var(--white); padding: 16px;">Característica</th>
-                <th style="background: rgba(2,6,23,0.72); color: var(--white); padding: 16px;">Página web + agente de IA</th>
-                <th style="background: rgba(2,6,23,0.72); color: var(--white); padding: 16px;">Solo agente de IA</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">Setup fee</td>
-                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">350 USD</td>
-                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">350 USD</td>
-              </tr>
-              <tr>
-                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">Mantenimiento mensual</td>
-                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">50 USD</td>
-                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">No incluido</td>
-              </tr>
-              <tr>
-                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">Modificaciones o actualizaciones</td>
-                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">3 modificaciones gratuitas al mes; luego 10 USD cada una</td>
-                <td style="padding: 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.12);">30 USD por cada actualización solicitada</td>
-              </tr>
-              <tr>
-                <td style="padding: 16px;">Función de agente IA</td>
-                <td style="padding: 16px;">Agente entrenado con información del negocio, integrado en la página web, incluye captura de datos y registro en Google Sheets.</td>
-                <td style="padding: 16px;">Implementación inicial del agente, con configuración básica y registro de datos. Atención automatizada 24/7.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <!-- Stat 2 -->
+      <div class="stat-card">
+        <div class="text-3xl font-bold text-gold mb-1" style="font-family:'Playfair Display',serif;">11</div>
+        <div class="text-xs uppercase tracking-widest" style="color:#9A9A8A;">Precios Correctos</div>
       </div>
-    </section>
 
-    <section data-section="comparison" class="section wrap">
-  <div class="table-card">
-    <h2 style="font-size:1.75rem;">Diferencias principales entre ambas opciones</h2>
-    <div style="overflow-x:auto; -webkit-overflow-scrolling: touch;">
-      <table>
-        <thead>
-          <tr>
-            <th>Aspecto</th>
-            <th>Página web + agente de IA</th>
-            <th>Solo agente de IA</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Incluye página web</td><td>Sí</td><td>No</td></tr>
-          <tr><td>Incluye agente de IA</td><td>Sí</td><td>Sí</td></tr>
-          <tr><td>Pago inicial</td><td>350 USD</td><td>350 USD</td></tr>
-          <tr><td>Mensualidad fija</td><td>50 USD mensuales</td><td>No</td></tr>
-          <tr><td>Hosting</td><td>Sí</td><td>No aplica</td></tr>
-          <tr><td>Mantenimiento continuo</td><td>Sí</td><td>No incluido</td></tr>
-          <tr><td>Cambios incluidos</td><td>3 modificaciones al mes</td><td>No</td></tr>
-          <tr><td>Cambios adicionales</td><td>10 USD cada uno</td><td>30 USD por actualización</td></tr>
-          <tr><td>Captura de datos a Google Sheets</td><td>Posible</td><td>Posible</td></tr>
-        </tbody>
-      </table>
+      <!-- Stat 3 -->
+      <div class="stat-card">
+        <div class="text-3xl font-bold text-gold mb-1" style="font-family:'Playfair Display',serif;">6</div>
+        <div class="text-xs uppercase tracking-widest" style="color:#9A9A8A;">Oportunidades de Ajuste</div>
+      </div>
+
+      <!-- Stat 4 -->
+      <div class="stat-card col-span-2 lg:col-span-1">
+        <div class="text-2xl font-bold text-gold mb-1" style="font-family:'Playfair Display',serif;">+12–18%</div>
+        <div class="text-xs uppercase tracking-widest" style="color:#9A9A8A;">Incremento Potencial en Ticket</div>
+      </div>
+
     </div>
   </div>
 </section>
 
-    <section data-section="info" class="section wrap">
-      <div class="info-grid" style="overflow-x:auto; -webkit-overflow-scrolling: touch;">
-        <article class="info-card" style="min-width:320px;">
-          <h2 style="font-size:1.55rem;">Aclaración sobre el entrenamiento del agente</h2>
-          <p style="margin-top:16px;">El agente no funciona de manera aislada ni adivina la información del negocio. Su entrenamiento se basa en el material que proporciona el cliente.</p>
-          <p>La calidad de sus respuestas depende directamente de la precisión de la información entregada durante la implementación. Se requiere actualizar el agente cada vez que el negocio modifique servicios, precios, procesos, horarios o condiciones para mantener su efectividad.</p>
-        </article>
+<!-- ============================================================================ -->
+<!-- DIAGNÓSTICO SECTION: General diagnosis of current pricing strategy           -->
+<!-- Features: Dark card with paragraph text, ornamental divider                  -->
+<!-- Mobile Padding: px-4 with md/lg scaling prevents clipping                    -->
+<!-- ============================================================================ -->
+<section data-section="diagnostico" class="section-pad" id="diagnostico">
+  <div class="max-w-3xl mx-auto px-4 md:px-8 lg:px-12">
 
-        <article class="info-card" style="min-width:320px;">
-          <h2 style="font-size:1.55rem;">Aclaración sobre captura de datos y registro</h2>
-          <p style="margin-top:16px;">El agente puede incluir una función para solicitar datos al usuario durante la conversación, que se utilizan para seguimiento comercial, contacto posterior o control interno.</p>
-          <p>Cuando se requiera, esta información puede enviarse automáticamente a una hoja de Google, permitiendo un registro organizado de leads, consultas o solicitudes recibidas.</p>
-        </article>
+    <!-- Section Heading -->
+    <h2 class="text-3xl md:text-4xl font-bold mb-2 section-heading" style="font-family:'Playfair Display',serif;">
+      Diagnóstico General
+    </h2>
+
+    <div class="gold-divider my-6">
+      <span>◆</span>
+    </div>
+
+    <!-- Main Diagnostic Text -->
+    <div class="card-dark">
+      <p class="text-base md:text-lg leading-relaxed" style="color:#E8E8E0;">
+        Los precios actuales son <strong class="text-gold">coherentes con la propuesta de valor</strong> de un speakeasy premium. El mercado de Killeen tiene un perfil más conservador, por lo que el éxito del pricing depende de ejecutar una experiencia completa: branding, iluminación, música, coctelería y ambientación.
+      </p>
+      <p class="text-base md:text-lg leading-relaxed mt-4" style="color:#E8E8E0;">
+        La recomendación es <strong class="text-gold">mantener y reforzar la identidad premium</strong>, evitar reducciones de precio y complementar el menú con opciones comfort-premium que actúen como puente para el cliente local.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================================ -->
+<!-- MERCADO SECTION: Market context for Killeen, TX                              -->
+<!-- Features: Intro paragraph, 4 gold-bullet audience segments                   -->
+<!-- Mobile Padding: Responsive padding protects headings and text                -->
+<!-- ============================================================================ -->
+<section data-section="mercado" class="section-pad" id="mercado" style="background-color:#0F0F0F;">
+  <div class="max-w-3xl mx-auto px-4 md:px-8 lg:px-12">
+
+    <!-- Section Heading -->
+    <h2 class="text-3xl md:text-4xl font-bold mb-2 section-heading" style="font-family:'Playfair Display',serif;">
+      El Mercado de Killeen, TX
+    </h2>
+
+    <div class="gold-divider my-6">
+      <span>◆</span>
+    </div>
+
+    <!-- Market Description -->
+    <p class="text-base md:text-lg leading-relaxed mb-8" style="color:#E8E8E0;">
+      Killeen está dominado por cadenas como Texas Roadhouse, Olive Garden y Applebee's. <strong class="text-gold">No existe un speakeasy comparable en el mercado local</strong> — Secret Stop es pionero en su categoría, lo que representa la mayor oportunidad y el principal reto simultáneamente.
+    </p>
+
+    <!-- Audience Segment Bullets -->
+    <div class="space-y-4">
+
+      <div class="card-dark">
+        <p class="gold-bullet text-sm md:text-base" style="color:#E8E8E0;">
+          Adultos <strong class="text-gold">25–45 años</strong> con capacidad de gasto discrecional superior al promedio local
+        </p>
       </div>
-    </section>
 
-    <section data-section="summary" class="section wrap">
-      <div class="summary">
-        <h2 style="font-size:1.75rem;">Resumen</h2>
-        <p style="margin-top:16px;">La opción <strong>Página web + agente de IA</strong> ofrece una solución integral con presencia digital, hosting, mantenimiento continuo y ajustes periódicos dentro del servicio mensual, además de integrar un agente virtual disponible 24 horas que automatiza la atención inicial.</p>
-        <p>La opción <strong>Solo agente de IA</strong> está diseñada para quienes requieren únicamente la automatización a través del agente virtual y prefieren solicitar las actualizaciones puntuales, ahora con un costo de 30 USD por cada actualización, según la demanda del negocio.</p>
+      <div class="card-dark">
+        <p class="gold-bullet text-sm md:text-base" style="color:#E8E8E0;">
+          Personal militar y civil de <strong class="text-gold">Fort Cavazos</strong> que busca alternativa premium a las cadenas
+        </p>
       </div>
-    </section>
-  </main>
 
-  <footer data-section="footer" class="wrap footer">
-    Francisco Benítez Digital · Página informativa de planes de implementación
-    <small style="display:block; margin-top:12px; color: var(--muted); font-size:0.85rem;">
-      Precios en USD, más impuestos aplicables según el país.
-    </small>
-  </footer>
-</body>
-</html>
+      <div class="card-dark">
+        <p class="gold-bullet text-sm md:text-base" style="color:#E8E8E0;">
+          Clientes con experiencia en mercados sofisticados: <strong class="text-gold">Austin, San Antonio, Dallas</strong>
+        </p>
+      </div>
+
+      <div class="card-dark">
+        <p class="gold-bullet text-sm md:text-base" style="color:#E8E8E0;">
+          Consumidor <strong class="text-gold">aspiracional local</strong> atraído por la exclusividad del concepto
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================================ -->
+<!-- ANÁLISIS DE PRECIOS SECTION: Two styled tables — Cold Menu & Tapas           -->
+<!-- Features: Mobile-scrollable tables, animated mobile scroll hint, gold header -->
+<!-- Mobile Padding: px-4 and table scroll indicators prevent mobile confusion    -->
+<!-- ============================================================================ -->
+<section data-section="analisis-precios" class="section-pad" id="analisis">
+  <div class="max-w-4xl mx-auto px-4 md:px-8 lg:px-12">
+
+    <!-- Section Heading -->
+    <h2 class="text-3xl md:text-4xl font-bold mb-2 section-heading" style="font-family:'Playfair Display',serif;">
+      Análisis de Precios por Platillo
+    </h2>
+
+    <div class="gold-divider my-6">
+      <span>◆</span>
+    </div>
+
+    <!-- Subtext -->
+    <p class="text-base md:text-lg leading-relaxed mb-10" style="color:#E8E8E0;">
+      Los precios actuales <strong class="text-gold">NO están exageradamente altos</strong>. Algunos incluso podrían subirse con mejor presentación.
+    </p>
+
+    <!-- Cold Menu Table -->
+    <div class="mb-12">
+      <h3 class="text-xl font-semibold mb-4 text-gold" style="font-family:'Playfair Display',serif; letter-spacing:0.05em;">
+        ─── Cold Menu ───
+      </h3>
+
+      <!-- Mobile Scroll Hint -->
+      <div class="table-scroll-hint md:hidden" aria-hidden="true">
+        <span>Desliza para ver toda la tabla</span>
+        <span class="scroll-hint-arrow">→</span>
+      </div>
+
+      <div class="table-wrap table-scroll-region rounded" style="border:1px solid #2A2A2A;" role="region" aria-label="Tabla de precios Cold Menu, deslizable horizontalmente en móvil" tabindex="0">
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>Platillo</th>
+              <th>Precio Actual</th>
+              <th>Precio Sugerido</th>
+              <th>Veredicto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:500;">Charcuterie Board</td>
+              <td>$24</td>
+              <td class="text-gold font-semibold">$27</td>
+              <td>🔼 Subir</td>
+            </tr>
+            <tr>
+              <td style="font-weight:500;">Melon &amp; Prosciutto</td>
+              <td>$16</td>
+              <td>$16</td>
+              <td style="color:#4CAF50;">✅ Correcto</td>
+            </tr>
+            <tr>
+              <td style="font-weight:500;">Beef Carpaccio</td>
+              <td>$17</td>
+              <td class="text-gold font-semibold">$19</td>
+              <td>🔼 Subir</td>
+            </tr>
+            <tr>
+              <td style="font-weight:500;">Caprese Burrata</td>
+              <td>$16</td>
+              <td>$16–$18</td>
+              <td style="color:#4CAF50;">✅ Correcto</td>
+            </tr>
+            <tr>
+              <td style="font-weight:500;">Smoked Salmon Rolls</td>
+              <td>$14</td>
+              <td class="text-gold font-semibold">$15</td>
+              <td>🔼 Subir</td>
+            </tr>
+            <tr>
+              <td style="font-weight:500;">Marinated Olives</td>
+              <td>$8</td>
+              <td>$8</td>
+              <td style="color:#4CAF50;">✅ Correcto</td>
+            </tr>
+            <tr>
+              <td style="font-weight:500;">Spiced Almonds</td>
+              <td>$7</td>
+              <td class="text-gold font-semibold">$8</td>
+              <td>🔼 Subir</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tapas Table -->
+    <div>
+      <h3 class="text-xl font-semibold mb-4 text-gold" style="font-family:'Playfair Display',serif; letter-spacing:0.05em;">
+        ─── Tapas ───
+      </h3>
+
+      <!-- Mobile Scroll Hint -->
+      <div class="table-scroll-hint md:hidden" aria-hidden="true">
+        <span>Desliza para ver toda la tabla</span>
+        <span class="scroll-hint-arrow">→</span>
+      </div>
+
+      <div class="table-wrap table-scroll-region rounded" style="border:1px solid #2A2A2A;" role="region" aria-label="Tabla de precios Tapas, deslizable horizontalmente en móvil" tabindex="0">
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>Platillo</th>
+              <th>Precio Actual</th>
+              <th>Precio Sugerido</th>
+              <th>Veredicto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:500;">Bruschetta</td>
+              <td>$9</td>
+              <td>$9</td>
+              <td style="color:#4CAF50;">✅ Correcto</td>
+            </tr>
+            <tr>
+              <td style="font-weight:500;">Garlic Shrimp</td>
+              <td>$12</td>
+              <td>$12–$14</td>
+              <td style="color:#4CAF50;">✅ Correcto</td>
+            </tr>
+            <tr>
+              <td style="font-weight:500;">Goat Cheese Crostini</td>
+              <td>$9</td>
+              <td>$9</td>
+              <td style="color:#4CAF50;">✅ Correcto</td>
+            </tr>
+            <tr>
+              <td style="font-weight:500;">Roasted Red Pepper Hummus</td>
+              <td>$8</td>
+              <td class="text-gold font-semibold">$10</td>
+              <td>🔼 Subir</td>
+            </tr>
+            <tr>
+              <td style="font-weight:500;">Stuffed Peppers</td>
+              <td>$9</td>
+              <td>$9</td>
+              <td style="color:#4CAF50;">✅ Correcto</td>
+            </tr>
+            <tr>
+              <td style="font-weight:500;">Anchovy Toast</td>
+              <td>$9</td>
+              <td>$9</td>
+              <td style="color:#E6B800;">⚠️ Nicho — redescribir</td>
+            </tr>
+            <tr>
+              <td style="font-weight:500;">Marinated Artichokes</td>
+              <td>$8</td>
+              <td class="text-gold font-semibold">$9–$10</td>
+              <td>🔼 Subir</td>
+            </tr>
+            <tr>
+              <td style="font-weight:500;">Manchego &amp; Quince</td>
+              <td>$9</td>
+              <td class="text-gold font-semibold">$11</td>
+              <td>🔼 Subir</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================================ -->
+<!-- PRECIOS PSICOLÓGICOS SECTION: Psychological pricing strategy                 -->
+<!-- Features: Explanatory text + 3 example cards with gold left border           -->
+<!-- Mobile Padding: Responsive container protects heading edges                  -->
+<!-- ============================================================================ -->
+<section data-section="precios-psicologicos" class="section-pad" id="psicologicos" style="background-color:#0F0F0F;">
+  <div class="max-w-3xl mx-auto px-4 md:px-8 lg:px-12">
+
+    <!-- Section Heading -->
+    <h2 class="text-3xl md:text-4xl font-bold mb-2 section-heading" style="font-family:'Playfair Display',serif;">
+      Precios Psicológicos
+    </h2>
+
+    <div class="gold-divider my-6">
+      <span>◆</span>
+    </div>
+
+    <!-- Explanation -->
+    <p class="text-base md:text-lg leading-relaxed mb-8" style="color:#E8E8E0;">
+      En un speakeasy premium, los precios con terminación en <strong class="text-gold">dígito impar ($17, $19, $23)</strong> comunican precisión y cuidado — refuerzan la credibilidad del concepto. Evitar múltiplos redondos de $5 en los platillos de mayor valor percibido.
+    </p>
+
+    <!-- 3 Example Cards -->
+    <div class="space-y-4">
+
+      <!-- Card 1 -->
+      <div class="card-dark">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <span class="font-semibold text-base" style="font-family:'Playfair Display',serif;">Charcuterie Board</span>
+          <span class="text-gold font-bold">$24 → $27</span>
+        </div>
+        <p class="text-sm" style="color:#9A9A8A;">"Evita el umbral psicológico de $25"</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card-dark">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <span class="font-semibold text-base" style="font-family:'Playfair Display',serif;">Beef Carpaccio</span>
+          <span class="text-gold font-bold">$17 → $19</span>
+        </div>
+        <p class="text-sm" style="color:#9A9A8A;">"$19 se percibe justo sin cruzar los $20"</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card-dark">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <span class="font-semibold text-base" style="font-family:'Playfair Display',serif;">Manchego &amp; Quince</span>
+          <span class="text-gold font-bold">$9 → $11</span>
+        </div>
+        <p class="text-sm" style="color:#9A9A8A;">"Comunica ingrediente premium"</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================================ -->
+<!-- TICKET PROMEDIO SECTION: Average ticket target with table breakdown          -->
+<!-- Features: Large gold number, 3 table cards, gold callout insight box         -->
+<!-- Mobile Padding: Safe spacing on all screen widths                            -->
+<!-- ============================================================================ -->
+<section data-section="ticket-promedio" class="section-pad" id="ticket">
+  <div class="max-w-3xl mx-auto px-4 md:px-8 lg:px-12">
+
+    <!-- Section Heading -->
+    <h2 class="text-3xl md:text-4xl font-bold mb-2 section-heading" style="font-family:'Playfair Display',serif;">
+      Ticket Promedio Objetivo
+    </h2>
+
+    <div class="gold-divider my-6">
+      <span>◆</span>
+    </div>
+
+    <!-- Large Gold Number -->
+    <div class="text-center mb-4">
+      <span class="text-5xl md:text-7xl font-bold text-gold" style="font-family:'Playfair Display',serif;">$45–$65</span>
+      <p class="text-sm uppercase tracking-widest mt-2" style="color:#9A9A8A; letter-spacing:0.2em;">por persona</p>
+    </div>
+
+    <!-- Supporting Text -->
+    <p class="text-base md:text-lg leading-relaxed text-center mb-10" style="color:#E8E8E0;">
+      Con 2–3 platillos y 2–3 cocteles por visita, el menú actual con ajustes está alineado con este objetivo.
+    </p>
+
+    <!-- 3 Table Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+
+      <div class="stat-card">
+        <div class="text-xs uppercase tracking-widest mb-2" style="color:#9A9A8A;">Mesa de 1 persona</div>
+        <div class="text-2xl font-bold text-gold" style="font-family:'Playfair Display',serif;">$45–$65</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="text-xs uppercase tracking-widest mb-2" style="color:#9A9A8A;">Mesa de 2 personas</div>
+        <div class="text-2xl font-bold text-gold" style="font-family:'Playfair Display',serif;">$90–$130</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="text-xs uppercase tracking-widest mb-2" style="color:#9A9A8A;">Mesa de 4 personas</div>
+        <div class="text-2xl font-bold text-gold" style="font-family:'Playfair Display',serif;">$180–$260</div>
+      </div>
+
+    </div>
+
+    <!-- Gold Callout Insight Box -->
+    <div class="callout-gold">
+      <p class="text-base md:text-lg leading-relaxed" style="color:#E8E8E0;">
+        <span class="text-gold font-semibold">⭐ Insight:</span> El menú actual <strong class="text-gold">NO tiene una tapa premium de $20–$24</strong>. Agregar una opción en ese rango (truffle fries, beef sliders, seared tuna) elevaría el ticket promedio de forma natural sin resistencia del cliente.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================================ -->
+<!-- PLATILLOS NUEVOS SECTION: 4 recommended new dishes                           -->
+<!-- Features: 4 dark cards with gold left border, price + description            -->
+<!-- Mobile Padding: px-4 and scaled desktop padding                              -->
+<!-- ============================================================================ -->
+<section data-section="platillos-nuevos" class="section-pad" id="nuevos" style="background-color:#0F0F0F;">
+  <div class="max-w-3xl mx-auto px-4 md:px-8 lg:px-12">
+
+    <!-- Section Heading -->
+    <h2 class="text-3xl md:text-4xl font-bold mb-2 section-heading" style="font-family:'Playfair Display',serif;">
+      Platillos Nuevos Recomendados
+    </h2>
+
+    <div class="gold-divider my-6">
+      <span>◆</span>
+    </div>
+
+    <!-- Subtext -->
+    <p class="text-base md:text-lg leading-relaxed mb-8" style="color:#E8E8E0;">
+      Comfort-premium para ampliar la aceptación local sin comprometer la identidad.
+    </p>
+
+    <!-- 4 New Dish Cards -->
+    <div class="space-y-4">
+
+      <!-- Dish 1 -->
+      <div class="card-dark">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <span class="font-bold text-lg" style="font-family:'Playfair Display',serif;">Truffle Parmesan Fries</span>
+          <span class="text-gold font-bold text-lg">$13</span>
+        </div>
+        <p class="text-sm" style="color:#9A9A8A;">Papas fritas con aceite de trufa, parmesano y romero. Lo familiar, elevado.</p>
+      </div>
+
+      <!-- Dish 2 -->
+      <div class="card-dark">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <span class="font-bold text-lg" style="font-family:'Playfair Display',serif;">Angus Beef Sliders (x2)</span>
+          <span class="text-gold font-bold text-lg">$17</span>
+        </div>
+        <p class="text-sm" style="color:#9A9A8A;">Mini hamburguesas, queso brie, mermelada de tomate y rúcula en brioche.</p>
+      </div>
+
+      <!-- Dish 3 -->
+      <div class="card-dark">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <span class="font-bold text-lg" style="font-family:'Playfair Display',serif;">Flatbread de Prosciutto</span>
+          <span class="text-gold font-bold text-lg">$16</span>
+        </div>
+        <p class="text-sm" style="color:#9A9A8A;">Masa artesanal, ricotta, prosciutto, higos frescos y miel de trufa.</p>
+      </div>
+
+      <!-- Dish 4 -->
+      <div class="card-dark">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <span class="font-bold text-lg" style="font-family:'Playfair Display',serif;">Seared Tuna Crostini (x3)</span>
+          <span class="text-gold font-bold text-lg">$18</span>
+        </div>
+        <p class="text-sm" style="color:#9A9A8A;">Atún sellado con sésamo, aguacate y sriracha aioli. Instagrammable.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================================ -->
+<!-- PLAN DE IMPLEMENTACIÓN SECTION: 3-phase rollout plan                         -->
+<!-- Features: 3 cards side-by-side with color-coded top borders                  -->
+<!-- Mobile Padding: Responsive grid and safe container spacing                    -->
+<!-- ============================================================================ -->
+<section data-section="implementacion" class="section-pad" id="implementacion">
+  <div class="max-w-4xl mx-auto px-4 md:px-8 lg:px-12">
+
+    <!-- Section Heading -->
+    <h2 class="text-3xl md:text-4xl font-bold mb-2 section-heading" style="font-family:'Playfair Display',serif;">
+      Plan de Implementación en Fases
+    </h2>
+
+    <div class="gold-divider my-6">
+      <span>◆</span>
+    </div>
+
+    <!-- 3 Phase Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- FASE 1 — Green -->
+      <div class="phase-card" style="border-top:3px solid #4CAF50;">
+        <div class="text-xs uppercase tracking-widest mb-1" style="color:#4CAF50; letter-spacing:0.2em;">Fase 1</div>
+        <div class="text-sm font-semibold mb-1" style="color:#9A9A8A;">Semanas 1–2 · Inmediata</div>
+        <h3 class="text-lg font-bold mb-4 text-gold" style="font-family:'Playfair Display',serif;">Ajustes Rápidos</h3>
+        <ul class="space-y-2 text-sm" style="color:#E8E8E0;">
+          <li class="gold-bullet">Spiced Almonds <span class="text-gold">$7→$8</span></li>
+          <li class="gold-bullet">Hummus <span class="text-gold">$8→$10</span></li>
+          <li class="gold-bullet">Artichokes <span class="text-gold">$8→$9</span></li>
+          <li class="gold-bullet">Manchego <span class="text-gold">$9→$11</span></li>
+        </ul>
+      </div>
+
+      <!-- FASE 2 — Gold -->
+      <div class="phase-card" style="border-top:3px solid #C9A84C;">
+        <div class="text-xs uppercase tracking-widest mb-1" style="color:#C9A84C; letter-spacing:0.2em;">Fase 2</div>
+        <div class="text-sm font-semibold mb-1" style="color:#9A9A8A;">Semanas 3–6 · Medio Plazo</div>
+        <h3 class="text-lg font-bold mb-4 text-gold" style="font-family:'Playfair Display',serif;">Relanzamiento</h3>
+        <ul class="space-y-2 text-sm" style="color:#E8E8E0;">
+          <li class="gold-bullet">Charcuterie <span class="text-gold">$24→$27</span> nueva presentación</li>
+          <li class="gold-bullet">Carpaccio <span class="text-gold">$17→$19</span></li>
+          <li class="gold-bullet">Salmon Rolls <span class="text-gold">$14→$15</span></li>
+          <li class="gold-bullet">Incorporar 2 platillos nuevos</li>
+        </ul>
+      </div>
+
+      <!-- FASE 3 — Dark Gold -->
+      <div class="phase-card" style="border-top:3px solid #A07830;">
+        <div class="text-xs uppercase tracking-widest mb-1" style="color:#A07830; letter-spacing:0.2em;">Fase 3</div>
+        <div class="text-sm font-semibold mb-1" style="color:#9A9A8A;">Mes 2+ · Largo Plazo</div>
+        <h3 class="text-lg font-bold mb-4 text-gold" style="font-family:'Playfair Display',serif;">Optimización</h3>
+        <ul class="space-y-2 text-sm" style="color:#E8E8E0;">
+          <li class="gold-bullet">Revisar food cost trimestralmente</li>
+          <li class="gold-bullet">Menú de temporada con 2 especiales rotativos</li>
+          <li class="gold-bullet">Analizar ticket promedio y platillos más vendidos</li>
+          <li class="gold-bullet">Activar contenido visual en redes sociales</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================================ -->
+<!-- KPIs SECTION: 6 KPI cards in 2x3 grid                                       -->
+<!-- Features: Each card shows metric, gold META value, red ALERTA value          -->
+<!-- Mobile Padding: Grid remains readable on small screens                       -->
+<!-- ============================================================================ -->
+<section data-section="kpis" class="section-pad" id="kpis" style="background-color:#0F0F0F;">
+  <div class="max-w-4xl mx-auto px-4 md:px-8 lg:px-12">
+
+    <!-- Section Heading -->
+    <h2 class="text-3xl md:text-4xl font-bold mb-2 section-heading" style="font-family:'Playfair Display',serif;">
+      ¿Cómo Medir el Éxito?
+    </h2>
+
+    <div class="gold-divider my-6">
+      <span>◆</span>
+    </div>
+
+    <!-- 6 KPI Cards — 2 columns on mobile, 3 on desktop -->
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <!-- KPI 1 -->
+      <div class="kpi-card">
+        <div class="text-xs uppercase tracking-widest mb-3" style="color:#9A9A8A; letter-spacing:0.15em;">Ticket Promedio</div>
+        <div class="mb-2">
+          <span class="text-xs uppercase" style="color:#4CAF50;">Meta</span>
+          <div class="text-lg font-bold text-gold" style="font-family:'Playfair Display',serif;">$45–$65</div>
+        </div>
+        <div>
+          <span class="text-xs uppercase" style="color:#E53935;">Alerta</span>
+          <div class="text-sm font-semibold" style="color:#E53935;">&lt; $35</div>
+        </div>
+      </div>
+
+      <!-- KPI 2 -->
+      <div class="kpi-card">
+        <div class="text-xs uppercase tracking-widest mb-3" style="color:#9A9A8A; letter-spacing:0.15em;">Food Cost</div>
+        <div class="mb-2">
+          <span class="text-xs uppercase" style="color:#4CAF50;">Meta</span>
+          <div class="text-lg font-bold text-gold" style="font-family:'Playfair Display',serif;">25–32%</div>
+        </div>
+        <div>
+          <span class="text-xs uppercase" style="color:#E53935;">Alerta</span>
+          <div class="text-sm font-semibold" style="color:#E53935;">&gt; 35%</div>
+        </div>
+      </div>
+
+      <!-- KPI 3 -->
+      <div class="kpi-card">
+        <div class="text-xs uppercase tracking-widest mb-3" style="color:#9A9A8A; letter-spacing:0.15em;">Platillos por Mesa</div>
+        <div class="mb-2">
+          <span class="text-xs uppercase" style="color:#4CAF50;">Meta</span>
+          <div class="text-lg font-bold text-gold" style="font-family:'Playfair Display',serif;">2.5–3.5</div>
+        </div>
+        <div>
+          <span class="text-xs uppercase" style="color:#E53935;">Alerta</span>
+          <div class="text-sm font-semibold" style="color:#E53935;">&lt; 2</div>
+        </div>
+      </div>
+
+      <!-- KPI 4 -->
+      <div class="kpi-card">
+        <div class="text-xs uppercase tracking-widest mb-3" style="color:#9A9A8A; letter-spacing:0.15em;">Cocteles por Persona</div>
+        <div class="mb-2">
+          <span class="text-xs uppercase" style="color:#4CAF50;">Meta</span>
+          <div class="text-lg font-bold text-gold" style="font-family:'Playfair Display',serif;">2–3</div>
+        </div>
+        <div>
+          <span class="text-xs uppercase" style="color:#E53935;">Alerta</span>
+          <div class="text-sm font-semibold" style="color:#E53935;">&lt; 1.5</div>
+        </div>
+      </div>
+
+      <!-- KPI 5 -->
+      <div class="kpi-card">
+        <div class="text-xs uppercase tracking-widest mb-3" style="color:#9A9A8A; letter-spacing:0.15em;">Retorno Clientes (Sem. 4)</div>
+        <div class="mb-2">
+          <span class="text-xs uppercase" style="color:#4CAF50;">Meta</span>
+          <div class="text-lg font-bold text-gold" style="font-family:'Playfair Display',serif;">&gt; 30%</div>
+        </div>
+        <div>
+          <span class="text-xs uppercase" style="color:#E53935;">Alerta</span>
+          <div class="text-sm font-semibold" style="color:#E53935;">&lt; 15%</div>
+        </div>
+      </div>
+
+      <!-- KPI 6 -->
+      <div class="kpi-card">
+        <div class="text-xs uppercase tracking-widest mb-3" style="color:#9A9A8A; letter-spacing:0.15em;">Reseñas Negativas de Precio</div>
+        <div class="mb-2">
+          <span class="text-xs uppercase" style="color:#4CAF50;">Meta</span>
+          <div class="text-lg font-bold text-gold" style="font-family:'Playfair Display',serif;">&lt; 10%</div>
+        </div>
+        <div>
+          <span class="text-xs uppercase" style="color:#E53935;">Alerta</span>
+          <div class="text-sm font-semibold" style="color:#E53935;">&gt; 20%</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================================ -->
+<!-- RECOMENDACIÓN FINAL SECTION: Strategic conclusion + centered quote           -->
+<!-- Features: Full-width dark section, body text, gold italic quote box          -->
+<!-- Mobile Padding: Centered content with safe screen margins                    -->
+<!-- ============================================================================ -->
+<section data-section="recomendacion-final" class="section-pad" id="conclusion" style="background-color:#080808;">
+  <div class="max-w-3xl mx-auto px-4 md:px-8 lg:px-12">
+
+    <!-- Section Heading -->
+    <h2 class="text-3xl md:text-4xl font-bold mb-2 section-heading section-heading-center text-center" style="font-family:'Playfair Display',serif;">
+      Conclusión Estratégica
+    </h2>
+
+    <div class="gold-divider my-6">
+      <span>◆</span>
+    </div>
+
+    <!-- Conclusion Text -->
+    <p class="text-base md:text-lg leading-relaxed mb-6 text-center" style="color:#E8E8E0;">
+      Secret Stop tiene los ingredientes para convertirse en el <strong class="text-gold">concepto más diferenciado de Killeen</strong>. Los precios NO necesitan reducción — necesitan justificación a través de una experiencia impecable.
+    </p>
+    <p class="text-base md:text-lg leading-relaxed mb-10 text-center" style="color:#E8E8E0;">
+      Los ajustes propuestos generarán un incremento del <strong class="text-gold">12–18% en el ticket promedio</strong> sin afectar la percepción de valor del cliente.
+    </p>
+
+    <!-- Centered Quote Box -->
+    <div class="quote-box text-center">
+      <p class="text-lg md:text-xl font-semibold text-gold leading-relaxed" style="font-family:'Playfair Display',serif; font-style:italic;">
+        "El precio correcto no es el más bajo del mercado.<br>
+        Es el que el cliente paga con gusto y sin dudar."
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================================ -->
+<!-- CHECKLIST SECTION: 7 action items with gold checkbox icons                   -->
+<!-- Features: Non-interactive visual checklist, gold ✓ icons                     -->
+<!-- Mobile Padding: Container includes px-4 and responsive padding               -->
+<!-- ============================================================================ -->
+<section data-section="checklist" class="section-pad" id="checklist">
+  <div class="max-w-3xl mx-auto px-4 md:px-8 lg:px-12">
+
+    <!-- Section Heading -->
+    <h2 class="text-3xl md:text-4xl font-bold mb-2 section-heading" style="font-family:'Playfair Display',serif;">
+      Checklist de Acción Inmediata
+    </h2>
+
+    <div class="gold-divider my-6">
+      <span>◆</span>
+    </div>
+
+    <!-- Checklist Container -->
+    <div style="background-color:#1A1A1A; border:1px solid #2A2A2A; border-radius:4px; padding:1.5rem 1.75rem;">
+
+      <div class="checklist-item">
+        <span class="check-icon">✓</span>
+        <p class="text-sm md:text-base" style="color:#E8E8E0;">Implementar ajustes de Fase 1 en sistema <strong class="text-gold">POS esta semana</strong></p>
+      </div>
+
+      <div class="checklist-item">
+        <span class="check-icon">✓</span>
+        <p class="text-sm md:text-base" style="color:#E8E8E0;">Redescribir el <strong class="text-gold">Anchovy Toast</strong> o considerar su reemplazo</p>
+      </div>
+
+      <div class="checklist-item">
+        <span class="check-icon">✓</span>
+        <p class="text-sm md:text-base" style="color:#E8E8E0;">Relanzar el <strong class="text-gold">Charcuterie Board a $27</strong> con nueva presentación y foto</p>
+      </div>
+
+      <div class="checklist-item">
+        <span class="check-icon">✓</span>
+        <p class="text-sm md:text-base" style="color:#E8E8E0;">Seleccionar <strong class="text-gold">2 de los 4 platillos nuevos</strong> e incorporarlos en semana 3–4</p>
+      </div>
+
+      <div class="checklist-item">
+        <span class="check-icon">✓</span>
+        <p class="text-sm md:text-base" style="color:#E8E8E0;">Establecer <strong class="text-gold">reporte semanal de ventas</strong> por ítem</p>
+      </div>
+
+      <div class="checklist-item">
+        <span class="check-icon">✓</span>
+        <p class="text-sm md:text-base" style="color:#E8E8E0;">Revisar <strong class="text-gold">food cost real</strong> con proveedores actuales</p>
+      </div>
+
+      <div class="checklist-item">
+        <span class="check-icon">✓</span>
+        <p class="text-sm md:text-base" style="color:#E8E8E0;">Activar <strong class="text-gold">estrategia de contenido visual</strong> (Instagram/TikTok) para justificar precio premium</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================================ -->
+<!-- FOOTER: Gold separator + confidential document notice                        -->
+<!-- Features: Thin gold line, centered text, muted metadata                      -->
+<!-- Mobile Padding: px-4 keeps footer text away from viewport edges              -->
+<!-- ============================================================================ -->
+<footer data-section="footer" class="px-4 md:px-8 lg:px-12 py-10 text-center" style="background-color:#080808;">
+
+  <!-- Gold Separator Line -->
+  <div class="gold-line mb-8" style="max-width:600px; margin-left:auto; margin-right:auto;"></div>
+
+  <!-- Footer Logo / Name -->
+  <p class="text-gold font-semibold tracking-widest uppercase mb-2" style="font-family:'Playfair Display',serif; letter-spacing:0.25em; font-size:0.9rem;">
+    Secret Stop Speakeasy
+  </p>
+
+  <!-- Footer Meta -->
+  <p class="text-xs uppercase tracking-widest" style="color:#5A5A4A; letter-spacing:0.2em; line-height:2;">
+    Killeen, Texas · Estrategia de Pricing 2025 · Documento Confidencial
+  </p>
+
+  <!-- Gold Ornamental Divider -->
+  <div class="gold-divider mt-6" style="max-width:300px; margin-left:auto; margin-right:auto;">
+    <span style="font-size:0.75rem;">◆</span>
+  </div>
+
+  <!-- Copyright -->
+  <p class="text-xs mt-4" style="color:#3A3A2A;">
+    © 2025 Secret Stop Speakeasy · Todos los derechos reservados · Uso interno exclusivo
+  </p>
+
+</footer>
+
+<!-- ============================================================================ -->
+<!-- JAVASCRIPT: Smooth scroll enhancement + fade-in on scroll                    -->
+<!-- ============================================================================ -->
+
+
+
+  <script src="script.js"></script>
+</body></html>
