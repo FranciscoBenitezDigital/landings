@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descarga tu Guía de Prompts de IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #081225 0%, #0B1E3A 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .logo img {
+            max-width: 200px;
+            height: auto;
+        }
+        
+        .form-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #C0F0F8;
+            text-align: center;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: rgba(192, 240, 248, 0.8);
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #C0F0F8;
+        }
+        
+        label .required {
+            color: #2090F8;
+        }
+        
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        
+        input[type="text"]::placeholder,
+        input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #2090F8;
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 0 3px rgba(32, 144, 248, 0.1);
+        }
+        
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .radio-option,
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .radio-option:hover,
+        .checkbox-option:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #2090F8;
+        }
+        
+        .radio-option.selected,
+        .checkbox-option.selected {
+            background: rgba(32, 144, 248, 0.15);
+            border-color: #2090F8;
+        }
+        
+        .checkbox-option.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            cursor: pointer;
+            accent-color: #2090F8;
+        }
+        
+        input[type="checkbox"]:disabled {
+            cursor: not-allowed;
+        }
+        
+        .checkbox-option label,
+        .radio-option label {
+            flex: 1;
+            cursor: pointer;
+            margin: 0;
+            font-weight: 400;
+            color: #fff;
+        }
+        
+        .consent-box {
+            background: rgba(32, 144, 248, 0.1);
+            border: 2px solid #2090F8;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 32px;
+        }
+        
+        .consent-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .consent-checkbox input[type="checkbox"] {
+            margin-top: 3px;
+            min-width: 24px;
+            min-height: 24px;
+        }
+        
+        .consent-checkbox label {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #C0F0F8;
+            margin: 0;
+        }
+        
+        .error-message {
+            display: none;
+            background: rgba(220, 38, 38, 0.2);
+            border: 1px solid rgba(220, 38, 38, 0.5);
+            color: #fca5a5;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+            font-size: 14px;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #2090F8 0%, #1a75d8 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 32px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(32, 144, 248, 0.3);
+        }
+        
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(32, 144, 248, 0.4);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .success-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        
+        .success-message h2 {
+            font-size: 24px;
+            color: #2090F8;
+            margin-bottom: 12px;
+        }
+        
+        .success-message p {
+            font-size: 16px;
+            color: rgba(192, 240, 248, 0.9);
+        }
+        
+        @media (max-width: 640px) {
+            .form-card {
+                padding: 24px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .subtitle {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://fbdigitalplaza.com/wp-content/uploads/2025/12/LOGO-FINALFINAL-OKOK-1.png" alt="FB Digital Plaza">
+        </div>
+        
+        <div class="form-card" id="formCard">
+            <h1>Descarga tu Guía de Prompts de IA</h1>
+            <p class="subtitle">Completa el formulario y recibe instantáneamente tu PDF con los mejores prompts</p>
+            
+            <form id="mainForm" novalidate>
+                <!-- Nombre -->
+                <div class="form-group">
+                    <label for="nombre">Nombre y apellido <span class="required">*</span></label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez" required>
+                </div>
+                
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Correo electrónico <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                </div>
+                
+                <!-- País -->
+                <div class="form-group">
+                    <label for="pais">País <span class="required">*</span></label>
+                    <input type="text" id="pais" name="pais" placeholder="México" required>
+                </div>
+                
+                <!-- Negocio -->
+                <div class="form-group">
+                    <label for="negocio">¿De qué es tu negocio o proyecto? <span class="required">*</span></label>
+                    <input type="text" id="negocio" name="negocio" placeholder="Ej: Coaching, E-commerce, Consultoría..." required>
+                </div>
+                
+                <!-- Nivel IA -->
+                <div class="form-group">
+                    <label>¿Cuál es tu nivel actual usando IA? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="nivel_cero" name="nivel_ia" value="Estoy empezando desde cero" required>
+                            <label for="nivel_cero">Estoy empezando desde cero</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="nivel_ocasional" name="nivel_ia" value="Uso ChatGPT ocasionalmente">
+                            <label for="nivel_ocasional">Uso ChatGPT ocasionalmente</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="nivel_trabajo" name="nivel_ia" value="Ya uso IA para mi trabajo">
+                            <label for="nivel_trabajo">Ya uso IA para mi trabajo</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="nivel_varias" name="nivel_ia" value="Ya uso varias herramientas de IA">
+                            <label for="nivel_varias">Ya uso varias herramientas de IA</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="nivel_auto" name="nivel_ia" value="Ya estoy automatizando procesos con IA">
+                            <label for="nivel_auto">Ya estoy automatizando procesos con IA</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Herramientas -->
+                <div class="form-group">
+                    <label>¿Qué herramientas de IA usas actualmente? <span class="required">*</span></label>
+                    <div class="checkbox-group" id="herramientasGroup">
+                        <div class="checkbox-option" data-tool="chatgpt">
+                            <input type="checkbox" id="tool_chatgpt" name="herramientas" value="ChatGPT">
+                            <label for="tool_chatgpt">ChatGPT</label>
+                        </div>
+                        <div class="checkbox-option" data-tool="claude">
+                            <input type="checkbox" id="tool_claude" name="herramientas" value="Claude">
+                            <label for="tool_claude">Claude</label>
+                        </div>
+                        <div class="checkbox-option" data-tool="gemini">
+                            <input type="checkbox" id="tool_gemini" name="herramientas" value="Gemini">
+                            <label for="tool_gemini">Gemini</label>
+                        </div>
+                        <div class="checkbox-option" data-tool="elevenlabs">
+                            <input type="checkbox" id="tool_elevenlabs" name="herramientas" value="ElevenLabs">
+                            <label for="tool_elevenlabs">ElevenLabs</label>
+                        </div>
+                        <div class="checkbox-option" data-tool="make">
+                            <input type="checkbox" id="tool_make" name="herramientas" value="Make">
+                            <label for="tool_make">Make</label>
+                        </div>
+                        <div class="checkbox-option" data-tool="n8n">
+                            <input type="checkbox" id="tool_n8n" name="herramientas" value="n8n">
+                            <label for="tool_n8n">n8n</label>
+                        </div>
+                        <div class="checkbox-option" data-tool="otra">
+                            <input type="checkbox" id="tool_otra" name="herramientas" value="Otra">
+                            <label for="tool_otra">Otra</label>
+                        </div>
+                        <div class="checkbox-option" data-tool="ninguna">
+                            <input type="checkbox" id="tool_ninguna" name="herramientas" value="No uso ninguna">
+                            <label for="tool_ninguna">No uso ninguna</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Temas -->
+                <div class="form-group">
+                    <label>¿Qué temas te gustaría aprender? <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="tema_agentes" name="temas" value="Crear agentes de IA">
+                            <label for="tema_agentes">Crear agentes de IA</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="tema_automatizar" name="temas" value="Automatizar tareas repetitivas">
+                            <label for="tema_automatizar">Automatizar tareas repetitivas</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="tema_videos" name="temas" value="Crear videos con IA">
+                            <label for="tema_videos">Crear videos con IA</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="tema_chatbots" name="temas" value="Crear chatbots para tu negocio">
+                            <label for="tema_chatbots">Crear chatbots para tu negocio</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="tema_contenido" name="temas" value="Crear contenido para redes sociales">
+                            <label for="tema_contenido">Crear contenido para redes sociales</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Formato -->
+                <div class="form-group">
+                    <label>¿Qué formato prefieres para aprender? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="formato_grabado" name="formato" value="Curso grabado paso a paso" required>
+                            <label for="formato_grabado">Curso grabado paso a paso</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="formato_taller" name="formato" value="Taller en vivo de 7 días">
+                            <label for="formato_taller">Taller en vivo de 7 días</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="formato_combo" name="formato" value="Combinación de taller en vivo más grabaciones">
+                            <label for="formato_combo">Combinación de taller en vivo más grabaciones</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Consentimiento -->
+                <div class="consent-box">
+                    <div class="consent-checkbox">
+                        <input type="checkbox" id="consentimiento" name="consentimiento" required>
+                        <label for="consentimiento">
+                            <strong>Acepto recibir recursos gratuitos, contenidos exclusivos, invitaciones a eventos y novedades sobre IA y automatización</strong>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="error-message" id="errorMessage">
+                    ⚠️ Por favor, acepta recibir comunicaciones para continuar
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Descargar PDF Gratuito
+                </button>
+            </form>
+        </div>
+        
+        <div class="success-message" id="successMessage">
+            <div class="success-icon">✅</div>
+            <h2>¡Genial!</h2>
+            <p>Descargando tu PDF de prompts...</p>
+            <p style="margin-top: 12px; font-size: 14px; opacity: 0.7;">Serás redirigido automáticamente</p>
+        </div>
+    </div>
+    
+    <script>
+        // Mensajes de validación en español
+        function setSpanishValidation() {
+            // Campos de texto
+            document.getElementById('nombre').addEventListener('invalid', function(e) {
+                e.preventDefault();
+                this.setCustomValidity('Por favor, ingresa tu nombre y apellido');
+            });
+            document.getElementById('nombre').addEventListener('input', function() {
+                this.setCustomValidity('');
+            });
+            
+            // Email
+            document.getElementById('email').addEventListener('invalid', function(e) {
+                e.preventDefault();
+                if (this.validity.valueMissing) {
+                    this.setCustomValidity('Por favor, ingresa tu correo electrónico');
+                } else if (this.validity.typeMismatch) {
+                    this.setCustomValidity('Por favor, ingresa un correo electrónico válido');
+                }
+            });
+            document.getElementById('email').addEventListener('input', function() {
+                this.setCustomValidity('');
+            });
+            
+            // País
+            document.getElementById('pais').addEventListener('invalid', function(e) {
+                e.preventDefault();
+                this.setCustomValidity('Por favor, ingresa tu país');
+            });
+            document.getElementById('pais').addEventListener('input', function() {
+                this.setCustomValidity('');
+            });
+            
+            // Negocio
+            document.getElementById('negocio').addEventListener('invalid', function(e) {
+                e.preventDefault();
+                this.setCustomValidity('Por favor, ingresa de qué es tu negocio o proyecto');
+            });
+            document.getElementById('negocio').addEventListener('input', function() {
+                this.setCustomValidity('');
+            });
+            
+            // Radio buttons nivel IA
+            document.querySelectorAll('input[name="nivel_ia"]').forEach(radio => {
+                radio.addEventListener('invalid', function(e) {
+                    e.preventDefault();
+                    this.setCustomValidity('Por favor, selecciona tu nivel actual usando IA');
+                });
+                radio.addEventListener('change', function() {
+                    this.setCustomValidity('');
+                });
+            });
+            
+            // Radio buttons formato
+            document.querySelectorAll('input[name="formato"]').forEach(radio => {
+                radio.addEventListener('invalid', function(e) {
+                    e.preventDefault();
+                    this.setCustomValidity('Por favor, selecciona tu formato preferido para aprender');
+                });
+                radio.addEventListener('change', function() {
+                    this.setCustomValidity('');
+                });
+            });
+            
+            // Checkbox consentimiento
+            document.getElementById('consentimiento').addEventListener('invalid', function(e) {
+                e.preventDefault();
+                this.setCustomValidity('Debes aceptar recibir comunicaciones para continuar');
+            });
+            document.getElementById('consentimiento').addEventListener('change', function() {
+                this.setCustomValidity('');
+            });
+        }
+        
+        // Inicializar validación en español
+        setSpanishValidation();
+        
+        // Visual feedback para radio y checkboxes
+        document.querySelectorAll('.radio-option, .checkbox-option').forEach(option => {
+            option.addEventListener('click', function(e) {
+                if (e.target.tagName !== 'INPUT') {
+                    const input = this.querySelector('input');
+                    if (input.disabled) return;
+                    
+                    if (input.type === 'radio') {
+                        input.checked = true;
+                        this.closest('.radio-group').querySelectorAll('.radio-option').forEach(opt => {
+                            opt.classList.remove('selected');
+                        });
+                        this.classList.add('selected');
+                    } else if (input.type === 'checkbox') {
+                        input.checked = !input.checked;
+                        this.classList.toggle('selected', input.checked);
+                        
+                        // Trigger change event para lógica de "No uso ninguna"
+                        input.dispatchEvent(new Event('change'));
+                    }
+                }
+            });
+            
+            const input = option.querySelector('input');
+            input.addEventListener('change', function() {
+                if (this.type === 'radio') {
+                    option.closest('.radio-group').querySelectorAll('.radio-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    option.classList.add('selected');
+                } else if (this.type === 'checkbox') {
+                    option.classList.toggle('selected', this.checked);
+                }
+            });
+        });
+        
+        // Lógica para "No uso ninguna" en herramientas
+        const ningunaCheckbox = document.getElementById('tool_ninguna');
+        const herramientasCheckboxes = document.querySelectorAll('input[name="herramientas"]:not(#tool_ninguna)');
+        const herramientasOptions = document.querySelectorAll('.checkbox-option[data-tool]:not([data-tool="ninguna"])');
+        
+        ningunaCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                // Desactivar todas las demás herramientas
+                herramientasCheckboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                    checkbox.disabled = true;
+                });
+                herramientasOptions.forEach(option => {
+                    option.classList.remove('selected');
+                    option.classList.add('disabled');
+                });
+            } else {
+                // Reactivar todas las herramientas
+                herramientasCheckboxes.forEach(checkbox => {
+                    checkbox.disabled = false;
+                });
+                herramientasOptions.forEach(option => {
+                    option.classList.remove('disabled');
+                });
+            }
+        });
+        
+        // Si seleccionan cualquier otra herramienta, desmarcar "No uso ninguna"
+        herramientasCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    ningunaCheckbox.checked = false;
+                    document.querySelector('.checkbox-option[data-tool="ninguna"]').classList.remove('selected');
+                }
+            });
+        });
+        
+        // Manejo del formulario
+        document.getElementById('mainForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const consentimiento = document.getElementById('consentimiento');
+            const errorMessage = document.getElementById('errorMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Validar formulario primero
+            if (!this.checkValidity()) {
+                this.reportValidity();
+                return;
+            }
+            
+            // VALIDACIÓN CRÍTICA DEL OPT-IN
+            if (!consentimiento.checked) {
+                errorMessage.classList.add('show');
+                consentimiento.focus();
+                return;
+            }
+            
+            errorMessage.classList.remove('show');
+            
+            // Validar que al menos una herramienta esté seleccionada
+            const herramientas = document.querySelectorAll('input[name="herramientas"]:checked');
+            if (herramientas.length === 0) {
+                alert('Por favor, selecciona al menos una herramienta de IA');
+                return;
+            }
+            
+            // Validar que al menos un tema esté seleccionado
+            const temas = document.querySelectorAll('input[name="temas"]:checked');
+            if (temas.length === 0) {
+                alert('Por favor, selecciona al menos un tema de interés');
+                return;
+            }
+            
+            // Recopilar datos
+            const formData = {
+                nombre: document.getElementById('nombre').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                pais: document.getElementById('pais').value.trim(),
+                negocio: document.getElementById('negocio').value.trim(),
+                nivel_ia: document.querySelector('input[name="nivel_ia"]:checked').value,
+                herramientas: Array.from(herramientas).map(h => h.value).join(', '),
+                temas: Array.from(temas).map(t => t.value).join(', '),
+                formato: document.querySelector('input[name="formato"]:checked').value,
+                consentimiento: 'Sí'
+            };
+            
+            // Deshabilitar botón
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+            
+            try {
+                // Enviar a Make.com webhook
+                const response = await fetch('https://hook.us1.make.com/bnl0mubhh58xvjqu4nt1jncjqolb6vxq', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (response.ok) {
+                    // Mostrar mensaje de éxito
+                    document.getElementById('formCard').style.display = 'none';
+                    document.getElementById('successMessage').classList.add('show');
+                    
+                    // Redirigir al PDF después de 2 segundos
+                    setTimeout(() => {
+                        window.location.href = 'https://fbdigitalplaza.com/wp-content/uploads/2026/05/prompts-hotmart-ia-paymegpt.pdf';
+                    }, 2000);
+                } else {
+                    throw new Error('Error al enviar el formulario');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Hubo un error al enviar el formulario. Por favor, intenta de nuevo.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Descargar PDF Gratuito';
+            }
+        });
+    </script>
+</body>
+</html>
