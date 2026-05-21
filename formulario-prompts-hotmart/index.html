@@ -600,15 +600,15 @@
         document.getElementById('mainForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const consentimiento = document.getElementById('consentimiento');
-            const errorMessage = document.getElementById('errorMessage');
-            const submitBtn = document.getElementById('submitBtn');
-            
-            // Validar formulario primero
+            // VALIDAR CAMPOS REQUERIDOS PRIMERO
             if (!this.checkValidity()) {
                 this.reportValidity();
                 return;
             }
+            
+            const consentimiento = document.getElementById('consentimiento');
+            const errorMessage = document.getElementById('errorMessage');
+            const submitBtn = document.getElementById('submitBtn');
             
             // VALIDACIÓN CRÍTICA DEL OPT-IN
             if (!consentimiento.checked) {
