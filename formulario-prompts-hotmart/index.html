@@ -1,274 +1,202 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<!-- BASE:START (managed by Coding Agent — do not edit) -->
+<base href="/landings/formulario-prompts-hotmart/">
+<!-- BASE:END -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descarga tu Guía de Prompts de IA</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    
+
+<!-- SEO Meta Tags -->
+<title>Descarga tu Guía de Prompts de IA</title>
+<meta property="og:title" content="Descarga tu Guía de Prompts de IA" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Descarga tu Guía de Prompts de IA" />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
         }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #081225 0%, #0B1E3A 100%);
-            min-height: 100vh;
-            padding: 20px;
-            color: #fff;
-        }
-        
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 40px 0;
-        }
-        
-        .logo {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .logo img {
-            max-width: 200px;
-            height: auto;
-        }
-        
-        .form-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-        
-        h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #C0F0F8;
-            text-align: center;
-        }
-        
-        .subtitle {
-            font-size: 16px;
-            color: rgba(192, 240, 248, 0.8);
-            text-align: center;
-            margin-bottom: 32px;
-        }
-        
-        .form-group {
-            margin-bottom: 24px;
-        }
-        
-        label {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #C0F0F8;
-        }
-        
-        label .required {
-            color: #2090F8;
-        }
-        
-        input[type="text"],
-        input[type="email"] {
-            width: 100%;
-            padding: 14px 16px;
-            font-size: 15px;
-            font-family: 'Inter', sans-serif;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            color: #fff;
-            transition: all 0.3s ease;
-        }
-        
-        input[type="text"]::placeholder,
-        input[type="email"]::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
-        
-        input[type="text"]:focus,
-        input[type="email"]:focus {
-            outline: none;
-            border-color: #2090F8;
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 0 0 3px rgba(32, 144, 248, 0.1);
-        }
-        
-        .radio-group,
-        .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .radio-option,
-        .checkbox-option {
-            display: flex;
-            align-items: center;
-            padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .radio-option:hover,
-        .checkbox-option:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: #2090F8;
-        }
-        
-        .radio-option.selected,
-        .checkbox-option.selected {
-            background: rgba(32, 144, 248, 0.15);
-            border-color: #2090F8;
-        }
-        
-        .checkbox-option.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            pointer-events: none;
-        }
-        
-        input[type="radio"],
-        input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            margin-right: 12px;
-            cursor: pointer;
-            accent-color: #2090F8;
-        }
-        
-        input[type="checkbox"]:disabled {
-            cursor: not-allowed;
-        }
-        
-        .checkbox-option label,
-        .radio-option label {
-            flex: 1;
-            cursor: pointer;
-            margin: 0;
-            font-weight: 400;
-            color: #fff;
-        }
-        
-        .consent-box {
-            background: rgba(32, 144, 248, 0.1);
-            border: 2px solid #2090F8;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 32px;
-        }
-        
-        .consent-checkbox {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        
-        .consent-checkbox input[type="checkbox"] {
-            margin-top: 3px;
-            min-width: 24px;
-            min-height: 24px;
-        }
-        
-        .consent-checkbox label {
-            font-size: 14px;
-            line-height: 1.6;
-            color: #C0F0F8;
-            margin: 0;
-        }
-        
-        .error-message {
-            display: none;
-            background: rgba(220, 38, 38, 0.2);
-            border: 1px solid rgba(220, 38, 38, 0.5);
-            color: #fca5a5;
-            padding: 12px 16px;
-            border-radius: 8px;
-            margin-top: 16px;
-            font-size: 14px;
-        }
-        
-        .error-message.show {
-            display: block;
-        }
-        
-        .submit-btn {
-            width: 100%;
-            padding: 16px 32px;
-            font-size: 16px;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #2090F8 0%, #1a75d8 100%);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 32px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(32, 144, 248, 0.3);
-        }
-        
-        .submit-btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(32, 144, 248, 0.4);
-        }
-        
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-        
-        .success-message {
-            display: none;
-            text-align: center;
-            padding: 40px;
-        }
-        
-        .success-message.show {
-            display: block;
-        }
-        
-        .success-icon {
-            font-size: 64px;
-            margin-bottom: 20px;
-        }
-        
-        .success-message h2 {
-            font-size: 24px;
-            color: #2090F8;
-            margin-bottom: 12px;
-        }
-        
-        .success-message p {
-            font-size: 16px;
-            color: rgba(192, 240, 248, 0.9);
-        }
-        
-        @media (max-width: 640px) {
-            .form-card {
-                padding: 24px;
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
             }
-            
-            h1 {
-                font-size: 24px;
-            }
-            
-            .subtitle {
-                font-size: 14px;
-            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
         }
-    </style>
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=4189');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='Lt9M25CSua';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -446,83 +374,6 @@
     </div>
     
     <script>
-        // Mensajes de validación en español
-        function setSpanishValidation() {
-            // Campos de texto
-            document.getElementById('nombre').addEventListener('invalid', function(e) {
-                e.preventDefault();
-                this.setCustomValidity('Por favor, ingresa tu nombre y apellido');
-            });
-            document.getElementById('nombre').addEventListener('input', function() {
-                this.setCustomValidity('');
-            });
-            
-            // Email
-            document.getElementById('email').addEventListener('invalid', function(e) {
-                e.preventDefault();
-                if (this.validity.valueMissing) {
-                    this.setCustomValidity('Por favor, ingresa tu correo electrónico');
-                } else if (this.validity.typeMismatch) {
-                    this.setCustomValidity('Por favor, ingresa un correo electrónico válido');
-                }
-            });
-            document.getElementById('email').addEventListener('input', function() {
-                this.setCustomValidity('');
-            });
-            
-            // País
-            document.getElementById('pais').addEventListener('invalid', function(e) {
-                e.preventDefault();
-                this.setCustomValidity('Por favor, ingresa tu país');
-            });
-            document.getElementById('pais').addEventListener('input', function() {
-                this.setCustomValidity('');
-            });
-            
-            // Negocio
-            document.getElementById('negocio').addEventListener('invalid', function(e) {
-                e.preventDefault();
-                this.setCustomValidity('Por favor, ingresa de qué es tu negocio o proyecto');
-            });
-            document.getElementById('negocio').addEventListener('input', function() {
-                this.setCustomValidity('');
-            });
-            
-            // Radio buttons nivel IA
-            document.querySelectorAll('input[name="nivel_ia"]').forEach(radio => {
-                radio.addEventListener('invalid', function(e) {
-                    e.preventDefault();
-                    this.setCustomValidity('Por favor, selecciona tu nivel actual usando IA');
-                });
-                radio.addEventListener('change', function() {
-                    this.setCustomValidity('');
-                });
-            });
-            
-            // Radio buttons formato
-            document.querySelectorAll('input[name="formato"]').forEach(radio => {
-                radio.addEventListener('invalid', function(e) {
-                    e.preventDefault();
-                    this.setCustomValidity('Por favor, selecciona tu formato preferido para aprender');
-                });
-                radio.addEventListener('change', function() {
-                    this.setCustomValidity('');
-                });
-            });
-            
-            // Checkbox consentimiento
-            document.getElementById('consentimiento').addEventListener('invalid', function(e) {
-                e.preventDefault();
-                this.setCustomValidity('Debes aceptar recibir comunicaciones para continuar');
-            });
-            document.getElementById('consentimiento').addEventListener('change', function() {
-                this.setCustomValidity('');
-            });
-        }
-        
-        // Inicializar validación en español
-        setSpanishValidation();
-        
         // Visual feedback para radio y checkboxes
         document.querySelectorAll('.radio-option, .checkbox-option').forEach(option => {
             option.addEventListener('click', function(e) {
@@ -600,25 +451,6 @@
         document.getElementById('mainForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // VALIDAR CAMPOS REQUERIDOS PRIMERO
-            if (!this.checkValidity()) {
-                this.reportValidity();
-                return;
-            }
-            
-            const consentimiento = document.getElementById('consentimiento');
-            const errorMessage = document.getElementById('errorMessage');
-            const submitBtn = document.getElementById('submitBtn');
-            
-            // VALIDACIÓN CRÍTICA DEL OPT-IN
-            if (!consentimiento.checked) {
-                errorMessage.classList.add('show');
-                consentimiento.focus();
-                return;
-            }
-            
-            errorMessage.classList.remove('show');
-            
             // Validar que al menos una herramienta esté seleccionada
             const herramientas = document.querySelectorAll('input[name="herramientas"]:checked');
             if (herramientas.length === 0) {
@@ -647,6 +479,7 @@
             };
             
             // Deshabilitar botón
+            const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
             submitBtn.textContent = 'Enviando...';
             
