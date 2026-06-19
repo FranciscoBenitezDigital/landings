@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://franciscobenitezdigital.github.io/landings/mundial/</loc>
+    <lastmod>2026-06-19T17:07:45.842Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://franciscobenitezdigital.github.io/landings/taasdemo/</loc>
-    <lastmod>2026-06-08T20:45:27.162Z</lastmod>
+    <lastmod>2026-06-15T04:53:44.626Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://franciscobenitezdigital.github.io/landings/estrategia-contenidos/</loc>
+    <lastmod>2026-06-13T03:49:28.092Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://franciscobenitezdigital.github.io/landings/planes-bots/</loc>
+    <lastmod>2026-06-09T15:59:35.934Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://franciscobenitezdigital.github.io/landings/planes-bots/</loc>
+    <lastmod>2026-06-09T15:18:59.233Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://franciscobenitezdigital.github.io/landings/formulario-prompts-hotmart/</loc>
     <lastmod>2026-06-06T20:42:58.868Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://franciscobenitezdigital.github.io/landings/estrategia-contenidos/</loc>
-    <lastmod>2026-06-04T03:37:13.088Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://franciscobenitezdigital.github.io/landings/planes-bots/</loc>
-    <lastmod>2026-06-04T03:34:52.402Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
