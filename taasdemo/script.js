@@ -1,27 +1,21 @@
-// ===== CUSTOM CURSOR =====
-    // Function: moves a small purple dot to follow the pointer; grows over interactive elements
-    (function() {
+(function() {
       const dot = document.getElementById('cursorDot');
       if (window.matchMedia('(hover: none)').matches) return;
       document.addEventListener('mousemove', e => {
         dot.style.left = e.clientX + 'px';
         dot.style.top = e.clientY + 'px';
       });
-      document.querySelectorAll('a, button, .chip, .btn').forEach(el => {
+      document.querySelectorAll('a, button, .btn').forEach(el => {
         el.addEventListener('mouseenter', () => dot.classList.add('grow'));
         el.addEventListener('mouseleave', () => dot.classList.remove('grow'));
       });
     })();
 
-    // ===== NAVBAR SCROLL STATE =====
-    // Adds .scrolled (solid + blur) once user scrolls past 40px
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 40);
     });
 
-    // ===== BUTTON RIPPLE EFFECT =====
-    // Creates an expanding circle at click position inside any .btn
     document.querySelectorAll('.btn').forEach(btn => {
       btn.addEventListener('click', function(e) {
         const circle = document.createElement('span');
@@ -37,8 +31,6 @@
       });
     });
 
-    // ===== FADE-UP ON SCROLL =====
-    // IntersectionObserver reveals .fade-up elements when entering viewport
     const fadeObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -49,8 +41,6 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
 
-    // ===== ANIMATED COUNTERS =====
-    // Function: animateCounter() — counts from 0 to target when element is visible
     function animateCounter(el) {
       const target = parseFloat(el.dataset.target);
       const suffix = el.dataset.suffix || '';
@@ -59,7 +49,7 @@
       const start = performance.now();
       function tick(now) {
         const p = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
+        const eased = 1 - Math.pow(1 - p, 3);
         const val = Math.floor(eased * target);
         el.textContent = prefix + val + suffix;
         if (p < 1) requestAnimationFrame(tick);
@@ -77,8 +67,6 @@
     }, { threshold: 0.5 });
     document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
 
-    // ===== HERO PARTICLE CANVAS =====
-    // Animated floating purple particles that react to mouse proximity
     (function() {
       const canvas = document.getElementById('particles');
       const ctx = canvas.getContext('2d');
@@ -107,7 +95,6 @@
         ctx.clearRect(0, 0, w, h);
         for (let i = 0; i < particles.length; i++) {
           const p = particles[i];
-          // mouse repulsion
           const dx = p.x - mouse.x, dy = p.y - mouse.y;
           const dist = Math.sqrt(dx*dx + dy*dy);
           if (dist < 120) {
@@ -123,7 +110,6 @@
           ctx.fillStyle = 'rgba(214,58,249,0.6)';
           ctx.fill();
 
-          // connecting lines
           for (let j = i + 1; j < particles.length; j++) {
             const q = particles[j];
             const ddx = p.x - q.x, ddy = p.y - q.y;
