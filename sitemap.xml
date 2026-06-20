@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://franciscobenitezdigital.github.io/landings/mundial/</loc>
+    <lastmod>2026-06-20T05:52:58.338Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://franciscobenitezdigital.github.io/landings/isams/</loc>
     <lastmod>2026-06-20T05:52:53.371Z</lastmod>
     <changefreq>weekly</changefreq>
@@ -13,11 +18,6 @@
   <url>
     <loc>https://franciscobenitezdigital.github.io/landings/estrategia-contenidos/</loc>
     <lastmod>2026-06-20T05:52:44.670Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://franciscobenitezdigital.github.io/landings/mundial/</loc>
-    <lastmod>2026-06-20T05:52:28.187Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
