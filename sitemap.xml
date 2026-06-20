@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://franciscobenitezdigital.github.io/landings/formulario-prompts-hotmart/</loc>
+    <lastmod>2026-06-20T05:59:26.773Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://franciscobenitezdigital.github.io/landings/estrategia-contenidos/</loc>
     <lastmod>2026-06-20T05:59:22.618Z</lastmod>
     <changefreq>weekly</changefreq>
@@ -38,11 +43,6 @@
   <url>
     <loc>https://franciscobenitezdigital.github.io/landings/isams/</loc>
     <lastmod>2026-06-20T05:52:53.371Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://franciscobenitezdigital.github.io/landings/formulario-prompts-hotmart/</loc>
-    <lastmod>2026-06-20T05:52:48.601Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>
