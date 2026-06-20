@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://franciscobenitezdigital.github.io/landings/taasdemo/</loc>
-    <lastmod>2026-06-20T05:59:56.447Z</lastmod>
+    <loc>https://franciscobenitezdigital.github.io/landings/xarki/</loc>
+    <lastmod>2026-06-20T06:00:01.183Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://franciscobenitezdigital.github.io/landings/mundial/</loc>
-    <lastmod>2026-06-20T05:59:52.869Z</lastmod>
+    <lastmod>2026-06-20T05:59:58.328Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://franciscobenitezdigital.github.io/landings/taasdemo/</loc>
+    <lastmod>2026-06-20T05:59:56.447Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -38,11 +43,6 @@
   <url>
     <loc>https://franciscobenitezdigital.github.io/landings/estrategia-contenidos/</loc>
     <lastmod>2026-06-20T05:59:22.618Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://franciscobenitezdigital.github.io/landings/xarki/</loc>
-    <lastmod>2026-06-20T05:53:24.137Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>
