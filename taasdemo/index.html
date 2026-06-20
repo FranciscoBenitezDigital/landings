@@ -12,11 +12,11 @@
   
 
 <!-- SEO Meta Tags -->
-<title>taas demo ok </title>
-<meta property="og:title" content="taas demo ok " />
+<title>tâas | Beyond taxes™ — Interpretación Fiscal Preventiva</title>
+<meta property="og:title" content="tâas | Beyond taxes™ — Interpretación Fiscal Preventiva" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="taas demo ok " />
+<meta name="twitter:title" content="tâas | Beyond taxes™ — Interpretación Fiscal Preventiva" />
 <!-- End SEO Meta Tags -->
 <script data-lp-token-hydrate>
 (function(){try{
@@ -178,6 +178,7 @@
     for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
     return '';
   }
+  function findPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
   var __realProcessPayment=function(a,b,c,d,e){
     var amountCents,email,productName,productDescription,customerName,quantity;
     if(a&&typeof a==='object'){
@@ -189,6 +190,7 @@
     }
     if(!email)email=findEmail();
     if(!customerName)customerName=findName();
+    var phone=findPhone();
     if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
     if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
     if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
@@ -196,7 +198,7 @@
     var __pLoc=(document.documentElement.lang||navigator.language||'en');
     return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
       method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,locale:__pLoc,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+      body:JSON.stringify({email:email,name:customerName,phone:phone||'',amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,locale:__pLoc,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
     }).then(function(r){return r.json();}).then(function(d){
       if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
       else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
@@ -206,6 +208,8 @@
   document.addEventListener('DOMContentLoaded',function(){
     var urlParams=new URLSearchParams(window.location.search);
     if(urlParams.get('payment')==='success'){
+      var sidP=urlParams.get('session_id');
+      if(sidP){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidP})}).catch(function(){});}catch(e){}}
       var pName=urlParams.get('product')||'your item';
       var overlay=document.createElement('div');overlay.id='payment-success-overlay';
       overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
@@ -218,24 +222,96 @@
     }
   });
 })();
+</script>
+<script data-cart>
+(function(){
+  var slug='zT5KvUiXH';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findCartEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realCart=function(arg){
+    var items, email='', customerName='', successUrl, cancelUrl, currency;
+    if(Array.isArray(arg)){items=arg;}
+    else if(arg&&typeof arg==='object'){
+      items=arg.items;email=arg.email||'';customerName=arg.name||arg.customerName||'';
+      successUrl=arg.successUrl;cancelUrl=arg.cancelUrl;currency=arg.currency;
+    }
+    if(!Array.isArray(items)||items.length===0){alert('No items in cart.');return Promise.reject('no_items');}
+    var cleanItems=[];var totalCents=0;
+    for(var i=0;i<items.length;i++){
+      var it=items[i];if(!it||typeof it!=='object'){alert('Invalid item at position '+i);return Promise.reject('bad_item');}
+      var nm=typeof it.name==='string'?it.name.trim():'';
+      if(!nm){alert('Item '+(i+1)+' is missing a name.');return Promise.reject('no_name');}
+      var amt=typeof it.amountCents==='number'?it.amountCents:(typeof it.amount==='number'?Math.round(it.amount*100):NaN);
+      if(!isFinite(amt)||amt<1){alert('Item "'+nm+'" needs a valid amount in cents.');return Promise.reject('bad_amount');}
+      var qty=(typeof it.quantity==='number'&&it.quantity>0)?Math.floor(it.quantity):1;
+      cleanItems.push({name:nm,description:it.description||'',amountCents:amt,quantity:qty});
+      totalCents+=amt*qty;
+    }
+    if(totalCents<50){alert('Cart total must be at least $0.50');return Promise.reject('total_too_low');}
+    if(!email)email=findCartEmail();
+    if(!customerName)customerName=findCartName();
+    var cartPhone=findCartPhone();
+    if(!email){var p=window.prompt('Enter your email for the receipt:','');if(p&&p.indexOf('@')>-1){email=p.trim();}else{alert('An email address is required to complete checkout.');return Promise.reject('no_email');}}
+    var successBase=window.location.href.split('?')[0];
+    var body={email:email,name:customerName,items:cleanItems,locale:(document.documentElement.lang||navigator.language||'en')};
+    if(currency)body.currency=currency;
+    if(cartPhone)body.phone=cartPhone;
+    body.successUrl=successUrl||(successBase+'?cart=success&email='+encodeURIComponent(email)+'&session_id={CHECKOUT_SESSION_ID}');
+    body.cancelUrl=cancelUrl||(successBase+'?cart=cancelled');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/cart/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process checkout');throw new Error(d.error);}
+    });
+  };
+  try{Object.defineProperty(window,'__processCart',{value:__realCart,writable:false,configurable:false});}catch(e){window.__processCart=__realCart;}
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('cart')==='success'){
+      var sidC=urlParams.get('session_id');
+      if(sidC){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidC})}).catch(function(){});}catch(e){}}
+      if(document.getElementById('payment-success-overlay')||document.getElementById('donation-success-overlay')||document.getElementById('cart-success-overlay'))return;
+      var overlay=document.createElement('div');overlay.id='cart-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||'Thank you for your order.';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Order Confirmed!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-cart-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var cBtn=document.getElementById('lp-cart-success-btn');
+      if(cBtn){cBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
 </script>  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Custom purple cursor dot -->
   <div class="cursor-dot" id="cursorDot"></div>
 
-  <!-- ============================================================================ -->
-  <!-- NAVBAR: Fixed transparent nav, becomes solid w/ backdrop-blur on scroll      -->
-  <!-- Mobile: links hidden, only action buttons visible                            -->
-  <!-- ============================================================================ -->
   <nav class="navbar" id="navbar" data-section="navbar">
     <div class="container nav-inner">
-      <a href="/landings/" class="logo">tâas<span class="tm">™</span><span class="by">Beyond taxes</span></a>
+      <a href="/landings/" class="logo">t&#226;as<span class="tm">&#8482;</span><span class="by">Beyond taxes</span></a>
       <div class="nav-links">
-        <a href="#como-funciona">¿Cómo Funciona?</a>
+        <a href="#como-funciona">&#191;C&#243;mo Funciona?</a>
         <a href="#seguridad">Seguridad</a>
-        <a href="#casos">Casos de Éxito</a>
+        <a href="#casos">Casos de &#201;xito</a>
         <a href="#asesor">Asesor IA</a>
       </div>
       <div class="nav-actions">
@@ -245,23 +321,18 @@
     </div>
   </nav>
 
-  <!-- ============================================================================ -->
-  <!-- HERO SECTION: Background photo + dark gradient overlay + particle canvas     -->
-  <!-- Headline, CTAs and animated stat counters                                    -->
-  <!-- Mobile: scroll bg, stacked CTAs, 2x2 stat grid                               -->
-  <!-- ============================================================================ -->
   <section class="hero" data-section="hero" style="background-image: url('https://paymegpt.com/api/landing-pages/images/coding-agent-assets%2F36%2F1780891007555_ChatGPT_Image_7_jun_2026__09_02_29_p.m..webp');">
     <div class="hero-overlay" style="background: linear-gradient(100deg, rgba(28,28,30,0.94) 0%, rgba(28,28,30,0.85) 40%, rgba(28,28,30,0.5) 78%, rgba(28,28,30,0.25) 100%);"></div>
     <canvas id="particles"></canvas>
     <div class="container" style="position:relative;z-index:3;width:100%;">
       <div class="hero-content" style="padding-top:130px;padding-bottom:80px;max-width:600px;">
-        <span class="badge">Interpretación Fiscal Preventiva</span>
-        <p class="eyebrow" style="margin-top:10px;">El SAT ya interpreta tu operación. ¿Tú también?</p>
+        <span class="badge">Interpretaci&#243;n Fiscal Preventiva</span>
+        <p class="eyebrow" style="margin-top:10px;">El SAT ya interpreta tu operaci&#243;n. &#191;T&#250; tambi&#233;n?</p>
         <h1 style="font-size:3rem;margin-bottom:22px;line-height:1.09;">Entre tus CFDI<br>y tus decisiones<br>existe una brecha.</h1>
-        <p class="hero-sub" style="margin-bottom:40px;line-height:1.7;">tâas detecta riesgos fiscales en tus comprobantes antes de que la autoridad los use en tu contra.</p>
+        <p class="hero-sub" style="margin-bottom:40px;line-height:1.7;">t&#226;as detecta riesgos fiscales en tus comprobantes antes de que la autoridad los use en tu contra.</p>
         <div class="hero-ctas" style="margin-bottom:64px;">
-          <a href="https://app.taas.mx/optimiza" class="btn btn-primary">Empieza Gratis — 1,200 CFDI ↗</a>
-          <a href="#como-funciona" class="btn btn-outline">¿Cómo funciona?</a>
+          <a href="https://app.taas.mx/optimiza" class="btn btn-primary">Empieza Gratis &#8212; 1,200 CFDI &#8599;</a>
+          <a href="#como-funciona" class="btn btn-outline">&#191;C&#243;mo funciona?</a>
         </div>
         <div class="stats-row" style="padding-top:30px;gap:0;">
           <div class="stat" style="padding-left:0;padding-right:28px;">
@@ -285,90 +356,74 @@
     </div>
   </section>
 
-  <!-- ============================================================================ -->
-  <!-- MARQUEE: Infinite scrolling logos (text) — no pause on hover                 -->
-  <!-- Edge fades via CSS mask                                                      -->
-  <!-- ============================================================================ -->
   <section class="marquee-wrap" data-section="partners">
-    <p class="marquee-label">Una muestra de empresas que ya usan tâas</p>
+    <p class="marquee-label">Una muestra de empresas que ya usan t&#226;as</p>
     <div class="marquee">
       <div class="marquee-track">
-        <span>Dhollandia</span><span>Telefónica</span><span>Rotarez</span><span>CCtrucking</span><span>Grupo Alfa</span><span>Deloitte</span><span>KPMG</span><span>Banorte</span><span>FEMSA</span><span>Innovación</span>
-        <span>Dhollandia</span><span>Telefónica</span><span>Rotarez</span><span>CCtrucking</span><span>Grupo Alfa</span><span>Deloitte</span><span>KPMG</span><span>Banorte</span><span>FEMSA</span><span>Innovación</span>
+        <span>Dhollandia</span><span>Telef&#243;nica</span><span>Rotarez</span><span>CCtrucking</span><span>Grupo Alfa</span><span>Deloitte</span><span>KPMG</span><span>Banorte</span><span>FEMSA</span><span>Innovaci&#243;n</span>
+        <span>Dhollandia</span><span>Telef&#243;nica</span><span>Rotarez</span><span>CCtrucking</span><span>Grupo Alfa</span><span>Deloitte</span><span>KPMG</span><span>Banorte</span><span>FEMSA</span><span>Innovaci&#243;n</span>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================================ -->
-  <!-- PROBLEM SECTION: 2-col grid — text left, problem/solution cards right        -->
-  <!-- SAT warning badge. Mobile: collapses to single column                        -->
-  <!-- ============================================================================ -->
   <section class="section-pad" data-section="problem">
     <div class="container problem-grid">
       <div class="fade-up">
         <p class="sec-label">El Problema</p>
-        <h2 class="sec-title">Hoy existe una asimetría incómoda.</h2>
-        <p class="sec-sub">La autoridad sabe más de tu empresa que tú mismo. El SAT interpreta patrones. La mayoría de las empresas solo ve archivos, pólizas y auxiliares.</p>
+        <h2 class="sec-title">Hoy existe una asimetr&#237;a inc&#243;moda.</h2>
+        <p class="sec-sub">La autoridad sabe m&#225;s de tu empresa que t&#250; mismo. El SAT interpreta patrones. La mayor&#237;a de las empresas solo ve archivos, p&#243;lizas y auxiliares.</p>
       </div>
       <div class="problem-cards fade-up">
-        <span class="sat-badge">⚠ SAT ya lo sabe</span>
+        <span class="sat-badge">&#9888; SAT ya lo sabe</span>
         <div class="prob-card">
-          <div class="prob-ico ico-x">✕</div>
+          <div class="prob-ico ico-x">&#10005;</div>
           <div class="prob-card-title">IVA no acreditable detectado</div>
         </div>
         <div class="prob-card">
-          <div class="prob-ico ico-x">✕</div>
+          <div class="prob-ico ico-x">&#10005;</div>
           <div class="prob-card-title">Gastos no deducibles ocultos</div>
         </div>
         <div class="prob-card">
-          <div class="prob-ico ico-x">✕</div>
+          <div class="prob-ico ico-x">&#10005;</div>
           <div class="prob-card-title">Riesgo EFOS no detectado</div>
         </div>
         <div class="prob-card solution">
-          <div class="prob-ico ico-check">✓</div>
-          <div class="prob-card-title">Con tâas: visibilidad total</div>
+          <div class="prob-ico ico-check">&#10003;</div>
+          <div class="prob-card-title">Con t&#226;as: visibilidad total</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================================ -->
-  <!-- HOW IT WORKS: 3 numbered step cards on subtle darker background              -->
-  <!-- Mobile: single column                                                        -->
-  <!-- ============================================================================ -->
   <section class="section-pad how" id="como-funciona" data-section="how-it-works">
     <div class="container">
       <div class="fade-up">
-        <p class="sec-label">Cómo Funciona</p>
+        <p class="sec-label">C&#243;mo Funciona</p>
         <h2 class="sec-title">De CFDI a decisiones en 3 pasos</h2>
       </div>
       <div class="how-grid">
         <div class="how-card fade-up">
           <div class="how-num">01</div>
-          <div class="how-ico">🔑</div>
-          <h3>Regístrate</h3>
-          <p>RFC + CIEC, conexión segura. Sin instalaciones ni configuraciones técnicas de tu lado.</p>
+          <div class="how-ico">&#128273;</div>
+          <h3>Reg&#237;strate</h3>
+          <p>RFC + CIEC, conexi&#243;n segura. Sin instalaciones ni configuraciones t&#233;cnicas de tu lado.</p>
         </div>
         <div class="how-card fade-up">
           <div class="how-num">02</div>
-          <div class="how-ico">📊</div>
-          <h3>Diagnóstico</h3>
+          <div class="how-ico">&#128202;</div>
+          <h3>Diagn&#243;stico</h3>
           <p>100% de tus CFDIs analizados. Documento decisional en 24hrs y monetiza el riesgo detectado.</p>
         </div>
         <div class="how-card fade-up">
           <div class="how-num">03</div>
-          <div class="how-ico">🤝</div>
-          <h3>Sesión 1:1</h3>
-          <p>Traducimos el riesgo en decisiones concretas y accionables para tu operación.</p>
+          <div class="how-ico">&#129309;</div>
+          <h3>Sesi&#243;n 1:1</h3>
+          <p>Traducimos el riesgo en decisiones concretas y accionables para tu operaci&#243;n.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================================ -->
-  <!-- METRICS + DASHBOARD MOCKUP: animated metric bar + HTML/CSS app mockup        -->
-  <!-- Mobile: hides browser frame & sidebar, single-column risk cards              -->
-  <!-- ============================================================================ -->
   <section class="section-pad" data-section="stats">
     <div class="container">
       <div class="fade-up">
@@ -394,36 +449,33 @@
         </div>
       </div>
 
-      <!-- Dashboard mockup -->
       <div class="browser fade-up">
         <div class="browser-bar">
           <div class="dots"><i class="r"></i><i class="y"></i><i class="g"></i></div>
-          <div class="url-bar">🔒 app.tâas.mx/optimiza</div>
+          <div class="url-bar">&#128274; app.t&#226;as.mx/optimiza</div>
         </div>
         <div class="dash-body">
           <div class="dash-sidebar">
-            <i>◆</i><i>▤</i><i>◷</i><i>⚙</i><i>◉</i>
+            <i>&#9670;</i><i>&#9636;</i><i>&#9719;</i><i>&#9881;</i><i>&#9689;</i>
           </div>
           <div class="dash-main">
             <div class="dash-head">
-              <div class="dash-search">🔍 Buscar un CFDI</div>
-              <div class="dash-pill">Operaciones Huérfanas S.A.</div>
+              <div class="dash-search">&#128269; Buscar un CFDI</div>
+              <div class="dash-pill">Operaciones Hu&#233;rfanas S.A.</div>
             </div>
-            <div class="dash-greet">Holâ Jefe!</div>
-            <div class="dash-notif">🔔 <b>3 nuevas notificaciones:</b> riesgos detectados que requieren tu atención esta semana.</div>
-
+            <div class="dash-greet">Hol&#226; Jefe!</div>
+            <div class="dash-notif">&#128276; <b>3 nuevas notificaciones:</b> riesgos detectados que requieren tu atenci&#243;n esta semana.</div>
             <div class="opt-board">
               <div class="opt-stat">
                 <div class="big risk">18,439 docX</div>
                 <div class="lbl">En riesgo (6.43%)</div>
               </div>
               <div class="opt-stat">
-                <div class="big">10'118,439 docX</div>
+                <div class="big">10&#39;118,439 docX</div>
                 <div class="lbl">Validados (100%)</div>
               </div>
-              <div class="opt-btn">290 días para actuar</div>
+              <div class="opt-btn">290 d&#237;as para actuar</div>
             </div>
-
             <div class="risk-cards">
               <div class="risk-card">
                 <div class="t">No deducibles</div>
@@ -438,9 +490,8 @@
                 <div class="v">$34,143,000</div>
               </div>
             </div>
-
             <div class="haystack">
-              <div class="t">🪡 Agujas del pajar</div>
+              <div class="t">&#129633; Agujas del pajar</div>
               <div class="progress"><span></span></div>
             </div>
           </div>
@@ -449,44 +500,41 @@
     </div>
   </section>
 
-  <!-- ============================================================================ -->
-  <!-- TESTIMONIALS: 6 review cards in a 3-col grid (2-col tablet, 1-col mobile)     -->
-  <!-- ============================================================================ -->
   <section class="section-pad" id="casos" data-section="testimonials">
     <div class="container">
       <div class="fade-up">
-        <p class="sec-label">Casos de Éxito</p>
+        <p class="sec-label">Casos de &#201;xito</p>
         <h2 class="sec-title">Empresarios que ya juegan a la par del SAT</h2>
       </div>
       <div class="test-grid">
         <div class="test-card fade-up">
-          <div class="stars">★★★★★</div>
-          <p class="test-quote">"Con tâas encontré errores que ni mi contador había notado. Hoy tengo certeza de lo que declaro."</p>
-          <div class="test-person"><div class="avatar">JR</div><div><div class="test-name">Javier Rodríguez</div><div class="test-role">Empresario</div></div></div>
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="test-quote">"Con t&#226;as encontr&#233; errores que ni mi contador hab&#237;a notado. Hoy tengo certeza de lo que declaro."</p>
+          <div class="test-person"><div class="avatar">JR</div><div><div class="test-name">Javier Rodr&#237;guez</div><div class="test-role">Empresario</div></div></div>
         </div>
         <div class="test-card fade-up">
-          <div class="stars">★★★★★</div>
-          <p class="test-quote">"El SAT me devolvía menos de lo esperado. tâas reveló facturas con timbrado incorrecto."</p>
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="test-quote">"El SAT me devolv&#237;a menos de lo esperado. t&#226;as revel&#243; facturas con timbrado incorrecto."</p>
           <div class="test-person"><div class="avatar">JC</div><div><div class="test-name">John Carleton</div><div class="test-role">Director Financiero</div></div></div>
         </div>
         <div class="test-card fade-up">
-          <div class="stars">★★★★★</div>
-          <p class="test-quote">"Antes operábamos a ciegas. Hoy vemos el panorama completo de nuestra situación fiscal."</p>
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="test-quote">"Antes oper&#225;bamos a ciegas. Hoy vemos el panorama completo de nuestra situaci&#243;n fiscal."</p>
           <div class="test-person"><div class="avatar">EM</div><div><div class="test-name">Elvia Montelongo</div><div class="test-role">CFO</div></div></div>
         </div>
         <div class="test-card fade-up">
-          <div class="stars">★★★★★</div>
-          <p class="test-quote">"El SAT evoluciona, por eso elegí una herramienta que va un paso adelante."</p>
-          <div class="test-person"><div class="avatar">VO</div><div><div class="test-name">Víctor Ochoa</div><div class="test-role">Empresario</div></div></div>
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="test-quote">"El SAT evoluciona, por eso eleg&#237; una herramienta que va un paso adelante."</p>
+          <div class="test-person"><div class="avatar">VO</div><div><div class="test-name">V&#237;ctor Ochoa</div><div class="test-role">Empresario</div></div></div>
         </div>
         <div class="test-card fade-up">
-          <div class="stars">★★★★★</div>
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="test-quote">"Hoy tenemos visibilidad completa de nuestras validaciones fiscales."</p>
           <div class="test-person"><div class="avatar">CC</div><div><div class="test-name">CCtrucking</div><div class="test-role">Empresa de Transporte</div></div></div>
         </div>
         <div class="test-card fade-up">
-          <div class="stars">★★★★★</div>
-          <p class="test-quote">"Nos ha ayudado muchísimo, sobre todo en la parte de nómina."</p>
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="test-quote">"Nos ha ayudado much&#237;simo, sobre todo en la parte de n&#243;mina."</p>
           <div class="test-person"><div class="avatar">LF</div><div><div class="test-name">Laura Flores</div><div class="test-role">Despacho Contable</div></div></div>
         </div>
       </div>
@@ -494,27 +542,20 @@
   </section>
 
   <!-- ============================================================================ -->
-  <!-- AI ADVISOR: Centered block, suggestion chips, online indicator               -->
-  <!-- Floating chat widget injected at end of body                                 -->
+  <!-- AI ADVISOR: Sección rediseñada — sin chips, CTA directo al chat              -->
   <!-- ============================================================================ -->
   <section class="section-pad ai" id="asesor" data-section="ai-advisor">
     <div class="container ai-inner fade-up">
       <p class="sec-label" style="text-align:center;">Asesor IA</p>
-      <h2 class="sec-title" style="text-align:center;">¿Tienes dudas sobre tus impuestos?</h2>
-      <p class="sec-sub" style="margin:0 auto;">Nuestro asesor fiscal inteligente está disponible ahora mismo.</p>
-      <div class="chips">
-        <span class="chip">¿Mis facturas tienen errores?</span>
-        <span class="chip">¿Qué es IVA no acreditable?</span>
-        <span class="chip">¿Cómo sé si tengo riesgo fiscal?</span>
-        <span class="chip">¿Qué incluye el diagnóstico gratis?</span>
+      <h2 class="sec-title" style="text-align:center;">&#191;Tienes dudas sobre tus impuestos?</h2>
+      <p class="sec-sub" style="margin:0 auto 28px;text-align:center;">Nuestro asesor fiscal inteligente analiza tu situaci&#243;n y responde tus preguntas en tiempo real &#8212; sin tecnicismos, sin esperas.</p>
+      <p style="text-align:center;font-size:1rem;color:var(--text-2);margin-bottom:18px;">Chatea con nuestro asesor en l&#237;nea ahora mismo &#8595;</p>
+      <div class="online" style="justify-content:center;">
+        <span class="dot-g"></span> El asesor est&#225; en l&#237;nea &#8212; haz clic en el &#237;cono del chat &#8600;
       </div>
-      <div class="online"><span class="dot-g"></span> El asesor está en línea — haz clic en el ícono del chat ↘</div>
     </div>
   </section>
 
-  <!-- ============================================================================ -->
-  <!-- SECURITY: 3 trust cards. Mobile collapses to single column                   -->
-  <!-- ============================================================================ -->
   <section class="section-pad sec-section" id="seguridad" data-section="security">
     <div class="container">
       <div class="fade-up">
@@ -523,46 +564,40 @@
       </div>
       <div class="sec-grid">
         <div class="sec-card fade-up">
-          <div class="ico">🔐</div>
+          <div class="ico">&#128272;</div>
           <h3>Cifrado AES-256 y TLS 1.3</h3>
-          <p>Tus datos viajan y se almacenan con los estándares de seguridad más altos de la industria.</p>
+          <p>Tus datos viajan y se almacenan con los est&#225;ndares de seguridad m&#225;s altos de la industria.</p>
         </div>
         <div class="sec-card fade-up">
-          <div class="ico">📋</div>
+          <div class="ico">&#128203;</div>
           <h3>Cumplimiento LFPDPPP</h3>
-          <p>Operamos conforme a la Ley Federal de Protección de Datos Personales en México.</p>
+          <p>Operamos conforme a la Ley Federal de Protecci&#243;n de Datos Personales en M&#233;xico.</p>
         </div>
         <div class="sec-card fade-up">
-          <div class="ico">🛡️</div>
+          <div class="ico">&#128737;&#65039;</div>
           <h3>Control total del usuario</h3>
-          <p>Tú decides qué datos compartes y cuándo. La información siempre es tuya.</p>
+          <p>T&#250; decides qu&#233; datos compartes y cu&#225;ndo. La informaci&#243;n siempre es tuya.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================================ -->
-  <!-- FINAL CTA: Dark gradient w/ purple glow, big headline + primary button       -->
-  <!-- ============================================================================ -->
   <section class="section-pad final-cta" data-section="cta">
     <div class="container fade-up">
       <h2>Si quieres jugar a la par del SAT, necesitas una capa adicional.</h2>
-      <p>No esperes la próxima auditoría para reaccionar.</p>
-      <a href="https://app.taas.mx/optimiza" class="btn btn-primary" style="font-size:17px; padding:16px 34px;">Empieza Gratis — 1,200 CFDI →</a>
-      <p class="final-note">Sin tarjeta de crédito · Diagnóstico en 24hrs · Sesión 1:1 incluida</p>
+      <p>No esperes la pr&#243;xima auditor&#237;a para reaccionar.</p>
+      <a href="https://app.taas.mx/optimiza" class="btn btn-primary" style="font-size:17px; padding:16px 34px;">Empieza Gratis &#8212; 1,200 CFDI &#8594;</a>
+      <p class="final-note">Sin tarjeta de cr&#233;dito &#183; Diagn&#243;stico en 24hrs &#183; Sesi&#243;n 1:1 incluida</p>
     </div>
   </section>
 
-  <!-- ============================================================================ -->
-  <!-- FOOTER: Logo, links, social icons, copyright. Mobile stacked & centered      -->
-  <!-- ============================================================================ -->
   <footer data-section="footer">
     <div class="container">
       <div class="footer-inner">
-        <a href="/landings/" class="logo">tâas<span class="tm">™</span><span class="by">Beyond taxes</span></a>
+        <a href="/landings/" class="logo">t&#226;as<span class="tm">&#8482;</span><span class="by">Beyond taxes</span></a>
         <div class="footer-links">
           <a href="#">Privacidad</a>
-          <a href="#">Términos</a>
+          <a href="#">T&#233;rminos</a>
           <a href="mailto:sos@taas.mx">sos@taas.mx</a>
           <a href="https://wa.me/525516906663" target="_blank" rel="noopener">WhatsApp</a>
         </div>
@@ -572,13 +607,12 @@
           <a href="#" aria-label="LinkedIn">LI</a>
         </div>
       </div>
-      <p class="copyright">© 2025 tâas | Beyond taxes™ · Interpretación Fiscal Preventiva · México</p>
+      <p class="copyright">&#169; 2025 t&#226;as | Beyond taxes&#8482; &#183; Interpretaci&#243;n Fiscal Preventiva &#183; M&#233;xico</p>
     </div>
   </footer>
 
   
 
-  <!-- Floating AI chat widget -->
   <script src="https://paymegpt.com/widget.js" data-widget="97919484" async></script>
 
   <script src="script.js"></script>
