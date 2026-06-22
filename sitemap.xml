@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://franciscobenitezdigital.github.io/landings/presentacion-direccion-ia/</loc>
+    <lastmod>2026-06-22T05:18:45.347Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://franciscobenitezdigital.github.io/landings/isams/</loc>
+    <lastmod>2026-06-21T06:28:35.643Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://franciscobenitezdigital.github.io/landings/mundial/</loc>
     <lastmod>2026-06-20T22:58:03.179Z</lastmod>
     <changefreq>weekly</changefreq>
@@ -28,11 +38,6 @@
   <url>
     <loc>https://franciscobenitezdigital.github.io/landings/planes-bots/</loc>
     <lastmod>2026-06-20T05:59:41.781Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://franciscobenitezdigital.github.io/landings/isams/</loc>
-    <lastmod>2026-06-20T05:59:32.077Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
