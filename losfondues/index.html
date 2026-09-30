@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<!-- BASE:START (managed by Coding Agent — do not edit) -->
+<base href="/landings/losfondues/">
+<!-- BASE:END -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+
+<!-- SEO Meta Tags -->
+<title>Los Fondues | Restaurante de fondues romántico en CDMX</title>
+<meta name="description" content="Los Fondues, los restaurantes del amor y la amistad en CDMX. Fondues de queso, carne y chocolate, vino espumoso y el ambiente perfecto para tu celebración." />
+<meta property="og:title" content="Los Fondues | Restaurante de fondues romántico en CDMX" />
+<meta property="og:description" content="Los Fondues, los restaurantes del amor y la amistad en CDMX. Fondues de queso, carne y chocolate, vino espumoso y el ambiente perfecto para tu celebración." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Los Fondues | Restaurante de fondues romántico en CDMX" />
+<meta name="twitter:description" content="Los Fondues, los restaurantes del amor y la amistad en CDMX. Fondues de queso, carne y chocolate, vino espumoso y el ambiente perfecto para tu celebración." />
+<!-- End SEO Meta Tags -->
+<script data-lp-token-hydrate>
+(function(){try{
+  var slug="lp-mum8q7rq-nuagi";
+  var SITEK="";
+  var SK='lp_access_'+slug;
+  var map={access_token:'lp_pw_',allowlist_access_token:'lp_al_',pin_access_token:'lp_pin_',paywall_access_token:'lp_paid_'};
+  function siteTok(){try{return SITEK?localStorage.getItem(SITEK):null;}catch(e){return null;}}
+  var u=new URL(location.href);var found=null;var changed=false;
+  var PINP=true;
+  if(!PINP){try{localStorage.removeItem('lp_pin_'+slug);if(SITEK)localStorage.removeItem(SITEK);}catch(e){}}
+  Object.keys(map).forEach(function(p){var v=u.searchParams.get(p);if(v){found=v;try{if(PINP||p!=='pin_access_token'){localStorage.setItem(map[p]+slug,v);if(SITEK&&p==='pin_access_token')localStorage.setItem(SITEK,v);}}catch(e){}if(p==='pin_access_token'){try{sessionStorage.setItem('lp_fresh_'+slug,'1');}catch(e){}}u.searchParams.delete(p);changed=true;}});
+  if(found){try{sessionStorage.setItem(SK,found);}catch(e){}}
+  else{try{if(!sessionStorage.getItem(SK)){var t=localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug)||siteTok();if(t)sessionStorage.setItem(SK,t);}}catch(e){}}
+  if(changed){try{history.replaceState(null,'',u.toString());}catch(e){}}
+  function getTok(){try{return sessionStorage.getItem(SK)||localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug)||siteTok();}catch(e){return null;}}
+  function needsToken(url,method){if(!url)return false;var s=String(url);var m=(method||'GET').toUpperCase();var isSheetWrite=(m==='POST'||m==='PATCH'||m==='PUT'||m==='DELETE')&&/\/sheet-rows(\/|$|\?)/.test(s);var isSheetRead=/\/sheet-data(\/|$|\?)/.test(s);var isLlm=/\/api\/landing-pages\/public\/[^/]+\/(llm|llm-config)(\/|$|\?)/.test(s);return isSheetWrite||isSheetRead||isLlm;}
+  if(window.fetch){var _f=window.fetch;window.fetch=function(input,init){try{var url=typeof input==='string'?input:(input&&input.url)||'';var method=(init&&init.method)||(input&&input.method)||'GET';if(needsToken(url,method)){var tok=getTok();if(tok){init=init||{};var h=new Headers(init.headers||(typeof input!=='string'?input.headers:undefined)||{});if(!h.has('X-Landing-Page-Token'))h.set('X-Landing-Page-Token',tok);init.headers=h;}}}catch(e){}return _f.call(this,input,init);};}
+  if(window.XMLHttpRequest){var _o=XMLHttpRequest.prototype.open;var _s=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.open=function(m,u){this.__lpM=m;this.__lpU=u;return _o.apply(this,arguments);};XMLHttpRequest.prototype.send=function(){try{if(needsToken(this.__lpU,this.__lpM)){var tok=getTok();if(tok)this.setRequestHeader('X-Landing-Page-Token',tok);}}catch(e){}return _s.apply(this,arguments);};}
+}catch(e){}})();
+</script>
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=7555');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='ugVD8w4njm';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    var phone=findPhone();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    var __pLoc=(document.documentElement.lang||navigator.language||'en');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,phone:phone||'',amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,locale:__pLoc,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var sidP=urlParams.get('session_id');
+      if(sidP){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidP})}).catch(function(){});}catch(e){}}
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||('Thank you for purchasing '+pName+'.');
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-pay-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var pBtn=document.getElementById('lp-pay-success-btn');
+      if(pBtn){pBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>
+<script data-cart>
+(function(){
+  var slug='ugVD8w4njm';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findCartEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realCart=function(arg){
+    var items, email='', customerName='', successUrl, cancelUrl, currency;
+    if(Array.isArray(arg)){items=arg;}
+    else if(arg&&typeof arg==='object'){
+      items=arg.items;email=arg.email||'';customerName=arg.name||arg.customerName||'';
+      successUrl=arg.successUrl;cancelUrl=arg.cancelUrl;currency=arg.currency;
+    }
+    if(!Array.isArray(items)||items.length===0){alert('No items in cart.');return Promise.reject('no_items');}
+    var cleanItems=[];var totalCents=0;
+    for(var i=0;i<items.length;i++){
+      var it=items[i];if(!it||typeof it!=='object'){alert('Invalid item at position '+i);return Promise.reject('bad_item');}
+      var nm=typeof it.name==='string'?it.name.trim():'';
+      if(!nm){alert('Item '+(i+1)+' is missing a name.');return Promise.reject('no_name');}
+      var amt=typeof it.amountCents==='number'?it.amountCents:(typeof it.amount==='number'?Math.round(it.amount*100):NaN);
+      if(!isFinite(amt)||amt<1){alert('Item "'+nm+'" needs a valid amount in cents.');return Promise.reject('bad_amount');}
+      var qty=(typeof it.quantity==='number'&&it.quantity>0)?Math.floor(it.quantity):1;
+      cleanItems.push({name:nm,description:it.description||'',amountCents:amt,quantity:qty});
+      totalCents+=amt*qty;
+    }
+    if(totalCents<50){alert('Cart total must be at least $0.50');return Promise.reject('total_too_low');}
+    if(!email)email=findCartEmail();
+    if(!customerName)customerName=findCartName();
+    var cartPhone=findCartPhone();
+    if(!email){var p=window.prompt('Enter your email for the receipt:','');if(p&&p.indexOf('@')>-1){email=p.trim();}else{alert('An email address is required to complete checkout.');return Promise.reject('no_email');}}
+    var successBase=window.location.href.split('?')[0];
+    var body={email:email,name:customerName,items:cleanItems,locale:(document.documentElement.lang||navigator.language||'en')};
+    if(currency)body.currency=currency;
+    if(cartPhone)body.phone=cartPhone;
+    body.successUrl=successUrl||(successBase+'?cart=success&email='+encodeURIComponent(email)+'&session_id={CHECKOUT_SESSION_ID}');
+    body.cancelUrl=cancelUrl||(successBase+'?cart=cancelled');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/cart/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process checkout');throw new Error(d.error);}
+    });
+  };
+  try{Object.defineProperty(window,'__processCart',{value:__realCart,writable:false,configurable:false});}catch(e){window.__processCart=__realCart;}
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('cart')==='success'){
+      var sidC=urlParams.get('session_id');
+      if(sidC){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidC})}).catch(function(){});}catch(e){}}
+      if(document.getElementById('payment-success-overlay')||document.getElementById('donation-success-overlay')||document.getElementById('cart-success-overlay'))return;
+      var overlay=document.createElement('div');overlay.id='cart-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||'Thank you for your order.';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Order Confirmed!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-cart-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var cBtn=document.getElementById('lp-cart-success-btn');
+      if(cBtn){cBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="loader"><div class="lg">Los Fondues</div><div class="hb">♥</div></div>
+<div class="cur" id="cur"></div>
+<canvas id="confetti"></canvas>
+
+<nav id="nav"><div class="wrap in">
+<a class="brand" href="#inicio"><img src="https://static.wixstatic.com/media/1e7822_ae016977964d4f509ed65759de2c1885~mv2_d_5586_1674_s_2.png" alt="Los Fondues"></a>
+<button class="burger" id="bg" aria-label="Menú">☰</button>
+<div class="links" id="lk">
+<a href="#menu">Menú</a><a href="#noche">Arma tu noche</a><a href="#promos">Promos</a><a href="#sucursales">Sucursales</a><a href="#reservar" class="btn btn-gold">Reserva ahora</a>
+</div></div><div id="prog"></div></nav>
+
+<header class="hero" id="inicio">
+<div class="bg" id="hbg"></div>
+<div id="hearts"></div>
+<div class="wrap">
+<div class="eyebrow" style="color:var(--gold2);opacity:0;animation:wd 1s .3s forwards">Los restaurantes del amor y la amistad</div>
+<h1 id="h1">Tu cómplice perfecto para una noche inolvidable</h1>
+<p class="sub">Un lugar íntimo para disfrutar con esa persona especial. Fondues, buen vino y momentos que se quedan.</p>
+<div class="ctas"><a href="#reservar" class="btn btn-gold">♥ Reserva tu mesa</a><a href="#menu" class="btn btn-line">Ver menú</a></div>
+<div class="badges"><span>📍 Del Valle y Nápoles, CDMX</span><span>💍 Aniversarios, cumpleaños y declaraciones</span><span>🕯️ Ambiente íntimo</span></div>
+</div>
+<div class="scrollcue"></div>
+</header>
+
+<div class="mq"><div id="mqi"></div></div>
+
+<section class="light" id="experiencia">
+<div class="wrap center">
+<div class="eyebrow rv">La experiencia</div>
+<h2 class="title rv">Cada mesa cuenta una historia</h2>
+<p class="lead rv">Luz de velas, fondues al centro y la compañía que importa. Nosotros ponemos el escenario y el detalle.</p>
+<div class="grid3">
+<div class="flip rv" style="--d:.05s"><div class="fi"><div class="fc f"><div class="ic"><img src="https://paymegpt.com/objects/generated-images/36/1790701180232-43a860eda8977574.jpeg" alt="Vela romántica"></div><h3>Cenas románticas</h3><small>Toca para descubrir</small></div><div class="fc b"><h3 class="script" style="color:var(--gold2);font-size:1.8rem">Solo ustedes dos</h3><p>Un rincón íntimo, fondue de queso para compartir, vino espumoso y música que acompaña sin estorbar.</p></div></div></div>
+<div class="flip rv" style="--d:.15s"><div class="fi"><div class="fc f"><div class="ic"><img src="https://paymegpt.com/objects/generated-images/36/1790701198804-a89b2ea52ba2d21a.jpeg" alt="Pastel de celebración con confeti"></div><h3>Festejos y cumpleaños</h3><small>Toca para descubrir</small></div><div class="fc b"><h3 class="script" style="color:var(--gold2);font-size:1.8rem">Que se note la fiesta</h3><p>Postre especial de celebración y decoración en la mesa. Avísanos la ocasión y nos encargamos del detalle.</p></div></div></div>
+<div class="flip rv" style="--d:.25s"><div class="fi"><div class="fc f"><div class="ic"><img src="https://paymegpt.com/objects/generated-images/36/1790701213000-04de413c7574c389.jpeg" alt="Brindis con copas de vino"></div><h3>Amigos y familia</h3><small>Toca para descubrir</small></div><div class="fc b"><h3 class="script" style="color:var(--gold2);font-size:1.8rem">Mesa larga, risa larga</h3><p>Fondues para compartir entre muchos: queso, carne, mar y chocolate. Lo bueno se disfruta en grupo.</p></div></div></div>
+</div>
+<div class="stats">
+<div class="stat rv"><b data-n="2">0</b><span>Sucursales en CDMX</span></div>
+<div class="stat rv" style="--d:.1s"><b data-n="7000" data-p="+">0</b><span>Seguidores en Instagram</span></div>
+<div class="stat rv" style="--d:.2s"><b data-n="100" data-s="%">0</b><span>Ambiente romántico</span></div>
+</div></div></section>
+
+<section class="dark" id="menu">
+<div class="wrap center">
+<div class="eyebrow rv">Nuestro menú</div>
+<h2 class="title rv">Te va a encantar</h2>
+<p class="lead rv">Fondues para cada antojo. Elige una categoría y explora.</p>
+<div class="tabs rv" id="tabs">
+<button class="tab on" data-t="queso">🧀 Fondues de queso</button><button class="tab" data-t="carne">🥩 Carne y mar</button><button class="tab" data-t="choco">🍫 Chocolate</button><button class="tab" data-t="des">🥞 Desayunos</button>
+</div>
+<div class="cards" id="cards" style="text-align:left"></div>
+<div style="margin-top:38px"><a class="btn btn-line" href="https://www.losfondues.com/menu" target="_blank" rel="noopener">Ver menú completo →</a></div>
+</div></section>
+
+<section class="light" id="noche">
+<div class="wrap">
+<div class="center"><div class="eyebrow rv">Interactivo</div>
+<h2 class="title rv">Arma tu noche perfecta</h2>
+<p class="lead rv">Dinos la ocasión y cuántos van. Te sugerimos el plan y lo llevamos directo a tu reservación.</p></div>
+<div class="cfg rv">
+<div>
+<h4>1. ¿Cuál es la ocasión?</h4>
+<div class="opts" id="oc"><button class="opt on">Aniversario</button><button class="opt">Cumpleaños</button><button class="opt">Propuesta de matrimonio</button><button class="opt">Amigos</button></div>
+<h4>2. ¿Cuántas personas?</h4>
+<div class="step"><button id="mn">−</button><b id="np">2</b><button id="pl">+</button></div>
+<h4>3. ¿Tu fondue favorito?</h4>
+<div class="opts" id="fv"><button class="opt on">Queso</button><button class="opt">Carne</button><button class="opt">Chocolate</button></div>
+</div>
+<div class="rec" id="rec"></div>
+</div></div></section>
+
+<section class="dark2" id="promos">
+<div class="wrap promo">
+<div class="pic rv"><span class="pill">♥ PROMOCIÓN</span><img src="https://paymegpt.com/objects/generated-images/36/1790657594252-78f35e9b1490df54.jpeg" alt="Mesa de celebración con vino espumoso y decoración de corazones" loading="lazy"></div>
+<div class="rv" style="--d:.15s">
+<div class="eyebrow">Amor y amistad</div>
+<h2 class="title">Paquete del Amor y la Amistad</h2>
+<ul class="pl"><li>Appetizer para abrir el apetito</li><li>Fondue de queso Philadelphia con almendras al kirsch</li><li>Una botella de vino espumoso importado</li><li>Cortesía: postre especial de celebración Los Fondues</li><li>Cortesía: decoración especial con corazones y/o confeti en tu mesa</li></ul>
+<button class="btn btn-gold" id="pk">♥ Quiero este paquete</button>
+</div></div></section>
+
+<div class="season"><div class="wrap row">
+<div class="rv"><div class="eyebrow" style="color:var(--gold2)">Delicias de temporada</div><h2 class="title">Menú Navideño y de Año Nuevo</h2><p style="color:#EADCC8">Disponible para llevar o para comer en el restaurante, únicamente en temporada navideña y Año Nuevo.</p></div>
+<div class="sd rv" style="--d:.15s"><div><b>Bacalao Los Fondues</b>A la vizcaína, 200 g.</div><div><b>Filete Wellington</b>De res o de salmón, 200 g, con guarnición de puré de papa.</div></div>
+</div></div>
+
+<section class="light" id="sucursales">
+<div class="wrap center">
+<div class="eyebrow rv">Dónde encontrarnos</div>
+<h2 class="title rv">Sucursales</h2>
+<p class="lead rv">Elige la más cercana y ven a vivir la velada.</p>
+<div class="suc" style="text-align:left">
+<div class="sc2 rv"><span class="pin">📍</span><h3>Del Valle</h3><p>Av. San Francisco 218, esquina División del Norte</p><p>Col. Del Valle, CDMX</p><p><b>Tel. (55) 5205-9800</b></p><div class="bt"><a class="btn btn-gold" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Los+Fondues+Av+San+Francisco+218+Del+Valle+CDMX">Cómo llegar</a><a class="btn btn-dline" href="tel:+525552059800">Llamar</a></div></div>
+<div class="sc2 rv" style="--d:.15s"><span class="pin">📍</span><h3>Nápoles</h3><p>Georgia 84</p><p>Col. Nápoles, CDMX</p><p>&nbsp;</p><div class="bt"><a class="btn btn-gold" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Los+Fondues+Georgia+84+Napoles+CDMX">Cómo llegar</a></div></div>
+</div>
+<div class="sc2 rv" style="max-width:620px;margin:34px auto 0;text-align:left">
+<h3 style="margin-bottom:14px">Horario</h3>
+<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed rgba(185,127,48,.35);font-size:.95rem"><span>Lunes a jueves</span><b>13:00 a 22:00 hrs</b></div>
+<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed rgba(185,127,48,.35);font-size:.95rem"><span>Viernes y sábado</span><b>13:00 a 24:00 hrs</b></div>
+<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed rgba(185,127,48,.35);font-size:.95rem"><span>Domingo</span><b>13:00 a 21:00 hrs</b></div>
+<p style="margin-top:14px;font-size:.85rem;color:var(--mut)">Horario de ambas sucursales. Confirma en días festivos.</p>
+</div>
+</div></section>
+
+<section class="dark" id="reservar">
+<div class="wrap center">
+<div class="eyebrow rv">Reservaciones</div>
+<h2 class="title rv">Solicítanos tu mesa favorita</h2>
+<p class="lead rv">Déjanos tus datos y te confirmamos.</p>
+<form class="fw rv" id="rf" novalidate style="text-align:left">
+<div class="fg">
+<div class="fld"><input id="fn" name="nombre" placeholder=" " required><label for="fn">Nombre completo</label><div class="er">Escribe tu nombre</div></div>
+<div class="fld"><input id="ft" name="telefono" type="tel" placeholder=" " required><label for="ft">Teléfono / WhatsApp</label><div class="er">Ingresa 10 dígitos</div></div>
+<div class="fld"><input id="fe" name="correo" type="email" placeholder=" " required><label for="fe">Correo</label><div class="er">Correo no válido</div></div>
+<div class="fld"><select id="fs" name="sucursal" required><option value="">Selecciona</option><option>Del Valle</option><option>Nápoles</option></select><label for="fs">Sucursal</label><div class="er">Elige una sucursal</div></div>
+<div class="fld"><input id="fd" name="fecha" type="date" placeholder=" " required><label for="fd">Fecha</label><div class="er">Elige una fecha</div></div>
+<div class="fld"><input id="fh" name="hora" type="time" placeholder=" " required><label for="fh">Hora</label><div class="er">Elige una hora</div></div>
+<div class="fld"><input id="fp" name="personas" type="number" min="1" max="40" value="2" placeholder=" " required><label for="fp">Personas</label><div class="er">Indica cuántos van</div></div>
+<div class="fld"><select id="fo" name="ocasion"><option>Aniversario</option><option>Cumpleaños</option><option>Propuesta de matrimonio</option><option>Amigos</option><option>Otra</option></select><label for="fo">Ocasión especial</label></div>
+<div class="fld full"><textarea id="fc" name="comentarios" placeholder=" "></textarea><label for="fc">Comentarios (alergias, decoración, sorpresa...)</label></div>
+</div>
+<button class="btn btn-gold" type="submit">♥ Solicitar reservación</button>
+<div class="ok" id="ok"><div class="big">♥</div><h3 style="font-size:2rem;margin:10px 0">¡Listo!</h3><p style="color:var(--mutd)">Te confirmamos por WhatsApp o llamada.</p></div>
+</form>
+</div></section>
+
+<section class="light" id="testi">
+<div class="wrap center">
+<div class="eyebrow rv">Lo que dicen</div>
+<h2 class="title rv">Momentos que se quedan</h2>
+<div class="tst" id="tst">
+<div class="ts on"><q>Fuimos a festejar y nos trataron increíble. El fondue de queso, una delicia.</q><small>Cliente feliz · ejemplo</small></div>
+<div class="ts"><q>El lugar perfecto para una cena de aniversario. Íntimo y con muy buen servicio.</q><small>Pareja · ejemplo</small></div>
+<div class="ts"><q>Llegamos en grupo y todos salimos encantados. Volvemos seguro.</q><small>Grupo de amigos · ejemplo</small></div>
+</div>
+<div class="dots" id="dots"><i class="on"></i><i></i><i></i></div>
+</div></section>
+
+<footer><div class="wrap">
+<div class="fg3">
+<div><span class="lg"><img src="https://static.wixstatic.com/media/1e7822_ae016977964d4f509ed65759de2c1885~mv2_d_5586_1674_s_2.png" alt="Los Fondues"></span><p style="margin-top:14px">Tu cómplice perfecto, en Del Valle y Nápoles.</p></div>
+<div><h4>Contacto</h4><a href="tel:+525552059800">(55) 5205-9800</a><a href="mailto:contacto@losfondues.com">contacto@losfondues.com</a><a href="https://www.instagram.com/los_fondues/" target="_blank" rel="noopener">Instagram @los_fondues</a><a href="https://www.facebook.com/losfondues/" target="_blank" rel="noopener">Facebook</a><div style="margin-top:14px;font-size:.9rem;color:var(--mutd)"><p style="font-size:.9rem;margin-bottom:4px">Lunes a jueves: 13:00 a 22:00 hrs</p><p style="font-size:.9rem;margin-bottom:4px">Viernes y sábado: 13:00 a 24:00 hrs</p><p style="font-size:.9rem;margin-bottom:0">Domingo: 13:00 a 21:00 hrs</p></div></div>
+<div><h4>Más</h4><a href="https://www.losfondues.com/franquicias" target="_blank" rel="noopener">Franquicias</a><a href="https://www.losfondues.com/bolsa-de-trabajo" target="_blank" rel="noopener">Bolsa de trabajo</a><a href="https://www.losfondues.com/copy-of-bolsa-de-trabajo" target="_blank" rel="noopener">Política de privacidad</a></div>
+</div>
+<div class="cp">© Los Fondues · Rediseño demo</div>
+</div></footer>
+
+<a class="callf" href="tel:+525552059800" aria-label="Llamar">📞</a>
+
+<script>
+(function(){
+var $=function(s,c){return (c||document).querySelector(s)},$$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+/* loader */
+window.addEventListener('load',function(){setTimeout(function(){$('#loader').classList.add('off')},900)});
+setTimeout(function(){$('#loader').classList.add('off')},2600);
+/* hero words */
+var h1=$('#h1'),w=h1.textContent.trim().split(' ');h1.innerHTML=w.map(function(x,i){return '<span style="animation-delay:'+(0.6+i*0.13)+'s">'+x+'</span>'}).join(' ');
+/* marquee */
+var ph='Cenas románticas ✦ Festejos ✦ Fondues de queso ✦ Chocolate ✦ Vino espumoso ✦ Luz de velas ✦ ',mq=$('#mqi');mq.innerHTML='<span>'+ph.repeat(6)+'</span><span>'+ph.repeat(6)+'</span>';
+/* nav + progress + parallax */
+var nav=$('#nav'),prog=$('#prog'),hbg=$('#hbg');
+function onS(){var y=window.scrollY,h=document.documentElement.scrollHeight-innerHeight;nav.classList.toggle('sc',y>50);prog.style.width=(h>0?y/h*100:0)+'%';if(y<innerHeight*1.2)hbg.style.transform='translateY('+(y*0.28)+'px) scale(1.06)'}
+window.addEventListener('scroll',onS,{passive:true});onS();
+$('#bg').onclick=function(){$('#lk').classList.toggle('open')};
+$$('#lk a').forEach(function(a){a.onclick=function(){$('#lk').classList.remove('open')}});
+/* reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+$$('.rv').forEach(function(e){io.observe(e)});
+/* counters */
+var co=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;co.unobserve(e.target);var n=+e.target.dataset.n,p=e.target.dataset.p||'',s=e.target.dataset.s||'',t0=performance.now();(function f(t){var k=Math.min((t-t0)/1600,1),v=Math.round(n*(1-Math.pow(1-k,3)));e.target.textContent=p+v.toLocaleString('es-MX')+s;if(k<1)requestAnimationFrame(f)})(t0)})},{threshold:.5});
+$$('[data-n]').forEach(function(e){co.observe(e)});
+/* hearts */
+var hc=$('#hearts'),cols=['#D9A55B','#B97F30','#C0405A'];
+setInterval(function(){if(document.hidden||scrollY>innerHeight)return;var d=document.createElement('span');d.className='ht';d.textContent='♥';d.style.left=Math.random()*100+'%';d.style.color=cols[Math.floor(Math.random()*3)];d.style.fontSize=(12+Math.random()*22)+'px';d.style.setProperty('--x',(Math.random()*80-40)+'px');d.style.animationDuration=(6+Math.random()*6)+'s';hc.appendChild(d);setTimeout(function(){d.remove()},12500)},520);
+/* cursor */
+var cur=$('#cur');if(matchMedia('(hover:hover) and (pointer:fine)').matches){window.addEventListener('mousemove',function(e){cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'});document.addEventListener('mouseover',function(e){cur.classList.toggle('big',!!e.target.closest('a,button,.dc,.flip,.opt,.sc2'))})}
+/* flip touch */
+$$('.flip').forEach(function(f){f.addEventListener('click',function(){f.classList.toggle('on')})});
+/* menu */
+var M={queso:[['Savoyard','230 g de queso manchego y gruyere con vino blanco y kirsch.','https://paymegpt.com/objects/generated-images/36/1790657540887-e57de48fc0e31a8c.jpeg','Clásico'],['Queso y Camarones','Selección de queso y camarones a las hierbas finas: 230 g de queso y 80 g de camarón.','https://paymegpt.com/objects/generated-images/36/1790702261730-5ea5c4f5f4aabb04.jpeg','Para compartir'],['Fondue con Philadelphia','Queso Philadelphia con almendras al kirsch, protagonista del Paquete del Amor y la Amistad.','https://paymegpt.com/objects/generated-images/36/1790702279845-2a6fe77b210696ec.jpeg','De temporada de amor']],
+carne:[['Bourguignone de Filete','200 g de filete de res en trozos, fritos en aceite por el comensal, con 4 aderezos.','https://paymegpt.com/objects/generated-images/36/1790657557806-8a9f2ae8896bdb83.jpeg','Estrella'],['Bourguignone de Salmón','250 g de salmón para cocinar a tu ritmo en la mesa.','https://paymegpt.com/objects/generated-images/36/1790707985873-d2b5fec75988794b.jpeg','Del mar'],['Gitane Mar y Tierra','200 g de res y 150 g de camarón en un solo fondue.','https://paymegpt.com/objects/generated-images/36/1790708004179-817340f93801d46e.jpeg','Lo mejor de dos mundos'],['Madame Gourmand','Fondue gourmand de 345 g para los que van con hambre.','https://paymegpt.com/objects/generated-images/36/1790708022857-d1fd13266f668324.jpeg','Gourmand']],
+choco:[['Fondue de Chocolate','Salsa de chocolate con zarzamora, frambuesas, fresas, manzana, arándanos y galleta barquillo.','https://paymegpt.com/objects/generated-images/36/1790657574667-e7db427f5351b7ba.jpeg','El final perfecto'],['Hot cakes con fondue de chocolate','Hot cakes con las frutas de tu elección, bañados en fondue de chocolate con chantilly, nuez y coco.','https://paymegpt.com/objects/generated-images/36/1790708040172-719cb9c999d0dcbf.jpeg','Fin de semana']],
+des:[['Desayunos de fin de semana','Chilaquiles verdes o rojos con pollo, huevo, arrachera o cecina; molletes; fruta con granola y yogurt; hot cakes con maple, miel o cajeta.','https://paymegpt.com/objects/generated-images/36/1790708058726-38f2576e98e33564.jpeg','Sábados y domingos'],['Portobello a la mexicana','Portobello relleno de claras a la mexicana con salsa verde y lámina de queso panela.','https://paymegpt.com/objects/generated-images/36/1790708072643-1ba0b45129e5898f.jpeg','Ligero']]};
+function render(k){var c=$('#cards');c.innerHTML=M[k].map(function(d,i){return '<div class="dc'+(d[2]?'':' noimg')+'" style="animation-delay:'+(i*.1)+'s">'+(d[2]?'<div class="ph"><img src="'+d[2]+'" alt="'+d[0]+'" loading="lazy"></div>':'')+'<div class="tx"><h3>'+d[0]+'</h3><p>'+d[1]+'</p><span class="tag">'+d[3]+'</span></div></div>'}).join('');
+$$('.dc').forEach(function(el){el.addEventListener('mousemove',function(e){var r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform='perspective(800px) rotateY('+x*10+'deg) rotateX('+(-y*10)+'deg) translateY(-6px)'});el.addEventListener('mouseleave',function(){el.style.transform=''})})}
+render('queso');
+$$('.tab').forEach(function(t){t.onclick=function(){$$('.tab').forEach(function(x){x.classList.remove('on')});t.classList.add('on');render(t.dataset.t)}});
+/* configurator */
+var st={oc:'Aniversario',n:2,fv:'Queso'};
+function opts(id,key){$$('#'+id+' .opt').forEach(function(b){b.onclick=function(){$$('#'+id+' .opt').forEach(function(x){x.classList.remove('on')});b.classList.add('on');st[key]=b.textContent;rec()}})}
+opts('oc','oc');opts('fv','fv');
+$('#mn').onclick=function(){st.n=Math.max(1,st.n-1);rec()};$('#pl').onclick=function(){st.n=Math.min(40,st.n+1);rec()};
+function rec(){$('#np').textContent=st.n;
+var base={Queso:'Fondue Savoyard (manchego y gruyere)',Carne:'Bourguignone de Filete con 4 aderezos',Chocolate:'Fondue de Chocolate con frutas'},
+ocn={Aniversario:'Para celebrar su historia, sin prisa y a media luz.','Cumpleaños':'Avísanos y sorprendemos con postre de celebración y decoración.','Propuesta de matrimonio':'Cuéntanos tu plan con anticipación y armamos el momento con todo el cariño.',Amigos:'Mesa para compartir, brindar y reír sin fin.'};
+var items=['Appetizer para abrir','Tu favorito: '+base[st.fv]];
+if(st.fv!=='Carne')items.push('Bourguignone de Filete para compartir');if(st.fv!=='Chocolate')items.push('Fondue de Chocolate de cierre');
+items.push(st.n>=3?'Botella de vino espumoso para brindar':'Copa de vino espumoso para dos');
+$('#rec').innerHTML='<div class="eyebrow">Tu noche ideal</div><h3 style="font-size:1.5rem">'+st.oc+' · '+st.n+' '+(st.n===1?'persona':'personas')+'</h3><ul>'+items.map(function(x,i){return '<li style="animation-delay:'+i*.08+'s">♥ '+x+'</li>'}).join('')+'</ul><p class="note">'+ocn[st.oc]+' Sugerencia; el mesero te ayuda a ajustar cantidades.</p><button class="btn btn-gold" id="rs">Reservar esta noche</button>';
+$('#rs').onclick=function(){$('#fo').value=st.oc==='Propuesta de matrimonio'?'Propuesta de matrimonio':st.oc;$('#fp').value=st.n;$('#reservar').scrollIntoView({behavior:'smooth'})}}
+rec();
+/* confetti */
+var cv=$('#confetti'),cx=cv.getContext('2d'),ps=[],run=false;
+function size(){cv.width=innerWidth;cv.height=innerHeight}size();addEventListener('resize',size);
+function boom(){size();for(var i=0;i<130;i++)ps.push({x:Math.random()*cv.width,y:-20-Math.random()*300,vx:Math.random()*3-1.5,vy:2+Math.random()*4,s:12+Math.random()*20,c:['#D9A55B','#B97F30','#C0405A','#FBF4E9'][Math.floor(Math.random()*4)],r:Math.random()*6});if(!run){run=true;loop()}}
+function loop(){cx.clearRect(0,0,cv.width,cv.height);ps.forEach(function(p){p.x+=p.vx+Math.sin(p.y/40);p.y+=p.vy;cx.fillStyle=p.c;cx.font=p.s+'px serif';cx.fillText('♥',p.x,p.y)});ps=ps.filter(function(p){return p.y<cv.height+30});if(ps.length)requestAnimationFrame(loop);else{run=false;cx.clearRect(0,0,cv.width,cv.height)}}
+$('#pk').onclick=function(){boom();setTimeout(function(){$('#reservar').scrollIntoView({behavior:'smooth'})},900)};
+/* form */
+var fd=$('#fd'),t=new Date();fd.min=t.toISOString().slice(0,10);
+var rules={fn:function(v){return v.trim().length>2},ft:function(v){return v.replace(/\D/g,'').length>=10},fe:function(v){return /^\S+@\S+\.\S+$/.test(v)},fs:function(v){return !!v},fd:function(v){return !!v},fh:function(v){return !!v},fp:function(v){return +v>=1}};
+Object.keys(rules).forEach(function(k){var el=$('#'+k);['input','change','blur'].forEach(function(ev){el.addEventListener(ev,function(){if(el.dataset.t||ev==='blur'||ev==='change'){el.dataset.t=1;el.parentNode.classList.toggle('bad',!rules[k](el.value))}})})});
+$('#rf').addEventListener('submit',function(e){var ok=true;Object.keys(rules).forEach(function(k){var el=$('#'+k),good=rules[k](el.value);el.parentNode.classList.toggle('bad',!good);if(!good)ok=false});if(!ok){e.preventDefault();var b=$('.fld.bad');if(b)b.scrollIntoView({behavior:'smooth',block:'center'});return}
+e.preventDefault();var form=this,btn=form.querySelector('button[type="submit"]'),digits=$('#ft').value.replace(/\D/g,'');btn.disabled=true;btn.textContent='Enviando...';var payload={contactName:$('#fn').value,contactEmail:$('#fe').value,contactPhone:digits.length===10?'+52'+digits:'+'+digits,data:{nombre:$('#fn').value,telefono:$('#ft').value,correo:$('#fe').value,sucursal:$('#fs').value,fecha:$('#fd').value,hora:$('#fh').value,personas:$('#fp').value,ocasion:$('#fo').value,comentarios:$('#fc').value}};fetch('https://paymegpt.com/api/webhooks/flow/6265/f751952ae65d6b05ccbfd416f5ba8e970a75cab11e785ed785014c7f383514d6',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(function(r){if(r.ok){$('#ok').classList.add('show');boom();form.reset()}else{throw new Error('fail')}}).catch(function(){btn.disabled=false;btn.textContent='♥ Solicitar reservación';alert('No pudimos enviar tu reservación. Por favor llámanos al (55) 5205-9800.')})});
+/* testimonials */
+var ts=$$('.ts'),dt=$$('#dots i'),ti=0,tm;
+function go(i){ti=i;ts.forEach(function(x,k){x.classList.toggle('on',k===i)});dt.forEach(function(x,k){x.classList.toggle('on',k===i)})}
+dt.forEach(function(d,i){d.onclick=function(){go(i);clearInterval(tm);tm=setInterval(nx,5000)}});
+function nx(){go((ti+1)%ts.length)}tm=setInterval(nx,5000);
+})();
+</script>
+<script src="https://paymegpt.com/widget.js" data-widget="60242521" async></script>
+  <script src="script.js"></script>
+</body>
+</html>
