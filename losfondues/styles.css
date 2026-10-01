@@ -146,7 +146,7 @@ nav.sc .links a:not(.btn){color:var(--choc)}
 .sd div{border:1px solid rgba(217,165,91,.45);border-radius:18px;padding:18px 22px;background:rgba(30,18,10,.35)}
 .sd b{font-family:'Playfair Display',serif;color:var(--gold2);font-size:1.15rem;display:block}
 /* sucursales */
-.suc{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:44px}
+.suc{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px}
 .sc2{background:var(--white);border-radius:24px;padding:34px;border:1px solid rgba(185,127,48,.35);box-shadow:0 14px 40px rgba(30,18,10,.07);transition:transform .35s,box-shadow .35s;position:relative;overflow:hidden}
 .sc2:hover{transform:translateY(-8px);box-shadow:0 24px 54px rgba(30,18,10,.15)}
 .sc2 h3{font-size:1.7rem;margin-bottom:8px}
