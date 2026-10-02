@@ -1,0 +1,68 @@
+/* ===== GLOBAL BASE STYLES ===== */
+*{scroll-behavior:smooth}
+body{background:#080F22;color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden}
+h1,h2,h3,.font-display{font-family:'Space Grotesk',sans-serif}
+
+/* ===== GRID FONDO (OPACIDAD 0.06) ===== */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,217,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,217,255,0.06) 1px, transparent 1px);
+  background-size:40px 40px;
+}
+
+/* ===== PARTICLE CANVAS ===== */
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* ===== CUSTOM CURSOR ===== */
+.cursor-dot{position:fixed;width:8px;height:8px;background:#00D9FF;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .3s}
+.cursor-ring{position:fixed;width:38px;height:38px;border:1.5px solid rgba(0,217,255,.5);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s ease-out,width .2s,height .2s,opacity .3s}
+
+/* ===== GLASSMORPHISM CARD ===== */
+.glass{background:rgba(255,255,255,.03);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08)}
+
+/* ===== HOVER CARD ===== */
+.hover-card{transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
+.hover-card:hover{transform:translateY(-4px);box-shadow:0 0 30px rgba(0,217,255,.25);border-color:rgba(0,217,255,.4)}
+
+/* ===== PILLAR TOP LINE ===== */
+.pillar-line{position:absolute;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,#00D9FF,#36D6B5);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.pillar-card:hover .pillar-line{transform:scaleX(1)}
+
+/* ===== PRIMARY BUTTON ===== */
+.btn-primary{background:linear-gradient(90deg,#00D9FF,#36D6B5);color:#080F22;font-weight:600;transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+.btn-primary:hover{transform:scale(1.06);box-shadow:0 0 25px rgba(0,217,255,.5)}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ===== GRADIENT TEXT ===== */
+.grad-text{background:linear-gradient(90deg,#00D9FF,#36D6B5);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* ===== PULSE DOT ===== */
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
+.pulse-dot{animation:pulse-dot 1.6s infinite}
+
+/* ===== SCROLL INDICATOR ===== */
+@keyframes bounce-down{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+.scroll-ind{animation:bounce-down 2s infinite}
+
+/* ===== HERO GLOW ===== */
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,217,255,.18),transparent 70%);filter:blur(40px);transition:transform .2s ease-out}
+
+/* ===== RANGE SLIDER ===== */
+input[type=range]{-webkit-appearance:none;height:6px;border-radius:5px;background:rgba(255,255,255,.1)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#00D9FF;cursor:pointer;box-shadow:0 0 10px rgba(0,217,255,.6)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border:none;border-radius:50%;background:#00D9FF;cursor:pointer}
+
+/* ===== BAR FILL ===== */
+.bar-fill{transition:width .6s ease}
+
+@media (min-width:768px){body{cursor:none}body a,body button,body input,body select{cursor:none}}
+@media (max-width:767px){.cursor-dot,.cursor-ring{display:none}}
