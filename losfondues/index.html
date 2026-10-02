@@ -320,7 +320,9 @@
 <nav id="nav"><div class="wrap in">
 <a class="brand" href="#inicio"><img src="https://static.wixstatic.com/media/1e7822_ae016977964d4f509ed65759de2c1885~mv2_d_5586_1674_s_2.png" alt="Los Fondues"></a>
 <button class="burger" id="bg" aria-label="Menú">☰</button>
+<div class="backdrop" id="bd"></div>
 <div class="links" id="lk">
+<button class="close" id="cl" type="button" aria-label="Cerrar menú">✕</button>
 <a href="#menu">Menú</a><a href="#noche">Arma tu noche</a><a href="#promos">Promos</a><a href="#sucursales">Sucursales</a><a href="#reservar" class="btn btn-gold">Reserva ahora</a>
 </div></div><div id="prog"></div></nav>
 
@@ -477,8 +479,19 @@ var ph='Cenas románticas ✦ Festejos ✦ Fondues de queso ✦ Chocolate ✦ Vi
 var nav=$('#nav'),prog=$('#prog'),hbg=$('#hbg');
 function onS(){var y=window.scrollY,h=document.documentElement.scrollHeight-innerHeight;nav.classList.toggle('sc',y>50);prog.style.width=(h>0?y/h*100:0)+'%';if(y<innerHeight*1.2)hbg.style.transform='translateY('+(y*0.28)+'px) scale(1.06)'}
 window.addEventListener('scroll',onS,{passive:true});onS();
-$('#bg').onclick=function(){$('#lk').classList.toggle('open')};
-$$('#lk a').forEach(function(a){a.onclick=function(){$('#lk').classList.remove('open')}});
+var lk=$('#lk'),bg=$('#bg'),cl=$('#cl'),bd=$('#bd');
+function setMenu(open){
+lk.classList.toggle('open',open);
+bd.classList.toggle('show',open);
+bg.setAttribute('aria-expanded',open);
+document.body.style.overflow=open?'hidden':'';
+}
+bg.onclick=function(){setMenu(!lk.classList.contains('open'))};
+if(cl)cl.onclick=function(){setMenu(false)};
+if(bd)bd.onclick=function(){setMenu(false)};
+$$('#lk a').forEach(function(a){a.onclick=function(){setMenu(false)}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+window.addEventListener('resize',function(){if(window.innerWidth>900)setMenu(false)});
 /* reveal */
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 $$('.rv').forEach(function(e){io.observe(e)});
