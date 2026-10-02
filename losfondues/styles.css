@@ -54,7 +54,9 @@ nav.sc .links a:not(.btn){color:var(--choc)}
 .links .btn{padding:10px 20px;font-size:.85rem}
 #prog{position:absolute;left:0;bottom:0;height:3px;background:var(--gold);width:0}
 .burger{display:none;background:var(--gold);border:0;border-radius:10px;width:44px;height:44px;font-size:1.3rem;color:var(--choc);cursor:pointer}
-@media(max-width:900px){.burger{display:block}.links{position:fixed;top:0;right:-100%;height:100vh;width:78%;max-width:320px;background:var(--choc);flex-direction:column;justify-content:center;gap:28px;transition:right .4s;padding:30px}.links.open{right:0}nav .links a:not(.btn){color:var(--cream)!important;font-size:1.1rem}}
+.close{display:none}
+.backdrop{display:none}
+@media(max-width:900px){.burger{display:block}.backdrop{display:block;position:fixed;inset:0;background:rgba(30,18,10,.6);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}.backdrop.show{opacity:1;visibility:visible}.close{display:flex;align-items:center;justify-content:center;position:absolute;top:18px;right:18px;width:46px;height:46px;border-radius:50%;background:#B97F30;color:#1E120A;border:0;font-size:1.4rem;font-weight:700;cursor:pointer}.links{position:fixed;top:0;right:-100%;height:100vh;width:78%;max-width:320px;background:var(--choc);flex-direction:column;justify-content:center;gap:28px;transition:right .4s;padding:30px}.links.open{right:0}nav .links a:not(.btn){color:var(--cream)!important;font-size:1.1rem}}
 /* hero */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:120px 0 90px;color:var(--cream)}
 .hero .bg{position:absolute;inset:-8% 0;background:url('https://paymegpt.com/objects/generated-images/36/1790657526258-f4273be6161bd971.jpeg') center/cover;will-change:transform}
