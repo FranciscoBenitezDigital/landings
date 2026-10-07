@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<!-- BASE:START (managed by Coding Agent — do not edit) -->
+<base href="/landings/pinnacle/">
+<!-- BASE:END -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+<script>
+/* Tailwind theme: carbón / blanco cálido / rojo coral */
+tailwind.config = { theme: { extend: {
+  colors: { ink:'#0D0C0A', coal:'#161411', bone:'#F5F0E6', mute:'#A79E90', coral:'#FF5A49', coralD:'#E64838', line:'rgba(245,240,230,.12)' },
+  fontFamily: { display:['Archivo','sans-serif'], body:['Inter','sans-serif'] }
+}}}
+</script>
+
+
+<!-- SEO Meta Tags -->
+<title>Pinnacle Producciones — Talento, producción y coordinación de eventos en México</title>
+<meta name="description" content="Pinnacle Producciones reúne talento, producción técnica e imagen para convertir tu idea en una experiencia memorable. Cotiza tu evento en México." />
+<meta property="og:title" content="Pinnacle Producciones — Talento, producción y coordinación de eventos en México" />
+<meta property="og:description" content="Pinnacle Producciones reúne talento, producción técnica e imagen para convertir tu idea en una experiencia memorable. Cotiza tu evento en México." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Pinnacle Producciones — Talento, producción y coordinación de eventos en México" />
+<meta name="twitter:description" content="Pinnacle Producciones reúne talento, producción técnica e imagen para convertir tu idea en una experiencia memorable. Cotiza tu evento en México." />
+<!-- End SEO Meta Tags -->
+<script data-lp-token-hydrate>
+(function(){try{
+  var slug="lp-muruyibg-zqu0c";
+  var SITEK="";
+  var SK='lp_access_'+slug;
+  var map={access_token:'lp_pw_',allowlist_access_token:'lp_al_',pin_access_token:'lp_pin_',paywall_access_token:'lp_paid_'};
+  function siteTok(){try{return SITEK?localStorage.getItem(SITEK):null;}catch(e){return null;}}
+  var u=new URL(location.href);var found=null;var changed=false;
+  var PINP=true;
+  if(!PINP){try{localStorage.removeItem('lp_pin_'+slug);if(SITEK)localStorage.removeItem(SITEK);}catch(e){}}
+  Object.keys(map).forEach(function(p){var v=u.searchParams.get(p);if(v){found=v;try{if(PINP||p!=='pin_access_token'){localStorage.setItem(map[p]+slug,v);if(SITEK&&p==='pin_access_token')localStorage.setItem(SITEK,v);}}catch(e){}if(p==='pin_access_token'){try{sessionStorage.setItem('lp_fresh_'+slug,'1');}catch(e){}}u.searchParams.delete(p);changed=true;}});
+  if(found){try{sessionStorage.setItem(SK,found);}catch(e){}}
+  else{try{if(!sessionStorage.getItem(SK)){var t=localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug)||siteTok();if(t)sessionStorage.setItem(SK,t);}}catch(e){}}
+  if(changed){try{history.replaceState(null,'',u.toString());}catch(e){}}
+  function getTok(){try{return sessionStorage.getItem(SK)||localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug)||siteTok();}catch(e){return null;}}
+  function needsToken(url,method){if(!url)return false;var s=String(url);var m=(method||'GET').toUpperCase();var isSheetWrite=(m==='POST'||m==='PATCH'||m==='PUT'||m==='DELETE')&&/\/sheet-rows(\/|$|\?)/.test(s);var isSheetRead=/\/sheet-data(\/|$|\?)/.test(s);var isLlm=/\/api\/landing-pages\/public\/[^/]+\/(llm|llm-config)(\/|$|\?)/.test(s);return isSheetWrite||isSheetRead||isLlm;}
+  if(window.fetch){var _f=window.fetch;window.fetch=function(input,init){try{var url=typeof input==='string'?input:(input&&input.url)||'';var method=(init&&init.method)||(input&&input.method)||'GET';if(needsToken(url,method)){var tok=getTok();if(tok){init=init||{};var h=new Headers(init.headers||(typeof input!=='string'?input.headers:undefined)||{});if(!h.has('X-Landing-Page-Token'))h.set('X-Landing-Page-Token',tok);init.headers=h;}}}catch(e){}return _f.call(this,input,init);};}
+  if(window.XMLHttpRequest){var _o=XMLHttpRequest.prototype.open;var _s=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.open=function(m,u){this.__lpM=m;this.__lpU=u;return _o.apply(this,arguments);};XMLHttpRequest.prototype.send=function(){try{if(needsToken(this.__lpU,this.__lpM)){var tok=getTok();if(tok)this.setRequestHeader('X-Landing-Page-Token',tok);}}catch(e){}return _s.apply(this,arguments);};}
+}catch(e){}})();
+</script>
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=7724');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='WBpWQnEtSz';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    var phone=findPhone();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    var __pLoc=(document.documentElement.lang||navigator.language||'en');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,phone:phone||'',amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,locale:__pLoc,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var sidP=urlParams.get('session_id');
+      if(sidP){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidP})}).catch(function(){});}catch(e){}}
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||('Thank you for purchasing '+pName+'.');
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-pay-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var pBtn=document.getElementById('lp-pay-success-btn');
+      if(pBtn){pBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>
+<script data-cart>
+(function(){
+  var slug='WBpWQnEtSz';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findCartEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realCart=function(arg){
+    var items, email='', customerName='', successUrl, cancelUrl, currency;
+    if(Array.isArray(arg)){items=arg;}
+    else if(arg&&typeof arg==='object'){
+      items=arg.items;email=arg.email||'';customerName=arg.name||arg.customerName||'';
+      successUrl=arg.successUrl;cancelUrl=arg.cancelUrl;currency=arg.currency;
+    }
+    if(!Array.isArray(items)||items.length===0){alert('No items in cart.');return Promise.reject('no_items');}
+    var cleanItems=[];var totalCents=0;
+    for(var i=0;i<items.length;i++){
+      var it=items[i];if(!it||typeof it!=='object'){alert('Invalid item at position '+i);return Promise.reject('bad_item');}
+      var nm=typeof it.name==='string'?it.name.trim():'';
+      if(!nm){alert('Item '+(i+1)+' is missing a name.');return Promise.reject('no_name');}
+      var amt=typeof it.amountCents==='number'?it.amountCents:(typeof it.amount==='number'?Math.round(it.amount*100):NaN);
+      if(!isFinite(amt)||amt<1){alert('Item "'+nm+'" needs a valid amount in cents.');return Promise.reject('bad_amount');}
+      var qty=(typeof it.quantity==='number'&&it.quantity>0)?Math.floor(it.quantity):1;
+      cleanItems.push({name:nm,description:it.description||'',amountCents:amt,quantity:qty});
+      totalCents+=amt*qty;
+    }
+    if(totalCents<50){alert('Cart total must be at least $0.50');return Promise.reject('total_too_low');}
+    if(!email)email=findCartEmail();
+    if(!customerName)customerName=findCartName();
+    var cartPhone=findCartPhone();
+    if(!email){var p=window.prompt('Enter your email for the receipt:','');if(p&&p.indexOf('@')>-1){email=p.trim();}else{alert('An email address is required to complete checkout.');return Promise.reject('no_email');}}
+    var successBase=window.location.href.split('?')[0];
+    var body={email:email,name:customerName,items:cleanItems,locale:(document.documentElement.lang||navigator.language||'en')};
+    if(currency)body.currency=currency;
+    if(cartPhone)body.phone=cartPhone;
+    body.successUrl=successUrl||(successBase+'?cart=success&email='+encodeURIComponent(email)+'&session_id={CHECKOUT_SESSION_ID}');
+    body.cancelUrl=cancelUrl||(successBase+'?cart=cancelled');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/cart/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process checkout');throw new Error(d.error);}
+    });
+  };
+  try{Object.defineProperty(window,'__processCart',{value:__realCart,writable:false,configurable:false});}catch(e){window.__processCart=__realCart;}
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('cart')==='success'){
+      var sidC=urlParams.get('session_id');
+      if(sidC){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidC})}).catch(function(){});}catch(e){}}
+      if(document.getElementById('payment-success-overlay')||document.getElementById('donation-success-overlay')||document.getElementById('cart-success-overlay'))return;
+      var overlay=document.createElement('div');overlay.id='cart-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||'Thank you for your order.';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Order Confirmed!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-cart-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var cBtn=document.getElementById('lp-cart-success-btn');
+      if(cBtn){cBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="grain font-body antialiased">
+<!-- PINNACLE-V2-ENHANCEMENTS: ambiente e interacción -->
+<div class="ambient-grid" aria-hidden="true"></div>
+<div id="cursor-glow" aria-hidden="true"></div>
+<div id="cursor-trail" aria-hidden="true"></div>
+
+<!-- ============================================================================ -->
+<!-- NAVBAR: wordmark, links ancla y CTA de cotización. Fijo con blur al scroll   -->
+<!-- ============================================================================ -->
+<nav id="navbar" data-section="navbar" class="fixed top-0 inset-x-0 z-50 border-b border-transparent">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 h-16 md:h-20 flex items-center justify-between">
+    <a href="#inicio" aria-label="Pinnacle Producciones — inicio" class="brand-lockup">
+      <!-- Monograma + nombre para que la marca sea legible también en móvil -->
+      <img src="https://paymegpt.com/objects/quick-uploads/36/cfd2fd643cd940de.webp" alt="Pinnacle Producciones" class="h-6 md:h-7 w-auto brightness-0 invert">
+      <span class="brand-label">Pinnacle Producciones</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-bone/80">
+      <a href="#servicios" class="link-line hover:text-bone">Servicios</a>
+      <a href="#como-funciona" class="link-line hover:text-bone">Cómo funciona</a>
+      <a href="#contacto" class="link-line hover:text-bone">Contacto</a>
+      <a href="#contacto" class="bg-coral hover:bg-coralD text-ink font-semibold px-5 py-2.5 rounded-full">Cotiza tu evento</a>
+    </div>
+    <button id="menuBtn" class="md:hidden p-2 text-bone" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18M3 12h18M3 17h12"/></svg>
+    </button>
+  </div>
+  <!-- Menú móvil desplegable -->
+  <div id="mobileMenu" class="hidden md:hidden bg-ink/95 backdrop-blur border-t border-line px-4 py-6 space-y-4 text-lg">
+    <a href="#servicios" class="block menu-link">Servicios</a>
+    <a href="#como-funciona" class="block menu-link">Cómo funciona</a>
+    <a href="#contacto" class="block menu-link">Contacto</a>
+    <a href="#contacto" class="menu-link inline-block bg-coral text-ink font-semibold px-6 py-3 rounded-full">Cotiza tu evento</a>
+  </div>
+</nav>
+
+<!-- ============================================================================ -->
+<!-- HERO: imagen de concierto a pantalla completa, titular editorial y doble CTA -->
+<!-- ============================================================================ -->
+<header id="inicio" data-section="hero" class="relative min-h-screen flex items-end overflow-hidden">
+  <img src="https://paymegpt.com/objects/quick-uploads/36/92c9bf1376d65c07.jpg" alt="Concierto en vivo con iluminación escénica intensa y público frente al escenario" class="hero-parallax absolute inset-0 w-full h-full object-cover" data-parallax="hero" fetchpriority="high">
+  <!-- Degradados cinematográficos para legibilidad -->
+  <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/30"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-ink/70 to-transparent"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12 pb-20 md:pb-28 pt-40 w-full">
+    <p class="flex items-center gap-3 text-xs md:text-sm tracking-[.25em] uppercase text-bone/70 mb-6">
+      <span class="dot-live w-2 h-2 rounded-full bg-coral"></span> Producción de eventos · Todo México
+    </p>
+    <h1 class="display text-[clamp(2.6rem,7.5vw,6.8rem)] max-w-5xl">
+      El evento empieza mucho antes de que se <span class="text-coral">enciendan las luces.</span>
+    </h1>
+    <p class="mt-6 max-w-xl text-base md:text-lg text-bone/75 leading-relaxed">
+      Pinnacle reúne talento, producción y coordinación para convertir una idea en una experiencia que la gente recuerda.
+    </p>
+    <div class="mt-9 flex flex-wrap gap-4">
+      <a href="#contacto" class="bg-coral hover:bg-coralD text-ink font-semibold px-7 py-4 rounded-full">Cuéntanos tu evento</a>
+      <a href="#servicios" class="border border-bone/30 hover:border-bone hover:bg-bone/5 px-7 py-4 rounded-full font-medium">Ver servicios</a>
+    </div>
+  </div>
+  <!-- Indicador de scroll -->
+  <div class="scroll-cue absolute bottom-6 right-6 md:right-12 z-10 hidden md:flex flex-col items-center gap-2 text-bone/50 text-[10px] tracking-[.3em] uppercase" aria-hidden="true">
+    Scroll <span class="block w-px h-6 bg-coral"></span>
+  </div>
+</header>
+
+<!-- ============================================================================ -->
+<!-- PINNACLE-V2-ENHANCEMENTS: marcas -->
+<section id="marcas" data-section="marcas" class="brand-tape-section border-y border-line bg-coal/90 py-7 overflow-hidden" aria-label="Marcas que han confiado en nosotros">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+    <p class="text-center text-xs md:text-sm tracking-[.22em] uppercase text-bone/65">Marcas que han confiado en nosotros</p>
+  </div>
+  <div class="brand-tape mt-6" aria-hidden="false">
+    <div class="brand-tape__track">
+      <div class="brand-tape__set"><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/wacom.svg" alt="Wacom" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/adobe.svg" alt="Adobe" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/dell.svg" alt="Dell" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/targus.svg" alt="Targus" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/hp.svg" alt="HP" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/mobo.png" alt="Mobo" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/canon.svg" alt="Canon" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/shure.svg" alt="Shure" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/lenovo.svg" alt="Lenovo" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/microsoft.svg" alt="Microsoft" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/alienware.svg" alt="Alienware" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/logitech.svg" alt="Logitech" loading="lazy"></div><div class="brand-mark brand-mark--text"><span class="brand-wordmark"><b>ZEGNO</b><small>ESCRITURA</small></span></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/swarovski.svg" alt="Swarovski" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/premec.svg" alt="Premec" loading="lazy"></div></div>
+      <div class="brand-tape__set" aria-hidden="true"><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/wacom.svg" alt="Wacom" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/adobe.svg" alt="Adobe" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/dell.svg" alt="Dell" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/targus.svg" alt="Targus" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/hp.svg" alt="HP" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/mobo.png" alt="Mobo" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/canon.svg" alt="Canon" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/shure.svg" alt="Shure" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/lenovo.svg" alt="Lenovo" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/microsoft.svg" alt="Microsoft" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/alienware.svg" alt="Alienware" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/logitech.svg" alt="Logitech" loading="lazy"></div><div class="brand-mark brand-mark--text"><span class="brand-wordmark"><b>ZEGNO</b><small>ESCRITURA</small></span></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/swarovski.svg" alt="Swarovski" loading="lazy"></div><div class="brand-mark"><img src="https://pinnacleproducciones.com/images/brands/premec.svg" alt="Premec" loading="lazy"></div></div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ============================================================================ -->
+<!-- SERVICIOS: 4 familias en bloques asimétricos editoriales con imágenes reales -->
+<!-- ============================================================================ -->
+<section id="servicios" data-section="servicios" class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-20 md:py-32">
+  <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 md:mb-20" data-aos="fade-up">
+    <h2 class="display text-[clamp(2.2rem,5vw,4.5rem)]">Todo lo que tu<br>evento necesita</h2>
+    <p class="max-w-sm text-mute text-sm md:text-base leading-relaxed">Cuatro familias de servicios que trabajan juntas bajo una sola coordinación. Tú imaginas la ocasión; nosotros reunimos al equipo.</p>
+  </div>
+
+  <!-- 01 · Música y entretenimiento: texto izquierda, imagen derecha -->
+  <article data-tilt class="grid md:grid-cols-12 gap-6 md:gap-10 items-center border-t border-line py-12 md:py-16" data-aos="fade-up">
+    <div class="md:col-span-5">
+      <span class="text-coral display text-xl">01</span>
+      <h3 class="display text-3xl md:text-5xl mt-3">Música y entretenimiento</h3>
+      <p class="mt-5 text-bone/70 leading-relaxed">El pulso del evento. Bandas, solistas y DJs que leen el momento y levantan cualquier escenario, en cualquier formato.</p>
+      <ul class="mt-6 flex flex-wrap gap-2 text-xs md:text-sm text-bone/60">
+        <li class="border border-line rounded-full px-4 py-1.5">Bandas</li>
+        <li class="border border-line rounded-full px-4 py-1.5">Solistas</li>
+        <li class="border border-line rounded-full px-4 py-1.5">DJs</li>
+      </ul>
+    </div>
+    <figure class="md:col-span-7 img-zoom overflow-hidden rounded-lg border border-line">
+      <img src="https://paymegpt.com/objects/quick-uploads/36/33a8de6647a531f8.jpg" alt="Músicos y bandas en vivo durante una presentación con iluminación escénica" class="w-full h-64 md:h-[420px] object-cover" loading="lazy">
+    </figure>
+  </article>
+
+  <!-- 02 · Producción técnica: bloque ancho con doble imagen -->
+  <article data-tilt class="border-t border-line py-12 md:py-16" data-aos="fade-up">
+    <div class="max-w-3xl">
+      <span class="text-coral display text-xl">02</span>
+      <h3 class="display text-3xl md:text-5xl mt-3">Producción técnica</h3>
+      <p class="mt-5 text-bone/70 leading-relaxed">La base invisible que sostiene cada momento: audio, iluminación, producción y dirección, mobiliario y artículos promocionales, operados como un solo sistema.</p>
+    </div>
+    <div class="grid md:grid-cols-12 gap-6 md:gap-10 mt-8 md:mt-10 items-end">
+      <figure class="md:col-span-7 img-zoom overflow-hidden rounded-lg border border-line">
+        <img src="https://paymegpt.com/objects/quick-uploads/36/7da3029f0642472b.jpg" alt="Montaje de escenario y equipo de producción técnica para eventos" class="w-full h-64 md:h-[380px] object-cover" loading="lazy">
+      </figure>
+      <figure class="md:col-span-5 img-zoom overflow-hidden rounded-lg border border-line">
+        <img src="https://paymegpt.com/objects/quick-uploads/36/ce5279fd0a7077cc.jpg" alt="Sistema de audio profesional e iluminación para eventos en vivo" class="w-full h-56 md:h-[300px] object-cover" loading="lazy">
+      </figure>
+    </div>
+    <ul class="mt-6 flex flex-wrap gap-2 text-xs md:text-sm text-bone/60">
+      <li class="border border-line rounded-full px-4 py-1.5">Audio</li>
+      <li class="border border-line rounded-full px-4 py-1.5">Iluminación</li>
+      <li class="border border-line rounded-full px-4 py-1.5">Producción y dirección</li>
+      <li class="border border-line rounded-full px-4 py-1.5">Mobiliario</li>
+      <li class="border border-line rounded-full px-4 py-1.5">Artículos promocionales</li>
+    </ul>
+  </article>
+
+  <!-- 03 · Imagen y contenido: imagen izquierda, texto derecha -->
+  <article data-tilt class="grid md:grid-cols-12 gap-6 md:gap-10 items-center border-t border-line py-12 md:py-16" data-aos="fade-up">
+    <figure class="md:col-span-7 img-zoom overflow-hidden rounded-lg border border-line md:order-1 order-2">
+      <img src="https://paymegpt.com/objects/quick-uploads/36/27e15621963c5a2b.jpg" alt="Cobertura profesional de video y fotografía durante un evento" class="w-full h-64 md:h-[420px] object-cover" loading="lazy">
+    </figure>
+    <div class="md:col-span-5 md:order-2 order-1 md:pl-6">
+      <span class="text-coral display text-xl">03</span>
+      <h3 class="display text-3xl md:text-5xl mt-3">Imagen y contenido</h3>
+      <p class="mt-5 text-bone/70 leading-relaxed">Video y fotografía que capturan lo que el evento hizo sentir — y lo convierten en material que vive después del último aplauso.</p>
+      <ul class="mt-6 flex flex-wrap gap-2 text-xs md:text-sm text-bone/60">
+        <li class="border border-line rounded-full px-4 py-1.5">Video</li>
+        <li class="border border-line rounded-full px-4 py-1.5">Fotografía</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 04 · Experiencias: bloque tipográfico de contraste (asimetría editorial) -->
+  <article data-tilt class="border-t border-b border-line py-12 md:py-16 grid md:grid-cols-12 gap-8 items-center bg-coal" data-aos="fade-up">
+    <div class="md:col-span-4">
+      <span class="display text-[clamp(4rem,9vw,8rem)] text-coral leading-none">04</span>
+    </div>
+    <div class="md:col-span-8">
+      <h3 class="display text-3xl md:text-5xl">Experiencias para equipos y marcas</h3>
+      <p class="mt-5 text-bone/70 leading-relaxed max-w-2xl">Momentos diseñados para las personas detrás del evento: coaching, mindfulness y entretenimiento infantil que conectan equipos, marcas y audiencias.</p>
+      <ul class="mt-6 flex flex-wrap gap-2 text-xs md:text-sm text-bone/60">
+        <li class="border border-line rounded-full px-4 py-1.5">Coaching</li>
+        <li class="border border-line rounded-full px-4 py-1.5">Mindfulness</li>
+        <li class="border border-line rounded-full px-4 py-1.5">Entretenimiento infantil</li>
+      </ul>
+    </div>
+  
+    <figure class="md:col-span-12 img-zoom overflow-hidden rounded-lg border border-line mt-2">
+      <img src="https://paymegpt.com/objects/quick-uploads/36/cc686f2a5a9306b2.jpg" alt="Equipo participando en un workshop de coaching y mindfulness para empresas" class="w-full h-64 md:h-[360px] object-cover" loading="lazy">
+    </figure>
+  </article>
+</section>
+
+<!-- ============================================================================ -->
+<!-- CÓMO FUNCIONA: "Del primer mensaje al último aplauso" — 3 pasos              -->
+<!-- ============================================================================ -->
+<section id="como-funciona" data-section="como-funciona" class="border-y border-line bg-coal">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-20 md:py-32">
+    <p class="text-xs tracking-[.25em] uppercase text-bone/60 mb-4" data-aos="fade-up">Cómo funciona</p>
+    <h2 class="display text-[clamp(2.2rem,5vw,4.5rem)] max-w-4xl mb-14 md:mb-20" data-aos="fade-up">Del primer mensaje al <span class="text-coral">último aplauso</span></h2>
+    <div class="grid md:grid-cols-3 gap-10 md:gap-8">
+      <div class="border-t-2 border-coral pt-6" data-aos="fade-up">
+        <span class="display text-5xl text-bone/20">1</span>
+        <h3 class="display text-xl md:text-2xl mt-4">Cuéntanos la ocasión</h3>
+        <p class="mt-3 text-sm md:text-base text-bone/65 leading-relaxed">Fecha, ciudad, formato y lo que imaginas. Con el primer mensaje empezamos a entender el evento que quieres lograr.</p>
+      </div>
+      <div class="border-t-2 border-coral pt-6" data-aos="fade-up" data-aos-delay="120">
+        <span class="display text-5xl text-bone/20">2</span>
+        <h3 class="display text-xl md:text-2xl mt-4">Armamos la propuesta</h3>
+        <p class="mt-3 text-sm md:text-base text-bone/65 leading-relaxed">Reunimos el talento, la producción y los servicios que encajan con tu visión y tu presupuesto, en una sola propuesta clara.</p>
+      </div>
+      <div class="border-t-2 border-coral pt-6" data-aos="fade-up" data-aos-delay="240">
+        <span class="display text-5xl text-bone/20">3</span>
+        <h3 class="display text-xl md:text-2xl mt-4">Producimos una experiencia coordinada</h3>
+        <p class="mt-3 text-sm md:text-base text-bone/65 leading-relaxed">Acompañamos la ejecución para que cada proveedor, cada tiempo y cada detalle trabajen en conjunto, de principio a fin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================================ -->
+<!-- CTA FINAL + CONTACTO: titular "Cuéntanos qué quieres hacer realidad" y form  -->
+<!-- ============================================================================ -->
+<section id="contacto" data-section="contacto" class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-20 md:py-32">
+  <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+    <div data-aos="fade-up">
+      <p class="text-xs tracking-[.25em] uppercase text-bone/60 mb-4">Cotización</p>
+      <h2 class="display text-[clamp(2.4rem,5.5vw,5rem)]">Cuéntanos qué quieres <span class="text-coral">hacer realidad</span></h2>
+      <p class="mt-6 text-bone/70 leading-relaxed max-w-md">Déjanos los detalles de tu evento y nuestro equipo te contactará con una propuesta a la medida. Sin compromiso.</p>
+      <a href="#contacto" onclick="document.getElementById('nombre').focus();return false;" class="hidden lg:inline-block mt-10 border border-bone/30 hover:border-coral hover:text-coral px-7 py-4 rounded-full font-medium">Solicitar cotización ↓</a>
+    </div>
+    <!-- Formulario de cotización (demo: muestra confirmación en pantalla) -->
+    <form id="quoteForm" class="border border-line rounded-2xl bg-coal p-6 md:p-10 space-y-5" data-aos="fade-up" data-aos-delay="120" novalidate>
+      <div>
+        <label for="nombre" class="block text-xs uppercase tracking-widest text-bone/60 mb-2">Nombre completo</label>
+        <input id="nombre" name="full_name" type="text" required autocomplete="name" placeholder="Tu nombre" class="w-full bg-ink border border-line rounded-lg px-4 py-3.5 placeholder:text-mute/60 focus:border-coral focus:outline-none">
+      </div>
+      <div class="grid md:grid-cols-2 gap-5">
+        <div>
+          <label for="email" class="block text-xs uppercase tracking-widest text-bone/60 mb-2">Correo</label>
+          <input id="email" name="email" type="email" required autocomplete="email" placeholder="tu@correo.com" class="w-full bg-ink border border-line rounded-lg px-4 py-3.5 placeholder:text-mute/60 focus:border-coral focus:outline-none">
+        </div>
+        <div>
+          <label for="telefono" class="block text-xs uppercase tracking-widest text-bone/60 mb-2">Teléfono</label>
+          <input id="telefono" name="phone" type="tel" autocomplete="tel" placeholder="+52 ..." class="w-full bg-ink border border-line rounded-lg px-4 py-3.5 placeholder:text-mute/60 focus:border-coral focus:outline-none">
+        </div>
+      </div>
+      <div>
+        <label for="tipo" class="block text-xs uppercase tracking-widest text-bone/60 mb-2">Tipo de evento</label>
+        <select id="tipo" name="event_type" class="w-full bg-ink border border-line rounded-lg px-4 py-3.5 focus:border-coral focus:outline-none">
+          <option>Concierto o festival</option><option>Evento corporativo</option><option>Celebración privada</option><option>Activación de marca</option><option>Otro</option>
+        </select>
+      </div>
+      <div>
+        <label for="mensaje" class="block text-xs uppercase tracking-widest text-bone/60 mb-2">Cuéntanos tu idea</label>
+        <textarea id="mensaje" name="message" rows="4" required placeholder="Fecha tentativa, ciudad, aforo y lo que imaginas…" class="w-full bg-ink border border-line rounded-lg px-4 py-3.5 placeholder:text-mute/60 focus:border-coral focus:outline-none resize-none"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-coral hover:bg-coralD text-ink font-semibold text-lg py-4 rounded-full">Solicitar cotización</button>
+      <p id="formMsg" class="hidden text-center text-sm text-coral" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================================================================ -->
+<!-- FOOTER: sobrio, monograma, navegación mínima y créditos                      -->
+<!-- ============================================================================ -->
+<footer data-section="footer" class="border-t border-line bg-coal">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-12 md:py-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+    <div class="flex items-center gap-4">
+      <img src="https://pinnacleproducciones.com/brand/monograma.png" alt="Monograma de Pinnacle Producciones" class="h-10 w-10 brightness-0 invert" loading="lazy">
+      <div>
+        <p class="display text-lg">Pinnacle Producciones</p>
+        <p class="text-xs text-mute">Talento · Producción · Coordinación — México</p>
+      </div>
+    </div>
+    <nav class="flex flex-wrap gap-x-8 gap-y-3 text-sm text-bone/70" aria-label="Navegación de pie de página">
+      <a href="#servicios" class="link-line hover:text-bone">Servicios</a>
+      <a href="#como-funciona" class="link-line hover:text-bone">Cómo funciona</a>
+      <a href="#contacto" class="link-line hover:text-bone">Contacto</a>
+      <a href="#contacto" class="text-coral hover:text-coralD font-medium">Cotiza tu evento</a>
+    </nav>
+  </div>
+  <div class="border-t border-line">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-5 flex flex-col md:flex-row justify-between gap-2 text-xs text-mute">
+      <p>© 2026 Pinnacle Producciones. Todos los derechos reservados.</p>
+      <p>Concepto de rediseño — demo visual.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+// ===== AOS: revelados al hacer scroll (una sola vez, desplazamiento suave) =====
+AOS.init({ once: true, duration: 700, offset: 80 });
+
+// ===== MENÚ MÓVIL =====
+// toggleMobileMenu(): muestra/oculta la navegación en pantallas pequeñas
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => {
+  const open = mobileMenu.classList.toggle('hidden');
+  menuBtn.setAttribute('aria-expanded', String(!open));
+  menuBtn.setAttribute('aria-label', open ? 'Abrir menú' : 'Cerrar menú');
+});
+// Cierra el menú al elegir un enlace ancla
+document.querySelectorAll('.menu-link').forEach(l => l.addEventListener('click', () => {
+  mobileMenu.classList.add('hidden');
+  menuBtn.setAttribute('aria-expanded', 'false');
+}));
+
+// ===== NAVBAR: fondo con blur al hacer scroll =====
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+
+// ===== FORMULARIO DE COTIZACIÓN (DEMO) =====
+// Valida campos y muestra confirmación en pantalla (sin backend en la demo)
+document.getElementById('quoteForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const msg = document.getElementById('formMsg');
+  if (!this.checkValidity()) { this.reportValidity(); return; }
+  const nombre = document.getElementById('nombre').value.trim().split(' ')[0];
+  msg.textContent = `Gracias${nombre ? ', ' + nombre : ''}. Recibimos tu solicitud — te contactaremos muy pronto con una propuesta.`;
+  msg.classList.remove('hidden');
+  this.reset();
+});
+</script>
+
+<!-- PINNACLE-V2-ENHANCEMENTS: cursor trail y tilt -->
+<script>
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = window.matchMedia('(pointer:fine)').matches;
+  if (reduce || !fine) return;
+  const glow = document.getElementById('cursor-glow');
+  const trail = document.getElementById('cursor-trail');
+  const dots = Array.from({length:9}, () => { const el=document.createElement('span'); el.className='cursor-dot'; trail.appendChild(el); return el; });
+  const points = dots.map(() => ({x:window.innerWidth/2,y:window.innerHeight/2}));
+  let targetX=window.innerWidth/2, targetY=window.innerHeight/2;
+  window.addEventListener('pointermove', (event) => { targetX=event.clientX; targetY=event.clientY; glow.style.left=targetX+'px'; glow.style.top=targetY+'px'; }, {passive:true});
+  const tick = () => {
+    let x=targetX, y=targetY;
+    dots.forEach((dot,index) => { const p=points[index]; const ease=.22-(index*.012); p.x+=(x-p.x)*ease; p.y+=(y-p.y)*ease; dot.style.transform=`translate3d(${p.x}px,${p.y}px,0) translate(-50%,-50%) scale(${1-index*.065})`; x=p.x; y=p.y; });
+    requestAnimationFrame(tick);
+  };
+  tick();
+  document.querySelectorAll('[data-tilt]').forEach((card) => {
+    card.addEventListener('pointermove', (event) => { const box=card.getBoundingClientRect(); const rx=((event.clientY-box.top)/box.height-.5)*-2.4; const ry=((event.clientX-box.left)/box.width-.5)*2.4; card.style.transform=`perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(3px)`; }, {passive:true});
+    card.addEventListener('pointerleave', () => { card.style.transform=''; });
+  });
+})();
+</script>
+
+
+<!-- PAYMEGPT-NATIVE-WIDGET: se conserva el formato nativo y el ícono configurado en el widget -->
+<script src="https://paymegpt.com/widget.js" data-widget="51440057" async></script>
+
+
+<script>
+// PINNACLE-PARALLAX: desplazamiento suave de la imagen hero sin alterar la hero original
+(()=>{
+  const hero=document.querySelector('[data-parallax="hero"]');
+  const section=document.getElementById('inicio');
+  if(!hero||!section||window.matchMedia('(prefers-reduced-motion: reduce)').matches||window.matchMedia('(pointer: coarse)').matches)return;
+  let frame=0;
+  const update=()=>{frame=0;const rect=section.getBoundingClientRect();const progress=Math.max(0,Math.min(1,(-rect.top)/Math.max(1,rect.height)));hero.style.transform='scale(1.08) translate3d(0,'+(progress*4)+'%,0)';};
+  window.addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(update)},{passive:true});
+  update();
+})();
+</script>
+</body>
+</html>
