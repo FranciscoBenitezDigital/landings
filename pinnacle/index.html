@@ -527,7 +527,7 @@ tailwind.config = { theme: { extend: {
       <p class="mt-6 text-bone/70 leading-relaxed max-w-md">Déjanos los detalles de tu evento y nuestro equipo te contactará con una propuesta a la medida. Sin compromiso.</p>
       <a href="#contacto" onclick="document.getElementById('nombre').focus();return false;" class="hidden lg:inline-block mt-10 border border-bone/30 hover:border-coral hover:text-coral px-7 py-4 rounded-full font-medium">Solicitar cotización ↓</a>
     </div>
-    <!-- Formulario de cotización (demo: muestra confirmación en pantalla) -->
+    <!-- Formulario de cotización: envía la solicitud al mismo flujo que el chat -->
     <form id="quoteForm" class="border border-line rounded-2xl bg-coal p-6 md:p-10 space-y-5" data-aos="fade-up" data-aos-delay="120" novalidate>
       <div>
         <label for="nombre" class="block text-xs uppercase tracking-widest text-bone/60 mb-2">Nombre completo</label>
@@ -550,8 +550,8 @@ tailwind.config = { theme: { extend: {
         </select>
       </div>
       <div>
-        <label for="mensaje" class="block text-xs uppercase tracking-widest text-bone/60 mb-2">Cuéntanos tu idea</label>
-        <textarea id="mensaje" name="message" rows="4" required placeholder="Fecha tentativa, ciudad, aforo y lo que imaginas…" class="w-full bg-ink border border-line rounded-lg px-4 py-3.5 placeholder:text-mute/60 focus:border-coral focus:outline-none resize-none"></textarea>
+        <label for="fecha" class="block text-xs uppercase tracking-widest text-bone/60 mb-2">Fecha del evento</label>
+        <input id="fecha" name="event_date" type="date" required class="w-full bg-ink border border-line rounded-lg px-4 py-3.5 focus:border-coral focus:outline-none">
       </div>
       <button type="submit" class="w-full bg-coral hover:bg-coralD text-ink font-semibold text-lg py-4 rounded-full">Solicitar cotización</button>
       <p id="formMsg" class="hidden text-center text-sm text-coral" role="status"></p>
@@ -610,16 +610,51 @@ document.querySelectorAll('.menu-link').forEach(l => l.addEventListener('click',
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
 
-// ===== FORMULARIO DE COTIZACIÓN (DEMO) =====
-// Valida campos y muestra confirmación en pantalla (sin backend en la demo)
-document.getElementById('quoteForm').addEventListener('submit', function (e) {
+// ===== FORMULARIO DE COTIZACIÓN =====
+// Envía los mismos cinco datos que el chat al flujo de clientes de PayMeGPT.
+const quoteForm = document.getElementById('quoteForm');
+quoteForm.addEventListener('submit', async function (e) {
   e.preventDefault();
   const msg = document.getElementById('formMsg');
   if (!this.checkValidity()) { this.reportValidity(); return; }
-  const nombre = document.getElementById('nombre').value.trim().split(' ')[0];
-  msg.textContent = `Gracias${nombre ? ', ' + nombre : ''}. Recibimos tu solicitud — te contactaremos muy pronto con una propuesta.`;
+  const submit = this.querySelector('button[type="submit"]');
+  const nombreCompleto = document.getElementById('nombre').value.trim();
+  const correo = document.getElementById('email').value.trim();
+  const telefono = document.getElementById('telefono').value.trim();
+  const tipoEvento = document.getElementById('tipo').value;
+  const fechaEvento = document.getElementById('fecha').value;
+  submit.disabled = true;
+  submit.textContent = 'Enviando…';
   msg.classList.remove('hidden');
-  this.reset();
+  msg.textContent = 'Enviando tu solicitud…';
+  try {
+    const response = await fetch('https://paymegpt.com/api/webhooks/flow/6492/fa1dd8217ec2ac22cfcab8f31e2e86678bc4442aefa50973dc116aad4d44a793', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        contactEmail: correo,
+        contactName: nombreCompleto,
+        contactPhone: telefono,
+        channel: 'webchat',
+        data: {
+          event_type: tipoEvento,
+          event_date: fechaEvento,
+          client_full_name: nombreCompleto,
+          client_email: correo,
+          client_phone: telefono
+        }
+      })
+    });
+    if (!response.ok) throw new Error('webhook');
+    const nombre = nombreCompleto.split(' ')[0];
+    msg.textContent = `Gracias${nombre ? ', ' + nombre : ''}. Recibimos tu solicitud — te contactaremos muy pronto con una propuesta.`;
+    this.reset();
+  } catch (error) {
+    msg.textContent = 'No pudimos enviar tu solicitud. Inténtalo de nuevo o escríbenos por el chat.';
+  } finally {
+    submit.disabled = false;
+    submit.textContent = 'Solicitar cotización';
+  }
 });
 </script>
 
