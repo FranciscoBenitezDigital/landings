@@ -620,7 +620,8 @@ quoteForm.addEventListener('submit', async function (e) {
   const submit = this.querySelector('button[type="submit"]');
   const nombreCompleto = document.getElementById('nombre').value.trim();
   const correo = document.getElementById('email').value.trim();
-  const telefono = document.getElementById('telefono').value.trim();
+  const telefono = document.getElementById('telefono').value.trim().replace(/\D/g, '');
+  const telefonoE164 = telefono ? '+' + telefono : '';
   const tipoEvento = document.getElementById('tipo').value;
   const fechaEvento = document.getElementById('fecha').value;
   submit.disabled = true;
@@ -634,7 +635,7 @@ quoteForm.addEventListener('submit', async function (e) {
       body: JSON.stringify({
         contactEmail: correo,
         contactName: nombreCompleto,
-        contactPhone: telefono,
+        contactPhone: telefonoE164,
         channel: 'webchat',
         data: {
           event_type: tipoEvento,
