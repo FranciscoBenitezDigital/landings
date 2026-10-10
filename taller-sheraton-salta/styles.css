@@ -77,3 +77,9 @@
 .testimonial-video:hover{transform:translateY(-6px);border-color:rgba(85,230,255,.7);box-shadow:0 24px 54px rgba(18,157,239,.18)}
 .testimonial-video iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
 @media(max-width:650px){.testimonials-grid{grid-template-columns:1fr;gap:16px}.testimonial-video{border-radius:18px}}
+
+
+/* Testimonios verticales */
+.testimonials-shorts{display:grid;grid-template-columns:repeat(2,minmax(0,320px));justify-content:center;gap:22px;margin-top:24px}
+.testimonial-short iframe{aspect-ratio:9/16}
+@media(max-width:700px){.testimonials-shorts{grid-template-columns:minmax(0,360px);gap:18px}.testimonial-short{width:100%}}
