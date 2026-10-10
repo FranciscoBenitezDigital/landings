@@ -116,3 +116,15 @@
   .system-mobile-detail span{display:block!important;color:var(--muted)!important;font-size:.87rem!important;line-height:1.55!important;margin:0!important;padding:0!important}
   .system-detail{display:none!important}
 }
+
+/* Versión móvil del sistema con el mismo acordeón de aprendizajes */
+.system-mobile-accordion{display:none}
+@media(max-width:900px){
+  .system-diagram{display:none!important}
+  .system-mobile-accordion{display:grid;grid-template-columns:1fr;gap:12px;margin-top:32px}
+  .system-mobile-item{min-width:0}
+  .system-mobile-item .learn-card.accordion-trigger{width:100%;min-height:112px!important;padding:18px 48px 19px 19px!important}
+  .system-mobile-item .learn-card-title{font-size:1.14rem!important;max-width:100%!important}
+  .system-mobile-item .learn-panel{margin-top:6px!important}
+}
+@media(min-width:901px){.system-mobile-accordion{display:none!important}}
