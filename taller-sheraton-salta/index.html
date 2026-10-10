@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<!-- BASE:START (managed by Coding Agent — do not edit) -->
+<base href="/landings/taller-sheraton-salta/">
+<!-- BASE:END -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07152d">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<!-- SEO Meta Tags -->
+<title>Taller práctico de creación de sistemas de inteligencia artificial · Salta</title>
+<meta name="description" content="Aprende a conectar contenido, landing, agente de IA, Google Sheets y automatizaciones en una jornada práctica en Salta." />
+<meta property="og:title" content="Taller práctico de creación de sistemas de inteligencia artificial · Salta" />
+<meta property="og:description" content="Aprende a conectar contenido, landing, agente de IA, Google Sheets y automatizaciones en una jornada práctica en Salta." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Taller práctico de creación de sistemas de inteligencia artificial · Salta" />
+<meta name="twitter:description" content="Aprende a conectar contenido, landing, agente de IA, Google Sheets y automatizaciones en una jornada práctica en Salta." />
+<!-- End SEO Meta Tags -->
+<script data-lp-token-hydrate>
+(function(){try{
+  var slug="lp-mv1ptsg5-c1axx";
+  var SITEK="";
+  var SK='lp_access_'+slug;
+  var map={access_token:'lp_pw_',allowlist_access_token:'lp_al_',pin_access_token:'lp_pin_',paywall_access_token:'lp_paid_'};
+  function siteTok(){try{return SITEK?localStorage.getItem(SITEK):null;}catch(e){return null;}}
+  var u=new URL(location.href);var found=null;var changed=false;
+  var PINP=true;
+  if(!PINP){try{localStorage.removeItem('lp_pin_'+slug);if(SITEK)localStorage.removeItem(SITEK);}catch(e){}}
+  Object.keys(map).forEach(function(p){var v=u.searchParams.get(p);if(v){found=v;try{if(PINP||p!=='pin_access_token'){localStorage.setItem(map[p]+slug,v);if(SITEK&&p==='pin_access_token')localStorage.setItem(SITEK,v);}}catch(e){}if(p==='pin_access_token'){try{sessionStorage.setItem('lp_fresh_'+slug,'1');}catch(e){}}u.searchParams.delete(p);changed=true;}});
+  if(found){try{sessionStorage.setItem(SK,found);}catch(e){}}
+  else{try{if(!sessionStorage.getItem(SK)){var t=localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug)||siteTok();if(t)sessionStorage.setItem(SK,t);}}catch(e){}}
+  if(changed){try{history.replaceState(null,'',u.toString());}catch(e){}}
+  function getTok(){try{return sessionStorage.getItem(SK)||localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug)||siteTok();}catch(e){return null;}}
+  function needsToken(url,method){if(!url)return false;var s=String(url);var m=(method||'GET').toUpperCase();var isSheetWrite=(m==='POST'||m==='PATCH'||m==='PUT'||m==='DELETE')&&/\/sheet-rows(\/|$|\?)/.test(s);var isSheetRead=/\/sheet-data(\/|$|\?)/.test(s);var isLlm=/\/api\/landing-pages\/public\/[^/]+\/(llm|llm-config)(\/|$|\?)/.test(s);return isSheetWrite||isSheetRead||isLlm;}
+  if(window.fetch){var _f=window.fetch;window.fetch=function(input,init){try{var url=typeof input==='string'?input:(input&&input.url)||'';var method=(init&&init.method)||(input&&input.method)||'GET';if(needsToken(url,method)){var tok=getTok();if(tok){init=init||{};var h=new Headers(init.headers||(typeof input!=='string'?input.headers:undefined)||{});if(!h.has('X-Landing-Page-Token'))h.set('X-Landing-Page-Token',tok);init.headers=h;}}}catch(e){}return _f.call(this,input,init);};}
+  if(window.XMLHttpRequest){var _o=XMLHttpRequest.prototype.open;var _s=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.open=function(m,u){this.__lpM=m;this.__lpU=u;return _o.apply(this,arguments);};XMLHttpRequest.prototype.send=function(){try{if(needsToken(this.__lpU,this.__lpM)){var tok=getTok();if(tok)this.setRequestHeader('X-Landing-Page-Token',tok);}}catch(e){}return _s.apply(this,arguments);};}
+}catch(e){}})();
+</script>
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=7938');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='Tj9CxLj8bW';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    var phone=findPhone();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    var __pLoc=(document.documentElement.lang||navigator.language||'en');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,phone:phone||'',amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,locale:__pLoc,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var sidP=urlParams.get('session_id');
+      if(sidP){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidP})}).catch(function(){});}catch(e){}}
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||('Thank you for purchasing '+pName+'.');
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-pay-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var pBtn=document.getElementById('lp-pay-success-btn');
+      if(pBtn){pBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>
+<script data-cart>
+(function(){
+  var slug='Tj9CxLj8bW';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findCartEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realCart=function(arg){
+    var items, email='', customerName='', successUrl, cancelUrl, currency;
+    if(Array.isArray(arg)){items=arg;}
+    else if(arg&&typeof arg==='object'){
+      items=arg.items;email=arg.email||'';customerName=arg.name||arg.customerName||'';
+      successUrl=arg.successUrl;cancelUrl=arg.cancelUrl;currency=arg.currency;
+    }
+    if(!Array.isArray(items)||items.length===0){alert('No items in cart.');return Promise.reject('no_items');}
+    var cleanItems=[];var totalCents=0;
+    for(var i=0;i<items.length;i++){
+      var it=items[i];if(!it||typeof it!=='object'){alert('Invalid item at position '+i);return Promise.reject('bad_item');}
+      var nm=typeof it.name==='string'?it.name.trim():'';
+      if(!nm){alert('Item '+(i+1)+' is missing a name.');return Promise.reject('no_name');}
+      var amt=typeof it.amountCents==='number'?it.amountCents:(typeof it.amount==='number'?Math.round(it.amount*100):NaN);
+      if(!isFinite(amt)||amt<1){alert('Item "'+nm+'" needs a valid amount in cents.');return Promise.reject('bad_amount');}
+      var qty=(typeof it.quantity==='number'&&it.quantity>0)?Math.floor(it.quantity):1;
+      cleanItems.push({name:nm,description:it.description||'',amountCents:amt,quantity:qty});
+      totalCents+=amt*qty;
+    }
+    if(totalCents<50){alert('Cart total must be at least $0.50');return Promise.reject('total_too_low');}
+    if(!email)email=findCartEmail();
+    if(!customerName)customerName=findCartName();
+    var cartPhone=findCartPhone();
+    if(!email){var p=window.prompt('Enter your email for the receipt:','');if(p&&p.indexOf('@')>-1){email=p.trim();}else{alert('An email address is required to complete checkout.');return Promise.reject('no_email');}}
+    var successBase=window.location.href.split('?')[0];
+    var body={email:email,name:customerName,items:cleanItems,locale:(document.documentElement.lang||navigator.language||'en')};
+    if(currency)body.currency=currency;
+    if(cartPhone)body.phone=cartPhone;
+    body.successUrl=successUrl||(successBase+'?cart=success&email='+encodeURIComponent(email)+'&session_id={CHECKOUT_SESSION_ID}');
+    body.cancelUrl=cancelUrl||(successBase+'?cart=cancelled');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/cart/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process checkout');throw new Error(d.error);}
+    });
+  };
+  try{Object.defineProperty(window,'__processCart',{value:__realCart,writable:false,configurable:false});}catch(e){window.__processCart=__realCart;}
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('cart')==='success'){
+      var sidC=urlParams.get('session_id');
+      if(sidC){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidC})}).catch(function(){});}catch(e){}}
+      if(document.getElementById('payment-success-overlay')||document.getElementById('donation-success-overlay')||document.getElementById('cart-success-overlay'))return;
+      var overlay=document.createElement('div');overlay.id='cart-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||'Thank you for your order.';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Order Confirmed!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-cart-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var cBtn=document.getElementById('lp-cart-success-btn');
+      if(cBtn){cBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="cursor-glow" aria-hidden="true"></div>
+<header class="topbar"><div class="wrap nav">
+<a class="brand-logos" href="#inicio" aria-label="Francisco Benítez Digital y ARGEM"><img src="https://paymegpt.com/objects/quick-uploads/36/7d969950b4419a9c.jpg" alt="Francisco Benítez Digital"><span class="brand-divider"></span><img src="https://paymegpt.com/objects/quick-uploads/36/0eb717c697efcffd.jpg" alt="ARGEM"></a>
+<nav class="navlinks" id="navlinks"><a href="#aprendizajes">Qué vas a aprender</a><a href="#expositores">Expositores</a><a href="#sede">Sede</a><a class="btn small" href="#contacto">Consultar con Gabriela <span>↗</span></a></nav>
+<button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+</div></header>
+<main>
+<section class="hero" id="inicio"><div class="grid-bg"></div><span class="glow" style="width:350px;height:350px;background:#1779ff;top:10%;right:4%"></span>
+<div class="wrap hero-grid"><div class="hero-copy reveal"><span class="eyebrow">Taller híbrido · Presencial en Hotel Sheraton Salta</span>
+<h1>Taller práctico de creación de <span class="gradient-text">sistemas de inteligencia artificial</span></h1>
+<p>Construye un sistema de IA que trabaje por tu negocio: crea contenidos, una landing y un agente que responda consultas y registre clientes con automatizaciones prácticas.</p>
+<div class="hero-actions"><a class="btn secondary" href="#aprendizajes">Conocer el taller <span>↓</span></a></div>
+<div class="hero-tags"><span class="pill">21 oct 2026</span><span class="pill">14:00 a 19:00 · Argentina</span><span class="pill">Híbrido · Salta + Zoom</span></div></div>
+<div class="hero-visual reveal"><div class="orbit"></div><div class="orbit orbit2"></div><div class="speaker-combo"><div class="portrait francisco"><img src="https://paymegpt.com/objects/quick-uploads/36/835b939f5d0f695f.jpg" alt="Francisco Benítez"></div><div class="portrait gabriela"><img src="https://paymegpt.com/objects/quick-uploads/36/c5deb7f172dc5757.jpg" alt="Gabriela Ballerini"></div><span class="portrait-label">Francisco Benítez · en vivo por Zoom</span><span class="portrait-label right">Gabriela Ballerini · en sala</span></div><div class="hero-orb"></div></div></div><div class="hero-foot">Ideas que se convierten en sistemas</div></section>
+<section class="event-strip"><div class="wrap facts"><div class="fact"><div class="fact-icon">◷</div><strong>Miércoles 21 de octubre</strong><span>14:00 a 19:00 · hora Argentina</span></div><div class="fact"><div class="fact-icon">⌖</div><strong>Hotel Sheraton Salta</strong><span>Experiencia presencial en Salta</span></div><div class="fact"><div class="fact-icon">◎</div><strong>Formato híbrido</strong><span>Gabriela en sala · Francisco por Zoom</span></div><div class="fact"><div class="fact-icon">✦</div><strong>Solo 20 lugares</strong><span>Cupo limitado · coffee break incluido</span></div></div></section>
+<section class="section system"><div class="wrap"><div class="reveal"><span class="eyebrow">Un sistema conectado</span><h2 class="section-title">No son herramientas aisladas.<br><span class="gradient-text">Es un flujo que acompaña al cliente.</span></h2><p class="section-lede">Vas a entender cómo conectar contenido, página, atención y registro para que cada consulta tenga un siguiente paso claro.</p></div>
+<div class="system-diagram"><article class="system-node reveal"><div class="node-icon">✧</div><h3>Contenido</h3><p>Ideas y piezas creadas con IA.</p></article><article class="system-node reveal"><div class="node-icon">⌘</div><h3>Landing page</h3><p>Una página que presenta tu negocio.</p></article><article class="system-node reveal"><div class="node-icon">◉</div><h3>Agente IA</h3><p>Respuestas basadas en tu información.</p></article><article class="system-node reveal"><div class="node-icon">▦</div><h3>Google Sheets</h3><p>Datos organizados para dar seguimiento.</p></article><article class="system-node reveal"><div class="node-icon">↗</div><h3>Automatización</h3><p>Confirmación de recepción al cliente.</p></article></div></div></section>
+<section class="section" id="aprendizajes"><div class="wrap"><div class="reveal"><span class="eyebrow">Aprender haciendo</span><h2 class="section-title">En cinco pasos, armas una base que puedes <span class="gradient-text">llevar a tu negocio.</span></h2><p class="section-lede">Seguimos una construcción práctica con un caso de negocio y probamos cómo se conectan sus partes.</p></div>
+<div class="learn-grid"><article class="learn-card reveal"><span class="learn-number">01 / CREAR</span><h3>Contenido con inteligencia artificial</h3><p>Genera ideas y piezas visuales para comunicar mejor lo que ofreces.</p></article><article class="learn-card reveal"><span class="learn-number">02 / ELEGIR</span><h3>Entender los modelos</h3><p>Compara capacidades y elige el modelo adecuado para cada tarea.</p></article><article class="learn-card reveal"><span class="learn-number">03 / CONSTRUIR</span><h3>Una landing para tu negocio</h3><p>Organiza tu propuesta en una página clara, atractiva y útil.</p></article><article class="learn-card reveal"><span class="learn-number">04 / ATENDER</span><h3>Un agente que responde consultas</h3><p>Configura respuestas con información de tus servicios, horarios y preguntas frecuentes.</p></article><article class="learn-card reveal"><span class="learn-number">05 / REGISTRAR</span><h3>Datos y seguimiento automatizado</h3><p>Guarda consultas en Google Sheets y envía una confirmación de recepción.</p></article></div>
+</div></section>
+<section class="section"><div class="wrap"><div class="reveal" style="max-width:820px;margin:0 auto"><span class="eyebrow">De la práctica a tu día a día</span><h2 class="section-title">Que una consulta no se quede <span class="gradient-text">sin respuesta ni seguimiento.</span></h2><p class="section-lede">Vas a ver el recorrido completo desde el primer contenido hasta el registro del cliente y su confirmación.</p><div class="stack"><div class="stack-item"><span class="check">✓</span><div><b>Construcción en vivo</b><br>Sigues cada paso con una computadora y un ejemplo concreto.</div></div><div class="stack-item"><span class="check">✓</span><div><b>Material para reutilizar</b><br>Plantillas, guías, entregables y prompts listos para adaptar.</div></div><div class="stack-item"><span class="check">✓</span><div><b>Aplicación a tu negocio</b><br>Te llevas una estructura para continuar después del taller.</div></div></div><div style="margin-top:25px"><a class="btn" href="#contacto">Consultar disponibilidad <span>↗</span></a></div></div></div></section>
+<section class="section included"><div class="wrap"><div class="reveal"><span class="eyebrow">Tu experiencia</span><h2 class="section-title">Una tarde intensiva, <span class="gradient-text">con recursos para seguir.</span></h2></div><div class="included-grid"><article class="include-card reveal"><span class="include-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 8.5h14l8 8V38a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2V10.5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M28 9v8h8M18 24h12M18 29h12M18 34h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M17 8.5v-2h14" stroke="#91aaff" stroke-width="1.8" stroke-linecap="round"/></svg></span><h3>Plantillas y guías</h3><p>Material práctico para ordenar tus próximos pasos.</p></article><article class="include-card reveal"><span class="include-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m17 17-7 7 7 7M31 17l7 7-7 7M27 13l-6 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m34 7 1.2 3.3L39 12l-3.8 1.6L34 17l-1.5-3.4L29 12l3.5-1.7L34 7Z" stroke="#91aaff" stroke-width="1.6" stroke-linejoin="round"/></svg></span><h3>Prompts reutilizables</h3><p>Instrucciones listas para adaptar a tus procesos.</p></article><article class="include-card reveal"><span class="include-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 20h18v14a4 4 0 0 1-4 4H19a4 4 0 0 1-4-4V20Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M33 23h2a4 4 0 0 1 0 8h-2M19 15c-2-2 2-3 0-6M25 15c-2-2 2-3 0-6M31 15c-2-2 2-3 0-6" stroke="#91aaff" stroke-width="1.8" stroke-linecap="round"/></svg></span><h3>Coffee break</h3><p>Una pausa para compartir y recargar energía.</p></article><article class="include-card reveal"><span class="include-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 8h16l7 7v15M29 8v8h7M17 22h11M17 27h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 31.5 35 34l5-2.5v8l-5-2-5 2v-8Z" stroke="#91aaff" stroke-width="1.8" stroke-linejoin="round"/><circle cx="35" cy="25" r="5" stroke="currentColor" stroke-width="1.8"/><path d="m33 25 1.4 1.5 2.8-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Certificado</h3><p>De participación, emitido por la Cámara Argentina de Formación Profesional y Capacitación Laboral.</p></article></div><div class="reveal" style="margin-top:25px"><a class="btn secondary" href="#contacto">Consultar con Gabriela <span>↗</span></a></div></div></section>
+<section class="section" id="expositores"><div class="wrap"><div class="reveal"><span class="eyebrow">Conoce a quienes te acompañan</span><h2 class="section-title">Experiencia de negocio y tecnología <span class="gradient-text">en una misma sala.</span></h2></div><div class="people">
+<article class="person reveal"><div class="person-photo"><img src="https://paymegpt.com/objects/quick-uploads/36/835b939f5d0f695f.jpg" alt="Francisco Benítez, fundador de Francisco Benítez Digital"></div><div class="person-info"><span class="person-role">Francisco Benítez Digital · México</span><h3>Francisco Benítez</h3><p>Consultor en inteligencia artificial y automatización aplicada a negocios, con más de 10 años de experiencia en marketing digital. Dictará el taller en vivo por Zoom desde México y guiará la construcción paso a paso.</p><p>Es autor de los cursos IA Acelera, IA Autor, ChatGPT Business Hacker e Inteligencia Artificial para Emprendedores.</p><p>Licenciado en Administración de Empresas por la Universidad Anáhuac, México.</p><div class="cred-list"><span>Marketing digital · +10 años</span><span>IA y automatización</span><span>Universidad Anáhuac</span></div><a class="person-brand-link" href="https://franciscobenitez.digital/" target="_blank" rel="noopener" aria-label="Visita franciscobenitez.digital"><img src="https://paymegpt.com/objects/quick-uploads/36/7d969950b4419a9c.jpg" alt="Logo Francisco Benítez Digital"></a></div></article>
+<article class="person reveal"><div class="person-photo"><img src="https://paymegpt.com/objects/quick-uploads/36/c5deb7f172dc5757.jpg" alt="Gabriela Ballerini, fundadora de ARGEM"></div><div class="person-info"><span class="person-role">Fundadora de ARGEM · anfitriona en Salta</span><h3>Gabriela Ballerini</h3><p>Empresaria textil con más de 17 años de experiencia, coach ontológica y docente universitaria. Fundadora de ARGEM Consultora y presidenta de la Fundación ARGEM Argentina en Movimiento.</p><div class="cred-list"><span>Marketing y ventas</span><span>IA para negocios</span><span>Desarrollo emprendedor</span></div><a class="person-brand-link" href="https://www.argem.com.ar/" target="_blank" rel="noopener" aria-label="Visita ARGEM"><img src="https://paymegpt.com/objects/quick-uploads/36/0eb717c697efcffd.jpg" alt="Logo ARGEM"></a></div></article>
+</div></div></section>
+<section class="section"><div class="wrap"><div class="reveal" style="max-width:780px"><span class="eyebrow">Una jornada para construir</span><h2 class="section-title">Cinco horas de práctica con <span class="gradient-text">acompañamiento.</span></h2><p class="section-lede">El miércoles 21 de octubre, de 14:00 a 19:00, hora de Argentina, recorreremos de forma práctica cómo crear contenidos, entender modelos, construir una landing, configurar un agente y conectar el registro de clientes con automatizaciones. Habrá coffee break durante la jornada.</p><a class="btn" href="#contacto">Consulta con Gabriela <span>↗</span></a></div></div></section>
+<section class="section venue" id="sede"><div class="wrap"><div class="reveal"><span class="eyebrow">Nos encontramos en Salta</span><h2 class="section-title">Una experiencia presencial en <span class="gradient-text">Hotel Sheraton Salta.</span></h2><p class="section-lede">Gabriela estará en la sala acompañando la práctica. Francisco se sumará en vivo por Zoom desde México.</p></div><div class="venue-grid"><div class="venue-info reveal"><img class="hotel-logo" src="https://paymegpt.com/objects/quick-uploads/36/852c03bdbee55f87.jpg" alt="Sheraton Salta"><img class="venue-photo" src="https://paymegpt.com/objects/quick-uploads/36/20564f6d13e22852.jpg" alt="Interior del Hotel Sheraton Salta"><h3>Hotel Sheraton Salta</h3><p>Salta, Argentina<br>Miércoles 21 de octubre de 2026 · 14:00 a 19:00</p><a class="btn secondary small" href="https://www.google.com/maps/search/?api=1&query=Sheraton+Salta+Hotel" target="_blank" rel="noopener">Cómo llegar en Google Maps ↗</a></div><div class="map-wrap reveal"><iframe title="Mapa de Hotel Sheraton Salta" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Sheraton+Salta+Hotel&output=embed"></iframe></div></div><div style="margin-top:25px" class="reveal"><a class="btn" href="#contacto">Consultar detalles con Gabriela <span>↗</span></a></div></div></section>
+<section class="section" id="preguntas"><div class="wrap"><div class="reveal"><span class="eyebrow">Preguntas frecuentes</span><h2 class="section-title">Lo esencial, <span class="gradient-text">a mano.</span></h2></div><div class="agenda-card reveal"><details open><summary>¿Debo llevar una laptop o una tablet?</summary><p style="color:var(--muted);margin-top:10px">Sí. Es necesario llevar una laptop o una tablet para realizar las actividades prácticas.</p></details><hr style="border:0;border-top:1px solid var(--line);margin:16px 0"><details><summary>¿Qué modalidad tiene?</summary><p style="color:var(--muted);margin-top:10px">Es híbrida: Gabriela estará presencialmente en el Hotel Sheraton Salta y Francisco dictará el taller en vivo por Zoom desde México.</p></details><hr style="border:0;border-top:1px solid var(--line);margin:16px 0"><details><summary>¿Qué incluye?</summary><p style="color:var(--muted);margin-top:10px">Coffee break, plantillas, guías, entregables, prompts reutilizables y certificado de participación emitido por la Cámara Argentina de Formación Profesional y Capacitación Laboral.</p></details><hr style="border:0;border-top:1px solid var(--line);margin:16px 0"><details><summary>¿Cómo consulto por mi lugar?</summary><p style="color:var(--muted);margin-top:10px">Contactá a Gabriela Ballerini para recibir la información de inscripción.</p></details></div></div></section>
+<section class="contact" id="contacto"><div class="wrap"><div class="contact-box reveal"><span class="eyebrow">Cupo limitado · 20 personas</span><h2>¿Lo construimos <span class="gradient-text">para tu negocio?</span></h2><p>Consulta con Gabriela Ballerini por la inscripción y los detalles del taller presencial en Salta.</p><a class="btn" href="#contacto">Consultar con Gabriela <span>↗</span></a><p class="contact-note">El canal directo de Gabriela se agregará aquí al confirmar sus datos de contacto.</p></div></div></section>
+</main>
+<footer class="footer"><div class="wrap footer-row"><div class="footer-logos"><img src="https://paymegpt.com/objects/quick-uploads/36/7d969950b4419a9c.jpg" alt="Francisco Benítez Digital"><img src="https://paymegpt.com/objects/quick-uploads/36/0eb717c697efcffd.jpg" alt="ARGEM"></div><span>Taller práctico de creación de sistemas de inteligencia artificial · Salta 2026</span><a href="#inicio">Volver arriba ↑</a></div></footer>
+<script>
+(function(){var btn=document.getElementById("menuBtn"),nav=document.getElementById("navlinks");if(btn&&nav){btn.addEventListener("click",function(){var open=nav.classList.toggle("open");btn.setAttribute("aria-expanded",open?"true":"false");btn.textContent=open?"×":"☰"});nav.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){nav.classList.remove("open");btn.setAttribute("aria-expanded","false");btn.textContent="☰"})})}var items=document.querySelectorAll(".reveal");if("IntersectionObserver"in window){var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target)}})},{threshold:.12});items.forEach(function(el){io.observe(el)})}else{items.forEach(function(el){el.classList.add("visible")})}var glow=document.querySelector(".cursor-glow");if(glow&&window.matchMedia("(pointer:fine)").matches&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){window.addEventListener("pointermove",function(e){glow.style.left=e.clientX+"px";glow.style.top=e.clientY+"px";glow.style.opacity=".85"},{passive:true});document.addEventListener("mouseleave",function(){glow.style.opacity="0"})}var hero=document.querySelector(".hero"),pf=document.querySelector(".portrait.francisco"),pg=document.querySelector(".portrait.gabriela");if(hero&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){var raf=false;function updateHeroParallax(){var rect=hero.getBoundingClientRect(),progress=Math.max(0,Math.min(1,(-rect.top)/(rect.height||1)));hero.style.setProperty("--hero-parallax",Math.round(progress*34)+"px");if(pf)pf.style.setProperty("--portrait-shift",Math.round(-progress*14)+"px");if(pg)pg.style.setProperty("--portrait-shift",Math.round(progress*14)+"px");raf=false}window.addEventListener("scroll",function(){if(!raf){raf=true;requestAnimationFrame(updateHeroParallax)}},{passive:true});updateHeroParallax()}})();
+</script>
+</body></html>
