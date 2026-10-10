@@ -62,3 +62,10 @@
 @keyframes accordionIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:900px){.learn-accordion-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.learn-card.accordion-trigger{min-height:175px}.benefit-row{grid-template-columns:1fr}}
 @media(max-width:600px){.learn-accordion-grid{grid-template-columns:1fr;gap:11px}.learn-card.accordion-trigger{min-height:0;padding:18px 18px 19px}.learn-card-title{font-size:1.08rem;max-width:calc(100% - 35px)}.learn-panel{margin-top:6px;padding:16px 17px 18px}.benefit-row{gap:10px;margin-top:20px}.benefit-row article{padding:16px}}
+
+/* Corrección de contraste y espaciado en los acordeones móviles */
+.learn-card.accordion-trigger{display:block!important;color:#f5f9ff!important;background:linear-gradient(145deg,rgba(19,53,91,.98),rgba(10,31,61,.98))!important;text-shadow:none!important}
+.learn-card.accordion-trigger .learn-number{display:block!important;color:#55e6ff!important;font:700 .78rem/1.2 "Space Grotesk",sans-serif!important;letter-spacing:.14em!important;margin:0 0 13px!important;white-space:normal!important}
+.learn-card.accordion-trigger .learn-card-title{display:block!important;color:#f5f9ff!important;font:700 1.17rem/1.22 "Space Grotesk",sans-serif!important;letter-spacing:-.025em!important;margin:0!important;padding:0!important;max-width:calc(100% - 34px)!important;white-space:normal!important}
+.learn-card.accordion-trigger .accordion-chevron{color:#55e6ff!important;background:rgba(6,22,45,.58)!important}
+@media(max-width:600px){.learn-card.accordion-trigger{min-height:112px!important;padding:18px 48px 19px 19px!important}.learn-card.accordion-trigger .learn-card-title{font-size:1.12rem!important;line-height:1.2!important;max-width:100%!important}.learn-card.accordion-trigger .accordion-chevron{right:16px!important;bottom:50%!important;transform:translateY(50%)!important}.learn-card.accordion-trigger[aria-expanded="true"] .accordion-chevron{transform:translateY(50%) rotate(45deg)!important}}
