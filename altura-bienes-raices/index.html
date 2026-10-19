@@ -27,20 +27,55 @@
 <script data-lp-token-hydrate>
 (function(){try{
   var slug="lp-mregxz03-1hh69";
+  var SITEK="";
   var SK='lp_access_'+slug;
   var map={access_token:'lp_pw_',allowlist_access_token:'lp_al_',pin_access_token:'lp_pin_',paywall_access_token:'lp_paid_'};
+  function siteTok(){try{return SITEK?localStorage.getItem(SITEK):null;}catch(e){return null;}}
   var u=new URL(location.href);var found=null;var changed=false;
-  Object.keys(map).forEach(function(p){var v=u.searchParams.get(p);if(v){found=v;try{localStorage.setItem(map[p]+slug,v);}catch(e){}u.searchParams.delete(p);changed=true;}});
+  var PINP=true;
+  if(!PINP){try{localStorage.removeItem('lp_pin_'+slug);if(SITEK)localStorage.removeItem(SITEK);}catch(e){}}
+  Object.keys(map).forEach(function(p){var v=u.searchParams.get(p);if(v){found=v;try{if(PINP||p!=='pin_access_token'){localStorage.setItem(map[p]+slug,v);if(SITEK&&p==='pin_access_token')localStorage.setItem(SITEK,v);}}catch(e){}if(p==='pin_access_token'){try{sessionStorage.setItem('lp_fresh_'+slug,'1');}catch(e){}}u.searchParams.delete(p);changed=true;}});
   if(found){try{sessionStorage.setItem(SK,found);}catch(e){}}
-  else{try{if(!sessionStorage.getItem(SK)){var t=localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug);if(t)sessionStorage.setItem(SK,t);}}catch(e){}}
+  else{try{if(!sessionStorage.getItem(SK)){var t=localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug)||siteTok();if(t)sessionStorage.setItem(SK,t);}}catch(e){}}
   if(changed){try{history.replaceState(null,'',u.toString());}catch(e){}}
-  function getTok(){try{return sessionStorage.getItem(SK)||localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug);}catch(e){return null;}}
+  function getTok(){try{return sessionStorage.getItem(SK)||localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug)||siteTok();}catch(e){return null;}}
   function needsToken(url,method){if(!url)return false;var s=String(url);var m=(method||'GET').toUpperCase();var isSheetWrite=(m==='POST'||m==='PATCH'||m==='PUT'||m==='DELETE')&&/\/sheet-rows(\/|$|\?)/.test(s);var isSheetRead=/\/sheet-data(\/|$|\?)/.test(s);var isLlm=/\/api\/landing-pages\/public\/[^/]+\/(llm|llm-config)(\/|$|\?)/.test(s);return isSheetWrite||isSheetRead||isLlm;}
   if(window.fetch){var _f=window.fetch;window.fetch=function(input,init){try{var url=typeof input==='string'?input:(input&&input.url)||'';var method=(init&&init.method)||(input&&input.method)||'GET';if(needsToken(url,method)){var tok=getTok();if(tok){init=init||{};var h=new Headers(init.headers||(typeof input!=='string'?input.headers:undefined)||{});if(!h.has('X-Landing-Page-Token'))h.set('X-Landing-Page-Token',tok);init.headers=h;}}}catch(e){}return _f.call(this,input,init);};}
   if(window.XMLHttpRequest){var _o=XMLHttpRequest.prototype.open;var _s=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.open=function(m,u){this.__lpM=m;this.__lpU=u;return _o.apply(this,arguments);};XMLHttpRequest.prototype.send=function(){try{if(needsToken(this.__lpU,this.__lpM)){var tok=getTok();if(tok)this.setRequestHeader('X-Landing-Page-Token',tok);}}catch(e){}return _s.apply(this,arguments);};}
 }catch(e){}})();
 </script>
 
+<style data-gate>body{visibility:hidden;}</style>
+<script data-gate>
+(function(){
+  var slug='lp-mregxz03-1hh69';var apiBase='https://paymegpt.com';
+  var PIN_TOKEN_KEY='lp_pin_'+slug;var ACCESS_TOKEN_KEY='lp_access_'+slug;var PIN_FRESH_KEY='lp_fresh_'+slug;
+  var PIN_SITE_KEY="";var PIN_OWNER="36";var PIN_MAX_AGE=2592000000;var PIN_PERSIST=true;var pinPassed=false;
+  function pinStore(t){try{sessionStorage.setItem(ACCESS_TOKEN_KEY,t);}catch(e){}if(PIN_PERSIST){try{localStorage.setItem(PIN_TOKEN_KEY,t);if(PIN_SITE_KEY)localStorage.setItem(PIN_SITE_KEY,t);}catch(e){}}}
+  function pinScopeOk(p){return p.length>=4&&(p[0]==='pin'||((p[0]==='pinsite'||p[0]==='pinsite2')&&PIN_SITE_KEY&&(p[0]!=='pinsite2'||p[1]===PIN_OWNER)));}
+  function pinParts(t){try{var b64=t.indexOf('.')>0?t.split('.')[0]:t;return atob(b64).split(':');}catch(e){}return [];}
+  function pinValid(t){var p=pinParts(t);if(pinScopeOk(p)){var ts=parseInt(p[p.length-1]);return isFinite(ts)&&(Date.now()-ts)<PIN_MAX_AGE;}return false;}
+  function pinOnVerified(t){pinStore(t);if(PIN_PERSIST){window.location.reload();}else{var u=new URL(window.location.href);u.searchParams.set('pin_access_token',t);window.location.replace(u.toString());}}
+  var urlParams=new URLSearchParams(window.location.search);var pinToken=urlParams.get('pin_access_token');
+  var pinFresh=false;try{if(sessionStorage.getItem(PIN_FRESH_KEY)==='1'){pinFresh=true;sessionStorage.removeItem(PIN_FRESH_KEY);}}catch(e){}
+  if(!PIN_PERSIST&&!pinToken&&!pinFresh){try{localStorage.removeItem(PIN_TOKEN_KEY);sessionStorage.removeItem(ACCESS_TOKEN_KEY);}catch(e){}}
+  if(!PIN_PERSIST&&!pinToken&&pinFresh){try{pinPassed=!!sessionStorage.getItem(ACCESS_TOKEN_KEY);}catch(e){}}
+  if(PIN_PERSIST){var storedToken=null;try{storedToken=localStorage.getItem(PIN_TOKEN_KEY)||(PIN_SITE_KEY?localStorage.getItem(PIN_SITE_KEY):null);}catch(e){}if(storedToken&&pinValid(storedToken)){pinPassed=true;try{sessionStorage.setItem(ACCESS_TOKEN_KEY,storedToken);}catch(e){}}}
+  if(pinToken){var hp=pinParts(pinToken);var hopOk=pinScopeOk(hp)&&isFinite(parseInt(hp[hp.length-1]))&&(Date.now()-parseInt(hp[hp.length-1]))<900000;var url=new URL(window.location.href);url.searchParams.delete('pin_access_token');window.history.replaceState({},'',url.toString());if(hopOk){pinStore(pinToken);pinPassed=true;}}
+  if(pinPassed){document.addEventListener('DOMContentLoaded',function(){document.body.style.visibility='visible';});return;}
+  document.addEventListener('DOMContentLoaded',function(){
+  var currentMethod='email';var currentIdentifier='';
+  var gateHtml='<style>#pin-gate input:focus{border-color:#2563eb !important;box-shadow:0 0 0 3px rgba(37,99,235,0.25) !important;outline:none !important;}</style><div id="pin-gate" style="position:fixed;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;padding:16px;"><div style="background:white;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.15);width:100%;max-width:420px;padding:32px;text-align:center;"><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Identity Verification</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Please verify your identity to access this page.</p><form id="pin-request-form"><input type="email" id="pin-identifier" placeholder="Enter your email address" required style="width:100%;box-sizing:border-box;height:48px;padding:0 16px;background:#fff;color:#111827;-webkit-text-fill-color:#111827;font-size:16px;border:1px solid #d1d5db;border-radius:8px;outline:none;margin-bottom:12px;" /><div id="pin-req-error" style="display:none;color:#ef4444;font-size:14px;margin-bottom:12px;"></div><button type="submit" id="pin-send-btn" style="width:100%;height:48px;font-size:16px;font-weight:600;color:white;border:none;border-radius:8px;cursor:pointer;background:#2563eb;">Send Verification Code</button></form><form id="pin-verify-form" style="display:none;"><p id="pin-sent-msg" style="font-size:14px;color:#6b7280;margin-bottom:12px;"></p><input type="text" id="pin-code" placeholder="Enter 6-digit PIN" maxlength="6" style="width:100%;box-sizing:border-box;height:48px;padding:0 16px;background:#fff;color:#111827;-webkit-text-fill-color:#111827;font-size:20px;text-align:center;letter-spacing:8px;font-family:monospace;border:1px solid #d1d5db;border-radius:8px;outline:none;margin-bottom:12px;" required /><div id="pin-ver-error" style="display:none;color:#ef4444;font-size:14px;margin-bottom:12px;"></div><button type="submit" id="pin-verify-btn" style="width:100%;height:48px;font-size:16px;font-weight:600;color:white;border:none;border-radius:8px;cursor:pointer;background:#2563eb;">Verify PIN</button><button type="button" id="pin-resend-btn" style="width:100%;margin-top:8px;padding:8px;background:none;border:none;color:#6b7280;cursor:pointer;font-size:14px;">Resend PIN</button><button type="button" id="pin-back-btn" style="width:100%;padding:8px;background:none;border:none;color:#9ca3af;cursor:pointer;font-size:14px;">Use different contact</button></form></div></div>';
+  document.body.insertAdjacentHTML('beforeend',gateHtml);document.body.style.visibility='visible';
+  var reqForm=document.getElementById('pin-request-form');var verForm=document.getElementById('pin-verify-form');var idInput=document.getElementById('pin-identifier');var codeInput=document.getElementById('pin-code');var sendBtn=document.getElementById('pin-send-btn');var verifyBtn=document.getElementById('pin-verify-btn');var reqError=document.getElementById('pin-req-error');var verError=document.getElementById('pin-ver-error');var sentMsg=document.getElementById('pin-sent-msg');
+  
+  
+  function sendPin(){var id=idInput.value.trim();if(!id)return;sendBtn.disabled=true;sendBtn.textContent='Sending...';reqError.style.display='none';var body=currentMethod==='sms'?{phone:id}:{email:id};fetch(apiBase+'/api/landing-pages/public/'+slug+'/generate-pin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json();}).then(function(d){if(d.success){currentIdentifier=id;reqForm.style.display='none';verForm.style.display='block';sentMsg.textContent='We sent a 6-digit PIN to '+id;codeInput.focus();}else{reqError.textContent=d.message||'Failed to send PIN';reqError.style.display='block';}}).catch(function(){reqError.textContent='Failed to send PIN';reqError.style.display='block';}).finally(function(){sendBtn.disabled=false;sendBtn.textContent='Send Verification Code';});}
+  function verifyPin(){var pin=codeInput.value.trim();if(!pin||pin.length!==6){verError.textContent='Please enter the 6-digit PIN';verError.style.display='block';return;}verifyBtn.disabled=true;verifyBtn.textContent='Verifying...';verError.style.display='none';var body=currentMethod==='sms'?{phone:currentIdentifier,pin:pin}:{email:currentIdentifier,pin:pin};fetch(apiBase+'/api/landing-pages/public/'+slug+'/verify-pin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json();}).then(function(d){if(d.verified){pinOnVerified(d.accessToken);}else{verError.textContent=d.message||'Invalid PIN code';verError.style.display='block';}}).catch(function(){verError.textContent='Failed to verify PIN';verError.style.display='block';}).finally(function(){verifyBtn.disabled=false;verifyBtn.textContent='Verify PIN';});}
+  reqForm.addEventListener('submit',function(e){e.preventDefault();sendPin();});verForm.addEventListener('submit',function(e){e.preventDefault();verifyPin();});document.getElementById('pin-resend-btn').addEventListener('click',sendPin);document.getElementById('pin-back-btn').addEventListener('click',function(){verForm.style.display='none';reqForm.style.display='block';codeInput.value='';verError.style.display='none';});codeInput.addEventListener('input',function(e){e.target.value=e.target.value.replace(/[^0-9]/g,'').slice(0,6);});idInput.focus();
+  });
+})();
+</script>
 <script data-field-replace>
 (function(){
   var params=new URLSearchParams(window.location.search);
@@ -305,7 +340,8 @@
     }
   });
 })();
-</script>  <link rel="stylesheet" href="styles.css">
+</script>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -380,7 +416,7 @@
 <section class="contact" id="contacto" data-section="contacto">
   <div class="contact-inner">
     <h2>¿Buscas algo específico?</h2>
-    <p>Cuéntanos qué necesitas y un asesor te contacta — o pídenos que te llamemos directamente.</p>
+    <p>Cuéntanos qué necesitas y un asesor te llamará en unos momentos.</p>
     <div class="form-embed">
       <iframe src="https://paymegpt.com/forms/6cx0vn58" title="Formulario de contacto" loading="lazy"></iframe>
     </div>
@@ -391,8 +427,101 @@
 
 <script src="https://paymegpt.com/widget.js" data-widget="9249105" async></script>
 
+<script>
+const SHEET_URL = "https://paymegpt.com/api/public/landing-pages/5439/sheet-data";
+let PROPIEDADES = [];
 
+function money(n){
+  const num = parseInt(n, 10) || 0;
+  return "$" + num.toLocaleString("es-MX");
+}
 
-  <script src="script.js"></script>
+function cardHTML(p){
+  const destacada = (p.Destacada || "").trim().toLowerCase() === "si";
+  const terreno = parseInt(p.M2_Terreno,10) > 0 ? `<span><b>${p.M2_Terreno}</b> m² terreno</span>` : "";
+  return `
+    <div class="card">
+      <div class="card-img" style="background-image:url('${p.Imagen_URL}')">
+        ${destacada ? '<div class="badge-destacada">Destacada</div>' : ''}
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div>
+            <div class="card-title">${p.Titulo}</div>
+            <div class="card-loc">${p.Colonia}, ${p.Ciudad}</div>
+          </div>
+          <div class="card-price">${money(p.Precio)}</div>
+        </div>
+        <div class="card-desc">${p.Descripcion}</div>
+        <div class="spec-stamp">
+          <span><b>${p.Tipo}</b></span>
+          <span><b>${p.Recamaras}</b> rec</span>
+          <span><b>${p.Banos}</b> baños</span>
+          <span><b>${p.Estacionamientos}</b> autos</span>
+          <span><b>${p.M2_Construccion}</b> m² const.</span>
+          ${terreno}
+        </div>
+        <div class="card-cta"><a href="#contacto">Solicitar información →</a></div>
+      </div>
+    </div>`;
+}
+
+function render(list){
+  const el = document.getElementById('listado');
+  document.getElementById('filter-count').textContent = list.length + ' de ' + PROPIEDADES.length + ' propiedades';
+  if(!list.length){
+    el.innerHTML = '<div class="empty-state">No hay propiedades que coincidan con esos filtros. Prueba ajustando el rango de precio o recámaras.</div>';
+    return;
+  }
+  const ordenadas = [...list].sort((a,b)=>{
+    const da = (a.Destacada||'').toLowerCase()==='si' ? 1 : 0;
+    const db = (b.Destacada||'').toLowerCase()==='si' ? 1 : 0;
+    return db - da;
+  });
+  el.innerHTML = ordenadas.map(cardHTML).join('');
+}
+
+function applyFilters(){
+  const precioVal = document.getElementById('f-precio').value.split('-').map(Number);
+  const recMin = parseInt(document.getElementById('f-recamaras').value, 10) || 0;
+  const tipo = document.getElementById('f-tipo').value;
+
+  const filtradas = PROPIEDADES.filter(p=>{
+    const precio = parseInt(p.Precio,10) || 0;
+    const rec = parseInt(p.Recamaras,10) || 0;
+    let ok = true;
+    if(precioVal.length === 2 && (precioVal[0] !== 0 || precioVal[1] !== 0)){
+      ok = ok && precio >= precioVal[0] && precio <= precioVal[1];
+    }
+    if(recMin) ok = ok && rec >= recMin;
+    if(tipo) ok = ok && p.Tipo === tipo;
+    return ok;
+  });
+  render(filtradas);
+}
+
+['f-precio','f-recamaras','f-tipo'].forEach(id=>{
+  document.getElementById(id).addEventListener('change', applyFilters);
+});
+document.getElementById('reset-filters').addEventListener('click', ()=>{
+  document.getElementById('f-precio').value = '0';
+  document.getElementById('f-recamaras').value = '0';
+  document.getElementById('f-tipo').value = '';
+  applyFilters();
+});
+
+fetch(SHEET_URL)
+  .then(r => r.json())
+  .then(data => {
+    PROPIEDADES = Array.isArray(data) ? data : (data.rows || data.data || []);
+    document.getElementById('stat-total').textContent = PROPIEDADES.length;
+    render(PROPIEDADES);
+  })
+  .catch(err => {
+    document.getElementById('listado').innerHTML = '<div class="empty-state">No se pudo cargar el catálogo en este momento.</div>';
+    console.error(err);
+  });
+</script>
+
 </body>
 </html>
