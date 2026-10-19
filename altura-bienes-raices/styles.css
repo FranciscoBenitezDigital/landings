@@ -21,10 +21,8 @@
   header.hero{
     position:relative;
     background-image:
-      linear-gradient(180deg, rgba(11,36,71,0.80) 0%, rgba(11,36,71,0.94) 100%),
-      repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 48px),
-      repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 48px),
-      url('https://paymegpt.com/objects/generated-images/36/1784228406677-cf3ac4c677dc52df.png');
+      linear-gradient(180deg, rgba(11,36,71,0.42) 0%, rgba(11,36,71,0.62) 55%, rgba(11,36,71,0.82) 100%),
+      url('https://paymegpt.com/objects/generated-images/36/1792374612110-fed481fea7bf5aa2.jpeg');
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
@@ -60,12 +58,14 @@
     letter-spacing:-0.01em;
     max-width:680px;
     margin-bottom:14px;
+    text-shadow:0 2px 12px rgba(11,36,71,0.45);
   }
   header.hero p.lead{
     font-size:18px;
     color:#C7D3E3;
     max-width:560px;
     margin-bottom:36px;
+    text-shadow:0 1px 8px rgba(11,36,71,0.5);
   }
   .hero-stats{
     display:flex;
