@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://franciscobenitezdigital.github.io/landings/sax/</loc>
+    <lastmod>2026-10-23T21:56:58.588Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://franciscobenitezdigital.github.io/landings/francisco-benitez-digital-automatizacion-ia-negocios/</loc>
-    <lastmod>2026-10-20T00:04:15.023Z</lastmod>
+    <lastmod>2026-10-23T21:54:57.147Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://franciscobenitezdigital.github.io/landings/losfondues/</loc>
+    <lastmod>2026-10-23T06:41:00.202Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -13,11 +23,6 @@
   <url>
     <loc>https://franciscobenitezdigital.github.io/landings/taller-sheraton-salta/</loc>
     <lastmod>2026-10-16T17:58:15.991Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://franciscobenitezdigital.github.io/landings/losfondues/</loc>
-    <lastmod>2026-10-12T20:30:07.041Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
