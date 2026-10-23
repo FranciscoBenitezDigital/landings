@@ -332,11 +332,12 @@
         <div class="tip-copy">
           <p class="eyebrow">Música en vivo</p>
           <h2 class="serif" id="tip-title">Que la música siga sonando</h2>
-          <p>Si me estás escuchando en vivo y deseas apoyar mi música, puedes dejar una propina virtual por el monto que tú elijas. Gracias por acompañarme.</p>
+          <p>Cuando me escuches en vivo, aquí puedes dejar una propina virtual por el monto que tú elijas. Gracias por acompañarme y apoyar mi música.</p>
         </div>
-        <div class="tip-action">
-          <a class="tip-button" href="https://www.paypal.com/ncp/payment/86NDCW8PDDCVC" target="_blank" rel="noopener noreferrer" aria-label="Dejar una propina virtual en PayPal">Dejar una propina <span aria-hidden="true">↗</span></a>
-          <small>Pago mediante PayPal · Tú eliges el monto</small>
+        <div class="tip-action" aria-live="polite">
+          <a class="tip-button tip-live-button" href="https://www.paypal.com/ncp/payment/86NDCW8PDDCVC" target="_blank" rel="noopener noreferrer" aria-label="En vivo ahora; dejar una propina virtual en PayPal" hidden><span class="tip-live-head"><i class="tip-live-dot" aria-hidden="true"></i> EN VIVO AHORA</span><span class="tip-live-sub">Dejar una propina ↗</span></a>
+          <p class="tip-schedule">Sábados, 8:10–10:00 p.m. · hora de CDMX</p>
+          <small class="tip-live-note" hidden>Pago mediante PayPal · Tú eliges el monto</small>
         </div>
       </div>
     </section>
@@ -431,6 +432,25 @@
       });
       hero.addEventListener('pointerleave',()=>{hero.style.removeProperty('--light-x');hero.style.removeProperty('--light-y')});
     }
+
+    const tipLiveButton=document.querySelector('.tip-live-button');
+    const tipSchedule=document.querySelector('.tip-schedule');
+    const tipLiveNote=document.querySelector('.tip-live-note');
+    const mexicoClock=new Intl.DateTimeFormat('en-US',{timeZone:'America/Mexico_City',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'});
+    function isSaxLiveWindow(instant=new Date()){
+      const parts=Object.fromEntries(mexicoClock.formatToParts(instant).filter(part=>part.type!=='literal').map(part=>[part.type,part.value]));
+      const minuteOfDay=Number(parts.hour)*60+Number(parts.minute);
+      return parts.weekday==='Sat'&&minuteOfDay>=20*60+10&&minuteOfDay<22*60;
+    }
+    function updateSaxLiveButton(){
+      const live=isSaxLiveWindow();
+      tipLiveButton.hidden=!live;
+      tipSchedule.hidden=live;
+      tipLiveNote.hidden=!live;
+    }
+    updateSaxLiveButton();
+    window.setInterval(updateSaxLiveButton,15000);
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateSaxLiveButton()});
   </script>
 </body>
 </html>
