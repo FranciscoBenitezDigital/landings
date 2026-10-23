@@ -27,6 +27,7 @@
     @media(max-width:1024px), (max-width:1180px) and (hover:none) and (pointer:coarse){.demo-more{width:100%;max-width:360px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.venues-inner{animation:none}.hero-notes{display:none}*,*::before,*::after{animation:none!important;transition:none!important}.hero-bg{transform:none!important}}
   
+    .tip-strip[hidden]{display:none!important}
     .tip-strip{position:relative;overflow:hidden;padding:33px 0;background:linear-gradient(115deg,#15100b,#21170d 52%,#120e0b);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .tip-strip:after{content:"♪";position:absolute;right:5%;top:-75px;color:rgba(217,172,92,.08);font-family:Georgia,serif;font-size:230px;line-height:1;pointer-events:none}
     .tip-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:34px}
