@@ -37,3 +37,11 @@
     .tip-button:hover,.tip-button:focus-visible{background:var(--gold2);transform:translateY(-2px)}
     .tip-action small{color:#ac9e8d;font-size:11px}
     @media(max-width:760px){.tip-strip{padding:28px 0}.tip-inner{align-items:flex-start;flex-direction:column;gap:18px}.tip-strip:after{right:-15px;top:2px;font-size:170px}.tip-action{align-items:flex-start;width:100%}.tip-button{min-width:0;width:100%}}
+
+    .tip-action .tip-live-button[hidden],.tip-action .tip-schedule[hidden],.tip-action .tip-live-note[hidden]{display:none!important}
+    .tip-live-button{flex-direction:column;gap:3px;min-width:245px;padding:10px 22px;text-align:center}
+    .tip-live-head{display:inline-flex;align-items:center;gap:7px;font-size:14px;letter-spacing:.1em}
+    .tip-live-sub{font-size:11px;font-weight:600;letter-spacing:.02em}
+    .tip-live-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#ce4636;box-shadow:0 0 0 4px rgba(206,70,54,.18)}
+    .tip-schedule{margin:0;padding:13px 17px;border:1px solid var(--line);color:var(--gold2);font-size:13px;text-align:center}
+    @media(max-width:760px){.tip-schedule{width:100%}.tip-live-button{width:100%}}
