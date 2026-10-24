@@ -401,7 +401,7 @@
     function updateMotion(){
       const maxScroll=Math.max(0,document.documentElement.scrollHeight-window.innerHeight);
       document.documentElement.style.setProperty('--page-progress',maxScroll?Math.min(1,window.scrollY/maxScroll):0);
-      const shift=!reduceMotion.matches&&desktopMotion.matches&&window.scrollY<hero.offsetHeight+100?Math.min(window.scrollY*.16,40):0;
+      const shift=!reduceMotion.matches&&desktopMotion.matches&&window.scrollY<hero.offsetHeight+100?Math.min(window.scrollY*.04,10):0;
       hero.style.setProperty('--hero-shift',shift+'px');
       scrollQueued=false;
     }
