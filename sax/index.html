@@ -314,7 +314,7 @@
   });
 })();
 </script>
-<link rel="stylesheet" href="styles.css?v=20261024-tudel">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"></div>
@@ -437,7 +437,7 @@
     function isSaxLiveWindow(instant=new Date()){
       const parts=Object.fromEntries(mexicoClock.formatToParts(instant).filter(part=>part.type!=='literal').map(part=>[part.type,part.value]));
       const minuteOfDay=Number(parts.hour)*60+Number(parts.minute);
-      return parts.weekday==='Sat'&&minuteOfDay>=20*60&&minuteOfDay<22*60;
+      return parts.weekday==='Sat'&&minuteOfDay>=20*60+30&&minuteOfDay<22*60+30;
     }
     function updateSaxLiveStrip(){tipStrip.hidden=!isSaxLiveWindow()}
     updateSaxLiveStrip();
