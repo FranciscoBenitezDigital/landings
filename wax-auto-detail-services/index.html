@@ -384,7 +384,7 @@
     (function(){const anchor=document.querySelector('#turnaround');if(!anchor||document.querySelector('#faq'))return;const section=document.createElement('section');section.className='faq';section.id='faq';section.innerHTML=`<div class="wrap faq-grid"><div class="section-head"><div class="eyebrow">Good to know</div><h2>Questions<br>we hear often</h2><p>Every vehicle has a different story. These details help the team recommend the right products, process, and starting point.</p><div class="faq-callout">Please tell us whether your seats are cloth, leather, or mixed. Different materials require different products and may affect the final quote.</div></div><div class="faq-list"><article class="faq-item"><h3>What affects the final quote?</h3><p>Vehicle size, condition, package selected, seat material, stain severity and age, plus additional work such as paint decontamination or paint correction.</p></article><article class="faq-item"><h3>Can every stain be completely removed?</h3><p>We make every reasonable effort to improve stains, but complete removal cannot be guaranteed. Stains that have remained for a week or longer may have permanently affected or discolored the fabric, leather, or underlying material.</p></article><article class="faq-item"><h3>Do you use the same products on every interior?</h3><p>No. Different products and processes are used for cloth and leather surfaces, which is why the seat material is important when preparing a quote.</p></article></div></div>`;anchor.parentNode.insertBefore(section,anchor.nextSibling)})();
   </script>
   <script>
-    (function(){if(window.__waxWidgetLoaded)return;window.__waxWidgetLoaded=true;window.PayMeGPTConfig={widgetId:'67916331',primaryColor:'#d91f26',position:'bottom-right',theme:'dark'};const script=document.createElement('script');script.src='https://paymegpt.com/widget.js';script.async=true;script.setAttribute('data-widget','67916331');document.body.appendChild(script);const brandFooter=()=>{const frame=document.querySelector('iframe[src*="67916331"]');try{const doc=frame&&frame.contentDocument;if(!doc)return false;const nodes=[...doc.querySelectorAll('*')].filter(el=>el.children.length===0&&/Powered by PayMeGPT/i.test(el.textContent||''));nodes.forEach(el=>el.textContent='Powered by FranciscoBenítezDigital');return nodes.length>0}catch(e){return false}};let attempts=0;const timer=setInterval(()=>{attempts++;if(brandFooter()||attempts>40)clearInterval(timer)},250)})();
+    (function(){if(window.__waxWidgetLoaded)return;window.__waxWidgetLoaded=true;let preferred;try{preferred=localStorage.getItem('wax-language')}catch(_){}const requested=new URLSearchParams(location.search).get('lang');const lang=['en','es'].includes(requested)?requested:['en','es'].includes(preferred)?preferred:(navigator.language||'en').toLowerCase().startsWith('es')?'es':'en';const widgetId=lang==='es'?'31625211':'67916331';window.PayMeGPTConfig={widgetId,primaryColor:'#d91f26',position:'bottom-right',theme:'dark'};const script=document.createElement('script');script.src='https://paymegpt.com/widget.js';script.async=true;script.setAttribute('data-widget',widgetId);document.body.appendChild(script);const brandFooter=()=>{const frame=document.querySelector('iframe[src*="'+widgetId+'"]');try{const doc=frame&&frame.contentDocument;if(!doc)return false;const nodes=[...doc.querySelectorAll('*')].filter(el=>el.children.length===0&&/Powered by PayMeGPT/i.test(el.textContent||''));nodes.forEach(el=>el.textContent='Powered by FranciscoBenítezDigital');return nodes.length>0}catch(e){return false}};let attempts=0;const timer=setInterval(()=>{attempts++;if(brandFooter()||attempts>40)clearInterval(timer)},250)})();
   </script>
   <script>
     (()=>{
@@ -480,7 +480,7 @@
         translateText();translateEstimate();
         document.dispatchEvent(new Event('wax-language-changed'));
       };
-      switcher.addEventListener('click',e=>{const button=e.target.closest('button[data-lang]');if(!button)return;try{localStorage.setItem('wax-language',button.dataset.lang)}catch(_){}setLanguage(button.dataset.lang)});
+      switcher.addEventListener('click',e=>{const button=e.target.closest('button[data-lang]');if(!button||button.dataset.lang===language)return;try{localStorage.setItem('wax-language',button.dataset.lang)}catch(_){}const url=new URL(location.href);url.searchParams.set('lang',button.dataset.lang);location.assign(url.href)});
       document.querySelectorAll('#packageOptions,#sizeOptions,.package-grid').forEach(el=>el.addEventListener('click',()=>queueMicrotask(translateEstimate)));
       document.getElementById('menu').addEventListener('click',()=>requestAnimationFrame(translateText));
       let preferred;try{preferred=localStorage.getItem('wax-language')}catch(_){}
@@ -502,7 +502,7 @@
       };
       const sync=()=>{
         try{
-          const frame=document.querySelector('iframe[src*="67916331"]'),doc=frame?.contentDocument;
+          const frame=document.querySelector('iframe[src*="'+window.PayMeGPTConfig.widgetId+'"]'),doc=frame?.contentDocument;
           if(!doc?.body)return;
           if(doc!==observedDoc){observer?.disconnect();observer=new MutationObserver(()=>translateWelcome(doc));observer.observe(doc.body,{childList:true,subtree:true});observedDoc=doc}
           translateWelcome(doc);
@@ -594,7 +594,7 @@
 <script id="wax-voice-language-bridge">
 (() => {
   'use strict';
-  const widgetId = '67916331';
+  const widgetId = String(window.PayMeGPTConfig.widgetId);
   const greetings = {
     en: 'Hi! I’m the Wax Auto Detail Services agent. How can I help you?',
     es: '¡Hola! Soy el agente de Wax Auto Detail Services. ¿En qué puedo ayudarte?'
