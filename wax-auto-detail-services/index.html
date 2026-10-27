@@ -481,7 +481,21 @@
         translateText();translateEstimate();
         document.dispatchEvent(new Event('wax-language-changed'));
       };
-      switcher.addEventListener('click',e=>{const button=e.target.closest('button[data-lang]');if(!button||button.dataset.lang===language)return;try{localStorage.setItem('wax-language',button.dataset.lang)}catch(_){}const url=new URL(location.href);url.searchParams.set('lang',button.dataset.lang);location.assign(url.href)});
+      switcher.addEventListener('click',e=>{
+        const button=e.target.closest('button[data-lang]');
+        if(!button)return;
+        const selected=button.dataset.lang;
+        try{localStorage.setItem('wax-language',selected)}catch(_){}
+        const url=new URL(location.href);
+        url.searchParams.set('lang',selected);
+        url.hash='top';
+        if(selected===language){
+          history.replaceState(null,'',url.href);
+          document.getElementById('top')?.scrollIntoView({behavior:'smooth',block:'start'});
+          return;
+        }
+        location.assign(url.href);
+      });
       document.querySelectorAll('#packageOptions,#sizeOptions,.package-grid').forEach(el=>el.addEventListener('click',()=>queueMicrotask(translateEstimate)));
       document.getElementById('menu').addEventListener('click',()=>requestAnimationFrame(translateText));
       let preferred;try{preferred=localStorage.getItem('wax-language')}catch(_){}
